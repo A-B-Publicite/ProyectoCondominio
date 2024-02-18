@@ -9,6 +9,19 @@
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hola Mundo");
+        int seleccion = 0;
+        System.out.println("BIENVENIDO \n SELECCIONE SU OPCION");
+        System.out.println("1: Reserva");
+        //Los demas
+        switch (seleccion){
+            case 1 -> {//Reserva
+                System.out.println("Bienvenido al modulo de Reserva");
+                
+            }
+            case 2 -> {
+            }
+        }
+        
+        
     }
 }
