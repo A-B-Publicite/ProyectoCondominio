@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Administracion;
 
-/**
- *
- * @author jorma
- */
-public class Perfil {
+public abstract class Perfil {
+    private String correo;
+    private String contrasena;
     
+    
+    public void registrar(){
+        
+    }
+    
+    public void registrarIngreso(){
+        
+    }
 }
