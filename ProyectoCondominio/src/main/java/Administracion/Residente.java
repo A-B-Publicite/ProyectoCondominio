@@ -3,8 +3,8 @@ package Administracion;
 public class Residente extends Perfil{
     private boolean esPropietario;
 
-    public Residente(boolean esPropietario, String correo, String contrasena) {
-        super(correo, contrasena);
+    public Residente(boolean esPropietario, String correo, String contrasena, String nombre) {
+        super(correo, contrasena, nombre);
         this.esPropietario = esPropietario;
     }
     
