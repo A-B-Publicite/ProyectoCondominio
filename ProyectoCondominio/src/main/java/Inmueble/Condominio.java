@@ -1,12 +1,5 @@
 package Inmueble;
 
-import Inmueble_Comun.Cancha;
-import Inmueble_Comun.Gimnasio;
-import Inmueble_Comun.ParqueaderoPublico;
-import Inmueble_Comun.Piscina;
-import Inmueble_Comun.Terraza;
-import Inmueble_Privado.Departamento;
-import Inmueble_Privado.ParqueaderoPrivado;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -59,31 +52,31 @@ public class Condominio extends Inmueble {
                 String tipo_Cancha = parts[15];
                 switch (tipoI) {
                     case "Departamento":
-                        Inmueble_Privado.Departamento departamento = new Departamento(id_Departamento, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        Departamento departamento = new Departamento(id_Departamento, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = departamento;
                         break;
                     case "ParqueaderoPrivado":
-                        Inmueble_Privado.ParqueaderoPrivado parqueaderoP = new ParqueaderoPrivado(id_ParqueaderoP, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        ParqueaderoPrivado parqueaderoP = new ParqueaderoPrivado(id_ParqueaderoP, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = parqueaderoP;
                         break;
                     case "ParqueaderoPublico":
-                        Inmueble_Comun.ParqueaderoPublico parqueaderoC = new ParqueaderoPublico(id_ParqueaderoC, disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        ParqueaderoPublico parqueaderoC = new ParqueaderoPublico(id_ParqueaderoC, disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = parqueaderoC;
                         break;
                     case "Cancha":
-                        Inmueble_Comun.Cancha cancha=new Cancha(id_Cancha, tipo_Cancha, disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        Cancha cancha=new Cancha(id_Cancha, tipo_Cancha, disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = cancha;
                         break;
                     case "Piscina":
-                        Inmueble_Comun.Piscina piscina= new Piscina(disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        Piscina piscina= new Piscina(disponibilidad, capacidadI, tipoI,metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = piscina; 
                         break;
                     case "Gimnasio":
-                        Inmueble_Comun.Gimnasio gimnasio = new Gimnasio(disponibilidad, capacidadI, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        Gimnasio gimnasio = new Gimnasio(disponibilidad, capacidadI, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = gimnasio;
                         break;
                     case "Terraza":
-                        Inmueble_Comun.Terraza terraza = new Terraza(disponibilidad, capacidadI, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
+                        Terraza terraza = new Terraza(disponibilidad, capacidadI, tipoI, metrosC, ubicacionI, mantenimiento, valorAlicuota, tituloPropiedadI);
                         inmueble = terraza;
                         break;
                     default:

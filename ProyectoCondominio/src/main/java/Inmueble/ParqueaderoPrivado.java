@@ -1,4 +1,4 @@
-package Inmueble_Privado;
+package Inmueble;
 
 import Inmueble.TituloPropiedad;
 

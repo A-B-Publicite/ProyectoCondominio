@@ -1,4 +1,4 @@
-package Inmueble_Comun;
+package Inmueble;
 import Inmueble.Inmueble;
 import Inmueble.TituloPropiedad;
 
