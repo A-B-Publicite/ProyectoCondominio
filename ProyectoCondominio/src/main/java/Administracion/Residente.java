@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Administracion;
 
-/**
- *
- * @author usuario
- */
-public class Residente {
+public class Residente extends Perfil{
+    private boolean esPropietario;
+
+    public Residente(boolean esPropietario, String correo, String contrasena) {
+        super(correo, contrasena);
+        this.esPropietario = esPropietario;
+    }
     
+    
+    public void reservarAreaComun(){
+        
+    }
+    
+    public void pagarAlicuota(){
+        
+    }
 }
