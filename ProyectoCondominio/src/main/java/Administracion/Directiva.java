@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Administracion;
-
-/**
- *
- * @author usuario
- */
+import java.util.ArrayList;
 public class Directiva {
+    Residente presidente;
+    Residente secretario;
+    Administrador administrador;
+    ArrayList<Contrato> listaContratos;
     
+    public Directiva(Residente presidente, Residente secretario, Administrador administrador){
+        this.presidente = presidente;
+        this.secretario = secretario;
+        this.administrador = administrador;
+    }
+    public void elegirMiembrosDirectiva(){
+        
+    }
+    public void contratarServicio(){
+        
+    }
 }
