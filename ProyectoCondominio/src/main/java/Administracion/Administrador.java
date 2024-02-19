@@ -38,5 +38,4 @@ public class Administrador extends Perfil{
         return condominio.obtenerResidente(nombreResidente);
     }
     
-    
 }

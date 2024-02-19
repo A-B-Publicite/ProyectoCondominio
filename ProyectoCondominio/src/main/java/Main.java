@@ -21,7 +21,8 @@ public class Main {
             case 2 -> {
             }
         }
-        
+        //datos quemados
+        //pruebas funcionales modulo 1 comunicacion
         
     }
 }
