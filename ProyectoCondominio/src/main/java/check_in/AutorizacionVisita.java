@@ -21,6 +21,7 @@ public class AutorizacionVisita extends Autorizacion{
     public void notificar(Perfil autorizador, Perfil guardia){
         String contenido = "El señor/a "+autorizado+" ha venido a visitarlo. ¿Desea dejarlo entrar?";
         Mensaje mensaje = new Directo(guardia, autorizador,contenido, "Nueva visita");
+        mensaje.mostrar();
     }
     
 
