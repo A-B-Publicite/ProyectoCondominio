@@ -9,5 +9,19 @@ package Administracion;
  * @author jeanp
  */
 public class Main {
+    Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa", new Condominio ("Montanas del sol"));
     
+    Departamento departamento = new Departamento(24,propietario);
+    administrador.agregarInmuebleComun(new Gimnasio(24));
+    administrador.agregarDepartamento(24);
+    Contrato contrato = new Contrato();
+    administrador.pagarContrato(contrato);
+    
+    administrador.agregarDirectiva("Juan", "Pedro");
+    
+    Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
+    
+    
+    
+    condominio.agregarDepartamento(departamento);
 }
