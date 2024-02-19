@@ -29,17 +29,10 @@ public class Administrador extends Perfil{
        contrato.pagar();
     }
     
-    public void agregarDirectiva(String presidente, String secretario){
-        // Implementar condominio
-        Residente presidente = condominio.obtenerResidente(presidente);
-        Residente secretario = condominio.obtenerResidente(secretario);
-        
-        if(!presidente.esPropietario() || !secretario.esPropietario()){
-            System.out.print("Los candidatos no son propietarios");
-            return;
-        }
-        
-        // Implementar en condominio
-        condominio.setDirectiva(condominio.obtenerResidente(presidente), condominio.obtenerResidente(secretario), this);
+    public Residente obtenerResidente(String nombreResidente){
+        // Implementar en inmueble
+        return condominio.obtenerResidente(nombreResidente);
     }
+    
+    
 }

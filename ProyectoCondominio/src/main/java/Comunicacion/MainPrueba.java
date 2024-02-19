@@ -35,7 +35,7 @@ public class MainPrueba {
         if (tipo!=1) {
             System.out.println("Eliga el destinatario");
             for (int i = 0; i < residentes.size(); i++) {
-                System.out.println((i + 1) + ". " + residentes.get(i).getNombre());
+                System.out.println((i + 1) + ". " + residentes.get(i).getNombreApellido());
 
             }
             pos= scanner.nextInt();

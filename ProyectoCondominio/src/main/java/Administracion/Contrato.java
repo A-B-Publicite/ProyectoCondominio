@@ -23,4 +23,15 @@ public class Contrato {
     public void terminar() {
         System.out.print("Se termino el contrato");
     }
+
+    @Override
+    public String toString() {
+        return "Contrato{" + "fechaContrato=" + fechaContrato + ", precioContrato=" + precioContrato + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + '}';
+    }
+    
+    public void pagar(){
+        System.out.print("Se pago el contrato");
+    }
+    
+    
 }

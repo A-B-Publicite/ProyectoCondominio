@@ -25,7 +25,7 @@ public class BandejaDeEntrada {
     }
 
     public void mostrar() {
-        System.out.println("Bandeja de entrada de " + perfil.getNombre() + ":");
+        System.out.println("Bandeja de entrada de " + perfil.getNombreApellido() + ":");
         int index = 1;
         for (Mensaje mensaje : listaMensajes) {
             System.out.println(index + ". " + mensaje.getTitulo());

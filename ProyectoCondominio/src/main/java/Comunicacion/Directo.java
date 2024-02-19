@@ -21,7 +21,7 @@ public class Directo extends Mensaje{
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.println("Destino: " + this.getDestino().getNombre());
+        System.out.println("Destino: " + this.getDestino().getNombreApellido());
 
 
         System.out.println("Escriba el Titulo del mensaje:");
@@ -30,7 +30,7 @@ public class Directo extends Mensaje{
         System.out.println("Escriba el contenido del mensaje:");
         setContenido(scanner.nextLine());
 
-        System.out.println("Enviando mensaje directo para: " + this.getDestino().getNombre());
+        System.out.println("Enviando mensaje directo para: " + this.getDestino().getNombreApellido());
     }
 
     @Override

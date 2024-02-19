@@ -2,7 +2,7 @@
 package Administracion;
 
 public class Servicio {
-    public String nombreDelServicio;
+    private String nombreDelServicio;
     private Contrato contrato;
     
     public Servicio(String nombreDelServicio) {
@@ -10,6 +10,6 @@ public class Servicio {
     }
     
     public void ejecutar(){
-        
+        contrato.iniciar();
     }
 }

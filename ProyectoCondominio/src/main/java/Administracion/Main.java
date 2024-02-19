@@ -21,7 +21,9 @@ public class Main {
     
     Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
     
+    Directiva directiva = new Directiva(administrador);
     
+    directiva.elegirDirectiva("Jorge", "Julio");
     
-    condominio.agregarDepartamento(departamento);
+    directiva.aprobarContrato(contrato);
 }

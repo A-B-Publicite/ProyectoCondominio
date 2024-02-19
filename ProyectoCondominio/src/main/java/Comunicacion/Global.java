@@ -37,7 +37,7 @@ public class Global extends Mensaje {
     @Override
     public void mostrar() {
         // Implementación para mostrar un mensaje global
-        System.out.println("Mensaje global de " + this.getOrigen().getNombre() + ": " + this.getContenido());
+        System.out.println("Mensaje global de " + this.getOrigen().getNombreApellido() + ": " + this.getContenido());
     }
     
 }
