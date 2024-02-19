@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package areaComun;
-import java.util.Date;
+
 /**
  *
  * @author Grupo 4
@@ -19,18 +19,22 @@ public class AdministrarReserva {
 
     // Método para realizar una reserva
     // Asumiendo que se pasa la reserva ya creada con toda la información necesaria
-    public void realizarReserva(String areaComun, String fechaInicio, String fechaFin, String detalle) {
-        // Aquí deberías incluir la lógica para guardar la reserva en tu sistema de almacenamiento
-        disponibilidad = areaComun.consultarDisponibilidad();
-        if (disponibilidad.verificar(fechaInicio, fechaFin)){
-            nuevaReserva = Reserva 
-        }
+    public Reserva realizarReserva(AreaComun areaComun, String dia, String detalle, Usuario usuario) {
+        Disponibilidad disponibilidad = areaComun.consultarDisponibilidad();
         
+        if (disponibilidad.verificarDisponibilidad(dia)) {
+            Reserva nuevaReserva = new Reserva(0, dia, detalle, usuario); // El ID podría asignarse de forma dinámica o mediante una base de datos
+            disponibilidad.agregarReserva(nuevaReserva);
+            areaComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la lista de reservas del área común
+            return nuevaReserva;
+        } else {
+            return null;  // No se puede realizar la reserva debido a un conflicto
+        }
     }
 
     // Método para reprogramar una reserva
     // Este método podría ser llamado con la reserva que se desea cambiar y las nuevas fechas
-    public void reprogramarReserva(Reserva reserva, String nuevaFechaInicio, String nuevaFechaFin) {
+    public void reprogramarReserva(Reserva reserva, Date nuevaFechaInicio, Date nuevaFechaFin) {
         // Lógica para verificar si la reprogramación es posible
         // Por ejemplo, podrías necesitar verificar la disponibilidad antes de realizar el cambio
         System.out.println("Reprogramando la reserva con ID: " + reserva.getId());

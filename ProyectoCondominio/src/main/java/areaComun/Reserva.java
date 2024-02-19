@@ -5,43 +5,41 @@
 package areaComun;
 //import administracion.Perfil;
 
-import java.util.Date;
-
 /**
  *
  * @author Grupo 4
  */
 public class Reserva {
     private int id;
-    private String fechaInicio;
-    private String fechaFin;
+    private String dia;
     private String detalle;
     private String usuario;
-
+    private boolean cancelada;
+    
     // Constructor con parámetros
-    public Reserva(int id, String fechaInicio, String fechaFin, String detalle, String usuario) {
+    public Reserva(int id, String dia, String detalle, String usuario) {
         this.id = id;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.dia = dia;
         this.detalle = detalle;
         this.usuario = usuario;
+        this.cancelada = false;
     }
 
     // Método para cancelar la reserva
     public void cancelar() {
-        this.fechaInicio = "0";
-        this.fechaFin = "0";
-        // Por ejemplo, podrías cambiar un estado de la reserva a "cancelado"
+        this.cancelada = true; // Marca la reserva como cancelada
         System.out.println("Reserva cancelada.");
     }
 
     // Método para reprogramar la reserva
-    public void reprogramar(String nuevaFechaInicio, String nuevaFechaFin) {
-        // Lógica para reprogramar la reserva
-        // Necesitarías verificar que las nuevas fechas son válidas y no entran en conflicto con otras reservas
-        this.fechaInicio = nuevaFechaInicio;
-        this.fechaFin = nuevaFechaFin;
-        System.out.println("Reserva reprogramada para el rango: " + nuevaFechaInicio + " - " + nuevaFechaFin);
+    public void reprogramar(Date nuevaFechaInicio, Date nuevaFechaFin) {
+        this.dia = dia;
+        System.out.println("Reserva reprogramada para el dia: " + dia);
+    }
+    
+    // Método para verificar si está cancelada la reserva
+    public boolean estaCancelada() {
+        return this.cancelada;
     }
 
     // Getters y setters
@@ -53,20 +51,12 @@ public class Reserva {
         this.id = id;
     }
 
-    public String getFechaInicio() {
-        return fechaInicio;
+    public String getDia() {
+        return dia;
     }
 
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public String getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setDia(String Dia) {
+        this.dia = dia;
     }
 
     public String getDetalle() {

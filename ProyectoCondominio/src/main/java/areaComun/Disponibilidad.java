@@ -4,7 +4,6 @@
  */
 package areaComun;
 //import inmuebles.Inmueble;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 //import java.util.stream.Collectors;
@@ -13,21 +12,20 @@ import java.util.ArrayList;
  * @author Grupo 4
  */
 public class Disponibilidad {
-    private Date fechaInicio;
-    private List<Reserva> listaReservas;
-    private Date fechaFin;
+    private AreaComun areaComun;
+    private String dia;
+    private List<Reserva> reservas;
     //private Inmueble areaComun;
 
     // Constructor
-    public Disponibilidad(Date fechaInicio, Date fechaFin /*Inmueble areaComun*/) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        //this.areaComun = areaComun;
-        this.listaReservas = new ArrayList<>();
+    public Disponibilidad(AreaComun areaComun, String Dia) {
+        this.areaComun = areaComun;
+        this.dia = dia;
+        //this.listaReservas = new ArrayList<>();
     }
 
     // Método para agregar una reserva a la lista
-    public void agregarReserva(Reserva reserva) {
+    /*public void agregarReserva(Reserva reserva) {
         // Aquí deberías verificar si la reserva no entra en conflicto con otras reservas existentes
         if (verificarDisponibilidad(reserva.getFechaInicio(), reserva.getFechaFin())) {
             listaReservas.add(reserva);
@@ -35,23 +33,22 @@ public class Disponibilidad {
         } else {
             System.out.println("El área común no está disponible en las fechas seleccionadas.");
         }
-    }
+    }*/
 
     // Método para verificar la disponibilidad
-    public boolean verificarDisponibilidad(String nuevaFechaInicio, String nuevaFechaFin) {
-        // Comprobar si hay alguna reserva en el rango de fechas dado
-        for (Reserva reserva : listaReservas) {
-            if (reserva.getFechaInicio().before(nuevaFechaFin) && reserva.getFechaFin().after(nuevaFechaInicio)) {
-                // Las fechas se superponen, por lo tanto no hay disponibilidad
-                return false;
+    public boolean verificarDisponibilidad(String dia) {
+        List<Reserva> reservas = this.areaComun.consultarDisponibilidad();
+        for (int i= 0; i<reserva.size(); i++){
+            if (reserva[i] == dia) {
+                return false;  // Hay un conflicto de reserva
             }
         }
-        // Si llegamos aquí, significa que no hay reservas que se superponen
-        return true;
+        return true;  // No hay conflictos, está disponible
     }
 
     // Método para obtener una reserva específica
-    public Reserva obtenerReserva(int idReserva) {
+    /*public Reserva obtenerReserva(int idReserva) {
+        //to do: jalar de Inmueble
         // Buscar una reserva con el ID proporcionado
         for (Reserva reserva : listaReservas) {
             if (reserva.getId() == idReserva) {
@@ -60,23 +57,20 @@ public class Disponibilidad {
         }
         // Si no se encuentra la reserva, se retorna null o se podría lanzar una excepción
         return null;
+    }*/
+    
+    // Método para eliminar una reserva
+    public void eliminarReserva(Reserva reserva) {
+        this.areaComun.eliminarReserva(reserva);
     }
 
     // Getters y setters
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public String getDia() {
+        return dia;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setDia(String Dia) {
+        this.dia = dia;
     }
 
     /*public Inmueble getAreaComun() {
@@ -94,4 +88,4 @@ public class Disponibilidad {
     public void setListaReservas(List<Reserva> listaReservas) {
         this.listaReservas = listaReservas;
     }
-}
+} 
