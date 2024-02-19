@@ -86,14 +86,5 @@ public abstract class Mensaje {
     public List<Perfil> getDestinos() {
         return destinos;
     }
-        
-    
-    
-    public void crear (Perfil origen, Perfil destino, List<Perfil> destinos) {
-        
-        
-        
-        
-    }
-    
+
 }
