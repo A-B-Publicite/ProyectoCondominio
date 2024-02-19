@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -37,8 +38,9 @@ public abstract class Mensaje {
         this.fecha = LocalDateTime.now();
         this.titulo = titulo;
     }
+    
 
-    public abstract void crear();
+    public abstract void enviar();
 
     public abstract void mostrar();
 
@@ -80,6 +82,18 @@ public abstract class Mensaje {
         // Formatear la fecha y hora usando el formateador y devolver como String
         return fecha.format(formatter);
     }
+
+    public List<Perfil> getDestinos() {
+        return destinos;
+    }
         
+    
+    
+    public void crear (Perfil origen, Perfil destino, List<Perfil> destinos) {
+        
+        
+        
+        
+    }
     
 }

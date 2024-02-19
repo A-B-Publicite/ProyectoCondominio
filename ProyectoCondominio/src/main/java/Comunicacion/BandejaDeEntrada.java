@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class BandejaDeEntrada {
     private List<Mensaje> listaMensajes;
+    private List<Reporte> listaReportes;
     private Perfil perfil;
     private Scanner scanner;
 

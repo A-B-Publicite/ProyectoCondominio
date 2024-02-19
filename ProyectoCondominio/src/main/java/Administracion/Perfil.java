@@ -32,10 +32,7 @@ public abstract class Perfil {
         return nombre;
     }
     
-    public void accionar (int tipo, Perfil origen, Perfil destino, List<Perfil> destinos) {
-        
-    }
-    
+       
     public BandejaDeEntrada getBandejaDeEntrada() {
         return bandejaDeEntrada;
     }

@@ -20,29 +20,5 @@ public class Administrador extends Perfil{
     public void pagarContrato(ArrayList<Contrato> contratos){
         
     }
-    
-    public void accionar(int tipo, Perfil origen, Perfil destino, List<Perfil> destinos) {
-        switch (tipo) {
-            case 1:
-                mensaje = new Global(origen, destinos,"","");
-                mensaje.crear();
-                for (Perfil destinatario : destinos) {
-                    destinatario.bandejaDeEntrada.recibirMensaje(mensaje);
-                }
-            break;
-            case 2:
-                mensaje = new Directo(origen, destino,"","");
-                mensaje.crear();
-                destino.bandejaDeEntrada.recibirMensaje(mensaje);
-            break;
-            case 3:
-                mensaje = new Directo(origen, destino,"","");
-                mensaje.crear();
-                destino.bandejaDeEntrada.recibirMensaje(mensaje);
-            break;
-        }
-    }
-    
-    
-    
+  
 }
