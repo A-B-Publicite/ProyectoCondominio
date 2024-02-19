@@ -12,7 +12,6 @@ public abstract class Inmueble {
     public Inmueble() {
     }
 
-
 // Constructor con parámetros  
 
     public Inmueble(String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
