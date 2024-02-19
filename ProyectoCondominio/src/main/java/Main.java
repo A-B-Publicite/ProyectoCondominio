@@ -156,6 +156,13 @@ public class Main {
         String diaReserva = "lunes";
         String detalleReserva = "Futbolito";
         Reserva nuevaReserva = adminReserva.realizarReserva(areaComunReserva, diaReserva, detalleReserva, usuarioReserva);
+        if(nuevaReserva != null){
+            System.out.println("Reserva creada con éxito:");
+            
+           
+        }else{
+            System.out.println("No se pudo crear la reserva");
+        }
         
         //Pruebas funcionales modulo 5 comunicacion
         //Pruebas funcionales modulo 6 comunicacion
