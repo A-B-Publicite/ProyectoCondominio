@@ -8,22 +8,20 @@ package Finanzas;
  *
  * @author alejo
  */
-import java.util.ArrayList;
-
 public class Registro {
-    private ArrayList<ObligacionFinanciera> obligacionesFinancierasCompletadas = new ArrayList<>();
+    private final Pago pago;
 
-    public void registrar(ObligacionFinanciera obligacionFinancieraCompletada) {
-        obligacionesFinancierasCompletadas.add(obligacionFinancieraCompletada);
+    public Registro(Pago pago) {
+        this.pago = pago;
     }
 
-    public String consultarRegistros() {
-        String salida = "================  REGISTRO  ==================\n";
+    public void registrar(ObligacionFinanciera obligacionFinanciera) {
 
-        for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancierasCompletadas) {
-            salida += obligacionFinanciera + "\n";
-        }
-        return salida;
+    }
 
+    @Override
+    public String toString() {
+        return pago + "";
     }
 }
+

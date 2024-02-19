@@ -11,11 +11,11 @@ package Finanzas;
 import java.time.LocalDate;
 
 public abstract class ObligacionFinanciera {
-    private EstadoObligacion estado;
-    private double monto;
-    private LocalDate fechaCreacion;
-    private String descripcion;
-    private String idObligacion;
+    protected EstadoObligacion estado;
+    protected double monto;
+    protected LocalDate fechaCreacion;
+    protected String descripcion;
+    protected String idObligacion;
 
     public ObligacionFinanciera(double valor, LocalDate fechaCreacion, String descripcion, String idObligacion) {
         monto = calcularMonto(valor);
@@ -26,7 +26,6 @@ public abstract class ObligacionFinanciera {
     }
 
     public abstract double calcularMonto(double monto);
-/// TODO otro constructor para la multa
 
     public void cambiarEstado() {
         estado.cambiarEstado(this);
@@ -37,20 +36,22 @@ public abstract class ObligacionFinanciera {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "id obligacion: " + idObligacion +
-                ", estado = " + estado +
-                ", monto= " + monto +
-                ", fechaCreacion= " + fechaCreacion +
-                ", descripcion= '" + descripcion + "'";
-    }
-
     public double getMonto() {
         return monto;
     }
 
     public String getIdObligacion() {
         return idObligacion;
+    }
+
+    @Override
+    public String toString() {
+        return "ObligacionFinanciera{" +
+                "estado=" + estado +
+                ", monto=" + monto +
+                ", fechaCreacion=" + fechaCreacion +
+                ", descripcion='" + descripcion + '\'' +
+                ", idObligacion='" + idObligacion + '\'' +
+                '}';
     }
 }
