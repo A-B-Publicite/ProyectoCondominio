@@ -10,4 +10,8 @@ public class Departamento extends InmueblePrivado {
     public Departamento(String nombre, double metrosCuadrados) {
         super(nombre, metrosCuadrados,false, 0, null);
     }
+
+    public Departamento(double metrosCuadrados) {
+        super(null, metrosCuadrados,false, 0, null);
+    }
 }

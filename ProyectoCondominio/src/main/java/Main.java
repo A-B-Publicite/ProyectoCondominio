@@ -34,7 +34,7 @@ public class Main {
         Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa", new Condominio ("Montanas del sol"));
         Directiva directiva = new Directiva(administrador);
         Gimnasio gym = new Gimnasio(24, administrador);
-        Contrato contrato = new Contrato("00/00/0000", "125.12", "descripcion","11/11/1111", "22/2/2222" );
+        Contrato contrato = new Contrato("00/00/0000", 125.12, "descripcion","11/11/1111", "22/2/2222" );
         List<Perfil> residentes = new ArrayList<>();
 
         Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true, administrador );
@@ -162,14 +162,14 @@ public class Main {
             //REQ_MA_CU-ManejarCondominio_01
             //Se realiza en el constructor de Administrador.    
             //REQ_MA_CU-ManejarCondominio_02
-            administrador.agregarInmueble(gym);
-            administrador.agregarInmueble(new Departamento(24));
+            administrador.agregarInmuebleComun(gym);
+            administrador.agregarInmuebleComun(new Departamento(24));
             //REQ_MA_CU-RegResidente_01. 
-            Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
+            Residente residenteNuevo = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
             //REQ_MA_CU-ContratarServicio_01.
             directiva.aprobarContrato(contrato);   
             //REQ_MA_CU-ElegirMiembros _01. 
-            directiva.agregarDirectiva("Juan", "Pedro");
+            directiva.elegirDirectiva("Juan", "Pedro");
         
             
             //Moulo check-in pruebas

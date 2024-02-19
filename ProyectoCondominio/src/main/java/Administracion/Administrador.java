@@ -3,6 +3,7 @@ import Finanzas.Cuenta;
 import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
+import Inmueble.Inmueble;
 import Inmueble.InmuebleComun;
 import java.util.ArrayList;
 // Considerar singleton
@@ -21,7 +22,7 @@ public class Administrador extends Perfil{
         return cuenta;
     }
     
-    public void agregarInmuebleComun(InmuebleComun inmuebleComun){
+    public void agregarInmuebleComun(Inmueble inmuebleComun){
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
