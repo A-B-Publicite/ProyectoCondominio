@@ -9,5 +9,17 @@ package Finanzas;
  * @author alejo
  */
 public class Recarga {
-    
+    private final int abono;
+
+    private MetodoRecarga metodoRecarga = null;
+
+    public Recarga(int abono, String numeroCuenta) {
+        this.abono = abono;
+        eligirMetodoRecarga(numeroCuenta);
+    }
+
+    private void eligirMetodoRecarga(String numeroTarjeta) {
+        metodoRecarga = new Tarjeta(numeroTarjeta);
+    }
 }
+

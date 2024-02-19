@@ -8,6 +8,12 @@ package Finanzas;
  *
  * @author alejo
  */
-public class Tarjeta {
-    
+public class Tarjeta extends MetodoRecarga {
+
+    private final String numeroCuenta;
+
+    public Tarjeta(String numeroCuenta) {
+
+        this.numeroCuenta = numeroCuenta;
+    }
 }

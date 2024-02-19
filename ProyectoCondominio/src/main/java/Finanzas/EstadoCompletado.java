@@ -8,6 +8,14 @@ package Finanzas;
  *
  * @author alejo
  */
-public class EstadoCompletado {
-    
+public class EstadoCompletado implements EstadoObligacion {
+    @Override
+    public void cambiarEstado(ObligacionFinanciera obligacionFinanciera) {
+        obligacionFinanciera.setEstado(new EstadoCompletado());
+    }
+
+    @Override
+    public String toString() {
+        return "completado";
+    }
 }

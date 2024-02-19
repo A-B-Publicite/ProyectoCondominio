@@ -9,5 +9,4 @@ package Finanzas;
  * @author alejo
  */
 public class MetodoRecarga {
-    
 }

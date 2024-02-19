@@ -8,6 +8,7 @@ package Finanzas;
  *
  * @author alejo
  */
-public class EstadoObligacion {
-    
+public interface EstadoObligacion {
+    public void cambiarEstado(ObligacionFinanciera obligacionFinanciera);
+
 }
