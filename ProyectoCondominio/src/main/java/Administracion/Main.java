@@ -11,6 +11,7 @@ import Inmueble.Gimnasio;
  * @author jeanp
  */
 public class Main {
+    /*
     Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa", new Condominio ("Montanas del sol"));
     Directiva directiva = new Directiva(administrador);
     Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
@@ -31,4 +32,5 @@ public class Main {
     directiva.elegirDirectiva("Jorge", "Julio");
     
     directiva.aprobarContrato(contrato);
+*/
 }
