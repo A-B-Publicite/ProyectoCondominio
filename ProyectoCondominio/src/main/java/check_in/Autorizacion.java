@@ -4,22 +4,21 @@
  */
 package check_in;
 
+import Administracion.Perfil;
+
 /**
  *
  * @author MARQUEZ
  */
 public class Autorizacion {
-    private String autorizador;
+    private Perfil autorizador;
     private String autorizado;
     private String fechaInicio;
     private String fechaFin;
     private boolean aprobado;
 
-    public Autorizacion(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
-        this.autorizador = autorizador;
-        this.autorizado = autorizado;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+    public Autorizacion() {
+        this.aprobado = false;
     }
     
     public void validar(){
@@ -29,4 +28,19 @@ public class Autorizacion {
     public void notificar(){
         
     }
+    
+    public void crear(Perfil autorizador, String autorizado, String fechaInicio, String fechaFin){
+        this.autorizador = autorizador;
+        this.autorizado = autorizado;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        notificar();
+        validar();
+    }
+
+    public boolean getAprobado() {
+        return aprobado;
+    }
+    
+    
 }
