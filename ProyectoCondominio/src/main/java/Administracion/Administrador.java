@@ -1,5 +1,6 @@
 package Administracion;
 import Inmueble.Condominio;
+import Inmueble.Departamento;
 import Inmueble.InmuebleComun;
 import java.util.ArrayList;
 // Considerar singleton
@@ -17,10 +18,13 @@ public class Administrador extends Perfil{
         condominio.agregarInmuebleComun(inmuebleComun);
     }
     
-    public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
+    public Residente registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
         Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
-        residenteNuevo.setDepartamento(condominio.obtenerDepartamentoLibre());
+        Departamento departamentoLibre = condominio.obtenerDepartamentoLibre;
+        residenteNuevo.setDepartamento(departamentoLibre);
+        condominio.setPropietarioADepartamento(departamentoLibre, residenteNuevo);
         condominio.agregarResidente(residenteNuevo);
+        return residenteNuevo;
     }
     public void recaudarAlicuota(){
         // Hacer finanzas

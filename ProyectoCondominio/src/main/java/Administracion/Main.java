@@ -4,24 +4,29 @@
  */
 package Administracion;
 
+import Inmueble.Gimnasio;
+
 /**
  *
  * @author jeanp
  */
 public class Main {
     Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa", new Condominio ("Montanas del sol"));
+    Directiva directiva = new Directiva(administrador);
+    Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
+    Gimnasio gym = new Gimnasio(24, administrador);
     
-    Departamento departamento = new Departamento(24,propietario);
-    administrador.agregarInmuebleComun(new Gimnasio(24));
+    administrador.agregarInmuebleComun(gym);
     administrador.agregarDepartamento(24);
-    Contrato contrato = new Contrato();
+    
+    Contrato contrato = new Contrato("");
     administrador.pagarContrato(contrato);
     
     administrador.agregarDirectiva("Juan", "Pedro");
     
-    Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
     
-    Directiva directiva = new Directiva(administrador);
+    
+
     
     directiva.elegirDirectiva("Jorge", "Julio");
     
