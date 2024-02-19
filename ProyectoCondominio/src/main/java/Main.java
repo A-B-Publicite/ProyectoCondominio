@@ -2,7 +2,11 @@
 import Administracion.Administrador;
 import Administracion.Contrato;
 import Administracion.Directiva;
+import Administracion.Perfil;
 import Administracion.Residente;
+import Comunicacion.Directo;
+import Comunicacion.Global;
+import Comunicacion.Mensaje;
 import Inmueble.Condominio;
 import Inmueble.Gimnasio;
 import Inmueble.*;
@@ -10,6 +14,7 @@ import areaComun.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,9 +33,78 @@ public class Main {
         Directiva directiva = new Directiva(administrador);
         Gimnasio gym = new Gimnasio(24, administrador);
         Contrato contrato = new Contrato("00/00/0000", "125.12", "descripcion","11/11/1111", "22/2/2222" );
+        List<Perfil> residentes = new ArrayList<>();
 
+        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true );
+        Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true);
+
+        residentes.add(Residente1);
+        residentes.add(Residente2);
    
-        //Pruebas funcionales modulo 1 comunicacion
+        //Pruebas funcionales modulo 1 comunicacion      
+        Scanner scanner = new Scanner(System.in);
+        
+        int aux=1;
+        
+        do {
+            
+            int tipo = 0;
+            System.out.println("Elija el tipo de mensaje a enviar (escriba un numero): \n" +
+                    "1. Global\n" +
+                    "2. Directo\n");
+            tipo = scanner.nextInt();
+            scanner.nextLine();
+
+            Mensaje mensaje;
+
+            String titulo;
+            String contenido;
+
+            switch (tipo) {
+                case 1:
+                    System.out.println("Destino: Todos");
+                    System.out.println("Escriba el Titulo del mensaje:");
+                    titulo = scanner.nextLine();
+                    System.out.println("Escriba el contenido del mensaje:");
+                    contenido = scanner.nextLine();
+                    mensaje = new Global(administrador, residentes,contenido,titulo);
+                    mensaje.enviar(); 
+                break;
+
+                case 2:
+                    int pos;
+                    System.out.println("Eliga el destinatario");
+                    for (int i = 0; i < residentes.size(); i++) {
+                        System.out.println((i + 1) + ". " + residentes.get(i).getNombreApellido());
+                    }
+                    pos= scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Destino: " + residentes.get(pos-1).getNombreApellido());
+                    System.out.println("Escriba el Titulo del mensaje:");
+                    titulo = scanner.nextLine();
+                    System.out.println("Escriba el contenido del mensaje:");
+                    contenido = scanner.nextLine();
+                    mensaje = new Directo(administrador, residentes.get(pos-1),contenido,titulo);
+                    mensaje.enviar();
+                break;
+                default:
+                    System.out.println("No existe opcion");
+                break;
+            }
+            System.out.println("Desea continuar? 1=Si ; 0=No");
+            aux = scanner.nextInt();
+            scanner.nextLine();
+        } while (aux==1);
+      
+        System.out.println("\n==============================================\n");
+        Residente1.getBandejaDeEntrada().mostrar();
+        Residente1.getBandejaDeEntrada().getMensajePorIndice();
+        System.out.println("\n==============================================\n");
+        Residente2.getBandejaDeEntrada().mostrar();
+        Residente2.getBandejaDeEntrada().getMensajePorIndice();
+        System.out.println("\n==============================================\n");
+        
+        
         //Pruebas funcionales modulo 2 comunicacion
         //Pruebas funcionales modulo 3 comunicacion
         //Pruebas funcionales modulo 4 Reservas Areas Comunes

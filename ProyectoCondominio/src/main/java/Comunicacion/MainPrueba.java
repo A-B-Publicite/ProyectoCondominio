@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class MainPrueba {
     public static void main(String[] args) {
-
+        
         List<Perfil> residentes = new ArrayList<>();
 
         Perfil Administrador = new Administrador("pepe123@epn.edu.ec", "123", "Pepe", null);
