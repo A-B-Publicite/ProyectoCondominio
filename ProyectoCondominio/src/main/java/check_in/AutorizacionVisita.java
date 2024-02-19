@@ -4,6 +4,7 @@
  */
 package check_in;
 
+import Administracion.Guardia;
 import Administracion.Perfil;
 import Comunicacion.*;
 
@@ -18,7 +19,7 @@ public class AutorizacionVisita extends Autorizacion{
         this.aprobado = true;
     }
     
-    public void notificar(Perfil autorizador, Perfil guardia){
+    public void notificar(Perfil autorizador, Guardia guardia){
         String contenido = "El señor/a "+autorizado+" ha venido a visitarlo. ¿Desea dejarlo entrar?";
         Mensaje mensaje = new Directo(guardia, autorizador,contenido, "Nueva visita");
         mensaje.mostrar();
@@ -26,7 +27,7 @@ public class AutorizacionVisita extends Autorizacion{
     
 
     @Override
-    public void crear(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
+    public void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
         //Agregar los datos de la autorización del visitante
         this.autorizador = autorizador;
         this.autorizado = autorizado;
