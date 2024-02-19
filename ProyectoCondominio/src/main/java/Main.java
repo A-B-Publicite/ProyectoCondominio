@@ -7,6 +7,7 @@ import Administracion.Residente;
 import Comunicacion.Directo;
 import Comunicacion.Global;
 import Comunicacion.Mensaje;
+import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Gimnasio;
 import Inmueble.*;
@@ -105,7 +106,34 @@ public class Main {
         System.out.println("\n==============================================\n");
         
         
-        //Pruebas funcionales modulo 2 comunicacion
+        //Pruebas funcionales modulo 2 finanzas
+        
+        Residente residente = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
+       
+
+        String resultadoConsulta = residente.getCuenta().mostrarObligaciones();
+        System.out.println(resultadoConsulta);
+
+        residente.getCuenta().recargarDinero(700, "123");
+
+        resultadoConsulta = String.valueOf(residente.getCuenta());
+        System.out.println(resultadoConsulta);
+
+        ObligacionFinanciera obligacionFinanciera = residente.getCuenta().recuperarObligacion("1");
+
+        residente.getCuenta().pagar(obligacionFinanciera);
+
+        resultadoConsulta = String.valueOf(administrador.getCuenta());
+        System.out.println(resultadoConsulta);
+
+        resultadoConsulta = residente.getCuenta().mostrarRegistro();
+        System.out.println(resultadoConsulta);
+
+
+        administrador.pagarContrato(contrato);
+        resultadoConsulta = administrador.getCuenta().mostrarRegistro();
+        System.out.println(resultadoConsulta);
+        
         //Pruebas funcionales modulo 3 comunicacion
         //Pruebas funcionales modulo 4 Reservas Areas Comunes
         // Creamos un usuario de tipo Administrador

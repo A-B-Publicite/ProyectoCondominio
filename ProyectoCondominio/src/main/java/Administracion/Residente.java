@@ -1,15 +1,19 @@
 package Administracion;
 
+import Finanzas.Cuenta;
 import Inmueble.Departamento;
 import java.util.Scanner;
 
 public class Residente extends Perfil{
     private boolean esPropietario;
     private Departamento departamento;
+    private Cuenta cuenta;
 
-    public Residente( String correo, String contrasena, String nombre,boolean esPropietario) {
+    public Residente( String correo, String contrasena, String nombre,boolean esPropietario, Administrador administrador) {
         super(correo, contrasena, nombre);
         this.esPropietario = esPropietario;
+        this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
+
     }
     
     public void reservarAreaComun(){
@@ -18,6 +22,10 @@ public class Residente extends Perfil{
     
     public void pagarAlicuota(){
         // Hagan los de financieros
+    }
+    
+    public Cuenta getCuenta() {
+        return cuenta;
     }
     
     public void setDepartamento(Departamento departamento){

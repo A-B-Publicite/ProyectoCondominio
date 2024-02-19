@@ -1,4 +1,6 @@
 package Administracion;
+import Finanzas.Cuenta;
+import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.InmuebleComun;

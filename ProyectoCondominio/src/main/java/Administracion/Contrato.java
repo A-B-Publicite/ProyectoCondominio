@@ -32,6 +32,9 @@ public class Contrato {
     public void pagar(){
         System.out.print("Se pago el contrato");
     }
+    public double getPrecioContrato() {
+        return precioContrato;
+    }
     
     
 }
