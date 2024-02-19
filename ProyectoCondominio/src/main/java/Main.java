@@ -153,7 +153,7 @@ public class Main {
         AdministrarReserva adminReserva = new AdministrarReserva();
 
         // Creamos una Reserva para la Cancha1
-        String diaReserva = "lunes";
+        String diaReserva = "Lunes";
         String detalleReserva = "Futbolito";
         Reserva nuevaReserva = adminReserva.realizarReserva(areaComunReserva, diaReserva, detalleReserva, usuarioReserva);
         if(nuevaReserva != null){
