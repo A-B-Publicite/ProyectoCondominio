@@ -4,6 +4,7 @@
  */
 package check_in;
 
+import Administracion.Perfil;
 import areaComun.Reserva;
 
 /**
@@ -32,7 +33,7 @@ public class RegistroEntrada {
         this.horaLlegada = horaLlegada;        
     }
     
-    public void asignarParqueadero(String fechaFin, String reservador){
-        reservaParqueadero = new Reserva(10,fechaLlegada, fechaFin, "Uso de parqueadero", reservador);
+    public void asignarParqueadero(String fechaFin, Perfil reservador){
+        reservaParqueadero = new Reserva(10,"Lunes", "Uso de parqueadero", reservador);
     }
 }

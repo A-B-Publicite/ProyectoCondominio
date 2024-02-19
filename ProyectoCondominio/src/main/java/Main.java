@@ -2,6 +2,7 @@
 import Administracion.Administrador;
 import Administracion.Contrato;
 import Administracion.Directiva;
+import Administracion.Guardia;
 import Administracion.Perfil;
 import Administracion.Residente;
 import Comunicacion.Directo;
@@ -181,29 +182,41 @@ public class Main {
             
             //Moulo check-in pruebas
             //Prueba con un residente sin vehiculo
+            System.out.println("Prueba con un residente sin vehiculo");
             AutorizacionPerfil autorizacionResidente = new AutorizacionPerfil();
             autorizacionResidente.completar("Admin", "Residente", "19/2/2024", "19/2/2030");
             autorizacionResidente.validar();
+            
             //Paso a hacer el registro
             RegistroEntrada registroResidente = new RegistroEntrada();
             registroResidente.registrarEntrada("19/2/2024", "15:00");   //No se ha enviado la autorizacion del residente
             //enviamos la autorizacion y volvemos a intentar registrar
+            System.out.println("Enviamos la autorizacion y volvemos a intentar registrar");
             registroResidente.setAutorizacion(autorizacionResidente);
             registroResidente.registrarEntrada("19/2/2024", "15:00");
             
             //Prueba con un visitante sin vehiculo
+            System.out.println("Prueba con un visitante sin vehiculo");
             Visitante visitante = new Visitante("Visita","Visitante", "Residente1");
             AutorizacionVisita autorizacionVisita = new AutorizacionVisita();
+            
             //Tratar de realizar el registro sin una autorizacion
+            System.out.println("Tratar de realizar el registro sin una autorizacion");
             RegistroEntrada registroVisitante = new RegistroEntrada();
             registroVisitante.registrarEntrada("19/2/2024", "14:00");
+            
             //Enviamos la autorizacion sin llenar
+            System.out.println("Enviamos la autorizacion sin llenar");
             registroVisitante.setAutorizacion(autorizacionVisita);
             registroVisitante.registrarEntrada("19/2/2024", "14:00");
+            
             //Llenamos la autorización
+            System.out.println("Llenamos la autorización");
             autorizacionVisita.completar("Residente1", visitante.getNombre(), "19/2/2024", "19/2/2024");
+            autorizacionVisita.notificar(new Residente("resi@hot.com","1","Residente1",true,administrador), new Guardia("guard@gmail.com","1","Guardia"));
+            autorizacionVisita.validar();
             registroVisitante.setAutorizacion(autorizacionVisita);
             registroVisitante.registrarEntrada("19/2/2024", "14:00");
-        
+            
     }
 }
