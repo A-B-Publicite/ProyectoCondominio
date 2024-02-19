@@ -36,8 +36,8 @@ public class Main {
         Contrato contrato = new Contrato("00/00/0000", "125.12", "descripcion","11/11/1111", "22/2/2222" );
         List<Perfil> residentes = new ArrayList<>();
 
-        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true );
-        Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true);
+        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true, administrador );
+        Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true, administrador);
 
         residentes.add(Residente1);
         residentes.add(Residente2);

@@ -17,7 +17,7 @@ public class MainPrueba {
         List<Perfil> residentes = new ArrayList<>();
 
         Perfil Administrador = new Administrador("pepe123@epn.edu.ec", "123", "Pepe", null);
-        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true );
+        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true, );
         Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true);
         
 
