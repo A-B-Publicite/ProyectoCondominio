@@ -4,8 +4,7 @@ import Administracion.Perfil;
 
 public class Departamento extends InmueblePrivado {
 
-    public Departamento(double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
-        super(metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
+    public Departamento(String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(nombre, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
-
 }
