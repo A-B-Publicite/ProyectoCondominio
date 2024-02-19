@@ -27,12 +27,12 @@ public class RegistroEntrada {
         if(autorizacion==null)
             System.out.println("Se necesita una autorización. Envíe una autorización válida");
         if(!autorizacion.getAprobado())
-            System.out.println("No se ha encontrado una autorización aprobada");
+            System.out.println("La autorización no ha sido aprobada");
         this.fechaLlegada = fechaLlegada;
         this.horaLlegada = horaLlegada;        
     }
     
     public void asignarParqueadero(String fechaFin, String reservador){
-        reservaParqueadero = new Reserva(10,fechaLlegada, fechaFin, "Uso de parqueadero", reservador); 
+        reservaParqueadero = new Reserva(10,fechaLlegada, fechaFin, "Uso de parqueadero", reservador);
     }
 }

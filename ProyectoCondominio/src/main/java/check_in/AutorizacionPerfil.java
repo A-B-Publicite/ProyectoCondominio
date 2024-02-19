@@ -16,7 +16,7 @@ public class AutorizacionPerfil extends Autorizacion{
     }
 
     @Override
-    public void crear(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
+    public void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
         this.autorizador = autorizador;
         this.autorizado = autorizado;
         this.fechaInicio = fechaInicio;

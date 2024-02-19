@@ -23,7 +23,7 @@ public abstract class Autorizacion {
     
     public abstract void validar();
     
-    public abstract void crear(String autorizador, String autorizado, String fechaInicio, String fechaFin);
+    public abstract void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin);
 
     public boolean getAprobado() {
         return aprobado;
