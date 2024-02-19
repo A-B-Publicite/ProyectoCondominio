@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import java.util.List;
 
-
 public class Condominio extends Inmueble {
 
     private List<Inmueble> listaInmuebles;
@@ -28,11 +27,7 @@ public class Condominio extends Inmueble {
             BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
 
             String line;
-
             while ((line = br.readLine()) != null) {
-                Inmueble inmueble = new Inmueble() {
-                };
-
                 String[] parts = line.split(",");
                 String nombreInmueble = parts[0];
                 double metrosC = Double.parseDouble(parts[1]);
@@ -44,34 +39,46 @@ public class Condominio extends Inmueble {
                 Perfil propietarioI = new Perfil(correo, contrasenia, nombreP) {
                 };
                 String diasDisponiblesI = parts[7];
-                
-                Departamento departamento = new Departamento(nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(departamento);
 
-                ParqueaderoPrivado parqueaderoP = new ParqueaderoPrivado(nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(parqueaderoP);
-
-                ParqueaderoPublico parqueaderoC = new ParqueaderoPublico(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(parqueaderoC);
-
-                Cancha cancha = new Cancha(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(cancha);
-
-                Piscina piscina = new Piscina(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(piscina);
-
-                Gimnasio gimnasio = new Gimnasio(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(gimnasio);
-
-                Terraza terraza = new Terraza(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
-                agregarInmueble(terraza);
+                switch (nombreInmueble) {
+                    case "Departamento":
+                        Departamento departamento = new Departamento(nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(departamento);
+                        break;
+                    case "ParqueaderoPrivado":
+                        ParqueaderoPrivado parqueaderoP = new ParqueaderoPrivado(nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(parqueaderoP);
+                        break;
+                    case "ParqueaderoPublico":
+                        ParqueaderoPublico parqueaderoC = new ParqueaderoPublico(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(parqueaderoC);
+                        break;
+                    case "Cancha":
+                        Cancha cancha = new Cancha(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(cancha);
+                        break;
+                    case "Piscina":
+                        Piscina piscina = new Piscina(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(piscina);
+                        break;
+                    case "Gimnasio":
+                        Gimnasio gimnasio = new Gimnasio(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(gimnasio);
+                        break;
+                    case "Terraza":
+                        Terraza terraza = new Terraza(null, diasDisponiblesI, nombreInmueble, metrosC, mantenimiento, valorAlicuota, propietarioI);
+                        agregarInmueble(terraza);
+                        break;
+                    default:
+                        System.out.println("Tipo de inmueble no reconocido: " + nombreInmueble);
+                        break;
+                }
             }
+
         } catch (FileNotFoundException ex) {
             System.out.println("Error al leer el archivo: " + nombreArchivo);
         }
-
     }
 }
-
 
 
