@@ -5,6 +5,7 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -17,24 +18,17 @@ public class Directo extends Mensaje{
     }
 
     @Override
-    public void crear() {
-        Scanner scanner = new Scanner(System.in);
-
-
-        System.out.println("Destino: " + this.getDestino().getNombreApellido());
-
-
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
-
-        System.out.println("Enviando mensaje directo para: " + this.getDestino().getNombreApellido());
+    public void enviar() {
+        getDestino().getBandejaDeEntrada().recibirMensaje(this);
     }
 
     @Override
     public void mostrar() {
-        System.out.println(this.getContenido());
+        System.out.println("\n=============================================\n"
+                + "Origen: " + this.getOrigen().getNombreApellido()+"\n"+
+                "Destino: " + this.getDestino().getNombreApellido()+"\n"+
+                "Fecha: " + getFecha() +
+                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() + 
+                "\n=============================================\n");
     }
 }

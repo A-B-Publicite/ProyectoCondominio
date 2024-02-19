@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class BandejaDeEntrada {
     private List<Mensaje> listaMensajes;
+    private List<Reporte> listaReportes;
     private Perfil perfil;
     private Scanner scanner;
 
@@ -25,7 +26,7 @@ public class BandejaDeEntrada {
     }
 
     public void mostrar() {
-        System.out.println("Bandeja de entrada de " + perfil.getNombreApellido() + ":");
+        System.out.println("Bandeja de entrada de " + perfil.getNombreApellido()+ ":");
         int index = 1;
         for (Mensaje mensaje : listaMensajes) {
             System.out.println(index + ". " + mensaje.getTitulo());
@@ -33,12 +34,15 @@ public class BandejaDeEntrada {
         }
     }
 
-    public Mensaje getMensajePorIndice(int indice) {
+    public void getMensajePorIndice() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Elija el mensaje que desea ver: ");
+        int indice = sc.nextInt();
         if (indice >= 1 && indice <= listaMensajes.size()) {
-            return listaMensajes.get(indice - 1);
+           listaMensajes.get(indice - 1).mostrar();
         } else {
             System.out.println("Índice de mensaje no válido.");
-            return null;
+            
         }
     }
 

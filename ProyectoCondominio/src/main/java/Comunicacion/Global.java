@@ -19,25 +19,21 @@ public class Global extends Mensaje {
     }
 
     @Override
-    public void crear() {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Destino: Todos");
-
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
-
-        System.out.println("Enviando mensaje global a todos los destinatarios");
+    public void enviar() {
+        for (Perfil destinatario : getDestinos()) {
+            destinatario.getBandejaDeEntrada().recibirMensaje(this);
+        }
+        
     }
 
     @Override
     public void mostrar() {
-        // Implementación para mostrar un mensaje global
-        System.out.println("Mensaje global de " + this.getOrigen().getNombreApellido() + ": " + this.getContenido());
+        System.out.println("\n=============================================\n"
+                + "Origen: " + this.getOrigen().getNombreApellido()+"\n"+
+                "Destino: Todos \n"+
+                "Fecha: " + getFecha() +
+                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() +
+                "\n=============================================\n");
     }
     
 }
