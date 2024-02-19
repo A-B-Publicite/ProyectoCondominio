@@ -12,6 +12,10 @@ public class Condominio extends Inmueble {
 
     private List<Inmueble> listaInmuebles;
 
+    public Condominio() {
+        
+    }
+
     public Condominio(List<Inmueble> listaInmuebles, String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
         super(nombre, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
         this.listaInmuebles = listaInmuebles;
