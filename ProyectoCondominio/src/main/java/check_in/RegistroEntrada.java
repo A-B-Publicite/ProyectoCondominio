@@ -12,6 +12,7 @@ public class RegistroEntrada {
     private String fechaLlegada;
     private String horaLlegada;
     private Autorizacion autorizacion;
+    
 
     public RegistroEntrada() {
     }
