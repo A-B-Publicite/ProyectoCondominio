@@ -3,7 +3,7 @@ package Inmueble;
 import Administracion.Perfil;
 
 public abstract class Inmueble {
-    String nombre;
+    String nombreInmueble;
     double metrosCuadrados;
     boolean necesitaMantenimiento;
     double alicuota;
@@ -16,7 +16,7 @@ public abstract class Inmueble {
 // Constructor con parámetros  
 
     public Inmueble(String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
-        this.nombre = nombre;
+        this.nombreInmueble = nombre;
         this.metrosCuadrados = metrosCuadrados;
         this.necesitaMantenimiento = necesitaMantenimiento;
         this.alicuota = alicuota;
@@ -47,5 +47,14 @@ public abstract class Inmueble {
     public void setAlicuota(double alicuota) {
         this.alicuota = alicuota;
     }
-        
+
+    public Perfil getPropietario() {
+        return propietario;
+    }
+
+    
+    public void setPropietario(Perfil propietario) {
+        this.propietario = propietario;
+    }
+    
 }

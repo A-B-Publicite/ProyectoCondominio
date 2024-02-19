@@ -20,7 +20,7 @@ public class Administrador extends Perfil{
     
     public Residente registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
         Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
-        Departamento departamentoLibre = condominio.obtenerDepartamentoLibre;
+        Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         condominio.setPropietarioADepartamento(departamentoLibre, residenteNuevo);
         condominio.agregarResidente(residenteNuevo);
