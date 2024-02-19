@@ -33,10 +33,7 @@ public class MainPrueba {
             int tipo = 0;
             System.out.println("Elija el tipo de mensaje a enviar (escriba un numero): \n" +
                     "1. Global\n" +
-                    "2. Directo\n" +
-                    "3. Reporte Pago\n" +
-                    "4. Reporte Inmueble\n" +
-                    "5. Reporte Visitante\n");
+                    "2. Directo\n");
             tipo = scanner.nextInt();
             scanner.nextLine();
 
@@ -72,19 +69,23 @@ public class MainPrueba {
                     mensaje = new Directo(Administrador, residentes.get(pos-1),contenido,titulo);
                     mensaje.enviar();
                 break;
+                default:
+                    System.out.println("No existe opcion");
+                break;
             }
             System.out.println("Desea continuar? 1=Si ; 0=No");
             aux = scanner.nextInt();
             scanner.nextLine();
         } while (aux==1);
       
-        System.out.println("\n=============================================\n");
+        System.out.println("\n==============================================\n");
         Residente1.getBandejaDeEntrada().mostrar();
         Residente1.getBandejaDeEntrada().getMensajePorIndice();
-        System.out.println("\n=============================================\n");
+        System.out.println("\n==============================================\n");
         Residente2.getBandejaDeEntrada().mostrar();
         Residente2.getBandejaDeEntrada().getMensajePorIndice();
-        System.out.println("\n=============================================\n");
+        System.out.println("\n==============================================\n");
+        
     }
     
 }
