@@ -1,34 +1,33 @@
 package Inmueble;
-import Inmueble.Inmueble;
-import Inmueble.TituloPropiedad;
+
+import java.util.Date;
 
 public abstract class InmuebleComun extends Inmueble{
 
-    boolean disponible;
-    int capacidad;
+    Date fechaInicio;
+    Date fechaFin;
 
-    public InmuebleComun(boolean disponible, int capacidad, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
+    public InmuebleComun(Date fechaInicio, Date fechaFin, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
         super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.disponible = disponible;
-        this.capacidad = capacidad;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
 
-    public boolean consultarDisponibilidad() {
-        return disponible;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public int consultarCapacidad() {
-        return capacidad;
+    public Date getFechaFin() {
+        return fechaFin;
     }
 
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
     
-    public void reservar(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
 }
 

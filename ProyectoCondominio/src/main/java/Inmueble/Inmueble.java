@@ -6,7 +6,7 @@ public abstract class Inmueble {
     String ubicacion;
     boolean necesitaMantenimiento;
     double alicuota;
-    TituloPropiedad tituloPropiedad;
+    Perfil tituloPropiedad;
 
 // Constructor vacío
     public Inmueble() {
@@ -30,11 +30,7 @@ public abstract class Inmueble {
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
+    
     public boolean isNecesitaMantenimiento() {
         return necesitaMantenimiento;
     }

@@ -32,7 +32,7 @@ public class Condominio extends Inmueble {
             while ((line = br.readLine()) != null) {
                 Inmueble inmueble = new Inmueble() {
                 };
-
+                
                 String[] parts = line.split(",");
                 String tipoI = parts[0];
                 double metrosC = Double.parseDouble(parts[1]);
