@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package areaComun;
-//import administracion.Perfil;
+import Administracion.Perfil;
 
 /**
  *
@@ -13,11 +13,11 @@ public class Reserva {
     private int id;
     private String dia;
     private String detalle;
-    private String usuario;
+    private Perfil usuario;
     private boolean cancelada;
     
     // Constructor con parámetros
-    public Reserva(int id, String dia, String detalle, String usuario) {
+    public Reserva(int id, String dia, String detalle, Perfil usuario) {
         this.id = id;
         this.dia = dia;
         this.detalle = detalle;
@@ -32,7 +32,7 @@ public class Reserva {
     }
 
     // Método para reprogramar la reserva
-    public void reprogramar(Date nuevaFechaInicio, Date nuevaFechaFin) {
+    public void reprogramar(String dia) {
         this.dia = dia;
         System.out.println("Reserva reprogramada para el dia: " + dia);
     }
@@ -67,11 +67,11 @@ public class Reserva {
         this.detalle = detalle;
     }
 
-    /*public Perfil getUsuario() {
+    public Perfil getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Perfil usuario) {
         this.usuario = usuario;
-    }*/
+    }
 }
