@@ -12,7 +12,8 @@ public class Gimnasio extends InmuebleComun {
     }
 
     public Gimnasio(int i, Administrador administrador) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super(null, null, "Gym", i,false,0,administrador);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 
