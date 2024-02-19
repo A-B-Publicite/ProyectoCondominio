@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Grupo 4
  */
 
-
+//hola amigos 
 public class AdministrarReserva {
 
     // Método para realizar una reserva
