@@ -12,6 +12,7 @@ import Inmueble.Condominio;
 import Inmueble.Gimnasio;
 import Inmueble.*;
 import areaComun.*;
+import check_in.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -170,6 +171,21 @@ public class Main {
             //REQ_MA_CU-ElegirMiembros _01. 
             directiva.agregarDirectiva("Juan", "Pedro");
         
+            
+            //Moulo check-in pruebas
+            //Prueba con un residente sin vehiculo
+            AutorizacionPerfil autorizacionResidente = new AutorizacionPerfil();
+            autorizacionResidente.completar("Admin", "Residente", "19/2/2024", "19/2/2030");
+            autorizacionResidente.validar();
+            //Paso a hacer el registro
+            RegistroEntrada registroResidente = new RegistroEntrada();
+            registroResidente.registrarEntrada("19/2/2024", "15:00");   //No se ha enviado la autorizacion del residente
+            //enviamos la autorizacion y volvemos a intentar registrar
+            registroResidente.setAutorizacion(autorizacionResidente);
+            registroResidente.registrarEntrada("19/2/2024", "15:00");
+            
+            //Prueba con un visitante sin vehiculo
+            
         
     }
 }
