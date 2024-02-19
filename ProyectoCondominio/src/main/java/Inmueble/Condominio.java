@@ -10,10 +10,6 @@ public class Condominio extends Inmueble {
 
     private List<Inmueble> listaInmuebles;
 
-    public Condominio() {
-        super(null, 0, null, false, 0, null);
-        this.listaInmuebles = new ArrayList<>();
-    }
 
     public Condominio(List<Inmueble> listaInmuebles, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
         super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);

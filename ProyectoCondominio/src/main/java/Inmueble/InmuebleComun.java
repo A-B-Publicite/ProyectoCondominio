@@ -1,33 +1,19 @@
 package Inmueble;
 
-import java.util.Date;
+import Administracion.Perfil;
+import areaComun.Reserva;
+import java.util.List;
 
 public abstract class InmuebleComun extends Inmueble{
 
-    Date fechaInicio;
-    Date fechaFin;
+    private List<Reserva> listaReservas;
 
-    public InmuebleComun(Date fechaInicio, Date fechaFin, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public InmuebleComun(List<Reserva> listaReservas, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
+        this.listaReservas = listaReservas;
     }
     
+    public void addReserva(Reserva reserva){
+        listaReservas.add(reserva);               
+    }
 }
-

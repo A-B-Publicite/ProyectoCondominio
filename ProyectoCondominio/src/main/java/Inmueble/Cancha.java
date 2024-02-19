@@ -1,17 +1,13 @@
 package Inmueble;
 
-import Inmueble.TituloPropiedad;
+import Administracion.Perfil;
+import areaComun.Reserva;
+import java.util.List;
 
 public class Cancha extends InmuebleComun {
-    private String idCancha;
-    private String tipoCancha;
 
-    public Cancha(String idCancha, String tipoCancha, boolean disponible, int capacidad, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(disponible, capacidad, tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.idCancha = idCancha;
-        this.tipoCancha = tipoCancha;
+    public Cancha(List<Reserva> listaReservas, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(listaReservas, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
-
-
 
 }

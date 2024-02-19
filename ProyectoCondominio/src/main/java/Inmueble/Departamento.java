@@ -1,23 +1,11 @@
 package Inmueble;
 
-import Inmueble.TituloPropiedad;
+import Administracion.Perfil;
 
 public class Departamento extends InmueblePrivado {
-    private String idDepartamento;
 
-    public Departamento(String idDepartamento, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.idDepartamento = idDepartamento;
+    public Departamento(double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
 
-
-
-    public String getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(String idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-    
 }

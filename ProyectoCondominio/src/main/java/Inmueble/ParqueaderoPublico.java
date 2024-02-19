@@ -1,23 +1,15 @@
 package Inmueble;
 
-import Inmueble.TituloPropiedad;
+import Administracion.Perfil;
+import areaComun.Reserva;
+import java.util.List;
+
 
 public class ParqueaderoPublico extends InmuebleComun {
-    private String idParqueadero;
 
-    public ParqueaderoPublico(String idParqueadero, boolean disponible, int capacidad, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(disponible, capacidad, tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.idParqueadero = idParqueadero;
+    public ParqueaderoPublico(List<Reserva> listaReservas, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(listaReservas, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
 
 
-
-    public String getIdParqueadero() {
-        return idParqueadero;
-    }
-
-    public void setIdParqueadero(String idParqueadero) {
-        this.idParqueadero = idParqueadero;
-    }
-    
 }

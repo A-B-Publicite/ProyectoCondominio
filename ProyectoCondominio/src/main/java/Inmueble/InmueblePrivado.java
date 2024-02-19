@@ -1,13 +1,13 @@
 package Inmueble;
-import Inmueble.Inmueble;
-import Inmueble.TituloPropiedad;
+
+import Administracion.Perfil;
+
 
 public abstract class InmueblePrivado extends Inmueble{
 
-    public InmueblePrivado(String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
+    public InmueblePrivado(double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
-
 
 }
 

@@ -1,36 +1,28 @@
 package Inmueble;
 
+import Administracion.Perfil;
+
 public abstract class Inmueble {
-    String tipo;
     double metrosCuadrados;
-    String ubicacion;
     boolean necesitaMantenimiento;
     double alicuota;
-    Perfil tituloPropiedad;
+    Perfil propietario;
 
-// Constructor vacío
-    public Inmueble() {
-    }
 
 // Constructor con parámetros  
-    public Inmueble(String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        this.tipo = tipo;
+    public Inmueble(double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
         this.metrosCuadrados = metrosCuadrados;
-        this.ubicacion = ubicacion;
         this.necesitaMantenimiento = necesitaMantenimiento;
         this.alicuota = alicuota;
-        this.tituloPropiedad = tituloPropiedad;
+        this.propietario = propietario;
     }
 
 // Getters y Setters 
-    public String getTipo() {
-        return tipo;
-    }
 
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }
-    
+
     public boolean isNecesitaMantenimiento() {
         return necesitaMantenimiento;
     }
@@ -39,20 +31,8 @@ public abstract class Inmueble {
         return alicuota;
     }
 
-    public TituloPropiedad getTituloPropiedad() {
-        return tituloPropiedad;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setMetrosCuadrados(double metros_cuadrados) {
-        this.metrosCuadrados = metros_cuadrados;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setMetrosCuadrados(double metrosCuadrados) {
+        this.metrosCuadrados = metrosCuadrados;
     }
 
     public void setNecesitaMantenimiento(boolean necesitaMantenimiento) {
@@ -62,9 +42,5 @@ public abstract class Inmueble {
     public void setAlicuota(double alicuota) {
         this.alicuota = alicuota;
     }
-
-    public void setTituloPropiedad(TituloPropiedad tituloPropiedad) {
-        this.tituloPropiedad = tituloPropiedad;
-    }
-    
+        
 }

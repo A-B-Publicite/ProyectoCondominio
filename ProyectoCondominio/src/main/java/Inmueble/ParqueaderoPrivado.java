@@ -1,18 +1,11 @@
 package Inmueble;
 
-import Inmueble.TituloPropiedad;
+import Administracion.Perfil;
 
 public class ParqueaderoPrivado extends InmueblePrivado {
-    private String idParqueadero;
 
-    public ParqueaderoPrivado(String idParqueadero, String tipo, double metrosCuadrados, String ubicacion, boolean necesitaMantenimiento, double alicuota, TituloPropiedad tituloPropiedad) {
-        super(tipo, metrosCuadrados, ubicacion, necesitaMantenimiento, alicuota, tituloPropiedad);
-        this.idParqueadero = idParqueadero;
+    public ParqueaderoPrivado(double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+        super(metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
 
-
-
-    public String getIdParqueadero() {
-        return idParqueadero;
-    }
 }
