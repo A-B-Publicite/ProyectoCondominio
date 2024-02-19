@@ -192,7 +192,18 @@ public class Main {
             registroResidente.registrarEntrada("19/2/2024", "15:00");
             
             //Prueba con un visitante sin vehiculo
-            
+            Visitante visitante = new Visitante("Visita","Visitante", "Residente1");
+            AutorizacionVisita autorizacionVisita = new AutorizacionVisita();
+            //Tratar de realizar el registro sin una autorizacion
+            RegistroEntrada registroVisitante = new RegistroEntrada();
+            registroVisitante.registrarEntrada("19/2/2024", "14:00");
+            //Enviamos la autorizacion sin llenar
+            registroVisitante.setAutorizacion(autorizacionVisita);
+            registroVisitante.registrarEntrada("19/2/2024", "14:00");
+            //Llenamos la autorización
+            autorizacionVisita.completar("Residente1", visitante.getNombre(), "19/2/2024", "19/2/2024");
+            registroVisitante.setAutorizacion(autorizacionVisita);
+            registroVisitante.registrarEntrada("19/2/2024", "14:00");
         
     }
 }
