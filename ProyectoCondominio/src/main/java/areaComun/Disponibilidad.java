@@ -38,7 +38,7 @@ public class Disponibilidad {
     }
 
     // Método para verificar la disponibilidad
-    public boolean verificarDisponibilidad(Date nuevaFechaInicio, Date nuevaFechaFin) {
+    public boolean verificarDisponibilidad(String nuevaFechaInicio, String nuevaFechaFin) {
         // Comprobar si hay alguna reserva en el rango de fechas dado
         for (Reserva reserva : listaReservas) {
             if (reserva.getFechaInicio().before(nuevaFechaFin) && reserva.getFechaFin().after(nuevaFechaInicio)) {
@@ -95,4 +95,3 @@ public class Disponibilidad {
         this.listaReservas = listaReservas;
     }
 }
-

@@ -7,36 +7,36 @@ package areaComun;
 
 import java.util.Date;
 
-
 /**
  *
  * @author Grupo 4
  */
 public class Reserva {
     private int id;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String fechaInicio;
+    private String fechaFin;
     private String detalle;
-    //private Perfil usuario;
+    private String usuario;
 
     // Constructor con parámetros
-    public Reserva(int id, Date fechaInicio, Date fechaFin, String detalle /*Perfil usuario*/) {
+    public Reserva(int id, String fechaInicio, String fechaFin, String detalle, String usuario) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.detalle = detalle;
-        //this.usuario = usuario;
+        this.usuario = usuario;
     }
 
     // Método para cancelar la reserva
     public void cancelar() {
-        // Lógica para cancelar la reserva
+        this.fechaInicio = "0";
+        this.fechaFin = "0";
         // Por ejemplo, podrías cambiar un estado de la reserva a "cancelado"
         System.out.println("Reserva cancelada.");
     }
 
     // Método para reprogramar la reserva
-    public void reprogramar(Date nuevaFechaInicio, Date nuevaFechaFin) {
+    public void reprogramar(String nuevaFechaInicio, String nuevaFechaFin) {
         // Lógica para reprogramar la reserva
         // Necesitarías verificar que las nuevas fechas son válidas y no entran en conflicto con otras reservas
         this.fechaInicio = nuevaFechaInicio;
@@ -53,19 +53,19 @@ public class Reserva {
         this.id = id;
     }
 
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -83,6 +83,5 @@ public class Reserva {
 
     public void setUsuario(Perfil usuario) {
         this.usuario = usuario;
-    }*/
+    }*/
 }
-
