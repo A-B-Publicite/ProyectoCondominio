@@ -2,12 +2,15 @@
 package Administracion;
 
 import Comunicacion.BandejaDeEntrada;
+import Finanzas.Cuenta;
 
 public abstract class Perfil {
     private String correo;
     private String contrasena;
     private String nombreApellido;
     private BandejaDeEntrada bandejaDeEntrada;
+    private Cuenta cuenta;
+    
     public Perfil(String correo, String contrasena, String nombreApellido){
         this.correo = correo;
         this.contrasena = contrasena;

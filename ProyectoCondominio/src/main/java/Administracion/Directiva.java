@@ -23,8 +23,8 @@ public class Directiva {
         }
         
         // Implementar en condominio
-        this.presidente = administrador.(obtenerResidente(nombrePresidente));
-        this.secretario = administrador.(obtenerResidente(nombreSecretario));
+        this.presidente = administrador.obtenerResidente(nombrePresidente);
+        this.secretario = administrador.obtenerResidente(nombreSecretario);
         
         
 

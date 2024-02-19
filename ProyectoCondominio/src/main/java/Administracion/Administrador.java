@@ -30,7 +30,7 @@ public class Administrador extends Perfil{
         // Hacer finanzas
     }
     public void pagarContrato(Contrato contrato){
-       contrato.pagar();
+       cuenta.pagarContrato(contrato);
     }
     
     public Residente obtenerResidente(String nombreResidente){
