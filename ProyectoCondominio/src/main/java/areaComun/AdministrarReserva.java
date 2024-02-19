@@ -17,25 +17,20 @@ public class AdministrarReserva {
         // Aquí podrías inicializar recursos si fuera necesario
     }
 
-    // Método para administrar una reserva
-    // Esta función podría implicar la interacción con un usuario o sistema para realizar acciones sobre la reserva
-    public void administrarReserva(Reserva reserva) {
-        // La lógica exacta dependerá de qué implica "administrar" en tu contexto
-        // Podría ser actualizar información, enviar confirmaciones, etc.
-        System.out.println("Administrando la reserva con ID: " + reserva.getId());
-    }
-
     // Método para realizar una reserva
     // Asumiendo que se pasa la reserva ya creada con toda la información necesaria
-    public void realizarReserva(Reserva reserva) {
+    public void realizarReserva(String areaComun, String fechaInicio, String fechaFin, String detalle) {
         // Aquí deberías incluir la lógica para guardar la reserva en tu sistema de almacenamiento
-        // Por ejemplo, insertar en una base de datos
-        System.out.println("Realizando la reserva con ID: " + reserva.getId());
+        disponibilidad = areaComun.consultarDisponibilidad();
+        if (disponibilidad.verificar(fechaInicio, fechaFin)){
+            nuevaReserva = Reserva 
+        }
+        
     }
 
     // Método para reprogramar una reserva
     // Este método podría ser llamado con la reserva que se desea cambiar y las nuevas fechas
-    public void reprogramarReserva(Reserva reserva, Date nuevaFechaInicio, Date nuevaFechaFin) {
+    public void reprogramarReserva(Reserva reserva, String nuevaFechaInicio, String nuevaFechaFin) {
         // Lógica para verificar si la reprogramación es posible
         // Por ejemplo, podrías necesitar verificar la disponibilidad antes de realizar el cambio
         System.out.println("Reprogramando la reserva con ID: " + reserva.getId());
@@ -57,11 +52,11 @@ public class AdministrarReserva {
         reserva.cancelar();
         System.out.println("La reserva con ID: " + reserva.getId() + " ha sido cancelada.");
     }
-
+    
     // Método adicional para verificar la disponibilidad, asumiendo que necesitas tal funcionalidad
     private boolean verificarDisponibilidad(Date nuevaFechaInicio, Date nuevaFechaFin) {
         // Implementación de la lógica para verificar la disponibilidad de las fechas
         // Esto es solo un placeholder, en un entorno real se conectaría con el sistema de reservas/disponibilidad
-        return true; // Devuelve true como ejemplo, debería comprobar la disponibilidad real
-    }
+        return true; // Devuelve true como ejemplo, debería comprobar la disponibilidad real
+    }
 }
