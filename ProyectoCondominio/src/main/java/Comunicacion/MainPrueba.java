@@ -4,7 +4,9 @@
  */
 package Comunicacion;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
+import Administracion.Residente;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,9 +16,10 @@ public class MainPrueba {
 
         List<Perfil> residentes = new ArrayList<>();
 
-        Perfil Administrador = new Perfil("Pepe", "Administrador");
-        Perfil Residente1 = new Perfil("Juan", "Residente");
-        Perfil Residente2 = new Perfil("Pedro", "Residente");
+        Perfil Administrador = new Administrador("pepe123@epn.edu.ec", "123", "Pepe");
+        Perfil Residente1 = new Residente(true, "juan123@epn.edu.ec", "123", "Juan");
+        Perfil Residente2 = new Residente(true, "juan123@epn.edu.ec", "123", "Pedro");
+        
 
         residentes.add(Residente1);
         residentes.add(Residente2);
@@ -41,12 +44,10 @@ public class MainPrueba {
             pos= scanner.nextInt();
         }
 
-
-
-
         Administrador.accionar(tipo, Administrador,residentes.get(pos-1), residentes);
 
         Residente1.getBandejaDeEntrada().mostrar();
+        Residente1.getBandejaDeEntrada().getMensajePorIndice();
 
     }
 }

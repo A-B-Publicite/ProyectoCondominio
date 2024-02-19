@@ -33,12 +33,15 @@ public class BandejaDeEntrada {
         }
     }
 
-    public Mensaje getMensajePorIndice(int indice) {
+    public void getMensajePorIndice() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Elija el mensaje que desea ver: ");
+        int indice = sc.nextInt();
         if (indice >= 1 && indice <= listaMensajes.size()) {
-            return listaMensajes.get(indice - 1);
+           listaMensajes.get(indice - 1).mostrar();
         } else {
             System.out.println("Índice de mensaje no válido.");
-            return null;
+            
         }
     }
 

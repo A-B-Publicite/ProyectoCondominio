@@ -5,6 +5,7 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -31,10 +32,14 @@ public class Directo extends Mensaje{
         setContenido(scanner.nextLine());
 
         System.out.println("Enviando mensaje directo para: " + this.getDestino().getNombre());
+        
     }
 
     @Override
     public void mostrar() {
-        System.out.println(this.getContenido());
+        System.out.println("Origen: " + this.getOrigen().getNombre() +"\n"+
+                "Destino: " + this.getDestino().getNombre()+"\n"+
+                getFecha() +
+                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido());
     }
 }

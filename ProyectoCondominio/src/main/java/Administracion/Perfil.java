@@ -1,14 +1,23 @@
 
 package Administracion;
 
+import Comunicacion.BandejaDeEntrada;
+import Comunicacion.Mensaje;
+import java.util.List;
+
 public abstract class Perfil {
     private String correo;
     private String contrasena;
     private String nombre;
+    Mensaje mensaje;
+    BandejaDeEntrada bandejaDeEntrada;
+    
+    
     public Perfil(String correo, String contrasena, String nombre){
         this.correo = correo;
         this.contrasena = contrasena;
         this.nombre = nombre;
+        this.bandejaDeEntrada = new BandejaDeEntrada(this);
     }
     
     public void registrar(){
@@ -20,6 +29,14 @@ public abstract class Perfil {
     }
 
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return nombre;
+    }
+    
+    public void accionar (int tipo, Perfil origen, Perfil destino, List<Perfil> destinos) {
+        
+    }
+    
+    public BandejaDeEntrada getBandejaDeEntrada() {
+        return bandejaDeEntrada;
     }
 }

@@ -6,6 +6,7 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,4 +73,13 @@ public abstract class Mensaje {
     public void setDestino(Perfil destino) {
         this.destino = destino;
     }
+
+    public String getFecha() {
+        // Crear el formateador de fecha y hora
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy - HH:mm:ss");
+        // Formatear la fecha y hora usando el formateador y devolver como String
+        return fecha.format(formatter);
+    }
+        
+    
 }
