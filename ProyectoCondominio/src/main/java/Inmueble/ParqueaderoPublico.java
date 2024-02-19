@@ -7,8 +7,10 @@ import java.util.List;
 
 public class ParqueaderoPublico extends InmuebleComun {
 
-    public ParqueaderoPublico(List<Reserva> listaReservas, String diasDisponibles, String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
+    public ParqueaderoPublico(List<Reserva> listaReservas, List<String> diasDisponibles, String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
         super(listaReservas, diasDisponibles, nombre, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
     }
+
+
 
 }
