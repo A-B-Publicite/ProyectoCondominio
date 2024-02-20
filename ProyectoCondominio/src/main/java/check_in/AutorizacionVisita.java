@@ -22,9 +22,8 @@ public class AutorizacionVisita extends Autorizacion{
     public void notificar(Perfil autorizador, Guardia guardia){
         String contenido = "El señor/a "+autorizado+" ha venido a visitarlo. ¿Desea dejarlo entrar?";
         Mensaje mensaje = new Directo(guardia, autorizador,contenido, "Nueva visita");
-        mensaje.mostrar();
-    }
-    
+        mensaje.enviar();
+    }   
 
     @Override
     public void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
@@ -34,6 +33,5 @@ public class AutorizacionVisita extends Autorizacion{
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         //Poner que sucede cuando no se obtiene respuesta
-    }
-    
+    }        
 }
