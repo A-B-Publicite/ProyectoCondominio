@@ -24,7 +24,6 @@ public abstract class InmuebleComun{
         administrador.abrirMenu();
     4. Modulo administracion
         administrador.abrirMenu();
-    
     */
 
     public double getMetrosCuadrados() {
