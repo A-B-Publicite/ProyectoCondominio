@@ -59,4 +59,9 @@ public class Condominio {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
+    
+    
+    public ArrayList<Contrato> mostrarContratos(){
+        return directiva.mostrarContratos();
+    }
 }

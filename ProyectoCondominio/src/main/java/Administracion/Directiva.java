@@ -4,11 +4,11 @@ public class Directiva {
     Residente presidente;
     Residente secretario;
     Administrador administrador;
-    ArrayList<Contrato> listaContratos;
+    ArrayList<Contrato> contratosAprobados;
     
     public Directiva(Administrador administrador){
-        this.presidente = presidente;
-        this.secretario = secretario;
+        this.presidente = null;
+        this.secretario = null;
         this.administrador = administrador;
     }
     
@@ -23,7 +23,6 @@ public class Directiva {
         }
         this.presidente = presidente;
         this.secretario = secretario;
-        
     }
     
     public void aprobarContrato(Contrato contrato){
@@ -33,6 +32,11 @@ public class Directiva {
         }
         
         System.out.print("Se aprobo el contrato");
-        listaContratos.add(contrato);
+        contratosAprobados.add(contrato);
     }
+    
+    public ArrayList<Contrato> mostrarContratos(){
+        return contratosAprobados;
+    }
+
 }

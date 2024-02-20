@@ -14,7 +14,7 @@ public class Menu {
                                2. Registrar Residente
                                3. Agregar Departamento
                                4. Agregar un Inmueble Comun
-                               5. Pagar Contrato
+                               5. Mostrar lista de contratos
                                0. Salir
                                """);
 
@@ -88,8 +88,8 @@ public class Menu {
                             default -> System.out.println("No ha escogido una opcion correcta"); //ver el salir
                         }
                     case 5:
+                        System.out.println(administrador.mostrarContratos());
                         
-                        administrador.pagarContrato(contrato);
                         break;
                         
                         
