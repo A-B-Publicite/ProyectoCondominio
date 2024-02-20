@@ -25,8 +25,7 @@ public class Condominio {
     //para crear la lista de departamentos vacia
     public void agregarPropiedadPrivada(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
-            Departamento departamentonuevo = new Departamento(82);
-            listaInmueblesPrivados.add(departamentonuevo);
+            listaInmueblesPrivados.add(new Departamento());
         }
     }
     

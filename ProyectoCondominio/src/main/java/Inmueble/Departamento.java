@@ -5,19 +5,15 @@ import java.util.ArrayList;
 
 public class Departamento extends InmueblePrivado {
     private Residente propietario;
-    private ArrayList<InmueblesPrivado> inmueblesPrivados;
-    int metrocuadradosP=12;
+    private ArrayList<InmueblePrivado> inmueblesPrivados;
+    private final double M2DEPARTAMENTO=12;
     
-    public Departamento(double metrosCuadrados) {
-        super(metrosCuadrados);
-        inmueblesPrivados = new ArrayList<InmueblesPrivado>();
-        this.parqueaderoPrivado = new ParqueaderoPrivado(metrocuadradosP, null);
+    public Departamento() {
+        super(M2DEPARTAMENTO, null);
+        inmueblesPrivados = new ArrayList<InmueblePrivado>();
+        inmueblesPrivados.add(new ParqueaderoPrivado());
     }
-    //para departamentos con propietario
-    public Departamento(double metrosCuadrados, Perfil propietario) {
-        super(metrosCuadrados, propietario);
-        this.parqueaderoPrivado = new ParqueaderoPrivado(metrocuadradosP, propietario);
-    }
+
 
     public Perfil getPropietario() {
         return propietario;
@@ -34,7 +30,9 @@ public class Departamento extends InmueblePrivado {
     }
 
     private void setPropietarioATodosLosInmueblesPrivados() {
-        
+        for (InmueblePrivado inmueblePrivado : inmueblesPrivados) {
+            inmueblePrivado.setPropietario();
+        }
     }
 
 }
