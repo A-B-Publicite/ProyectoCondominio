@@ -13,14 +13,9 @@ public class Administrador extends Perfil {
     private Condominio condominio;
     private Cuenta cuenta;
 
-    public Administrador(String correo, String contrasena, String nombreApellido) {
-        super(correo, contrasena, nombreApellido);
-        this.condominio = null;
-        this.cuenta = new Cuenta(null);
-    }
-
-    public Administrador(String correo, String contrasenia, String nombre, String apellido) {
-        super(correo, contrasenia, nombre, apellido);
+ 
+    public Administrador( String nombre, String apellido) {
+        super(nombre, apellido);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

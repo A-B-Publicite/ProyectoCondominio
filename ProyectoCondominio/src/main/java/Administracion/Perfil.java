@@ -12,9 +12,9 @@ public abstract class Perfil {
     protected BandejaDeEntrada bandejaDeEntrada;
     protected Cuenta cuentaBancaria;
     
-    public Perfil(String correo, String contrasenia, String nombre, String apellido) {
-        this.correo = correo;
-        this.contrasenia = contrasenia;
+    public Perfil(String nombre, String apellido) {
+        this.correo = nombre + "." + apellido + "@policondominio.com";
+        this.contrasenia = nombre+ "123";
         this.nombre = nombre;
         this.apellido = apellido;
         

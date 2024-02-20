@@ -9,8 +9,8 @@ public class Residente extends Perfil{
     private Departamento departamento;
     private Cuenta cuenta;
 
-    public Residente(String nombre, String apellido, String contrasena, Boolean esPropietario) {
-        super(nombre+"."+"apellido"+"@policondominios.com", contrasena, nombre);
+    public Residente(String nombre, String apellido, Boolean esPropietario) {
+        super(nombre, apellido);
         this.esPropietario = esPropietario;
         //this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
 
