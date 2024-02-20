@@ -9,5 +9,4 @@ public class Cancha extends InmuebleComun {
     public Cancha(List<Reserva> listaReservas, List<String> diasDisponibles, String nombreInmueble, double metrosCuadrados, Perfil propietario) {
         super(listaReservas, diasDisponibles, nombreInmueble, metrosCuadrados, propietario);
     }
-    
 }
