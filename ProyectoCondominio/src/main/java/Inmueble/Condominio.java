@@ -11,13 +11,13 @@ public class Condominio {
     private String nombre;
     private ArrayList<InmuebleComun> inmueblesComunes;
     private ArrayList<InmueblePrivado> departamentos;
-    private Condominio condomio;
+    private Directiva directiva;
     
     public Condominio(String nombreCondominio) {
         this.nombre = nombreCondominio;
         inmueblesComunes = new ArrayList<InmuebleComun>();
         departamentos = new ArrayList<Departamento>();
-        condomino = null;
+        directiva = null;
     }
         
     public void agregarInmuebleComun(InmuebleComun inmueble) {
