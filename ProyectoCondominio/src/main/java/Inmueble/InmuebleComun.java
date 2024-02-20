@@ -15,17 +15,6 @@ public abstract class InmuebleComun{
         this.diasDisponibles = null;
     }
     
-    /*
-    1. Modulo administracion
-        administrador.abrirMenu();
-    2. Modulo finanza
-        administrador.abrirMenu();
-    3. Modulo comunicacion
-        administrador.abrirMenu();
-    4. Modulo administracion
-        administrador.abrirMenu();
-    */
-
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }

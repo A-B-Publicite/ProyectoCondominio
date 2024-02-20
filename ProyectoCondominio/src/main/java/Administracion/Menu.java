@@ -12,7 +12,7 @@ public class Menu {
                                1. Crear condominio
                                2. Registrar Residente
                                3. Agregar Departamento
-                               4. Agregar Inmueble Comun
+                               4. Agregar un Inmueble Comun
                                5. Pagar Contrato
                                0. Salir
                                """);
@@ -39,6 +39,26 @@ public class Menu {
                         administrador.agregarDepartamento(scanner.nextInt());
                         break;
                     case 4:
+                        int opcionInmuebleComun;
+                        scanner = new Scanner(System.in);
+        
+                        System.out.println("""
+                                    Opciones:
+                                    1. Cancha
+                                    2. Condominio
+                                    3. Gimnasio
+                                    4. Espacio de parqueadero
+                                    5. Pagar Contrato
+                                    0. Salir
+                               """);
+
+                        opcionInmuebleComun = scanner.nextInt();
+                        administrador.agregarInmuebleComun(inmuebleComun);
+                        break;
+                    
+                    case 5:
+                        
+                        break;
                         
                         
                 }
