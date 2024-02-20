@@ -30,9 +30,11 @@ public class Condominio {
         listaResidentes.add(residente);
     }
     
-    public void agregarPropiedadPrivada(int cantidad){
-        listaDepartamentos = new ArrayList<>(cantidad);
-        //falta llenar departamentos sin propietario
+    //para crear la lista de departamentos vacia
+    public void agregarPropiedadPrivada(int cantidad) {
+        for (int i = 0; i < cantidad; i++) {
+            listaDepartamentos.add(new Departamento(82));//se puede leer los metros cuadrados del .txt para que crear los departamentos con m2 distintos.
+        }
     }
     
     public Departamento obtenerDepartamentoLibre(){
@@ -60,7 +62,4 @@ public class Condominio {
         }
         return residente;
     }
-    
-    
-
 }
