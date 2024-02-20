@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         Administrador admin = new Administrador("juan.zambrano@condominio.com","12345","Juan","Zambrano");
-        
+        int opcion = 0;
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("LOGIN");
@@ -30,6 +30,19 @@ public class Main {
         
         System.out.println("Contrasenia: ");
         String contrasenia = scanner.nextLine();
+        
+        do{
+            System.out.println("""
+                               Opciones:
+                               1. Seleccionar un condominio
+                               2. Crear condominio
+                               3. Registrar Residente
+                               0. Salir
+                               """);
+        }while(opcion = -1);
+        
+        admin.agregarCondominio("Montanas");
+        
         
         /*
         tipo = scanner.nextInt();
