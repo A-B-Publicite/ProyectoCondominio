@@ -7,20 +7,10 @@ public class Directiva {
     ArrayList<Contrato> contratosAprobados;
     
     public Directiva(Administrador administrador){
-        this.presidente = null;
-        this.secretario = null;
         this.administrador = administrador;
     }
     
-    public void elegirDirectiva(String nombrePresidente, String nombreSecretario){
-        // Implementar condominio
-        Residente presidente = administrador.obtenerResidente(nombrePresidente);
-        Residente secretario = administrador.obtenerResidente(nombreSecretario);
-        
-        if(!presidente.esPropietario() || !secretario.esPropietario()){
-            System.out.print("Los candidatos no son propietarios");
-            return;
-        }
+    public void agregarDirectiva(Residente presidente, Residente secretario){
         this.presidente = presidente;
         this.secretario = secretario;
     }

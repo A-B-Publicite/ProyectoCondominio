@@ -37,8 +37,8 @@ public class Administrador extends Perfil {
     }
 
 
-    public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario) {
-        Residente residenteNuevo = new Residente(correo, password, nombreApellido, esPropietario);
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) {
+        Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
@@ -63,12 +63,6 @@ public class Administrador extends Perfil {
         System.out.print(condominio.toString());
     }
 
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) throws Exception {
-        if(condominio == null)
-            throw new Exception("No existe condominio");
-        
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public ArrayList<Contrato> mostrarContratos() {
         return condominio.mostrarContratos();
@@ -79,7 +73,7 @@ public class Administrador extends Perfil {
     }
     
     public Residente obtenerResidenteCorreo(String correo){
-        return condominio.obtenerResidente(correo));
+        return condominio.obtenerResidente(correo);
     }
 
 }

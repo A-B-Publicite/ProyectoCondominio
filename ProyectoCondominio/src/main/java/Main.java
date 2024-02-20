@@ -15,7 +15,11 @@ public class Main {
     public static void main(String[] args) {
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
-        Administrador administrador = new Administrador("juan.zambrano@condominio.com", "12345", "Juan", "Zambrano");
+        Administrador administrador = new Administrador("Juan", "Zambrano");
+        
+        
+        
+        
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
 

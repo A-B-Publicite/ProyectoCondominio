@@ -14,6 +14,7 @@ public class Contrato {
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        
     }
 
     public void iniciar() {

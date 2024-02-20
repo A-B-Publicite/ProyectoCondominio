@@ -17,9 +17,10 @@ public class Condominio {
         this.nombre = nombreCondominio;
         inmueblesComunes = new ArrayList<InmuebleComun>();
         departamentos = new ArrayList<Departamento>();
-        directiva = null;
+        directiva = new Directiva(admin);
     }
-        
+       
+    //llenar parqueaderos publicos
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaInmueblesComunes.add(inmueble);
     }
@@ -75,5 +76,9 @@ public class Condominio {
             }
         }
         return null;
+    }
+
+    public void agregarDirectiva(Residente presidente, Residente secretario) {
+        directiva.agregarDirectiva(presidente, secretario);
     }
 }

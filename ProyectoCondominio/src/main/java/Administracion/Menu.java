@@ -8,6 +8,10 @@ public class Menu {
         int opcion;
         Scanner scanner = new Scanner(System.in);
         
+        
+        
+        
+        
         System.out.println("""
                                Opciones:
                                1. Crear condominio
