@@ -1,12 +1,12 @@
 package Inmueble;
 
-import Administracion.Perfil;
+import Administracion.*;
 import java.util.ArrayList;
 
 public class Departamento extends InmueblePrivado {
     private Residente propietario;
     private ArrayList<InmueblePrivado> inmueblesPrivados;
-    private final double M2DEPARTAMENTO=12;
+    private static final double M2DEPARTAMENTO=12;
     
     public Departamento() {
         super(M2DEPARTAMENTO, null);
@@ -20,7 +20,7 @@ public class Departamento extends InmueblePrivado {
     }
 
     public void setPropietario(Perfil propietario) {
-        this.propietario = propietario;
+        this.propietario = (Residente) propietario;
         setPropietarioATodosLosInmueblesPrivados();
     }
 
