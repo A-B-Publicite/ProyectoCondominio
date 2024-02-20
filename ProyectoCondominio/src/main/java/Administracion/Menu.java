@@ -48,13 +48,36 @@ public class Menu {
                                     2. Condominio
                                     3. Gimnasio
                                     4. Espacio de parqueadero
-                                    5. Pagar Contrato
+                                    5. Piscina
+                                    6. Terraza
                                     0. Salir
                                """);
 
                         opcionInmuebleComun = scanner.nextInt();
-                        administrador.agregarInmuebleComun(inmuebleComun);
-                        break;
+                        
+                        
+                        switch (opcionInmuebleComun) {
+                            case 1:
+                                Cancha 
+                                break;
+                            case 2:
+                                
+                                break;
+                            case 3:
+                                
+                                break;
+                            case 4:
+                                
+                                break;
+                            case 5:
+                                
+                                break;
+                            case 6:
+                                
+                                break;
+                            default:
+                                System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                        }
                     
                     case 5:
                         
