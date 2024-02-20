@@ -43,7 +43,7 @@ public class Condominio {
     }
     
     public void agregarPropiedadPrivada(int cantidad){
-        //listaResidentes.add(cantidad);
+        listaDepartamentos = new ArrayList<>(cantidad);
     }
     
     public Departamento obtenerDepartamentoLibre(){
