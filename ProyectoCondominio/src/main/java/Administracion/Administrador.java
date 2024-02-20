@@ -58,5 +58,6 @@ public class Administrador extends Perfil{
         // Implementar en inmueble
         return condominio.obtenerResidente(nombreResidente);
     }
+
     
 }
