@@ -8,10 +8,6 @@ public class Menu {
         int opcion;
         Scanner scanner = new Scanner(System.in);
         
-        
-        
-        
-        
         System.out.println("""
                                Opciones:
                                1. Crear condominio
@@ -24,11 +20,13 @@ public class Menu {
                                """);
 
             opcion = scanner.nextInt();
+            scanner.nextLine();
             try {
                 switch (opcion) {
                     case 1:
                         System.out.print("Nombre del condominio: ");
-                        administrador.agregarCondominio(scanner.nextLine());
+                        String nombreCondominio = scanner.nextLine();
+                        administrador.agregarCondominio(nombreCondominio);
                         break;
                     case 2:
                         System.out.print("Nombre: ");
