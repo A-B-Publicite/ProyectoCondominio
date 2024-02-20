@@ -9,6 +9,7 @@ public abstract class InmuebleComun{
     private List<Reserva> listaReservas;
     private List<String> diasDisponibles;
     String nombreInmueble;
+    
     double metrosCuadrados;
     Perfil propietario;
     

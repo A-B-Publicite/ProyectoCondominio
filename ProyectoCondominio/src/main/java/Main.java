@@ -148,7 +148,7 @@ public class Main {
         List<String> diasDisponibles = Arrays.asList("Lunes", "Martes", "Miércoles", "Jueves", "Viernes");
         
         // Crear un área común tipo Cancha con sus atributos
-        Cancha areaComunReserva = new Cancha(listaReservas, diasDisponibles, "cancha1", 100, true, 100, usuarioReserva);
+        Cancha areaComunReserva = new Cancha(listaReservas, diasDisponibles, "cancha1", 100, usuarioReserva);
 
         // Creamos el Administrador de las Reservas
         AdministrarReserva adminReserva = new AdministrarReserva();
@@ -171,7 +171,7 @@ public class Main {
             //Se realiza en el constructor de Administrador.    
             //REQ_MA_CU-ManejarCondominio_02
             administrador.agregarInmuebleComun(gym);
-            administrador.agregarInmuebleComun(new Departamento(24));
+            administrador.agregarDepartamento(new Departamento(24));
             //REQ_MA_CU-RegResidente_01. 
             Residente residenteNuevo = administrador.registrarResidente("julio.zambrano@chone.ec", "chonero1234", "Julio Zambrano", true);
             //REQ_MA_CU-ContratarServicio_01.

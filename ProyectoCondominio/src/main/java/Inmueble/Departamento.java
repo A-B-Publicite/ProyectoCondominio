@@ -3,11 +3,17 @@ package Inmueble;
 import Administracion.Perfil;
 
 public class Departamento extends InmueblePrivado {
-    ParqueaderoPrivado parqueaderPrivado;
-
-    public Departamento(ParqueaderoPrivado parqueaderPrivado, double metrosCuadrados, Perfil propietario) {
+    ParqueaderoPrivado parqueaderoPrivado;
+    int metrocuadradosP=12;
+    //para departamentos vacios
+    public Departamento(double metrosCuadrados) {
+        super(metrosCuadrados,null);
+        this.parqueaderoPrivado = new ParqueaderoPrivado(metrocuadradosP, null);
+    }
+    //para departamentos con propietario
+    public Departamento(double metrosCuadrados, Perfil propietario) {
         super(metrosCuadrados, propietario);
-        this.parqueaderPrivado = parqueaderPrivado;
+        this.parqueaderoPrivado = new ParqueaderoPrivado(metrocuadradosP, propietario);
     }
 
     public Perfil getPropietario() {

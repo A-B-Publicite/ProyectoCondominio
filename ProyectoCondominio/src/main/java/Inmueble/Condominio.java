@@ -18,6 +18,7 @@ public class Condominio {
         this.nombre = nombre;
         listaInmueblesComunes = new ArrayList<>();
         listaDepartamentos = new ArrayList<>();
+        listaResidentes = new ArrayList<>();
     }
 
 //    public Condominio(List<InmuebleComun> listaInmueblesComunes) {
@@ -34,7 +35,7 @@ public class Condominio {
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaInmueblesComunes.add(inmueble);
     }
-    public void agregarDepartamento(Departamento dpto) {
+    public void agregarDepartamento(Departamento dpto) {//borrar si nadie le usa xd
         listaDepartamentos.add(dpto);
     }
     
@@ -44,6 +45,7 @@ public class Condominio {
     
     public void agregarPropiedadPrivada(int cantidad){
         listaDepartamentos = new ArrayList<>(cantidad);
+        //falta llenar departamentos sin propietario
     }
     
     public Departamento obtenerDepartamentoLibre(){

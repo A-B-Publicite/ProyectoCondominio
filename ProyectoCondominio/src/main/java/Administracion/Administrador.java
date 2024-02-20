@@ -3,7 +3,6 @@ import Finanzas.Cuenta;
 import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
-import Inmueble.Inmueble;
 import Inmueble.InmuebleComun;
 import java.util.ArrayList;
 // Considerar singleton
@@ -28,7 +27,7 @@ public class Administrador extends Perfil{
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-    public void agregarDepartamento1(Departamento departamento){
+    public void agregarDepartamento(Departamento departamento){
         // Crear metodo en condominio
         condominio.agregarDepartamento(departamento);
     }
@@ -41,7 +40,7 @@ public class Administrador extends Perfil{
         Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
-        departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
+        departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
     }
     
     public void pagarContrato(Contrato contrato){

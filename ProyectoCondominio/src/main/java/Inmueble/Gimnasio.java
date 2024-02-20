@@ -11,10 +11,8 @@ public class Gimnasio extends InmuebleComun {
         super(listaReservas, diasDisponibles, nombreInmueble, metrosCuadrados, propietario);
     }
 
-
-    public Gimnasio( Administrador administrador) {
-        super(null, null, "Gym", 0,administrador);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Gimnasio( double metrosCuadrados,Administrador administrador) {
+        super(null, null, "Gimnasio", metrosCuadrados,administrador);       
     }
 
 }
