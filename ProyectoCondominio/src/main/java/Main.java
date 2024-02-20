@@ -18,32 +18,58 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Administrador admin = new Administrador("juan.zambrano@condominio.com","12345","Juan","Zambrano");
+        Administrador administrador = new Administrador("juan.zambrano@condominio.com", "12345", "Juan", "Zambrano");
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
-        
+
         System.out.println("LOGIN");
         System.out.print("Usuario:");
-        
+
         String usuario = scanner.nextLine();
-        scanner.reset();
-        
-        System.out.println("Contrasenia: ");
+
+        System.out.print("Contrasenia: ");
         String contrasenia = scanner.nextLine();
-        
-        do{
+
+        do {
             System.out.println("""
                                Opciones:
-                               1. Seleccionar un condominio
-                               2. Crear condominio
-                               3. Registrar Residente
+                               1. Crear condominio
+                               2. Registrar Residente
+                               3. Agregar Departamento
+                               4. Agregar Inmueble Comun
+                               5. Pagar Contrato
                                0. Salir
                                """);
-        }while(opcion = -1);
-        
-        admin.agregarCondominio("Montanas");
-        
-        
+
+            opcion = scanner.nextInt();
+            try {
+                switch (opcion) {
+                    case 1:
+                        administrador.agregarCondominio(scanner.nextLine());
+                        break;
+                    case 2:
+                        System.out.print("Nombre: ");
+                        String nombre = scanner.nextLine();
+                        System.out.print("Apellido: ");
+                        String apellido = scanner.nextLine();
+                        System.out.print("Es propietario: ");
+                        Boolean esPropietario = scanner.nextBoolean();
+
+                        administrador.registrarResidente(nombre, apellido, esPropietario);
+                        break;
+                    case 3:
+                        administrador.agregar();
+                }
+            } catch (Exception e) {
+                System.out.print(e.getMessage());
+            }
+        } while (opcion != 0);
+
+        do {
+
+        } while (opcion == 0);
+        administrador.agregarCondominio("Montanas");
+
         /*
         tipo = scanner.nextInt();
         scanner.nextLine();
@@ -233,6 +259,6 @@ public class Main {
         autorizacionVisita.validar();
         registroVisitante.setAutorizacion(autorizacionVisita);
         registroVisitante.registrarEntrada("19/2/2024", "14:00");
-*/
+         */
     }
 }

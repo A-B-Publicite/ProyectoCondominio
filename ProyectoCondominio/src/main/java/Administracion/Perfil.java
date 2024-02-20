@@ -24,13 +24,13 @@ public abstract class Perfil {
     
     public Perfil(String correo, String contrasena, String nombreApellido){
         this.correo = correo;
-        this.contrasena = contrasena;
-        this.nombreApellido = nombreApellido;
+        this.contrasenia = contrasena;
+        this.nombre = nombreApellido;
         this.bandejaDeEntrada = new BandejaDeEntrada(this);
     }
     
     public String getNombreApellido() {
-        return nombreApellido;
+        return nombre;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
