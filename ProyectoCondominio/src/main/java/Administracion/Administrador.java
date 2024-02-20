@@ -27,41 +27,24 @@ public class Administrador extends Perfil {
     public Cuenta getCuenta() {
         return cuenta;
     }
-<<<<<<< HEAD
-    public void agregarCondominio(String nombreCondominio){
-        condominio = new Condominio(nombreCondominio);
-=======
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
->>>>>>> f3fa82989f16089475cd33cf3ee151c8973626aa
     }
 
     public void agregarInmuebleComun(InmuebleComun inmuebleComun) {
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-<<<<<<< HEAD
 
-    public void agregarDepartamento(int cantidad){
-        condominio.agregarPropiedadPrivada(cantidad);
-    }
+
     
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario){
-        Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
-=======
     
-    public void agregarDepartamento(int metrosCuadrados) {
-        Departamento departamentoNuevo = new Departamento(metrosCuadrados);
-        // Crear metodo en condominio
-        condominio.agregarDepartamento(departamentoNuevo);
+    public void agregarDepartamento(int numeroDepartamento) {
+        condominio.agregarPropiedadPrivada(numeroDepartamento);
     }
 
-    public void agregarDepartamento(Departamento departamento) {
-        
-        // Crear metodo en condominio
-        condominio.agregarDepartamento(departamento);
-    }
+
 
     public void agregarPropiedadPrivada1(int cantidad) {
         // Crear metodo en condominio
@@ -70,7 +53,6 @@ public class Administrador extends Perfil {
 
     public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario) {
         Residente residenteNuevo = new Residente(correo, password, nombreApellido, esPropietario);
->>>>>>> f3fa82989f16089475cd33cf3ee151c8973626aa
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional

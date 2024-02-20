@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Condominio {
 
+    private Administrador admin;
     private String nombre;
     private ArrayList<InmuebleComun> inmueblesComunes;
     private ArrayList<InmueblePrivado> departamentos;
@@ -20,7 +21,7 @@ public class Condominio {
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaInmueblesComunes.add(inmueble);
     }
-        
+    
     //para crear la lista de departamentos vacia
     public void agregarPropiedadPrivada(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
@@ -39,7 +40,7 @@ public class Condominio {
         }
         return null;
     }
-            
+    
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setPropietario(residenteNuevo);
     }
@@ -51,14 +52,10 @@ public class Condominio {
                 return departamento.getPropietario();
             }
         }
-<<<<<<< HEAD
-        return null
-=======
         return residente;
     }
 
     public void setAdmin(Administrador admin) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.admin = admin;
     }
->>>>>>> f3fa82989f16089475cd33cf3ee151c8973626aa
 }
