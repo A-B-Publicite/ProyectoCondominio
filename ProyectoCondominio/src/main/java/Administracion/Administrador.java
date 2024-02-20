@@ -12,37 +12,36 @@ public class Administrador extends Perfil{
     private Condominio condominio;
     private Cuenta cuenta;
     
-    public Administrador(String correo, String contrasena, String nombreApellido, Condominio condominio){
+    public Administrador(String correo, String contrasena, String nombreApellido){
         super(correo, contrasena, nombreApellido);
-        this.condominio = condominio;
+        this.condominio = null;
         this.cuenta = new Cuenta(null);
     }
     
     public Cuenta getCuenta() {
         return cuenta;
     }
-    
+    public void agregarCondominio(String nombre){
+        condominio = new Condominio(nombre);
+    }
     public void agregarInmuebleComun(Inmueble inmuebleComun){
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-    
-    public Residente registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
-        Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario, this);
+    public void agregarPropiedadPrivada(Int cantidad){
+        // Crear metodo en condominio
+        condominio.agregarPropiedadPrivada(cantidad);
+    }
+    public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
+        Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
-        condominio.setPropietarioADepartamento(departamentoLibre, residenteNuevo);
-        condominio.agregarResidente(residenteNuevo);
-        residenteNuevo.getCuenta().aniadirObligacion(400, "", "alicuota");
-        return residenteNuevo;
+        departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
     }
-    public void recaudarAlicuota(){
-        // Hacer finanzas
-    }
+    
     public void pagarContrato(Contrato contrato){
-         ObligacionFinanciera obligacionFinanciera =  cuenta.aniadirObligacion(contrato.getPrecioContrato(), "contrato de guardiania", "cuotacontrato");
-
-         cuenta.pagar(obligacionFinanciera);
+        ObligacionFinanciera obligacionFinanciera =  cuenta.aniadirObligacion(contrato.getPrecioContrato(), "contrato de guardiania", "cuotacontrato");
+        cuenta.pagar(obligacionFinanciera);
     }
     
     public Residente obtenerResidente(String nombreResidente){

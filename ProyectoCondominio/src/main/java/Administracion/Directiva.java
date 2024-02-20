@@ -21,13 +21,9 @@ public class Directiva {
             System.out.print("Los candidatos no son propietarios");
             return;
         }
+        this.presidente = presidente;
+        this.secretario = secretario;
         
-        // Implementar en condominio
-        this.presidente = administrador.obtenerResidente(nombrePresidente);
-        this.secretario = administrador.obtenerResidente(nombreSecretario);
-        
-        
-
     }
     
     public void aprobarContrato(Contrato contrato){

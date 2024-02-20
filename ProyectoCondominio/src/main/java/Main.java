@@ -32,14 +32,14 @@ public class Main {
     public static void main(String[] args) {
         
         //datos quemados
-        Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa", new Condominio ("Montanas del sol"));
+        Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa");
         Directiva directiva = new Directiva(administrador);
         Gimnasio gym = new Gimnasio(24, administrador);
         Contrato contrato = new Contrato("00/00/0000", 125.12, "descripcion","11/11/1111", "22/2/2222" );
         List<Perfil> residentes = new ArrayList<>();
 
-        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true, administrador );
-        Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true, administrador);
+        Perfil Residente1 = new Residente("juan123@epn.edu.ec", "123", "Juan", true);
+        Perfil Residente2 = new Residente("juan123@epn.edu.ec", "123", "Pedro", true);
 
         residentes.add(Residente1);
         residentes.add(Residente2);
@@ -139,7 +139,7 @@ public class Main {
         //Pruebas funcionales modulo 3 comunicacion
         //Pruebas funcionales modulo 4 Reservas Areas Comunes
         // Creamos un usuario de tipo Administrador
-        Administrador usuarioReserva = new Administrador("pepe.julio@epn.edu.ec", "acabenmodulos", "Pepe Julio", new Condominio ("Fis EPN"));
+        Administrador usuarioReserva = new Administrador("pepe.julio@epn.edu.ec", "acabenmodulos", "Pepe Julio");
         
         // Creamos una lista de reservas
         List<Reserva> listaReservas = new ArrayList<>();
@@ -213,7 +213,7 @@ public class Main {
             //Llenamos la autorización
             System.out.println("Llenamos la autorización");
             autorizacionVisita.completar("Residente1", visitante.getNombre(), "19/2/2024", "19/2/2024");
-            autorizacionVisita.notificar(new Residente("resi@hot.com","1","Residente1",true,administrador), new Guardia("guard@gmail.com","1","Guardia"));
+            autorizacionVisita.notificar(new Residente("resi@hot.com","1","Residente1",true), new Guardia("guard@gmail.com","1","Guardia"));
             autorizacionVisita.validar();
             registroVisitante.setAutorizacion(autorizacionVisita);
             registroVisitante.registrarEntrada("19/2/2024", "14:00");
