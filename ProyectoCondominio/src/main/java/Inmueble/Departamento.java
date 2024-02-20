@@ -18,4 +18,8 @@ public class Departamento extends InmueblePrivado {
         this.propietario = propietario;
     }
 
+    public double getMetrosCuadrados() {
+        return metrosCuadrados;
+    }
+
 }

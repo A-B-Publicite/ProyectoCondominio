@@ -8,6 +8,7 @@ public class ParqueaderoPrivado extends InmueblePrivado {
         super(metrosCuadrados, propietario);
     }
 
-
-
+    public double getMetrosCuadrados() {
+        return metrosCuadrados;
+    }
 }
