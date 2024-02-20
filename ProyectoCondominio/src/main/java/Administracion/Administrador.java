@@ -36,20 +36,11 @@ public class Administrador extends Perfil {
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-
-
-    
-    
+   
     public void agregarDepartamento(int numeroDepartamento) {
-        condominio.agregarPropiedadPrivada(numeroDepartamento);
+        condominio.agregarDepartamentos(numeroDepartamento);
     }
 
-
-
-    public void agregarPropiedadPrivada1(int cantidad) {
-        // Crear metodo en condominio
-        condominio.agregarPropiedadPrivada(cantidad);
-    }
 
     public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario) {
         Residente residenteNuevo = new Residente(correo, password, nombreApellido, esPropietario);

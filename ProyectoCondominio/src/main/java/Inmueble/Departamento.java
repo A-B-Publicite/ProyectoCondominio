@@ -31,7 +31,7 @@ public class Departamento extends InmueblePrivado {
 
     private void setPropietarioATodosLosInmueblesPrivados() {
         for (InmueblePrivado inmueblePrivado : inmueblesPrivados) {
-            inmueblePrivado.setPropietario();
+            inmueblePrivado.setPropietario(propietario);
         }
     }
 
