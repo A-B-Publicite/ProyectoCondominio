@@ -1,6 +1,7 @@
 package Administracion;
 
 import java.util.Scanner;
+import Inmueble.*;
 
 public class Menu {
     public static void menuAdministracion(Administrador administrador){
@@ -45,40 +46,47 @@ public class Menu {
                         System.out.println("""
                                     Opciones:
                                     1. Cancha
-                                    2. Condominio
-                                    3. Gimnasio
-                                    4. Espacio de parqueadero
-                                    5. Piscina
-                                    6. Terraza
+                                    2. Gimnasio
+                                    3. Espacio de parqueadero
+                                    4. Piscina
+                                    5. Terraza
                                     0. Salir
                                """);
 
                         opcionInmuebleComun = scanner.nextInt();
-                        
-                        
                         switch (opcionInmuebleComun) {
-                            case 1:
-                                Cancha 
-                                break;
-                            case 2:
-                                
-                                break;
-                            case 3:
-                                
-                                break;
-                            case 4:
-                                
-                                break;
-                            case 5:
-                                
-                                break;
-                            case 6:
-                                
-                                break;
-                            default:
-                                System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                            case 1 -> {
+                                System.out.print("Coloque los metros cuadrados del inmueble");
+                                double metrosCuadrados = scanner.nextDouble();
+                                Cancha canchaNueva = new Cancha(metrosCuadrados);
+                                administrador.agregarInmuebleComun(canchaNueva);
                         }
-                    
+                            case 2 -> {
+                                System.out.print("Coloque los metros cuadrados del inmueble");
+                            double metrosCuadrados = scanner.nextDouble();
+                            Gimnasio gymNuevo = new Gimnasio(metrosCuadrados);
+                            administrador.agregarInmuebleComun(gymNuevo);
+                        }
+                            case 3 -> {
+                                System.out.print("Coloque los metros cuadrados del inmueble");
+                            double metrosCuadrados = scanner.nextDouble();
+                            EspacioDeParqueadero espacioParqueo = new EspacioDeParqueadero(metrosCuadrados);
+                            administrador.agregarInmuebleComun(espacioParqueo);
+                        }
+                            case 4 -> {
+                                System.out.print("Coloque los metros cuadrados del inmueble");
+                            double metrosCuadrados = scanner.nextDouble();
+                            Piscina piscinaNueva = new Piscina(metrosCuadrados);
+                            administrador.agregarInmuebleComun(piscinaNueva);
+                        }
+                            case 5 -> {
+                                System.out.print("Coloque los metros cuadrados del inmueble");
+                            double metrosCuadrados = scanner.nextDouble();
+                            Terraza terrazaNueva = new Terraza(metrosCuadrados);
+                            administrador.agregarInmuebleComun(terrazaNueva);
+                        }
+                            default -> System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                        }
                     case 5:
                         
                         break;
