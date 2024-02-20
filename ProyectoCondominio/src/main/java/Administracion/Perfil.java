@@ -6,20 +6,31 @@ import Finanzas.Cuenta;
 
 public abstract class Perfil {
     private String correo;
-    private String contrasena;
-    private String nombreApellido;
+    private String contrasenia;
+    private String nombre;
+    private String apellido;
     private BandejaDeEntrada bandejaDeEntrada;
-    private Cuenta cuenta;
+    private Cuenta cuentaBancaria;
+    
+    public Perfil(String correo, String contrasenia, String nombre, String apellido) {
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     
     public Perfil(String correo, String contrasena, String nombreApellido){
         this.correo = correo;
-        this.contrasena = contrasena;
-        this.nombreApellido = nombreApellido;
+        this.contrasenia = contrasena;
+        this.nombre = nombreApellido;
         this.bandejaDeEntrada = new BandejaDeEntrada(this);
     }
     
     public String getNombreApellido() {
-        return nombreApellido;
+        return nombre;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

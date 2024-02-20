@@ -12,7 +12,7 @@ public class Residente extends Perfil{
     public Residente( String correo, String contrasena, String nombre, Boolean esPropietario) {
         super(correo, contrasena, nombre);
         this.esPropietario = esPropietario;
-        this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
+        //this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
 
     }
     

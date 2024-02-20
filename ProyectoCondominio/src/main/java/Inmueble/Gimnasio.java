@@ -1,19 +1,31 @@
 package Inmueble;
 
-import Administracion.Perfil;
 import areaComun.Reserva;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Gimnasio extends InmuebleComun {
-
-    //inicialmente se instancia la lista de reservas como new ArrayList
-    public Gimnasio( List<Reserva> listaReservas, List<String> diasDisponibles, String nombreInmueble, double metrosCuadrados, Perfil propietario) {
-        super(listaReservas,diasDisponibles, nombreInmueble, metrosCuadrados, propietario);       
+    
+    public Gimnasio(double metrosCuadrados) {
+        super(metrosCuadrados);
     }
-
-    //borrar si no se usa xd
-    public Gimnasio(double metrosCuadrados, Perfil propietario) {
-        super(null, null, "Gimnasio", metrosCuadrados,propietario);       
+    
+    @Override
+    public void agregarReserva(Reserva reserva){
+               
     }
-
+    
+    @Override
+    public void eliminarReserva(Reserva reserva){
+                     
+    }
+    
+    @Override
+    public ArrayList<Reserva> obtenerReservas() {
+        return null; //por el momento
+    }
+    
+    @Override
+    public ArrayList<String> consultarDiasDisponibles() {
+        return null; //por el momento
+    }
 }

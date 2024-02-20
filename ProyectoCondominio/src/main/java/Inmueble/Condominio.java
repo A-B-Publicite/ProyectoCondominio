@@ -1,5 +1,6 @@
 package Inmueble;
 
+import Administracion.Administrador;
 import Administracion.Residente;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,23 +8,23 @@ import java.util.List;
 public class Condominio {
 
     private String nombre;
-    private List<InmuebleComun> listaInmueblesComunes;
-    private List<Departamento> listaDepartamentos;
-    private List<Residente> listaResidentes;
+    private ArrayList<InmuebleComun> listaInmueblesComunes;
+    private ArrayList<Departamento> listaDepartamentos;
+    private ArrayList<Residente> listaResidentes;
     
     public Condominio(String nombre) {
         this.nombre = nombre;
-        listaInmueblesComunes = new ArrayList<>();
-        listaDepartamentos = new ArrayList<>();
-        listaResidentes = new ArrayList<>();
+        listaInmueblesComunes = new ArrayList<InmuebleComun>();
+        listaDepartamentos = new ArrayList<Departamento>();
+        listaResidentes = new ArrayList<Residente>();
     }
     
-    //si se incluye un nuevo inmueble a la lista después de la creación del condominio
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaInmueblesComunes.add(inmueble);
     }
-    public void agregarDepartamento(Departamento dpto) {//borrar si nadie le usa xd
-        listaDepartamentos.add(dpto);
+    
+    public void agregarDepartamento(Departamento departamento) {
+        listaDepartamentos.add(departamento);
     }
     
     public void agregarResidente(Residente residente){
@@ -61,5 +62,9 @@ public class Condominio {
             }
         }
         return residente;
+    }
+
+    public void setAdmin(Administrador admin) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
