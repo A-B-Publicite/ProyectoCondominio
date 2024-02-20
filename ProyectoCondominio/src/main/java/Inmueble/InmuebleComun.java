@@ -1,7 +1,9 @@
 package Inmueble;
 
 import areaComun.Reserva;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class InmuebleComun{
 
@@ -12,7 +14,13 @@ public abstract class InmuebleComun{
     public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
         this.listaReservas = null;
-        this.diasDisponibles = null;
+        this.diasDisponibles = new ArrayList<String>();
+        diasDisponibles.add("Lunes");
+        diasDisponibles.add("Martes");
+        diasDisponibles.add("Miercoles");
+        diasDisponibles.add("Jueves");
+        diasDisponibles.add("Viernes");
+        
     }
     
     public double getMetrosCuadrados() {
