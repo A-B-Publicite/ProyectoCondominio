@@ -5,7 +5,7 @@ import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.InmuebleComun;
-import java.util.ArrayList;
+import java.util.*;
 // Considerar singleton
 
 public class Administrador extends Perfil {
