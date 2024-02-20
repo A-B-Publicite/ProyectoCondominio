@@ -1,7 +1,7 @@
 package Inmueble;
 
-import Administracion.Administrador;
-import Administracion.Residente;
+import Administracion.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Condominio {
     private Administrador admin;
     private String nombre;
     private ArrayList<InmuebleComun> inmueblesComunes;
-    private ArrayList<InmueblePrivado> departamentos;
+    private ArrayList<Departamento> departamentos;
     private Directiva directiva;
     
     public Condominio(String nombreCondominio) {
@@ -22,7 +22,7 @@ public class Condominio {
        
     //llenar parqueaderos publicos
     public void agregarInmuebleComun(InmuebleComun inmueble) {
-        listaInmueblesComunes.add(inmueble);
+        inmueblesComunes.add(inmueble);
     }
     
     //para crear la lista de departamentos vacia
@@ -47,11 +47,11 @@ public class Condominio {
         departamentoLibre.setPropietario(residenteNuevo);
     }
     
-    public Residente obtenerResidente(String nombreResidente){
+    public Residente obtenerResidentePorNombre(String nombreResidente){
         Residente residente = null;
         for (Departamento departamento : departamentos) {
             if (departamento.getPropietario().getNombre() == nombreResidente) {
-                return departamento.getPropietario();
+                return (Residente) departamento.getPropietario();
             }
         }
         return residente;
@@ -70,7 +70,7 @@ public class Condominio {
     public Residente obtenerResidente(String correo){
         Residente resAux;
         for (Departamento departamento : departamentos) {
-            resAux = departamento.getPropietario(); 
+            resAux = (Residente) departamento.getPropietario(); 
             if (resAux.compararCorreoNombre(correo)) {
                 return resAux;
             }

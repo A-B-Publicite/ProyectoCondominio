@@ -3,8 +3,9 @@ package Administracion;
 
 import Comunicacion.BandejaDeEntrada;
 import Finanzas.Cuenta;
+import java.io.Serializable;
 
-public abstract class Perfil {
+public abstract class Perfil implements Serializable{
     protected String correo;
     protected String contrasenia;
     protected String nombre;
@@ -36,6 +37,11 @@ public abstract class Perfil {
     
     public BandejaDeEntrada getBandejaDeEntrada() {
         return bandejaDeEntrada;
+    }
+
+    public String getNombre() {
+        return nombre;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
