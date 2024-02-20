@@ -8,6 +8,7 @@ public class ParqueaderoPrivado extends InmueblePrivado {
         super(metrosCuadrados, propietario);
     }
 
+    @Override
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }

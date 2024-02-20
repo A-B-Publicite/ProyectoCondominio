@@ -10,7 +10,7 @@ public abstract class InmuebleComun{
     private List<String> diasDisponibles;
     String nombreInmueble;
     
-    double metrosCuadrados;
+    double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota 
     Perfil propietario;
     
     public InmuebleComun() {
@@ -23,7 +23,6 @@ public abstract class InmuebleComun{
         this.metrosCuadrados = metrosCuadrados;
         this.propietario = propietario;
     }
-
 
     public double getMetrosCuadrados() {
         return metrosCuadrados;

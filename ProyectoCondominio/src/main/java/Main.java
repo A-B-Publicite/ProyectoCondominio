@@ -34,7 +34,7 @@ public class Main {
         //datos quemados
         Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa");
         Directiva directiva = new Directiva(administrador);
-        Gimnasio gym = new Gimnasio(24, administrador);
+//        Gimnasio gym = new Gimnasio(24, administrador);
         Contrato contrato = new Contrato("00/00/0000", 125.12, "descripcion","11/11/1111", "22/2/2222" );
         List<Perfil> residentes = new ArrayList<>();
 
@@ -139,7 +139,7 @@ public class Main {
         //Pruebas funcionales modulo 3 comunicacion
         //Pruebas funcionales modulo 4 Reservas Areas Comunes
         // Creamos un usuario de tipo Administrador
-        Administrador usuarioReserva = new Administrador("pepe.julio@epn.edu.ec", "acabenmodulos", "Pepe Julio");
+        Administrador usuarioReserva = new Administrador("pepe.julio@epn.edu.ec", "acabenmodulos,no;)", "Pepe Julito");
         
         // Creamos una lista de reservas
         List<Reserva> listaReservas = new ArrayList<>();

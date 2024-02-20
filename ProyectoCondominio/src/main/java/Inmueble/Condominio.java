@@ -11,25 +11,12 @@ public class Condominio {
     private List<Departamento> listaDepartamentos;
     private List<Residente> listaResidentes;
     
-    //private InmuebleComun inmuebleComun;
-    //private InmueblePrivado inmueblePrivado;
-    
     public Condominio(String nombre) {
         this.nombre = nombre;
         listaInmueblesComunes = new ArrayList<>();
         listaDepartamentos = new ArrayList<>();
         listaResidentes = new ArrayList<>();
     }
-
-//    public Condominio(List<InmuebleComun> listaInmueblesComunes) {
-//        this.listaInmueblesComunes = listaInmueblesComunes;
-//        this.listaDepartamentos = new List<Departamento>;
-//        this.listaResidentes = new List<Residente>;
-//    }
-
-    /*public void setInmueblePrivado(Departamento departamento) {
-        this.inmueblePrivado= departamento;
-    }*/
     
     //si se incluye un nuevo inmueble a la lista después de la creación del condominio
     public void agregarInmuebleComun(InmuebleComun inmueble) {
@@ -73,6 +60,7 @@ public class Condominio {
         }
         return residente;
     }
+    
     
 
 }

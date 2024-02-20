@@ -24,6 +24,7 @@ public class Departamento extends InmueblePrivado {
         this.propietario = propietario;
     }
 
+    @Override
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }

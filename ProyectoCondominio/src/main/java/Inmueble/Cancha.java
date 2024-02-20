@@ -6,11 +6,8 @@ import java.util.List;
 
 public class Cancha extends InmuebleComun {
 
-    //constructor de reservas
     public Cancha(List<Reserva> listaReservas, List<String> diasDisponibles, String nombreInmueble, double metrosCuadrados, Perfil propietario) {
         super(listaReservas, diasDisponibles, nombreInmueble, metrosCuadrados, propietario);
     }
-
-    //constructor
-
+    
 }
