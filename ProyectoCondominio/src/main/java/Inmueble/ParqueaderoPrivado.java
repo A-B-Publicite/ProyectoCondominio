@@ -3,9 +3,9 @@ package Inmueble;
 import Administracion
 
 public class ParqueaderoPrivado extends InmueblePrivado {
-    
-    public ParqueaderoPrivado(double metrosCuadrados) {
-        super(metrosCuadrados, null);
+    private final double M2PARQUEADERO = 3;
+    public ParqueaderoPrivado() {
+        super(M2PARQUEADERO, null);
     }
 
     @Override
