@@ -36,8 +36,15 @@ public class Administrador extends Perfil {
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
+    
+    public void agregarDepartamento(int departamento) {
+        
+        // Crear metodo en condominio
+        condominio.agregarDepartamento(departamento);
+    }
 
     public void agregarDepartamento(Departamento departamento) {
+        
         // Crear metodo en condominio
         condominio.agregarDepartamento(departamento);
     }

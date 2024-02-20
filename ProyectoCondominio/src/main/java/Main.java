@@ -58,7 +58,8 @@ public class Main {
                         administrador.registrarResidente(nombre, apellido, esPropietario);
                         break;
                     case 3:
-                        administrador.agregar();
+                        System.out.print("Ingrese el tamanio de ese Departamento: ");
+                        administrador.agregarDepartamento(scanner.nextInt());
                 }
             } catch (Exception e) {
                 System.out.print(e.getMessage());
