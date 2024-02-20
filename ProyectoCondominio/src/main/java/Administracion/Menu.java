@@ -40,6 +40,7 @@ public class Menu {
                         administrador.agregarDepartamento(scanner.nextInt());
                         break;
                     case 4:
+                        do{
                         int opcionInmuebleComun;
                         scanner = new Scanner(System.in);
         
@@ -86,15 +87,18 @@ public class Menu {
                             administrador.agregarInmuebleComun(terrazaNueva);
                         }
                             default -> System.out.println("No ha escogido una opcion correcta"); //ver el salir
-                        }
+                        } System.out.println("Desea agregar otro inmueble común? SI/NO");
+                        }while (scanner.next().equalsIgnoreCase("Si"));
+                        
                     case 5:
                         
-                        break;
-                        
+                        break; 
                         
                 }
             } catch (Exception e) {
                 System.out.print(e.getMessage());
             }
+            
     }
 }
+//double metrosCuadrados = scanner.nextDouble();
