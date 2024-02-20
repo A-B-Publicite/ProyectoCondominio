@@ -8,9 +8,5 @@ public class ParqueaderoPrivado extends InmueblePrivado {
         super(M2PARQUEADERO, null);
     }
 
-    @Override
-    public double getMetrosCuadrados() {
-        return metrosCuadrados;
-    }
     
 }
