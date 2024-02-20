@@ -1,17 +1,13 @@
 package Inmueble;
 
-import Administracion.Perfil;
 import areaComun.Reserva;
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class InmuebleComun{
 
-    private List<Reserva> listaReservas;
-    private List<String> diasDisponibles;
+    private ArrayList<Reserva> listaReservas;
+    private ArrayList<String> diasDisponibles;
     private double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota 
-
-    public InmuebleComun() {
-    }
 
     public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
@@ -32,11 +28,11 @@ public abstract class InmuebleComun{
         listaReservas.remove(reserva);               
     }
 
-    public List<Reserva> obtenerReservas() {
+    public ArrayList<Reserva> obtenerReservas() {
         return listaReservas;
     }
 
-    public List<String> consultarDiasDisponibles() {
+    public ArrayList<String> consultarDiasDisponibles() {
         return diasDisponibles;
     }
     
