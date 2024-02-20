@@ -4,21 +4,31 @@ import Administracion.Perfil;
 import areaComun.Reserva;
 import java.util.List;
 
-public abstract class InmuebleComun extends Inmueble{
+public abstract class InmuebleComun{
 
     private List<Reserva> listaReservas;
     private List<String> diasDisponibles;
-
+    String nombreInmueble;
+    double metrosCuadrados;
+    Perfil propietario;
+    
     public InmuebleComun() {
     }
 
-    public InmuebleComun(List<Reserva> listaReservas, List<String> diasDisponibles, String nombre, double metrosCuadrados, boolean necesitaMantenimiento, double alicuota, Perfil propietario) {
-        super(nombre, metrosCuadrados, necesitaMantenimiento, alicuota, propietario);
+    public InmuebleComun(List<Reserva> listaReservas, List<String> diasDisponibles, String nombreInmueble, double metrosCuadrados, Perfil propietario) {
         this.listaReservas = listaReservas;
         this.diasDisponibles = diasDisponibles;
+        this.nombreInmueble = nombreInmueble;
+        this.metrosCuadrados = metrosCuadrados;
+        this.propietario = propietario;
     }
 
 
+    public double getMetrosCuadrados() {
+        return metrosCuadrados;
+    }
+
+    //para el modulo de reserva
     public void agregarReserva(Reserva reserva){
         listaReservas.add(reserva);               
     }

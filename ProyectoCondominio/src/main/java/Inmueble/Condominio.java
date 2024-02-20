@@ -6,7 +6,7 @@ import Administracion.Residente;
 
 import java.util.List;
 
-public class Condominio extends Inmueble {
+public class Condominio {
 
     private List<InmuebleComun> listaInmueblesComunes;
     private List<Departamento> listaDepartamentos;
@@ -25,9 +25,13 @@ public class Condominio extends Inmueble {
   
     
     //si se incluye un nuevo inmueble a la lista después de la creación del condominio
-    public void agregarInmuebleComun(Inmueble inmueble) {
-        listaInmueblesComunes.add((InmuebleComun) inmueble);
+    public void agregarInmuebleComun(InmuebleComun inmueble) {
+        listaInmueblesComunes.add(inmueble);
     }
+    public void agregarDepartamento(Departamento dpto) {
+        listaDepartamentos.add(dpto);
+    }
+    
     public void agregarResidente(Residente residente){
         listaResidentes.add(residente);
     }
