@@ -1,19 +1,23 @@
 package Inmueble;
 
 import Administracion.Residente;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Condominio {
 
+    private String nombre;
     private List<InmuebleComun> listaInmueblesComunes;
     private List<Departamento> listaDepartamentos;
     private List<Residente> listaResidentes;
     
-    private InmuebleComun inmuebleComun;
-    private InmueblePrivado inmueblePrivado;
+    //private InmuebleComun inmuebleComun;
+    //private InmueblePrivado inmueblePrivado;
     
-    public Condominio() {
-        
+    public Condominio(String nombre) {
+        this.nombre = nombre;
+        listaInmueblesComunes = new ArrayList<>();
+        listaDepartamentos = new ArrayList<>();
     }
 
 //    public Condominio(List<InmuebleComun> listaInmueblesComunes) {
@@ -22,9 +26,9 @@ public class Condominio {
 //        this.listaResidentes = new List<Residente>;
 //    }
 
-    public void setInmueblePrivado(Departamento departamento) {
+    /*public void setInmueblePrivado(Departamento departamento) {
         this.inmueblePrivado= departamento;
-    }
+    }*/
     
     //si se incluye un nuevo inmueble a la lista después de la creación del condominio
     public void agregarInmuebleComun(InmuebleComun inmueble) {
@@ -36,6 +40,10 @@ public class Condominio {
     
     public void agregarResidente(Residente residente){
         listaResidentes.add(residente);
+    }
+    
+    public void agregarPropiedadPrivada(int cantidad){
+        //listaResidentes.add(cantidad);
     }
     
     public Departamento obtenerDepartamentoLibre(){
