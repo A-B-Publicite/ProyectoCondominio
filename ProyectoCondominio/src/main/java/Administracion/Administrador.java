@@ -16,6 +16,12 @@ public class Administrador extends Perfil{
         this.condominio = null;
         this.cuenta = new Cuenta(null);
     }
+
+
+    public Administrador(String correo, String contrasenia, String nombre, String apellido) {
+        super(correo, contrasenia, nombre, apellido);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public Cuenta getCuenta() {
         return cuenta;

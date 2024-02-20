@@ -18,12 +18,12 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        Administrador admin = new Administrador("juan.zambrano@condominio.com","12345","Juan","Zambrano");
+        
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("""
-                           LOGIN:
-                           Usuario: 
-                           """);
+        System.out.println("LOGIN");
+        System.out.print("Usuario:");
         
         String usuario = scanner.nextLine();
         scanner.reset();

@@ -7,9 +7,10 @@ import Finanzas.Cuenta;
 public abstract class Perfil {
     private String correo;
     private String contrasena;
-    private String nombreApellido;
+    private String nombre;
+    private String apellido;
     private BandejaDeEntrada bandejaDeEntrada;
-    private Cuenta cuenta;
+    private Cuenta cuentaBancaria;
     
     public Perfil(String correo, String contrasena, String nombreApellido){
         this.correo = correo;
