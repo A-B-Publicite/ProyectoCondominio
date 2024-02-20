@@ -79,4 +79,12 @@ public class Administrador extends Perfil {
         return condominio.mostrarContratos();
     }
 
+    public void agregarDirectiva(String correoPresidente, String correoSecretario) {
+        condominio.agregarDirectiva(obtenerResidenteCorreo(correoPresidente), obtenerResidenteCorreo(correoSecretario));
+    }
+    
+    public Residente obtenerResidenteCorreo(String correo){
+        return condominio.obtenerResidente(correo));
+    }
+
 }

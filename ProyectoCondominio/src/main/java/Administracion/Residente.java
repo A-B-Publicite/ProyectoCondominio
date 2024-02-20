@@ -55,6 +55,9 @@ public class Residente extends Perfil{
             default:
                 return false;
         }
-        
     }
+    
+    public Boolean compararCorreoNombre(String correo){
+            return correo.equals(this.correo);
+        }
 }

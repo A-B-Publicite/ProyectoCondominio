@@ -5,12 +5,12 @@ import Comunicacion.BandejaDeEntrada;
 import Finanzas.Cuenta;
 
 public abstract class Perfil {
-    private String correo;
-    private String contrasenia;
-    private String nombre;
-    private String apellido;
-    private BandejaDeEntrada bandejaDeEntrada;
-    private Cuenta cuentaBancaria;
+    protected String correo;
+    protected String contrasenia;
+    protected String nombre;
+    protected String apellido;
+    protected BandejaDeEntrada bandejaDeEntrada;
+    protected Cuenta cuentaBancaria;
     
     public Perfil(String correo, String contrasenia, String nombre, String apellido) {
         this.correo = correo;

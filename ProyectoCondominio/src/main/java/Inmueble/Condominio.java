@@ -64,4 +64,16 @@ public class Condominio {
     public ArrayList<Contrato> mostrarContratos(){
         return directiva.mostrarContratos();
     }
+    
+    
+    public Residente obtenerResidente(String correo){
+        Residente resAux;
+        for (Departamento departamento : departamentos) {
+            resAux = departamento.getPropietario(); 
+            if (resAux.compararCorreoNombre(correo)) {
+                return resAux;
+            }
+        }
+        return null;
+    }
 }

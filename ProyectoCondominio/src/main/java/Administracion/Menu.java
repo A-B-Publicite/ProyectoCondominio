@@ -12,9 +12,10 @@ public class Menu {
                                Opciones:
                                1. Crear condominio
                                2. Registrar Residente
-                               3. Agregar Departamento
-                               4. Agregar un Inmueble Comun
-                               5. Mostrar lista de contratos
+                               3. Agregar directiva
+                               4. Agregar Departamento
+                               5. Agregar un Inmueble Comun
+                               6. Mostrar lista de contratos
                                0. Salir
                                """);
 
@@ -36,10 +37,17 @@ public class Menu {
                         administrador.registrarResidente(nombre, apellido, esPropietario);
                         break;
                     case 3:
+                        System.out.print("Ingrese el correo del presidente: ");
+                        String correoPresidente = scanner.nextLine();
+                        System.out.print("Ingrese el correo del secretario: ");
+                        String correoSecretario = scanner.nextLine();
+                        administrador.agregarDirectiva(correoPresidente, correoSecretario);
+                        break;
+                    case 4:
                         System.out.print("Ingrese el tamanio de ese Departamento: ");
                         administrador.agregarDepartamento(scanner.nextInt());
                         break;
-                    case 4:
+                    case 5:
                         int opcionInmuebleComun;
                         scanner = new Scanner(System.in);
         
@@ -87,7 +95,7 @@ public class Menu {
                         }
                             default -> System.out.println("No ha escogido una opcion correcta"); //ver el salir
                         }
-                    case 5:
+                    case 6:
                         System.out.println(administrador.mostrarContratos());
                         
                         break;
