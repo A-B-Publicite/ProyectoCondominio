@@ -1,28 +1,31 @@
 package Inmueble;
 
-import Administracion.Perfil;
 import areaComun.Reserva;
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class InmuebleComun{
 
-    private List<Reserva> listaReservas;
-    private List<String> diasDisponibles;
-    String nombreInmueble;
-    
-    double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota 
-    Perfil propietario;
-    
-    public InmuebleComun() {
-    }
+    private ArrayList<Reserva> listaReservas;
+    private ArrayList<String> diasDisponibles;
+    private double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota 
 
-    public InmuebleComun(List<Reserva> listaReservas, List<String> diasDisponibles, String nombreInmueble, double metrosCuadrados, Perfil propietario) {
-        this.listaReservas = listaReservas;
-        this.diasDisponibles = diasDisponibles;
-        this.nombreInmueble = nombreInmueble;
+    public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
-        this.propietario = propietario;
+        this.listaReservas = null;
+        this.diasDisponibles = null;
     }
+    
+    /*
+    1. Modulo administracion
+        administrador.abrirMenu();
+    2. Modulo finanza
+        administrador.abrirMenu();
+    3. Modulo comunicacion
+        administrador.abrirMenu();
+    4. Modulo administracion
+        administrador.abrirMenu();
+    
+    */
 
     public double getMetrosCuadrados() {
         return metrosCuadrados;
@@ -37,11 +40,11 @@ public abstract class InmuebleComun{
         listaReservas.remove(reserva);               
     }
 
-    public List<Reserva> obtenerReservas() {
+    public ArrayList<Reserva> obtenerReservas() {
         return listaReservas;
     }
 
-    public List<String> consultarDiasDisponibles() {
+    public ArrayList<String> consultarDiasDisponibles() {
         return diasDisponibles;
     }
     

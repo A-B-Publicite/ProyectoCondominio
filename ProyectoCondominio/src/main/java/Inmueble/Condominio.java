@@ -1,5 +1,6 @@
 package Inmueble;
 
+import Administracion.Administrador;
 import Administracion.Residente;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,5 +51,14 @@ public class Condominio {
                 return departamento.getPropietario();
             }
         }
+<<<<<<< HEAD
         return null
+=======
+        return residente;
+    }
+
+    public void setAdmin(Administrador admin) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+>>>>>>> f3fa82989f16089475cd33cf3ee151c8973626aa
 }

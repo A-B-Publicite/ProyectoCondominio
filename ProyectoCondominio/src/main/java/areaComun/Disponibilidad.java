@@ -5,8 +5,7 @@
 package areaComun;
 
 import Inmueble.InmuebleComun;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -24,7 +23,7 @@ public class Disponibilidad {
 
     // Método para verificar la disponibilidad
     public boolean verificarDisponibilidad(String dia) {
-        List<String> reservas = this.areaComun.consultarDiasDisponibles();
+        ArrayList<String> reservas = this.areaComun.consultarDiasDisponibles();
         if (reservas.contains(dia)) {
             return false;  // Hay un conflicto de reserva
             }
@@ -50,7 +49,7 @@ public class Disponibilidad {
         this.dia = dia;
     }
 
-    public List<Reserva> getListaReservas() {
+    public ArrayList<Reserva> getListaReservas() {
         return this.areaComun.obtenerReservas();
     }
 } 
