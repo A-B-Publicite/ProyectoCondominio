@@ -64,36 +64,37 @@ public class Menu {
                         }
                             case 2 -> {
                                 System.out.print("Coloque los metros cuadrados del inmueble");
-                            double metrosCuadrados = scanner.nextDouble();
-                            Gimnasio gymNuevo = new Gimnasio(metrosCuadrados);
-                            administrador.agregarInmuebleComun(gymNuevo);
+                                double metrosCuadrados = scanner.nextDouble();
+                                Gimnasio gymNuevo = new Gimnasio(metrosCuadrados);
+                                administrador.agregarInmuebleComun(gymNuevo);
                         }
                             case 3 -> {
                                 System.out.print("Coloque los metros cuadrados del inmueble");
-                            double metrosCuadrados = scanner.nextDouble();
-                            EspacioDeParqueadero espacioParqueo = new EspacioDeParqueadero(metrosCuadrados);
-                            administrador.agregarInmuebleComun(espacioParqueo);
+                                double metrosCuadrados = scanner.nextDouble();
+                                EspacioDeParqueadero espacioParqueo = new EspacioDeParqueadero(metrosCuadrados);
+                                administrador.agregarInmuebleComun(espacioParqueo);
                         }
                             case 4 -> {
                                 System.out.print("Coloque los metros cuadrados del inmueble");
-                            double metrosCuadrados = scanner.nextDouble();
-                            Piscina piscinaNueva = new Piscina(metrosCuadrados);
-                            administrador.agregarInmuebleComun(piscinaNueva);
+                                double metrosCuadrados = scanner.nextDouble();
+                                Piscina piscinaNueva = new Piscina(metrosCuadrados);
+                                administrador.agregarInmuebleComun(piscinaNueva);
                         }
                             case 5 -> {
                                 System.out.print("Coloque los metros cuadrados del inmueble");
-                            double metrosCuadrados = scanner.nextDouble();
-                            Terraza terrazaNueva = new Terraza(metrosCuadrados);
-                            administrador.agregarInmuebleComun(terrazaNueva);
+                                double metrosCuadrados = scanner.nextDouble();
+                                Terraza terrazaNueva = new Terraza(metrosCuadrados);
+                                administrador.agregarInmuebleComun(terrazaNueva);
                         }
                             default -> System.out.println("No ha escogido una opcion correcta"); //ver el salir
                         } System.out.println("Desea agregar otro inmueble común? SI/NO");
                         }while (scanner.next().equalsIgnoreCase("Si"));
                         
                     case 5:
-                        
-                        break; 
-                        
+                       
+                        administrador.pagarContrato(contrato);
+                        break;
+                               
                 }
             } catch (Exception e) {
                 System.out.print(e.getMessage());
@@ -101,4 +102,3 @@ public class Menu {
             
     }
 }
-//double metrosCuadrados = scanner.nextDouble();
