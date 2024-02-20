@@ -7,45 +7,36 @@ import java.util.List;
 public class Condominio {
 
     private String nombre;
-    private ArrayList<InmuebleComun> listaInmueblesComunes;
-    private ArrayList<Departamento> listaDepartamentos;
-    private ArrayList<Residente> listaResidentes;
+    private ArrayList<InmuebleComun> inmueblesComunes;
+    private ArrayList<InmueblePrivado> departamentos;
     
-    public Condominio(String nombre) {
-        this.nombre = nombre;
-        listaInmueblesComunes = new ArrayList<InmuebleComun>();
-        listaDepartamentos = new ArrayList<Departamento>();
-        listaResidentes = new ArrayList<Residente>();
+    public Condominio(String nombreCondominio) {
+        this.nombre = nombreCondominio;
+        inmueblesComunes = new ArrayList<InmuebleComun>();
+        departamentos = new ArrayList<Departamento>();
     }
-    
+        
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaInmueblesComunes.add(inmueble);
     }
-    
-    public void agregarDepartamento(Departamento departamento) {
-        listaDepartamentos.add(departamento);
-    }
-    
-    public void agregarResidente(Residente residente){
-        listaResidentes.add(residente);
-    }
-    
+        
     //para crear la lista de departamentos vacia
     public void agregarPropiedadPrivada(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
-            listaDepartamentos.add(new Departamento(82));//se puede leer los metros cuadrados del .txt para que crear los departamentos con m2 distintos.
+            Departamento departamentonuevo = new Departamento(82);
+            listaInmueblesPrivados.add(departamentonuevo);
         }
     }
     
     public Departamento obtenerDepartamentoLibre(){
         Departamento departamentoLibre = null;
-        for (Departamento departamento : listaDepartamentos) {
+        for (Departamento departamento : departamentos) {
             if (departamento.getPropietario() == null) {
                 departamentoLibre = departamento;
-                break;
+                return departamentoLibre;
             }
         }
-        return departamentoLibre;
+        return null;
     }
             
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
@@ -54,12 +45,10 @@ public class Condominio {
     
     public Residente obtenerResidente(String nombreResidente){
         Residente residente = null;
-        for (Residente residenteI : listaResidentes) {
-            if (residente.getNombreApellido().equals(nombreResidente)) {
-                residente= residenteI;
-                break;
+        for (Departamento departamento : departamentos) {
+            if (departamento.getPropietario().getNombre() == nombreResidente) {
+                return departamento.getPropietario();
             }
         }
-        return residente;
-    }
+        return null
 }

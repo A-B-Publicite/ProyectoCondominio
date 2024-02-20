@@ -26,23 +26,19 @@ public class Administrador extends Perfil{
     public Cuenta getCuenta() {
         return cuenta;
     }
-    public void agregarCondominio(String nombre){
-        condominio = new Condominio(nombre);
+    public void agregarCondominio(String nombreCondominio){
+        condominio = new Condominio(nombreCondominio);
     }
     public void agregarInmuebleComun(InmuebleComun inmuebleComun){
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-    public void agregarDepartamento(Departamento departamento){
-        // Crear metodo en condominio
-        condominio.agregarDepartamento(departamento);
-    }
-    
-    public void agregarPropiedadPrivada1(int cantidad){
-        // Crear metodo en condominio
+
+    public void agregarDepartamento(int cantidad){
         condominio.agregarPropiedadPrivada(cantidad);
     }
-    public void registrarResidente(String correo, String password, String nombreApellido, Boolean esPropietario){
+    
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario){
         Residente residenteNuevo = new Residente (correo, password, nombreApellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);

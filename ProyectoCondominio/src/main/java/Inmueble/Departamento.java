@@ -1,13 +1,16 @@
 package Inmueble;
 
 import Administracion.Perfil;
+import java.util.ArrayList;
 
 public class Departamento extends InmueblePrivado {
-    ParqueaderoPrivado parqueaderoPrivado;
+    private Residente propietario;
+    private ArrayList<InmueblesPrivado> inmueblesPrivados;
     int metrocuadradosP=12;
-    //para departamentos vacios
+    
     public Departamento(double metrosCuadrados) {
-        super(metrosCuadrados,null);
+        super(metrosCuadrados);
+        inmueblesPrivados = new ArrayList<InmueblesPrivado>();
         this.parqueaderoPrivado = new ParqueaderoPrivado(metrocuadradosP, null);
     }
     //para departamentos con propietario
@@ -22,11 +25,16 @@ public class Departamento extends InmueblePrivado {
 
     public void setPropietario(Perfil propietario) {
         this.propietario = propietario;
+        setPropietarioATodosLosInmueblesPrivados();
     }
 
     @Override
     public double getMetrosCuadrados() {
         return metrosCuadrados;
+    }
+
+    private void setPropietarioATodosLosInmueblesPrivados() {
+        
     }
 
 }

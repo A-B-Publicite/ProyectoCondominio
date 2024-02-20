@@ -1,20 +1,16 @@
 package Inmueble;
 
-import Administracion.Perfil;
+import Administracion
 
 public class ParqueaderoPrivado extends InmueblePrivado {
     
-    public ParqueaderoPrivado(double metrosCuadrados, Perfil propietario) {
-        super(metrosCuadrados, propietario);
+    public ParqueaderoPrivado(double metrosCuadrados) {
+        super(metrosCuadrados, null);
     }
 
     @Override
     public double getMetrosCuadrados() {
         return metrosCuadrados;
-    }
-
-    public void setPropietario(Perfil propietario) {
-        this.propietario = propietario;
     }
     
 }
