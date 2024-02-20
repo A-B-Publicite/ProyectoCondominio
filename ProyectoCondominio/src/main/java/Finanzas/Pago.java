@@ -12,23 +12,27 @@ public class Pago {
     private Cuenta cuenta;
     private ObligacionFinanciera obligacionFinanciera;
 
-    public Pago(ObligacionFinanciera obligacionFinanciera, Cuenta cuenta) {
+    public Pago(Cuenta cuenta) {
         this.cuenta = cuenta;
-        ObligacionFinanciera obligacionFPagada = pagar(obligacionFinanciera);
-        this.obligacionFinanciera = obligacionFPagada;
-        cuenta.agregarRegistro(new Registro(this));
     }
 
-    public ObligacionFinanciera pagar(ObligacionFinanciera obligacionFinanciera) {
+    public void pagar(ObligacionFinanciera obligacionFinancieraAPagar) {
+
+        obligacionFinanciera = obligacionFinancieraAPagar;
+
         cuenta.debitar(obligacionFinanciera.getMonto());
+
+        // TODO: Cambiar cuando cambien lo del admin
         if (cuenta.getCuentaAdministrador() != null) {
             cuenta.getCuentaAdministrador().depositar(obligacionFinanciera.getMonto());
         }
-        obligacionFinanciera.cambiarEstado();
+
+        obligacionFinanciera.cambiarEstado("completado");
+
+
+        cuenta.agregarRegistro(new Registro(this));
 
         cuenta.eliminarObligacion(obligacionFinanciera);
-
-        return obligacionFinanciera;
     }
 
     @Override

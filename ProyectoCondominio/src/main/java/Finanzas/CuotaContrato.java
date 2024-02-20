@@ -10,11 +10,17 @@ package Finanzas;
  */
 import java.time.LocalDate;
 
-public class CuotaContrato extends ObligacionFinanciera{
+public class CuotaContrato extends ObligacionFinanciera {
 
     public CuotaContrato(double precioPresestablecido, String descripcion, String id) {
         super(precioPresestablecido, LocalDate.now(), descripcion, id);
     }
+
+    @Override
+    public void cambiarEstado(String senial) {
+        estado.cambiarEstado(this, senial);
+    }
+
 
     @Override
     public double calcularMonto(double precioPresestablecido) {

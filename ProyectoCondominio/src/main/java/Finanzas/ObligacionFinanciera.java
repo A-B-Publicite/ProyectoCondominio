@@ -8,6 +8,7 @@ package Finanzas;
  *
  * @author alejo
  */
+
 import java.time.LocalDate;
 
 public abstract class ObligacionFinanciera {
@@ -18,6 +19,7 @@ public abstract class ObligacionFinanciera {
     protected String idObligacion;
 
     public ObligacionFinanciera(double valor, LocalDate fechaCreacion, String descripcion, String idObligacion) {
+        //Valor corresponde a m2, valorMulta, valorCuota.
         monto = calcularMonto(valor);
         this.fechaCreacion = fechaCreacion;
         estado = new EstadoPendiente();
@@ -25,12 +27,13 @@ public abstract class ObligacionFinanciera {
         this.idObligacion = idObligacion;
     }
 
-    public abstract double calcularMonto(double monto);
-
-    public void cambiarEstado() {
-        estado.cambiarEstado(this);
+    public EstadoObligacion getEstado() {
+        return estado;
     }
 
+    public abstract double calcularMonto(double monto);
+
+    public abstract void cambiarEstado(String senial);
 
     public void setEstado(EstadoObligacion estado) {
         this.estado = estado;

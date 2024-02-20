@@ -11,8 +11,14 @@ package Finanzas;
 public class EstadoPendiente implements EstadoObligacion {
 
     @Override
-    public void cambiarEstado(ObligacionFinanciera obligacionFinanciera) {
-        obligacionFinanciera.setEstado(new EstadoCompletado());
+    public void cambiarEstado(ObligacionFinanciera obligacionFinanciera, String senial) {
+        if(senial.equals("completado")){
+            obligacionFinanciera.setEstado(new EstadoCompletado());
+        }
+        if(senial.equals("atrasado")){
+            obligacionFinanciera.setEstado(new EstadoAtrasado());
+        }
+
     }
 
     @Override
