@@ -10,9 +10,14 @@ package Finanzas;
  */
 import java.time.LocalDate;
 
-public class Multa extends ObligacionFinanciera{
+public class Multa extends ObligacionFinanciera {
     public Multa(double valorMultaBase, String descripcion, String id) {
         super(valorMultaBase, LocalDate.now(), descripcion, id);
+    }
+
+    @Override
+    public void cambiarEstado(String senial) {
+        estado.cambiarEstado(this, senial);
     }
 
     @Override
