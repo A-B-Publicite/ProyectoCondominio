@@ -28,12 +28,12 @@ public class Administrador extends Perfil{
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-    public void agregarDepartamento(Departamento departamento){
+    public void agregarDepartamento1(Departamento departamento){
         // Crear metodo en condominio
         condominio.agregarDepartamento(departamento);
     }
     
-    public void agregarPropiedadPrivada(Int cantidad){
+    public void agregarPropiedadPrivada1(int cantidad){
         // Crear metodo en condominio
         condominio.agregarPropiedadPrivada(cantidad);
     }
