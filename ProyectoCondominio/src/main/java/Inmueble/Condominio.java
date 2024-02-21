@@ -73,7 +73,7 @@ public class Condominio {
     }
     
     
-    public Residente obtenerResidentePorCorreo(String correo) throws Exception{
+    public Residente obtenerResidentePorCorreo(String correo) {
         Residente resAux;
         for (Departamento departamento : departamentos) {
             resAux = (Residente) departamento.getPropietario(); 
@@ -81,7 +81,7 @@ public class Condominio {
                 return resAux;
             }
         }
-        throw new Exception ("No existe ese residente");
+        return null;
     }
 
     public void agregarDirectiva(Residente presidente, Residente secretario) {
