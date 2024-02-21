@@ -105,7 +105,7 @@ public class Administrador extends Perfil {
         return condominio.obtenerResidenteNombre(nombreResidente);
     }
 
-    public Residente obtenerResidentePorCorreo(String correo) throws Exception {
+    public Residente obtenerResidentePorCorreo(String correo)  {
 
         // Implementar en inmueble
         return condominio.obtenerResidentePorCorreo(correo);
