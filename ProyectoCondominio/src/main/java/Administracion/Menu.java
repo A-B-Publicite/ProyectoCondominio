@@ -10,7 +10,8 @@ import java.util.Date;
 public class Menu {
 
     public static void menuAdministracion(Administrador administrador) {
-        int opcion;
+        int opcion = 0;
+        int opcionSubMenu = 0;
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("""
@@ -59,7 +60,6 @@ public class Menu {
                     break;
                 case 5:
                     do {
-                        int opcionInmuebleComun;
                         scanner = new Scanner(System.in);
 
                         System.out.println("""
@@ -72,8 +72,8 @@ public class Menu {
                                     0. Salir
                                """);
 
-                        opcionInmuebleComun = scanner.nextInt();
-                        switch (opcionInmuebleComun) {
+                        opcionSubMenu = scanner.nextInt();
+                        switch (opcionSubMenu) {
                             case 1 -> {
                                 System.out.print("Coloque los metros cuadrados del inmueble: ");
                                 double metrosCuadrados = scanner.nextDouble();
@@ -107,9 +107,10 @@ public class Menu {
                             default ->
                                 System.out.println("No ha escogido una opcion correcta"); //ver el salir
                         }
-                        System.out.println("Desea agregar otro: "); //ver el salir
-
-                    } while (scanner.nextBoolean());
+                        System.out.println("Desea agregar otro: 1. Si 0. NO"); //ver el salir
+                        opcionSubMenu = scanner.nextInt();
+                        
+                    } while (opcionSubMenu);
                     break;
                 case 6:
                     System.out.println(administrador.mostrarContratos());
