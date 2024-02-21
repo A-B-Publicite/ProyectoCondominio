@@ -51,7 +51,7 @@ public class MenuR {
 
                         opcionInmuebleComun = scanner.nextInt();
                         switch (opcionInmuebleComun) {
-                            case 1 -> {
+                            case 1 -> { //Cancha
                                 //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), detalleReserva, usuarioReserva);
                                 System.out.println(" " + administrador.obtenerInmuebleComun());
                                 //System.out.print("Coloque los metros cuadrados del inmueble: ");
@@ -68,11 +68,9 @@ public class MenuR {
                     } while (scanner.nextBoolean());
                     break;
 
-                    // Pedimos el detalle de la reserva
+                    //Pedimos el detalle de la reserva
                     //String detalleReserva;
                     //detalleReserva = scanner.nextLine();
-
-                    //administrador.obtenerInmuebleComun();
 
                     //Creamos la reserva
                     //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), administrador.condominio., detalleReserva, usuarioReserva);
