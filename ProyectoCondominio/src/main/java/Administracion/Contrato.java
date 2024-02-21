@@ -3,12 +3,7 @@ package Administracion;
 import java.time.LocalDate;
 
 public class Contrato {
-<<<<<<< HEAD
-    private String fechaContrato;
-=======
-
     private LocalDate fechaContrato;
->>>>>>> b30ef3d5e4724e6aecd92ab28b7634755b2d517b
     private double precioContrato;
     private String descripcion;
     private String fechaInicio;

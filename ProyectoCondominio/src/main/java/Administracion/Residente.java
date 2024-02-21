@@ -27,7 +27,7 @@ public class Residente extends Perfil{
     }
     
     public Cuenta getCuenta() {
-        return cuenta;
+        return cuentaBancaria;
     }
     
     public void setDepartamento(Departamento departamento){
