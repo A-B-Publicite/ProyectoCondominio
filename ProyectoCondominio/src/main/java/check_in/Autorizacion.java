@@ -58,9 +58,8 @@ public class Autorizacion {
     }
     
     public void notificar(Perfil autorizador, Guardia guardia){
-        //String contenido = this;
-        //Mensaje mensaje = new Directo(guardia, autorizador,contenido, "Nueva visita");
-        //mensaje.enviar();
+        Mensaje mensaje = new Directo(guardia, autorizador,this, "Nueva visita");
+        mensaje.enviar();
     }   
     public boolean getAprobado() {
         return aprobado;

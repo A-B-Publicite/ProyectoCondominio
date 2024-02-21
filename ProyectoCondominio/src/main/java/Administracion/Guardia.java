@@ -12,8 +12,8 @@ import check_in.*;
  */
 public class Guardia extends Perfil{
             
-    public Guardia(String correo, String contrasena, String nombreApellido) {
-        super(correo, contrasena, nombreApellido);
+    public Guardia(String nombre, String apellido) {
+        super(nombre, apellido);
     }
    
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion){
@@ -26,7 +26,7 @@ public class Guardia extends Perfil{
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(autorizacion);        
         registro.registrarEntrada(fechaLlegada, horaLlegada);
-        registro.asignarParqueadero(fechaLlegada, reservadorParqueadero);
+        registro.asignarParqueadero(fechaLlegada, this);
     }
     
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, String motivoVisita, String nombre, String personaAVisitar, Perfil residente){
@@ -38,6 +38,7 @@ public class Guardia extends Perfil{
         autorizacionInmediata.notificar(residente,this);
         
         this.bandejaDeEntrada.mostrar();
+        
         
         
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
