@@ -31,9 +31,20 @@ public class Directiva {
         return contratosAprobados;
     }
 
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        Contrato contratoAPagar = null;
+        for (Contrato centrato : contratosAprobados) {
+            if (centrato.compararDescripcion(descripcionContratoAPagar)) {
+                return contratoAPagar;
+            }
+        }
+        return null;
+    }
+
     public void agregarContrato(Contrato contratoNuevo) {
         contratosPorAprobar.add(contratoNuevo);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 
 }

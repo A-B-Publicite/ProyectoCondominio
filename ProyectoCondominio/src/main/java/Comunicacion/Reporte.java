@@ -5,15 +5,23 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import Finanzas.Cuenta;
+import Finanzas.ObligacionFinanciera;
+import java.util.Obverser;
 
-public abstract class Reporte extends Mensaje {
-    
-    Reporte(Perfil origen, Perfil destino, String contenido, String titulo){
-        super(origen, destino, contenido, titulo);
+public abstract class Reporte implements Observer {
+
+    private Perfil multa;
+
+    public Reporte(ObligacionFinanciera multa) {
+        this.multa = multa;
     }
+    
 
     
-    public abstract void enviar();
+    public void enviar(){
+        
+    };
     
     public void agregar(){
         

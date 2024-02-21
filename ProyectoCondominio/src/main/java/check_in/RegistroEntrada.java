@@ -36,4 +36,16 @@ public class RegistroEntrada {
     public void asignarParqueadero(String fechaFin, Perfil reservador){
         reservaParqueadero = new Reserva(10,"Lunes", "Uso de parqueadero", reservador);
     }
+
+    @Override
+    public String toString() {
+        return "RegistroEntrada: " + 
+                "\nfechaLlegada: " + fechaLlegada + " horaLlegada:" + horaLlegada + 
+                "\nAutorización: " + 
+                    "\nResidente: " + autorizacion.autorizador + "Visitante: " + autorizacion.autorizado +
+                     "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
+                "\n reservaParqueadero=" + reservaParqueadero + '}';
+    }
+    
+    
 }
