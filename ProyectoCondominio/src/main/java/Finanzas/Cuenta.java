@@ -14,14 +14,21 @@ import java.util.Objects;
 
 public class Cuenta {
     private ArrayList<ObligacionFinanciera> obligacionesFinancieras = new ArrayList<>();
-    private ArrayList<Registro> registros = new ArrayList<>();
+    private ArrayList<Pago> registros = new ArrayList<Pago>();
     private ArrayList<Recarga> recargas = new ArrayList<>();
     private double saldo = 0;
     private int contador = 1;
-    private Cuenta cuentaAdministrador;
+    private Cuenta cuentaAdministrador ;
 
-    public Cuenta(Cuenta cuentaAdministrador) {
-        this.cuentaAdministrador = cuentaAdministrador;
+    public Cuenta() {
+    }
+    
+    
+    
+    public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinanciera) {
+        Pago nuevoPago = new Pago(this);
+        nuevoPago.pagarObligacionFinancieraResidente(obligacionFinanciera, cuentaAdministrador);
+        registros.add(nuevoPago);
     }
 
     public ObligacionFinanciera aniadirObligacion(double valor, String descripcion, String tipo) {
@@ -54,16 +61,6 @@ public class Cuenta {
     }
 
 
-    public void pagar(ObligacionFinanciera obligacionFinanciera) {
-        Pago pago = new Pago(this);
-        pago.pagar(obligacionFinanciera);
-
-        // Todo: aqui se crea la nueva alicuota?
-        if (obligacionFinanciera instanceof Alicuota) {
-            // Si es del tipo Alicuota, añade la obligación con los parámetros específicos
-            this.aniadirObligacion(400, "", "Alicuota");
-        }
-    }
 
     public void eliminarObligacion(ObligacionFinanciera obligacion) {
         ObligacionFinanciera encontrada = null;
@@ -143,5 +140,9 @@ public class Cuenta {
             salida = "================  CUENTA ADMINISTRADOR ==================\n";
         }
         return salida += "Saldo= " + saldo;
+    }
+
+    public void setCuentaDePago(Cuenta cuentaAdministrador1) {
+        this.cuentaAdministrador = cuentaAdministrador1;
     }
 }
