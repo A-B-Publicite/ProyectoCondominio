@@ -63,12 +63,10 @@ public class Residente extends Perfil{
             return correo.equals(this.correo);
         }
 
-<<<<<<< HEAD
+
     public boolean compararNombre(String nombreResidente) {
         return nombreResidente.equals(this.nombre);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-=======
 
->>>>>>> 15a4d6ebb44e085a69925afb1149a5b881c01401
 }
