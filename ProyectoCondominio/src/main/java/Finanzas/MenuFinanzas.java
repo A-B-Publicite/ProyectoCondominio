@@ -12,8 +12,6 @@ import Administracion.Administrador;
 import Administracion.Contrato;
 import Administracion.Residente;
 import Finanzas.ObligacionFinanciera;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -22,18 +20,9 @@ import java.util.logging.Logger;
 public class MenuFinanzas {
     public static void menuFinanzas(Administrador administrador) {
         try {
-            
             Residente residente = administrador.obtenerResidenteCorreo("juan.jima@policondominios.com");
-            /*
-            FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Residente residente = (Residente)objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-           */ 
             
-            //Residente residente = administrador.obtenerResidenteGuardado();
-           
+            
             Scanner scanner = new Scanner(System.in);
             
             while (true) {

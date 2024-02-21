@@ -4,8 +4,6 @@
  */
 package Administracion;
 
-import Inmueble.EspacioDeParqueadero;
-import Inmueble.InmuebleComun;
 import check_in.*;
 import java.io.Serializable;
 
@@ -25,11 +23,11 @@ public class Guardia extends Perfil implements Serializable{
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
     
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, EspacioDeParqueadero espacioParqueadero){
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero){
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(autorizacion);        
         registro.registrarEntrada(fechaLlegada, horaLlegada);
-        registro.asignarParqueadero(fechaLlegada, this,espacioParqueadero);
+        registro.asignarParqueadero(fechaLlegada, this);
     }
     
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, String motivoVisita, String nombre, String personaAVisitar, Perfil residente){

@@ -61,7 +61,7 @@ public class Autorizacion implements Serializable{
     
     public void notificar(Perfil autorizador, Guardia guardia){
         Mensaje mensaje = new Directo(guardia, (List<Perfil>) autorizador);
-        mensaje.crear();
+        mensaje.enviar();
     }   
     public boolean getAprobado() {
         return aprobado;
