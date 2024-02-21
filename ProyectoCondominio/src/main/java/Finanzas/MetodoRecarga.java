@@ -4,11 +4,13 @@
  */
 package Finanzas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alejo
  */
-public abstract class MetodoRecarga {
+public abstract class MetodoRecarga implements Serializable {
     private  double abono;
     protected String descripcion;
 

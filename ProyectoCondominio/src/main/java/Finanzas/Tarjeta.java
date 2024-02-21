@@ -4,11 +4,13 @@
  */
 package Finanzas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alejo
  */
-public class Tarjeta extends MetodoRecarga {
+public class Tarjeta extends MetodoRecarga implements Serializable {
 
     private  String numeroCuenta;
     private  String pinTarjeta;

@@ -1,12 +1,11 @@
 
 package Finanzas;
 
+import java.io.Serializable;
 /**
  *
  * @author alejo
- */
-import java.io.Serializable;
-import java.util.ArrayList;
+ */import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Timer;
@@ -23,14 +22,17 @@ public class Cuenta implements Serializable{
     private int contadorRecargas = 1;
     private Cuenta cuentaAdministrador;
 
+    private double valorInicialAlicuota;
     public Cuenta() {
     }
 
     public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinanciera) {
+
         Pago nuevoPago = new Pago(this);
 
         nuevoPago.pagarObligacionFinancieraResidente(obligacionFinanciera, cuentaAdministrador);
         registros.add(nuevoPago);
+
     }
 
     public void pagarContratoAdministrador(double Preciocontrato) {
@@ -43,6 +45,9 @@ public class Cuenta implements Serializable{
 
         switch (tipo.toLowerCase(Locale.ROOT)) {
             case "alicuota":
+                if (contadorObligaciones == 1) { // Asumiendo que es la primera obligación añadida
+                    valorInicialAlicuota = valor; // Almacena el valor inicial
+                }
                 Alicuota alicuota = new Alicuota(valor, descripcion, String.valueOf(contadorObligaciones++));
                 obligacionesFinancieras.add(alicuota);
                 alicuota.agregarObservador(this);
@@ -58,14 +63,15 @@ public class Cuenta implements Serializable{
         }
     }
 
+
     public void programarSiguienteAlicuota(Alicuota alicuota) {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                double valor = alicuota.getMonto();
-                String descripcion = alicuota.descripcion;
-                aniadirObligacion(valor, descripcion, "alicuota");
+                String descripcion = alicuota.descripcion; // Usa la descripción de la alicuota actual o actualízala según sea necesario
+                // Utiliza valorInicialAlicuota para la nueva Alicuota
+                aniadirObligacion(valorInicialAlicuota, descripcion, "alicuota");
             }
         }, Date.from(alicuota.fechaLimite.atZone(ZoneId.systemDefault()).toInstant()));
     }
@@ -197,20 +203,13 @@ public class Cuenta implements Serializable{
     @Override
     public String toString() {
         String salida = "";
-        if (cuentaAdministrador != null) {
-            salida = "================  CUENTA RESIDENTE ==================\n";
-        } else {
-            salida = "================  CUENTA ADMINISTRADOR ==================\n";
-        }
-        return salida += "Saldo= " + saldo;
+        salida = "================  CUENTA ==================\n";
+
+        return salida += "Saldo Actual= " + saldo;
     }
 
 
     public void setCuentaDePago(Cuenta cuentaAdministrador) {
         this.cuentaAdministrador = cuentaAdministrador;
-    }
-
-    public void pagarContrato(double precioContrato) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
