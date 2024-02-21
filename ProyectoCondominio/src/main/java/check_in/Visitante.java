@@ -9,19 +9,18 @@ package check_in;
  * @author JHON
  */
 public class Visitante {
-    private String motivoVIsita;
+    private String motivoVisita;
     private String nombre;
     private String personaAVisitar;
-    private Vehiculo vehiculo;
 
-    public Visitante(String motivoVIsita, String nombre, String personaAVisitar) {
-        this.motivoVIsita = motivoVIsita;
+    public Visitante(String motivoVisita, String nombre, String personaAVisitar) {
+        this.motivoVisita = motivoVisita;
         this.nombre = nombre;
         this.personaAVisitar = personaAVisitar;
     }
 
     public String getMotivoVIsita() {
-        return motivoVIsita;
+        return motivoVisita;
     }
 
     public String getNombre() {
@@ -31,8 +30,4 @@ public class Visitante {
     public String getPersonaAVisitar() {
         return personaAVisitar;
     }
-    
-    public void setVehiculo(Vehiculo vehiculo){
-        this.vehiculo = vehiculo;
-}
 }
