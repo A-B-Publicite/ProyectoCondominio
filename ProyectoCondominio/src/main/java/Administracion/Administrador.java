@@ -63,6 +63,12 @@ public class Administrador extends Perfil {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
         cuenta.pagarContrato(contrato.getPrecioContrato());
     }
+    
+    
+    
+    public ArrayList<Residente> obtenerResidentes(){
+        return condominio.obtenerResidentes();
+    }
 
     public Residente obtenerResidente(String nombreResidente) throws Exception {
         // Implementar en inmueble

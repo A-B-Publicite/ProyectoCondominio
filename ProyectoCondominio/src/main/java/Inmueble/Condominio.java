@@ -103,7 +103,14 @@ public class Condominio {
 
     public Directiva getDirectiva() {
         return directiva;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//>>>>>>> b30ef3d5e4724e6aecd92ab28b7634755b2d517b
+        
+    }
+
+    public ArrayList<Residente> obtenerResidentes() {
+        ArrayList<Residente> residentes = new ArrayList<>();
+        for (Departamento departamento : departamentos) {
+            residentes.add((Residente) departamento.getPropietario());
+        }
+        return residentes;
     }
 }
