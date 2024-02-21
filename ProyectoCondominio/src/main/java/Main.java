@@ -30,7 +30,7 @@ public class Main {
         objectOutputStream.close();
 
         //Lectura del objeto admin
-        FileInputStream fileInputStream = new FileInputStream("datosAdmnin.txt");
+        FileInputStream fileInputStream = new FileInputStream("datosAdmin.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
         objectOutputStream.close();
