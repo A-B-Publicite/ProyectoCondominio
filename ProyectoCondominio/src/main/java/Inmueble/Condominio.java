@@ -73,7 +73,7 @@ public class Condominio {
     }
     
     
-    public Residente obtenerResidente(String correo) throws Exception{
+    public Residente obtenerResidentePorCorreo(String correo) throws Exception{
         Residente resAux;
         for (Departamento departamento : departamentos) {
             resAux = (Residente) departamento.getPropietario(); 
@@ -92,7 +92,9 @@ public class Condominio {
     public Contrato getContrato(String descripcionContratoAPagar) {
         return directiva.getContrato(descripcionContratoAPagar);
     }
-//=======
+//=======   
+    
+  
     public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
         Residente resAux;
         for (Departamento departamento : departamentos) {
@@ -123,4 +125,6 @@ public class Condominio {
     public void agregarGuardia(Guardia guardiaNuevo) {
         this.guardia = guardiaNuevo;
     }
+
+    
 }

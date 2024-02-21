@@ -91,10 +91,14 @@ public class Administrador extends Perfil {
     public ArrayList<Residente> obtenerResidentes(){
         return condominio.obtenerResidentes();
     }
-
+    
     public Residente obtenerResidente(String nombreResidente) throws Exception {
         // Implementar en inmueble
         return condominio.obtenerResidenteNombre(nombreResidente);
+    }
+    public Residente obtenerResidentePorCorreo(String correo) throws Exception   {
+        // Implementar en inmueble
+        return condominio.obtenerResidentePorCorreo(correo);
     }
 
     public void obtenerCondominiosRegistrados() {
