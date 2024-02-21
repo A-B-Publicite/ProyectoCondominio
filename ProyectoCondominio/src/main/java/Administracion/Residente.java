@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class Residente extends Perfil{
     private boolean esPropietario;
     private Departamento departamento;
-    private Cuenta cuenta;
+    
 
     public Residente(String nombre, String apellido, Boolean esPropietario) {
         super(nombre, apellido);
         this.esPropietario = esPropietario;
-        //this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
 
+    }
+    public void darCuentaDePago(Cuenta cuentaAdministrador) {
+        cuentaBancaria.setCuentaDePago(cuentaAdministrador);
     }
     
     public void reservarAreaComun(){
@@ -25,7 +27,7 @@ public class Residente extends Perfil{
     }
     
     public Cuenta getCuenta() {
-        return cuenta;
+        return cuentaBancaria;
     }
     
     public void setDepartamento(Departamento departamento){
@@ -60,4 +62,13 @@ public class Residente extends Perfil{
     public Boolean compararCorreoNombre(String correo){
             return correo.equals(this.correo);
         }
+
+<<<<<<< HEAD
+    public boolean compararNombre(String nombreResidente) {
+        return nombreResidente.equals(this.nombre);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+=======
+
+>>>>>>> 15a4d6ebb44e085a69925afb1149a5b881c01401
 }

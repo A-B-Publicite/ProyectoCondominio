@@ -1,19 +1,22 @@
 package Administracion;
 
-public class Contrato {
+import java.time.LocalDate;
 
-    private String fechaContrato;
+public class Contrato {
+    private LocalDate fechaContrato;
     private double precioContrato;
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
+    private Proveedor proveedor;
 
-    public Contrato(String fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
+    public Contrato(LocalDate fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
         this.fechaContrato = fechaContrato;
         this.precioContrato = precioContrato;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        proveedor = new Proveedor();
         
     }
 
@@ -35,6 +38,10 @@ public class Contrato {
     }
     public double getPrecioContrato() {
         return precioContrato;
+    }
+
+    boolean compararDescripcion(String descripcionContratoAPagar) {
+        return (descripcion == null ? descripcionContratoAPagar == null : descripcion.equals(descripcionContratoAPagar));
     }
     
     

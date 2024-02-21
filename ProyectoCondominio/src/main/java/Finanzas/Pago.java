@@ -9,29 +9,24 @@ package Finanzas;
  * @author alejo
  */
 public class Pago {
-    private Cuenta cuenta;
     private ObligacionFinanciera obligacionFinanciera;
+    private Cuenta cuentaOrigen;
+    private Cuenta cuentaDestino;
+    private double monto;
 
     public Pago(Cuenta cuenta) {
-        this.cuenta = cuenta;
+       this.cuenta = cuenta;       
     }
 
-    public void pagar(ObligacionFinanciera obligacionFinancieraAPagar) {
-
-        obligacionFinanciera = obligacionFinancieraAPagar;
-
-        cuenta.debitar(obligacionFinanciera.getMonto());
-
-        // TODO: Cambiar cuando cambien lo del admin
-        if (cuenta.getCuentaAdministrador() != null) {
-            cuenta.getCuentaAdministrador().depositar(obligacionFinanciera.getMonto());
-        }
-
+    public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinancieraAPagar, Cuenta cuentaAdministrador) {
+        double monto = obligacionFinanciera.getMonto();
+        //cuneta.verificar retiro
+        cuentaOrigen.debitar(monto);
+        cuentaAdministrador.depositar(monto);
+        cuentaDestino = cuentaAdministrador;
+        cuentaAdministrador.agregarRegistro(this);
         obligacionFinanciera.cambiarEstado("completado");
-
-
-        cuenta.agregarRegistro(new Registro(this));
-
+        
         cuenta.eliminarObligacion(obligacionFinanciera);
     }
 

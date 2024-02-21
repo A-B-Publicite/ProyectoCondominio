@@ -4,7 +4,9 @@ public class Directiva {
     Residente presidente;
     Residente secretario;
     Administrador administrador;
+    
     ArrayList<Contrato> contratosAprobados;
+    ArrayList<Contrato> contratosPorAprobar;
     
     public Directiva(Administrador administrador){
         this.administrador = administrador;
@@ -28,5 +30,21 @@ public class Directiva {
     public ArrayList<Contrato> mostrarContratos(){
         return contratosAprobados;
     }
+
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        Contrato contratoAPagar = null;
+        for (Contrato centrato : contratosAprobados) {
+            if (centrato.compararDescripcion(descripcionContratoAPagar)) {
+                return contratoAPagar;
+            }
+        }
+        return null;
+    }
+
+    public void agregarContrato(Contrato contratoNuevo) {
+        contratosPorAprobar.add(contratoNuevo);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 }
