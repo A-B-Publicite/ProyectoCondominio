@@ -1,4 +1,4 @@
-package Administracion;
+cpackage Administracion;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,7 @@ public class Contrato {
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
-    private Proveedor proveedor;
+    
 
     public Contrato(LocalDate fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
         this.fechaContrato = fechaContrato;
@@ -16,7 +16,7 @@ public class Contrato {
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        proveedor = new Proveedor();
+        
         
     }
 
