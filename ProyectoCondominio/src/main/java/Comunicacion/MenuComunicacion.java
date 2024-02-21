@@ -22,7 +22,7 @@ public class MenuComunicacion {
 
         List<Perfil> residentes = new ArrayList<>();
         
-        FileInputStream fileInputStream = new FileInputStream("datosResidentes.txt");
+        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Residente adminEnFichero = (Residente)objectInputStream.readObject();
         objectInputStream.close();
