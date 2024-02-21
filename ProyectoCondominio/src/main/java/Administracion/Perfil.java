@@ -38,7 +38,7 @@ public abstract class Perfil implements Serializable{
     }
     
     public String getNombreApellido() {
-        return nombre;
+        return nombre+" "+apellido;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
