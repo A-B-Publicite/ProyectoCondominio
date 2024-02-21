@@ -5,6 +5,9 @@
 package check_in;
 
 import Administracion.Perfil;
+import Inmueble.EspacioDeParqueadero;
+import Inmueble.InmuebleComun;
+import ModuloReservas.AdministrarReserva;
 import ModuloReservas.Reserva;
 import java.io.Serializable;
 
@@ -37,8 +40,10 @@ public class RegistroEntrada implements Serializable{
         System.out.println(this.toString());
     }
     
-    public void asignarParqueadero(String fechaFin, Perfil reservador){
-        reservaParqueadero = new Reserva(10,"Lunes", "Uso de parqueadero", reservador);
+    public void asignarParqueadero(String fechaFin, Perfil reservador, EspacioDeParqueadero inmueble){
+        AdministrarReserva adminReserva = new AdministrarReserva();        
+        reservaParqueadero = adminReserva.realizarReserva(inmueble, "uso de parqueadero", reservador);
+        System.out.println(this.toString());
     }
 
     @Override

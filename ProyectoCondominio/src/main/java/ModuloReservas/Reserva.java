@@ -60,7 +60,7 @@ public class Reserva {
     }
 
     public String getDetalle() {
-        return detalle;
+        return this.detalle;
     }
 
     public void setDetalle(String detalle) {
