@@ -12,7 +12,6 @@ public class Visitante {
     private String motivoVIsita;
     private String nombre;
     private String personaAVisitar;
-    private Vehiculo vehiculo;
 
     public Visitante(String motivoVIsita, String nombre, String personaAVisitar) {
         this.motivoVIsita = motivoVIsita;
@@ -31,8 +30,4 @@ public class Visitante {
     public String getPersonaAVisitar() {
         return personaAVisitar;
     }
-    
-    public void setVehiculo(Vehiculo vehiculo){
-        this.vehiculo = vehiculo;
-}
 }
