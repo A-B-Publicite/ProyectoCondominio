@@ -36,7 +36,7 @@ public class MenuR {
         
         try{
             switch (opcionReserva) {
-                case 1: //Crear reserva
+                case 1: {//Crear reserva
                     do {
                         scanner = new Scanner(System.in);
 
@@ -106,14 +106,15 @@ public class MenuR {
                                 }   
                             break;
                             }
-                            default ->
+                            default -> {
                                 System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                            }
                         }
-                        System.out.println("Desea agregar otra reserva: 1. SI 0. NO"); //ver el salir
-                    } while (scanner.nextBoolean());
-                break;
-                
-                case 2: //Cancelar reserva
+                    }while (scanner.nextBoolean());
+                    System.out.println("Desea agregar otra reserva: 1. SI 0. NO"); //ver el salir
+                    break;   
+                }
+                case 2: {//Cancelar reserva
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
                     System.out.print("Apellido: ");
@@ -121,9 +122,10 @@ public class MenuR {
                     System.out.print("Es propietario: ");
                     Boolean esPropietario = scanner.nextBoolean();
 
-                    administrador.registrarResidente(nombre, apellido, esPropietario);
+                    
                     break;
-                case 3://Reprogramar
+                }
+                case 3:{//Reprogramar
                     System.out.print("Ingrese el correo del presidente: ");
                     String correoPresidente = scanner.nextLine();
                     System.out.print("Ingrese el correo del secretario: ");
@@ -132,7 +134,8 @@ public class MenuR {
                     System.out.print("Se creo exitosamente");
 
                     break;
-                case 4: // Listar Reservas
+                }
+                case 4: {// Listar Reservas
                     
                     System.out.print("Todas las reservas son: ");
                     for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
@@ -145,8 +148,8 @@ public class MenuR {
                         }
                     }
                     break;
-                
-            } while (scanner.nextBoolean());
+                }                               
+            }
         }catch (Exception e){
             System.out.print(e.getMessage());
         }            
