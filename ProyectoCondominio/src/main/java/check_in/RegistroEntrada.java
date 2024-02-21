@@ -39,7 +39,12 @@ public class RegistroEntrada {
 
     @Override
     public String toString() {
-        return "RegistroEntrada{" + "fechaLlegada=" + fechaLlegada + ", horaLlegada=" + horaLlegada + ", autorizacion=" + autorizacion + ", reservaParqueadero=" + reservaParqueadero + '}';
+        return "RegistroEntrada: " + 
+                "\nfechaLlegada: " + fechaLlegada + ", horaLlegada:" + horaLlegada + 
+                "\nAutorización: " + 
+                    "\nResidente: " + autorizacion.autorizador + "Visitante: " + autorizacion.autorizado +
+                     "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
+                "\n reservaParqueadero=" + reservaParqueadero + '}';
     }
     
     

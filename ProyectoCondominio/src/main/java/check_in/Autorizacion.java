@@ -40,6 +40,22 @@ public class Autorizacion {
             return;}
         aprobado = true;
     }
+
+    public String getAutorizador() {
+        return autorizador;
+    }
+
+    public String getAutorizado() {
+        return autorizado;
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
     
     public void notificar(Perfil autorizador, Guardia guardia){
         //String contenido = this;
