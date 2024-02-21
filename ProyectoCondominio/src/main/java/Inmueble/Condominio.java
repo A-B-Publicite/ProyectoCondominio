@@ -12,7 +12,6 @@ public class Condominio {
     private ArrayList<InmuebleComun> inmueblesComunes;
     private ArrayList<Departamento> departamentos;
     private Directiva directiva;
-    private Guardia guardia;
     
     public Condominio(String nombreCondominio) {
         this.nombre = nombreCondominio;
@@ -43,6 +42,11 @@ public class Condominio {
         }
         return null;
     }
+    
+    public ArrayList<InmuebleComun> obtenerInmuebleComun(){
+        return inmueblesComunes;
+    }
+    
     //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setPropietario(residenteNuevo);
@@ -113,9 +117,5 @@ public class Condominio {
             residentes.add((Residente) departamento.getPropietario());
         }
         return residentes;
-    }
-
-    public void agregarGuardia(Guardia guardiaNuevo) {
-        this.guardia = guardiaNuevo;
     }
 }

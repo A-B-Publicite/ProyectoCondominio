@@ -57,8 +57,5 @@ public abstract class Perfil implements Serializable{
         this.autorizacion = autorizacion;
     }
     
-    public Autorizacion validarAutorizacion(Autorizacion autorizacion){        
-        autorizacion.validar(this);
-        return autorizacion;
-    }
+    
 }
