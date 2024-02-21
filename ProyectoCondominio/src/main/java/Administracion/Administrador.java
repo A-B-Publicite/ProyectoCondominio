@@ -57,16 +57,17 @@ public class Administrador extends Perfil {
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         //Escribo a bits el residenteNuevo
         
-        
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        ArrayList<Residente> listaResidentes = new ArrayList<>();
+        listaResidentes = condominio.obtenerResidentes();
+        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(this);
+        objectOutputStream.writeObject(listaResidentes);
         objectOutputStream.close();
 
         //Lectura del objeto admin
-        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Administrador adminEnFichero = (Administrador) objectInputStream.readObject();
+        ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
         objectOutputStream.close();
 
 
