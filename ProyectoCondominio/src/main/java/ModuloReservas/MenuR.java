@@ -28,7 +28,7 @@ public class MenuR {
                                1. Crear reserva
                                2. Cancelar reserva
                                3. Reprogramar reserva
-                               4. Listar reserva
+                               4. Listar reservas
                                0. Salir
                                """);
 
@@ -53,7 +53,8 @@ public class MenuR {
                         switch (opcionInmuebleComun) {
                             case 1 -> { //Cancha
                                 System.out.println("Ingrese el detalle de la reserva: ");
-                                String detalleReserva = scanner.nextLine();                                
+                                String detalleReserva = scanner.next();
+                                scanner.nextLine();
                                 for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
                                 // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Cancha) {
@@ -97,7 +98,7 @@ public class MenuR {
                             }
                             case 5 -> { //Terraza
                                 System.out.println("Ingrese el detalle de la reserva: ");
-                                String detalleReserva = scanner.nextLine(); 
+                                String detalleReserva = scanner.next(); 
                                 for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
                                     // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Terraza) {
@@ -115,40 +116,60 @@ public class MenuR {
                     break;   
                 }
                 case 2: {//Cancelar reserva
-                    System.out.print("Nombre: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Apellido: ");
-                    String apellido = scanner.nextLine();
-                    System.out.print("Es propietario: ");
-                    Boolean esPropietario = scanner.nextBoolean();
-
-                    
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                        System.out.println(inmueble.obtenerReservas());
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+                        reservas = inmueble.obtenerReservas();
+                        for (Reserva reserva : reservas){
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());
+                            System.out.println("Ingrese el ID de la reserva: ");
+                            int id = scanner.nextInt(); 
+                            if(reserva.getId() == id){                             
+                                reserva.cancelar();
+                            }else{ System.out.println("La reserva no existe");}
+                        }
+                    }
                     break;
                 }
-                case 3:{//Reprogramar
-                    System.out.print("Ingrese el correo del presidente: ");
-                    String correoPresidente = scanner.nextLine();
-                    System.out.print("Ingrese el correo del secretario: ");
-                    String correoSecretario = scanner.nextLine();
-                    administrador.agregarDirectiva(correoPresidente, correoSecretario);
-                    System.out.print("Se creo exitosamente");
-
+                case 3:{//Reprogramar reserva
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                        System.out.println(inmueble.obtenerReservas());
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+                        reservas = inmueble.obtenerReservas();
+                        for (Reserva reserva : reservas){
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());
+                            System.out.println("Ingrese el ID de la reserva: ");
+                            int id = scanner.nextInt(); 
+                            System.out.println(reserva.getId() == id);
+                            if(reserva.getId() == id){
+                                System.out.println("Ingrese el día a ser reprogaramada: ");
+                                String diaReprogramado = scanner.next(); 
+                                reserva.reprogramar(diaReprogramado);
+                                break;
+                            }
+                            
+                        }
+                    }
                     break;
                 }
                 case 4: {// Listar Reservas
                     
                     System.out.print("Todas las reservas son: ");
                     for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
-                        System.out.println(inmueble.obtenerReservas());
                         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
                         reservas = inmueble.obtenerReservas();
                         for (Reserva reserva : reservas){
-                            System.out.println("La reserva con ID: " + reserva.getId() + "\n Para: " + reserva.getDetalle() +
-                                    "\n En el día: " + reserva.getDia() + "\n Del usuario: " + reserva.getUsuario().getNombreApellido());
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());
                         }
                     }
                     break;
-                }                               
+                }
+                case 0: {
+                    System.out.println("Saliendo del Modulo Reservas");
+                }
             }
         }catch (Exception e){
             System.out.print(e.getMessage());
