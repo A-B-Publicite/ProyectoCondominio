@@ -21,11 +21,15 @@ public abstract class Perfil implements Serializable{
         this.contrasenia = nombre+ "123";
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cuentaBancaria = new Cuenta();
         
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
+    public Cuenta getCuenta() {
+        return cuentaBancaria;
+    }
     public Perfil(String correo, String contrasena, String nombreApellido){
         this.correo = correo;
         this.contrasenia = contrasena;

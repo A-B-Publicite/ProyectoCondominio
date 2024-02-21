@@ -19,10 +19,7 @@ import java.util.*;
 public class Administrador extends Perfil {
 
     private Condominio condominio;
-    private Cuenta cuenta;
-    
-
- 
+     
     public Administrador( String nombre, String apellido) {
         super(nombre, apellido);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -35,9 +32,6 @@ public class Administrador extends Perfil {
         this.setAutorizacion(autorizacionEntrada);
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
-    }
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
@@ -61,7 +55,7 @@ public class Administrador extends Perfil {
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
-        residenteNuevo.darCuentaDePago(this.cuenta);
+        residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         //Escribo a bits el residenteNuevo
         FileOutputStream fileOutputStream = new FileOutputStream("Datos/datosResidentes.txt");
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -76,7 +70,7 @@ public class Administrador extends Perfil {
         residenteNuevo.setAutorizacion(autorizacionEntrada);
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
-        residenteNuevo.darCuentaDePago(this.cuenta);
+        residenteNuevo.darCuentaDePago(this.cuentaBancaria);
     }
     
     //PORFAVOR NO BORRAR, ES DE USO PARA AGREGAR UN GUARDIA AL CONDOMINIO
@@ -89,7 +83,7 @@ public class Administrador extends Perfil {
 
     public void pagarContrato(String descripcionContratoAPagar) {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
-        cuenta.pagarContrato(contrato.getPrecioContrato());
+        cuentaBancaria.pagarContrato(contrato.getPrecioContrato());
     }
     
     

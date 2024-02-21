@@ -12,6 +12,8 @@ public class Departamento extends InmueblePrivado {
         super(M2DEPARTAMENTO, null);
         inmueblesPrivados = new ArrayList<InmueblePrivado>();
         inmueblesPrivados.add(new ParqueaderoPrivado());
+                
+        
     }
 
 
