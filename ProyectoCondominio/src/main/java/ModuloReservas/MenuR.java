@@ -38,7 +38,6 @@ public class MenuR {
             switch (opcionReserva) {
                 case 1: //Crear reserva
                     do {
-                        int opcionInmuebleComun;
                         scanner = new Scanner(System.in);
 
                         System.out.println("""
@@ -46,32 +45,74 @@ public class MenuR {
                                     1. Cancha
                                     2. Gimnasio
                                     3. Espacio de parqueadero
+                                    4. Piscina
+                                    5. Terraza
                                     0. Salir
                                """);
-
-                        opcionInmuebleComun = scanner.nextInt();
+                        int opcionInmuebleComun = scanner.nextInt();
                         switch (opcionInmuebleComun) {
                             case 1 -> { //Cancha
-                                String detalleReserva = "Futbol";
-                                System.out.println(" " + administrador.obtenerInmuebleComun());
-                                
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine();                                
                                 for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
                                 // Verificar si el inmueble actual es una instancia de Cancha.
-                                if (inmueble instanceof Cancha) {
-                                    Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    if (inmueble instanceof Cancha) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
                                 }
-                            }
+                            break;
+                            }                            
+                            case 2 -> { //Gimnasio
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Gimnasio) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
                             break;
                             }
-
+                            case 3 -> { //Espacio de Parqueadero
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof EspacioDeParqueadero) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            case 4 -> { //Piscina
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Piscina) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            case 5 -> { //Terraza
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Terraza) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
                             default ->
                                 System.out.println("No ha escogido una opcion correcta"); //ver el salir
                         }
-                        System.out.println("Desea agregar otro: "); //ver el salir
-
+                        System.out.println("Desea agregar otra reserva: 1. SI 0. NO"); //ver el salir
                     } while (scanner.nextBoolean());
-                    break;
-
+                break;
+                
                 case 2: //Cancelar reserva
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
