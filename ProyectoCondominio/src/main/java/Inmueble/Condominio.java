@@ -67,18 +67,37 @@ public class Condominio {
     }
     
     
-    public Residente obtenerResidente(String correo){
+    public Residente obtenerResidente(String correo) throws Exception{
         Residente resAux;
         for (Departamento departamento : departamentos) {
             resAux = (Residente) departamento.getPropietario(); 
-            if (resAux.compararCorreoNombre(correo)) {
+            if (resAux != null && resAux.compararCorreoNombre(correo)) {
                 return resAux;
             }
         }
-        return null;
+        throw new Exception ("No existe ese residente");
     }
 
     public void agregarDirectiva(Residente presidente, Residente secretario) {
         directiva.agregarDirectiva(presidente, secretario);
+    }
+
+    public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
+        Residente resAux;
+        for (Departamento departamento : departamentos) {
+            resAux = (Residente) departamento.getPropietario(); 
+            if (resAux != null && resAux.compararNombre(nombreResidente)) {
+                return resAux;
+            }
+        }
+        throw new Exception ("No existe ese residente");
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+
+    public Directiva getDirectiva() {
+        return directiva;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
