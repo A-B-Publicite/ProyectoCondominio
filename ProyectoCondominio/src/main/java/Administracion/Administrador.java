@@ -60,7 +60,6 @@ public class Administrador extends Perfil {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(residenteNuevo);
         }
-
     }
     
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
@@ -129,6 +128,4 @@ public class Administrador extends Perfil {
     public Condominio getCondominio() {
         return condominio;
     }
-    
-    
 }
