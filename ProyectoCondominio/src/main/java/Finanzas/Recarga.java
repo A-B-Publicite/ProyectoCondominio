@@ -9,17 +9,29 @@ package Finanzas;
  * @author alejo
  */
 public class Recarga {
-    private final int abono;
+    private final String id;
+    private MetodoRecarga metodoRecarga;
 
-    private MetodoRecarga metodoRecarga = null;
-
-    public Recarga(int abono, String numeroCuenta) {
-        this.abono = abono;
-        eligirMetodoRecarga(numeroCuenta);
+    public Recarga(double abono, String id) {
+        metodoRecarga = new Efectivo(abono);
+        this.id = id;
     }
 
-    private void eligirMetodoRecarga(String numeroTarjeta) {
-        metodoRecarga = new Tarjeta(numeroTarjeta);
+    public Recarga(double abono, String numeroTarjeta, String pinTarjeta, String id) {
+        this.id = id;
+        metodoRecarga = new Tarjeta(abono, numeroTarjeta, pinTarjeta);
+    }
+
+    public Recarga(double abono, String numeroCuentaOrigen, String id) {
+        metodoRecarga = new Transferencia(abono, numeroCuentaOrigen, "1712240");
+        this.id = id;
+
+    }
+
+    @Override
+    public String toString() {
+        return "[Recarga N. " + id +
+                "] | ("+ metodoRecarga + ")";
     }
 }
 

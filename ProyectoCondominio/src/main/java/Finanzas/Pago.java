@@ -7,33 +7,68 @@ package Finanzas;
 /**
  *
  * @author alejo
- */
+ */import java.time.LocalDate;
 public class Pago {
+    private LocalDate fechaPago;
     private ObligacionFinanciera obligacionFinanciera;
+    private Cuenta cuenta;
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
     private double monto;
 
     public Pago(Cuenta cuenta) {
-       this.cuenta = cuenta;       
+        this.cuentaOrigen = cuenta;
+        this.fechaPago = LocalDate.now();
     }
 
     public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinancieraAPagar, Cuenta cuentaAdministrador) {
-        double monto = obligacionFinanciera.getMonto();
+        this.obligacionFinanciera = obligacionFinancieraAPagar;
+        double monto = obligacionFinancieraAPagar.getMonto();
         //cuneta.verificar retiro
         cuentaOrigen.debitar(monto);
+
+
         cuentaAdministrador.depositar(monto);
         cuentaDestino = cuentaAdministrador;
+       // cuentaDestino.depositar(monto);
         cuentaAdministrador.agregarRegistro(this);
+        obligacionFinancieraAPagar.cambiarEstado("completado");
+
+        cuentaOrigen.eliminarObligacion(obligacionFinancieraAPagar);
+    }
+/*
+    public void pagar(ObligacionFinanciera obligacionFinancieraAPagar) {
+
+        obligacionFinanciera = obligacionFinancieraAPagar;
+
+        // cuenta. verificar dinero en saldo.
+        cuenta.debitar(obligacionFinanciera.getMonto());
+
+        // TODO: Cambiar cuando cambien lo del admin
+        if (cuenta.getCuentaAdministrador() != null) {
+            cuenta.getCuentaAdministrador().depositar(obligacionFinanciera.getMonto());
+        }
+
         obligacionFinanciera.cambiarEstado("completado");
-        
+
+
+        cuenta.agregarRegistro(new Registro(this));
+
         cuenta.eliminarObligacion(obligacionFinanciera);
     }
-
+*/
     @Override
     public String toString() {
         return "Pago = (" +
-                this.obligacionFinanciera +
+                this.fechaPago +
                 ')';
     }
+
+    public void pagarContrato(double precioContrato) {
+        monto = precioContrato;
+        cuentaOrigen.debitar(monto);
+        cuentaOrigen.agregarRegistro(this);
+        //cuentaOrigen.agregarFecha(cuentaOrigen);
+    }
+    
 }

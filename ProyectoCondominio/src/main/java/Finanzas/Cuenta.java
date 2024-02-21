@@ -8,56 +8,109 @@ package Finanzas;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Cuenta {
     private ArrayList<ObligacionFinanciera> obligacionesFinancieras = new ArrayList<>();
-    private ArrayList<Pago> registros = new ArrayList<Pago>();
+    private ArrayList<Pago> registros = new ArrayList<>();
     private ArrayList<Recarga> recargas = new ArrayList<>();
     private double saldo = 0;
-    private int contador = 1;
-    private Cuenta cuentaAdministrador ;
+    private int contadorObligaciones = 1;
+    private int contadorRecargas = 1;
+    private Cuenta cuentaAdministrador;
 
     public Cuenta() {
     }
-    
-    
-    
+
     public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinanciera) {
         Pago nuevoPago = new Pago(this);
+
         nuevoPago.pagarObligacionFinancieraResidente(obligacionFinanciera, cuentaAdministrador);
         registros.add(nuevoPago);
+    }
+
+    public void pagarContratoAdministrador(double Preciocontrato) {
+        Pago nuevoPago = new Pago(this);
+      //  double monto = contrato.getPrecioContrato();
+        nuevoPago.pagarContrato(Preciocontrato);
     }
 
     public ObligacionFinanciera aniadirObligacion(double valor, String descripcion, String tipo) {
 
         switch (tipo.toLowerCase(Locale.ROOT)) {
             case "alicuota":
-                ObligacionFinanciera alicuota = new Alicuota(valor, descripcion, String.valueOf(contador++));
+                Alicuota alicuota = new Alicuota(valor, descripcion, String.valueOf(contadorObligaciones++));
                 obligacionesFinancieras.add(alicuota);
+                alicuota.agregarObservador(this);
+                programarSiguienteAlicuota(alicuota);
                 return alicuota;
-            case "cuotacontrato":
-                ObligacionFinanciera cuotaContrato = new CuotaContrato(valor, descripcion, String.valueOf(contador++));
-                obligacionesFinancieras.add(cuotaContrato);
-                return cuotaContrato;
-            /*
             case "multa":
-                ObligacionFinanciera multa = new Multa(valor, descripcion, String.valueOf(contador++));
+                ObligacionFinanciera multa = new Multa(valor, descripcion, String.valueOf(contadorObligaciones++));
                 obligacionesFinancieras.add(multa);
                 return multa;
-             */
+
             default:
                 return null;
         }
     }
 
+    public void programarSiguienteAlicuota(Alicuota alicuota) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                double valor = alicuota.getMonto();
+                String descripcion = alicuota.descripcion;
+                aniadirObligacion(valor, descripcion, "alicuota");
+            }
+        }, Date.from(alicuota.fechaLimite.atZone(ZoneId.systemDefault()).toInstant()));
+    }
 
-    public void recargarSaldo(int abono, String numeroTarjeta) {
-        Recarga recarga = new Recarga(abono, numeroTarjeta);
+    public void actualizar(ObligacionFinanciera obligacionAtrasada) {
+        if (obligacionAtrasada instanceof Alicuota && obligacionAtrasada.getEstado() instanceof EstadoAtrasado) {
+            double valorAlicuotaAtrasa = obligacionAtrasada.getMonto();
+            aniadirObligacion(valorAlicuotaAtrasa, "Multa de la alicuota atrasada numero " + obligacionAtrasada.idObligacion, "multa");
+        }
+    }
+
+
+    public void recargarSaldo(double abono) {
+        Recarga recarga = new Recarga(abono, String.valueOf(contadorRecargas++));
         saldo += abono;
         recargas.add(recarga);
     }
 
+    //tarjeta
+    public void recargarSaldo(double abono, String numeroTarjeta, String pin) {
+        Recarga recarga = new Recarga(abono, numeroTarjeta, pin, String.valueOf(contadorRecargas++));
+        saldo += abono;
+        recargas.add(recarga);
+    }
 
+    //transferencia
+    public void recargarSaldo(double abono, String numeroCuentaOrigen) {
+        Recarga recarga = new Recarga(abono, numeroCuentaOrigen, String.valueOf(contadorRecargas++));
+        saldo += abono;
+        recargas.add(recarga);
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+    /*
+    public void pagar(ObligacionFinanciera obligacionFinanciera) {
+        Pago pago = new Pago(this);
+        pago.pagar(obligacionFinanciera);
+
+        // Todo: aqui se crea la nueva alicuota?
+        if (obligacionFinanciera instanceof Alicuota) {
+            // Si es del tipo Alicuota, añade la obligación con los parámetros específicos
+            this.aniadirObligacion(400, "", "Alicuota");
+        }
+    }*/
 
     public void eliminarObligacion(ObligacionFinanciera obligacion) {
         ObligacionFinanciera encontrada = null;
@@ -105,8 +158,19 @@ public class Cuenta {
             salida = "================  REGISTRO ADMINISTRADOR ==================\n";
         }
 
-        for (Registro registro : registros) {
+        for (Pago registro : registros) {
             salida += registro + "\n";
+        }
+        return salida;
+    }
+
+    public String mostrarRecargas() {
+        String salida = "";
+        salida = "================  RECARGAS RESIDENTE ==================\n";
+
+
+        for (Recarga recarga : recargas) {
+            salida += recarga + "\n";
         }
         return salida;
     }
@@ -119,14 +183,15 @@ public class Cuenta {
         saldo -= monto;
     }
 
-    public void agregarRegistro(Registro registro) {
-        registros.add(registro);
+    public void agregarRegistro(Pago pago) {
+        registros.add(pago);
     }
 
 
     public Cuenta getCuentaAdministrador() {
         return cuentaAdministrador;
     }
+
 
     @Override
     public String toString() {
@@ -139,7 +204,8 @@ public class Cuenta {
         return salida += "Saldo= " + saldo;
     }
 
-    public void setCuentaDePago(Cuenta cuentaAdministrador1) {
-        this.cuentaAdministrador = cuentaAdministrador1;
+
+    public void setCuentaDePago(Cuenta cuentaAdministrador) {
+        this.cuentaAdministrador = cuentaAdministrador;
     }
 }

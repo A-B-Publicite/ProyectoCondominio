@@ -18,47 +18,33 @@ import java.time.Duration;
 public class Alicuota extends ObligacionFinanciera {
     protected LocalDateTime fechaLimite;
 
+    private Multa multa;
+
     public Alicuota(double metrosCuadrados, String descripcion, String id) {
         super(metrosCuadrados, LocalDate.now(), descripcion, id);
         //fechaLimite = LocalDateTime.now().plusDays(30);
-        fechaLimite = LocalDateTime.now().plusMinutes(5);
+        fechaLimite = LocalDateTime.now().plusMinutes(1);
         verificarFechaLimite();
+
     }
 
     public void verificarFechaLimite() {
-        // Obtener el momento actual
         LocalDateTime ahora = LocalDateTime.now();
-        // Calcular la diferencia en milisegundos desde ahora hasta 3 minutos después de la fecha límite
-        long delay = Duration.between(ahora, fechaLimite.plusMinutes(3)).toMillis();
+        long delay = Duration.between(ahora, fechaLimite.plusMinutes(1)).toMillis();
         if (delay > 0) { // Solo programar si la fecha limite más 3 minutos está en el futuro
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     if (Alicuota.this.estado instanceof EstadoPendiente) {
-                        estado.cambiarEstado(Alicuota.this, "atrasado");
-                        // Es opcional cancelar el timer si solo se va a usar una vez para este propósito
+                        cambiarEstado("atrasado");
                         timer.cancel();
-                        generarMulta(); // Llamar al método para generar la multa
                     }
                 }
             }, delay);
         }
     }
 
-    private void generarMulta() {
-        // Suponiendo que el valor de la multa es un valor fijo o calculado basado en algún criterio
-        double valorMultaBase = calcularValorMulta();
-        Multa multa = new Multa(valorMultaBase, "Multa por atraso en pago de alicuota", "ID_MULTA");
-
-        System.out.println("Multa generada: " + multa);
-    }
-
-
-    private double calcularValorMulta() {
-        // Implementar lógica para calcular el valor de la multa
-        return 50; // Valor de ejemplo
-    }
 
     @Override
     public double calcularMonto(double metrosCuadrados) {
@@ -67,9 +53,11 @@ public class Alicuota extends ObligacionFinanciera {
 
     @Override
     public void cambiarEstado(String senial) {
-        estado.cambiarEstado(this, senial);
+        if ("atrasado".equals(senial)) {
+            this.estado = new EstadoAtrasado(); // Asumiendo que existe esta clase de estado
+            notificarCambioEstado(this); // Notificar a los observadores sobre el cambio de estado
+        }
     }
-
 
     @Override
     public String toString() {
