@@ -47,8 +47,8 @@ public class MenuComunicacion {
         
         List<Perfil> residentes = new ArrayList<>();
         
-        for (Residente hijo : adminEnFichero.obtenerResidentes()) {
-            residentes.add(hijo); // Esto es posible debido a la herencia
+        for (Residente residente : adminEnFichero.obtenerResidentes()) {
+            residentes.add(residente); // Esto es posible debido a la herencia
         }
         
         switch (tipo) {

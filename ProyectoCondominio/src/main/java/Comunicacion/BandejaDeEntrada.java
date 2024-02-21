@@ -8,10 +8,10 @@ import Administracion.Perfil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import check_in.*;
 
 public class BandejaDeEntrada {
     private List<Mensaje> listaMensajes;
-    private List<Reporte> listaReportes;
     private Perfil perfil;
     private Scanner scanner;
 
@@ -28,10 +28,12 @@ public class BandejaDeEntrada {
     public void mostrar() {
         System.out.println("Bandeja de entrada de " + perfil.getNombreApellido()+ ":");
         int index = 1;
+        System.out.println("LISTA DE MENSAJES: ");
         for (Mensaje mensaje : listaMensajes) {
             System.out.println(index + ". " + mensaje.getTitulo());
             index++;
         }
+       
     }
 
     public void getMensajePorIndice() {

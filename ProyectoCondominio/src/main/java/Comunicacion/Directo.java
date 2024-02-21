@@ -5,6 +5,7 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import check_in.Autorizacion;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
@@ -58,4 +59,5 @@ public class Directo extends Mensaje{
                 "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() + 
                 "\n=============================================\n");
     }
+    
 }

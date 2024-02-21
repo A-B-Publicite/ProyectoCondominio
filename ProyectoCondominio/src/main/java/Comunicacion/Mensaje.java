@@ -6,6 +6,7 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import Administracion.Residente;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.Scanner;
  *
  * @author usuario
  */
-public abstract class Mensaje {
+public abstract class Mensaje implements Serializable{
     private Perfil origen;
     private List<Perfil> destinos= new ArrayList<>();
     private String contenido;
