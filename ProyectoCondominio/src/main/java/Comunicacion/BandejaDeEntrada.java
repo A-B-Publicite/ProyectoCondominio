@@ -8,17 +8,15 @@ import Administracion.Perfil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import check_in.*;
 
 public class BandejaDeEntrada {
     private List<Mensaje> listaMensajes;
     private Perfil perfil;
-    private Scanner scanner;
+
 
     public BandejaDeEntrada(Perfil perfil) {
         this.perfil = perfil;
         this.listaMensajes = new ArrayList<>();
-        this.scanner = new Scanner(System.in);
     }
 
     public void recibirMensaje(Mensaje mensaje) {

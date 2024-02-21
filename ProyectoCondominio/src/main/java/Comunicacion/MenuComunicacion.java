@@ -19,8 +19,7 @@ import java.util.Scanner;
  */
 public class MenuComunicacion {
     
-    public static void mostrar (Perfil origen) throws IOException, ClassNotFoundException {
-        
+    public static void mostrar () throws IOException, ClassNotFoundException {
 
         FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -37,7 +36,6 @@ public class MenuComunicacion {
                 "3. Directiva\n");
         tipo = scanner.nextInt();
         scanner.nextLine();
-        int pos=1;
         
         Mensaje mensaje;
         
@@ -53,19 +51,24 @@ public class MenuComunicacion {
         
         switch (tipo) {
             case 1:
-                mensaje = new Global(origen, residentes);
+                mensaje = new Global(adminEnFichero, residentes);
                 mensaje.crear();
             break;
             case 2:
-                mensaje = new Directo(origen, residentes);
+                mensaje = new Directo(adminEnFichero, residentes);
                 mensaje.crear();
             break;
             case 3:
-                mensaje = new Consejo(origen, directiva);
+                mensaje = new Consejo(adminEnFichero, directiva);
                 mensaje.crear();
             default:
                 throw new AssertionError();
         }
+        
+        residentes.get(0).getBandejaDeEntrada().mostrar();
+        residentes.get(0).getBandejaDeEntrada().getMensajePorIndice();
+        
+        
     }
     
 }
