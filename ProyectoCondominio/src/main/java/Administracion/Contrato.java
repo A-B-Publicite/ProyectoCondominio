@@ -3,7 +3,11 @@ package Administracion;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+<<<<<<< HEAD
 public class Contrato{
+=======
+public class Contrato implements Serializable{
+>>>>>>> 9eb02144088e0014c1deab4c04cfa324dbac84a4
     private LocalDate fechaContrato;
     private double precioContrato;
     private String descripcion;

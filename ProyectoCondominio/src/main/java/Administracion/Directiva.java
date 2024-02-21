@@ -1,6 +1,7 @@
 package Administracion;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Directiva {
+public class Directiva implements Serializable{
     Residente presidente;
     Residente secretario;
     Administrador administrador;
