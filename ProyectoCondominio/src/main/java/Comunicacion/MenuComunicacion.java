@@ -6,6 +6,7 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import Administracion.Residente;
+import Inmueble.Condominio;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,7 +33,11 @@ public class MenuComunicacion {
             e.printStackTrace();
         }
         
-        Directiva directiva = new Directiva(, destino)
+        Condominio condominio = new Condominio("HOLAAA");
+        
+        List<Perfil> directiva = new ArrayList<Residente>();
+        
+        
 
         Scanner scanner = new Scanner(System.in);
         int tipo = 0;
@@ -64,7 +69,8 @@ public class MenuComunicacion {
                 mensaje.crear();
             break;
             case 3:
-                mensaje = new Directiva();
+                mensaje = new Consejo(origen, directiva);
+                mensaje.crear();
             default:
                 throw new AssertionError();
         }
