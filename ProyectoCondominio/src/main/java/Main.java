@@ -63,11 +63,11 @@ public class Main {
             
             switch (opcion[0]) {
                 case 1:
-                    Menu.menuAdministracion(administrador, opcion);
+                    Menu.menuAdministracion(adminEnFichero, opcion);
                     
                     break;
                 case 2:
-                    MenuFinanzas.menuFinanzas(administrador); 
+                    MenuFinanzas.menuFinanzas(adminEnFichero); 
                     break;
                 case 3:
                     MenuR.menuReservas(adminEnFichero);
@@ -76,13 +76,19 @@ public class Main {
                     MenuCI.menuCheckIn(adminEnFichero, opcion);
                     break;
                 case 5:
-
-                    break;
-                case 6:
                     MenuComunicacion.mostrar();
+                    break;
+                case 0:
+                    System.exit(0);
                     break;
                 
             }
         } while (opcion[0] != 0);
+        
+        //Escribo a bits el admin
+        fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(administrador);
+        objectOutputStream.close();
     }
 }
