@@ -1,7 +1,6 @@
 package Administracion;
 
 public class Contrato {
-
     private String fechaContrato;
     private double precioContrato;
     private String descripcion;
@@ -37,6 +36,10 @@ public class Contrato {
     }
     public double getPrecioContrato() {
         return precioContrato;
+    }
+
+    boolean compararDescripcion(String descripcionContratoAPagar) {
+        return (descripcion == null ? descripcionContratoAPagar == null : descripcion.equals(descripcionContratoAPagar));
     }
     
     

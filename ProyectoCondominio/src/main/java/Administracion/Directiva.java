@@ -29,4 +29,13 @@ public class Directiva {
         return contratosAprobados;
     }
 
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        Contrato contratoAPagar = null;
+        for (Contrato centrato : contratosAprobados) {
+            if (centrato.compararDescripcion(descripcionContratoAPagar)) {
+                return contratoAPagar;
+            }
+        }
+        return null;
+    }
 }

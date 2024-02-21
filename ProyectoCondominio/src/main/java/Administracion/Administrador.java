@@ -45,9 +45,9 @@ public class Administrador extends Perfil {
         residenteNuevo.darCuentaDePago(this.cuenta);
     }
 
-    public void pagarContrato(Contrato contrato) {
-        ObligacionFinanciera obligacionFinanciera = cuenta.aniadirObligacion(contrato.getPrecioContrato(), "contrato de guardiania", "cuotacontrato");
-        cuenta.pagarObligacionFinanciera(obligacionFinanciera);
+    public void pagarContrato(String descripcionContratoAPagar) {
+        Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
+        cuenta.pagarCOntrato(contrato.getValor());
     }
 
     public Residente obtenerResidente(String nombreResidente) {

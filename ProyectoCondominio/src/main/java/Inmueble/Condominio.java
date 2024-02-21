@@ -81,4 +81,8 @@ public class Condominio {
     public void agregarDirectiva(Residente presidente, Residente secretario) {
         directiva.agregarDirectiva(presidente, secretario);
     }
+
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        return directiva.getContrato(descripcionContratoAPagar);
+    }
 }
