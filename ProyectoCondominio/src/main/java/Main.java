@@ -68,7 +68,7 @@ public class Main {
                     
                     break;
                 case 2:
-
+                    MenuFinanzas.menuFinanzas(administrador); 
                     break;
                 case 3:
                     MenuR.menuReservas(adminEnFichero);
