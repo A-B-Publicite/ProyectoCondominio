@@ -22,16 +22,25 @@ public class Guardia extends Perfil{
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
     
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada, String motivoVisita, String nombre, String personaAVisitar, Perfil autorizador){
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero){
+        RegistroEntrada registro = new RegistroEntrada();
+        registro.setAutorizacion(autorizacion);        
+        registro.registrarEntrada(fechaLlegada, horaLlegada);
+        registro.asignarParqueadero(fechaLlegada, this);
+    }
+    
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, String motivoVisita, String nombre, String personaAVisitar, Perfil residente){
         RegistroEntrada registro = new RegistroEntrada();
         Visitante visitanteNuevo = new Visitante(motivoVisita, nombre, personaAVisitar);
         Autorizacion autorizacionInmediata = new Autorizacion();
         
-        autorizacionInmediata.completar(visitanteNuevo.getPersonaAVisitar(), visitanteNuevo.getNombre(), fechaLlegada, fechaLlegada);
-        autorizacionInmediata.notificar(autorizador,this);
-        autorizacionInmediata = autorizador.validarAutorizacion(autorizacionInmediata);    
+        autorizacionInmediata.completar(personaAVisitar, visitanteNuevo.getNombre(), fechaLlegada, fechaLlegada);
+        autorizacionInmediata.notificar(residente,this);
         
-        registro.setAutorizacion(autorizacionInmediata);
+        this.bandejaDeEntrada.mostrar();
+        
+        
+        
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
 }
