@@ -69,8 +69,6 @@ public class Administrador extends Perfil {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
         objectOutputStream.close();
-
-
     }
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {

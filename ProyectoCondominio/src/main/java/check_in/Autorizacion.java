@@ -37,7 +37,7 @@ public class Autorizacion implements Serializable{
         if(autorizador == null){
             System.out.println("Envíe un autorizador valido");
             return;}
-        if(autorizador.getNombre()!= this.autorizador){
+        if(!autorizador.getNombreApellido().equals(this.autorizador)){
             System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
             return;}
         aprobado = true;
