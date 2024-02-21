@@ -8,6 +8,7 @@ import Administracion.Guardia;
 import Administracion.Perfil;
 import Comunicacion.Directo;
 import Comunicacion.Mensaje;
+import java.util.List;
 
 /**
  *
@@ -40,7 +41,15 @@ public class Autorizacion {
             return;}
         aprobado = true;
     }
-
+    
+    public void notificar(Perfil autorizador, Guardia guardia){
+        Mensaje mensaje = new Directo(guardia, (List<Perfil>) autorizador);    
+        mensaje.crear();
+    }   
+    public boolean getAprobado() {
+        return aprobado;
+    }   
+    
     public String getAutorizador() {
         return autorizador;
     }
@@ -55,14 +64,5 @@ public class Autorizacion {
 
     public String getFechaFin() {
         return fechaFin;
-    }
-    
-    public void notificar(Perfil autorizador, Guardia guardia){
-        Mensaje mensaje = new Directo(guardia, autorizador,this, "Nueva visita");
-        mensaje.enviar();
-    }   
-    public boolean getAprobado() {
-        return aprobado;
-    }   
-     
+    }     
 }
