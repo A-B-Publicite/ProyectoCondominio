@@ -8,19 +8,14 @@ package Finanzas;
  *
  * @author alejo
  */
-public class Registro {
-    private final Pago pago;
-
-    public Registro(Pago pago) {
-        this.pago = pago;
-    }
-
-    public void registrar(ObligacionFinanciera obligacionFinanciera) {
-
+public class Efectivo extends MetodoRecarga {
+    public Efectivo(double abono) {
+        super(abono);
+        realizarTransaccion();
     }
 
     @Override
-    public String toString() {
-        return pago + "";
+    void realizarTransaccion() {
+        descripcion = "El método de recarga fue en efectivo";
     }
 }

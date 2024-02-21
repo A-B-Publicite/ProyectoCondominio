@@ -11,17 +11,16 @@ package Finanzas;
 import java.time.LocalDate;
 
 public class Multa extends ObligacionFinanciera {
-    public Multa(double valorMultaBase, String descripcion, String id) {
-        super(valorMultaBase, LocalDate.now(), descripcion, id);
+    public Multa(double valorAlicuotaAtrasada, String descripcion, String id) {
+        super(valorAlicuotaAtrasada, LocalDate.now(), descripcion, id);
     }
-
     @Override
     public void cambiarEstado(String senial) {
         estado.cambiarEstado(this, senial);
     }
-
     @Override
-    public double calcularMonto(double monto) {
-        return 0;
+    public double calcularMonto(double valorAlicuotaAtrasada) {
+        return valorAlicuotaAtrasada * 0.25;
     }
+
 }
