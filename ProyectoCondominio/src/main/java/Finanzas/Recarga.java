@@ -4,11 +4,14 @@
  */
 package Finanzas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alejo
  */
-public class Recarga {
+
+public class Recarga implements Serializable {
     private final String id;
     private MetodoRecarga metodoRecarga;
 

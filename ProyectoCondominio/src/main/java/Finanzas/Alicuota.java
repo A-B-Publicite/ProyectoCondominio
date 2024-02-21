@@ -15,7 +15,7 @@ import java.util.TimerTask;
 import java.time.Duration;
 
 
-public class Alicuota extends ObligacionFinanciera {
+public class Alicuota extends ObligacionFinanciera implements Serializable {
     protected LocalDateTime fechaLimite;
 
     private Multa multa;
@@ -23,9 +23,8 @@ public class Alicuota extends ObligacionFinanciera {
     public Alicuota(double metrosCuadrados, String descripcion, String id) {
         super(metrosCuadrados, LocalDate.now(), descripcion, id);
         //fechaLimite = LocalDateTime.now().plusDays(30);
-        fechaLimite = LocalDateTime.now().plusMinutes(1);
+        fechaLimite = LocalDateTime.now().plusMinutes(2);
         verificarFechaLimite();
-
     }
 
     public void verificarFechaLimite() {
@@ -44,7 +43,6 @@ public class Alicuota extends ObligacionFinanciera {
             }, delay);
         }
     }
-
 
     @Override
     public double calcularMonto(double metrosCuadrados) {

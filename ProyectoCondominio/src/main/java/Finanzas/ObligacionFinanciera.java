@@ -9,21 +9,22 @@ package Finanzas;
  * @author alejo
  */
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
-
-public abstract class ObligacionFinanciera implements Observable {
+public abstract class ObligacionFinanciera implements Observable, Serializable {
+    private List<Cuenta> observadores = new ArrayList<>();
     protected EstadoObligacion estado;
     protected double monto;
     protected LocalDate fechaCreacion;
     protected String descripcion;
     protected String idObligacion;
-    private List<Cuenta> observadores = new ArrayList<>();
+
 
     public ObligacionFinanciera(double valor, LocalDate fechaCreacion, String descripcion, String idObligacion) {
-        //Valor corresponde a m2, valorMulta, valorCuota.
+        //Valor corresponde a m2, valorBaseMulta
         monto = calcularMonto(valor);
         this.fechaCreacion = fechaCreacion;
         estado = new EstadoPendiente();
@@ -62,7 +63,7 @@ public abstract class ObligacionFinanciera implements Observable {
     public String getIdObligacion() {
         return idObligacion;
     }
-    
+
 
     @Override
     public String toString() {
