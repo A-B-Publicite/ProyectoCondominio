@@ -24,13 +24,13 @@ public class Main {
         Administrador administrador = new Administrador("Juan", "Zambrano");
         
         //Escribo a bits el admin
-        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("datosAdmin.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(administrador);
         objectOutputStream.close();
 
         //Lectura del objeto admin
-        FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
+        FileInputStream fileInputStream = new FileInputStream("datosAdmnin.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
         objectOutputStream.close();
