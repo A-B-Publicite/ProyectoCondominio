@@ -6,6 +6,12 @@ import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.InmuebleComun;
 import check_in.Autorizacion;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.*;
 // Considerar singleton
@@ -40,12 +46,18 @@ public class Administrador extends Perfil {
     }
 
 
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) {
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) throws FileNotFoundException, IOException, ClassNotFoundException {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuenta);
+        //Escribo a bits el residenteNuevo
+        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            objectOutputStream.writeObject(residenteNuevo);
+        }
+
     }
     
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {

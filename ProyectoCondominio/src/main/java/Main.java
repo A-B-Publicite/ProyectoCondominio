@@ -81,11 +81,5 @@ public class Main {
                     throw new AssertionError("No ha escogido una opcion correcta");
             }
         } while (opcion != 0);
-        //Escribo a bits el admin
-        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(adminEnFichero);
-        objectOutputStream.close();
-
     }
 }
