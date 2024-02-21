@@ -5,6 +5,7 @@ import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.InmuebleComun;
+import check_in.Autorizacion;
 import java.time.LocalDate;
 import java.util.*;
 // Considerar singleton
@@ -46,6 +47,17 @@ public class Administrador extends Perfil {
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuenta);
     }
+    
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
+        Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
+        Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
+        autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        residenteNuevo.setAutorizacion(autorizacionEntrada);
+        residenteNuevo.setDepartamento(departamentoLibre);
+        departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        residenteNuevo.darCuentaDePago(this.cuenta);
+    }
+            
 
     public void pagarContrato(String descripcionContratoAPagar) {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
@@ -85,5 +97,11 @@ public class Administrador extends Perfil {
         directiva.agregarContrato(contratoNuevo);
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
+    public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin){
+        Autorizacion autorizacionEntrada = new Autorizacion();
+        autorizacionEntrada.completar(this.nombre,nombreResidente,fechaActual,fechaFin);
+        autorizacion.validar(this);
+        return autorizacionEntrada;
+    }
 }

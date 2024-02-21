@@ -15,7 +15,7 @@ public class Guardia extends Perfil{
     public Guardia(String correo, String contrasena, String nombreApellido) {
         super(correo, contrasena, nombreApellido);
     }
-    
+   
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion){
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(autorizacion);

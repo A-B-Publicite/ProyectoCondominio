@@ -3,6 +3,8 @@ package Administracion;
 
 import Comunicacion.BandejaDeEntrada;
 import Finanzas.Cuenta;
+import check_in.Autorizacion;
+import check_in.RegistroEntrada;
 import java.io.Serializable;
 
 public abstract class Perfil implements Serializable{
@@ -12,6 +14,7 @@ public abstract class Perfil implements Serializable{
     protected String apellido;
     protected BandejaDeEntrada bandejaDeEntrada;
     protected Cuenta cuentaBancaria;
+    private Autorizacion autorizacion;
     
     public Perfil(String nombre, String apellido) {
         this.correo = nombre + "." + apellido + "@policondominio.com";
@@ -44,4 +47,9 @@ public abstract class Perfil implements Serializable{
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada){
+        RegistroEntrada registro = new RegistroEntrada();
+        registro.setAutorizacion(this.autorizacion);
+        registro.registrarEntrada(fechaLlegada, horaLlegada);        
+    }
 }
