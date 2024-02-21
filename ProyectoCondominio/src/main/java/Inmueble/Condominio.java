@@ -1,11 +1,10 @@
 package Inmueble;
 
 import Administracion.*;
+import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.List;
-
-public class Condominio {
+public class Condominio implements Serializable {
 
     private Administrador admin;
     private String nombre;

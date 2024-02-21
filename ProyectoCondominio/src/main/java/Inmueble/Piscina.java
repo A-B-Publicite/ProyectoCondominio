@@ -1,6 +1,8 @@
 package Inmueble;
 
-public class Piscina extends InmuebleComun {
+import java.io.Serializable;
+
+public class Piscina extends InmuebleComun implements Serializable {
 
     public Piscina(double metrosCuadrados) {
         super(metrosCuadrados);

@@ -1,8 +1,9 @@
 package Administracion;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Contrato {
+public class Contrato{
     private LocalDate fechaContrato;
     private double precioContrato;
     private String descripcion;

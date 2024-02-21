@@ -1,11 +1,12 @@
 package Inmueble;
 
 import ModuloReservas.Reserva;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class InmuebleComun{
+public abstract class InmuebleComun implements Serializable  implements Serializable {
 
     private ArrayList<Reserva> listaReservas;
     private ArrayList<String> diasDisponibles;

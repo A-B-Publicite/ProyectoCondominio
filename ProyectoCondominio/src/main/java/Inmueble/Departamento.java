@@ -1,9 +1,10 @@
 package Inmueble;
 
 import Administracion.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Departamento extends InmueblePrivado {
+public class Departamento extends InmueblePrivado implements Serializable {
     private Residente propietario;
     private ArrayList<InmueblePrivado> inmueblesPrivados;
     private static final double M2DEPARTAMENTO=12;
