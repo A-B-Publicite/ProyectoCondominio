@@ -6,12 +6,13 @@ package check_in;
 
 import Administracion.Perfil;
 import ModuloReservas.Reserva;
+import java.io.Serializable;
 
 /**
  *
  * @author MARQUEZ
  */
-public class RegistroEntrada {
+public class RegistroEntrada implements Serializable{
     private String fechaLlegada;
     private String horaLlegada;
     private Autorizacion autorizacion;
