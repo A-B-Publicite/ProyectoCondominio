@@ -110,4 +110,10 @@ public class Administrador extends Perfil {
         autorizacionEntrada.validar(this);
         return autorizacionEntrada;
     }
+
+    public Condominio getCondominio() {
+        return condominio;
+    }
+    
+    
 }
