@@ -21,7 +21,7 @@ public class MenuComunicacion {
     
     public static void mostrar () throws IOException, ClassNotFoundException {
 
-        FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
+        FileInputStream fileInputStream = new FileInputStream("Datos/datosAdmin.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
         objectInputStream.close();
@@ -67,8 +67,7 @@ public class MenuComunicacion {
         
         residentes.get(0).getBandejaDeEntrada().mostrar();
         residentes.get(0).getBandejaDeEntrada().getMensajePorIndice();
-        
-        
+
     }
     
 }
