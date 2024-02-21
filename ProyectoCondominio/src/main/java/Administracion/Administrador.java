@@ -19,19 +19,18 @@ import java.util.*;
 public class Administrador extends Perfil {
 
     private Condominio condominio;
-     
-    public Administrador( String nombre, String apellido) {
+
+    public Administrador(String nombre, String apellido) {
         super(nombre, apellido);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     //CONSTRUCTOR PARA ISNTANCIAR UN ADMINISTRADOR CON AUTORIZACION DE ENTRADA
-    public Administrador( String nombre, String apellido,String fechaActual, String fechaFin) {
+    public Administrador(String nombre, String apellido, String fechaActual, String fechaFin) {
         super(nombre, apellido);
-        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        Autorizacion autorizacionEntrada = crearAutorizacion(nombre + " " + apellido, fechaActual, fechaFin);
         this.setAutorizacion(autorizacionEntrada);
     }
-
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
@@ -41,12 +40,12 @@ public class Administrador extends Perfil {
         // Crear metodo en condominio
         condominio.agregarInmuebleComun(inmuebleComun);
     }
-   
+
     public void agregarDepartamento(int numeroDepartamento) {
         condominio.agregarDepartamentos(numeroDepartamento);
     }
-    
-    public ArrayList<InmuebleComun> obtenerInmuebleComun(){
+
+    public ArrayList<InmuebleComun> obtenerInmuebleComun() {
         return condominio.obtenerInmuebleComun();
     }
 
@@ -57,26 +56,33 @@ public class Administrador extends Perfil {
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         //Escribo a bits el residenteNuevo
-        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datosResidentes.txt");
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(condominio.obtenerResidentes());
-        }
+        
+        
+        
+        ArrayList<Residente> listaResidentes = new ArrayList<Residente>();
+        listaResidentes = condominio.obtenerResidentes();
+        
+        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosResidentes.txt");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(listaResidentes);
+        objectOutputStream.close();
+
     }
-    
+
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
-        Autorizacion autorizacionEntrada = crearAutorizacion(residenteNuevo.getNombreApellido(),fechaActual,fechaFin);
+        Autorizacion autorizacionEntrada = crearAutorizacion(residenteNuevo.getNombreApellido(), fechaActual, fechaFin);
         residenteNuevo.setAutorizacion(autorizacionEntrada);
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
     }
-    
+
     //PORFAVOR NO BORRAR, ES DE USO PARA AGREGAR UN GUARDIA AL CONDOMINIO
     public void registrarGuardia(String nombre, String apellido, String fechaActual, String fechaFin) {
-        Guardia guardiaNuevo = new Guardia(nombre,apellido);
-        Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(),fechaActual,fechaFin);
+        Guardia guardiaNuevo = new Guardia(nombre, apellido);
+        Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(), fechaActual, fechaFin);
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
     }
@@ -85,16 +91,20 @@ public class Administrador extends Perfil {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
         cuentaBancaria.pagarContrato(contrato.getPrecioContrato());
     }
-    
-    
-    
-    public ArrayList<Residente> obtenerResidentes(){
+
+    public ArrayList<Residente> obtenerResidentes() {
         return condominio.obtenerResidentes();
     }
 
     public Residente obtenerResidente(String nombreResidente) throws Exception {
         // Implementar en inmueble
         return condominio.obtenerResidenteNombre(nombreResidente);
+    }
+
+    public Residente obtenerResidentePorCorreo(String correo) throws Exception {
+
+        // Implementar en inmueble
+        return condominio.obtenerResidentePorCorreo(correo);
     }
 
     public void obtenerCondominiosRegistrados() {
@@ -106,7 +116,6 @@ public class Administrador extends Perfil {
         System.out.print(condominio.toString());
     }
 
-
     public ArrayList<Contrato> mostrarContratos() {
         return condominio.mostrarContratos();
     }
@@ -114,9 +123,9 @@ public class Administrador extends Perfil {
     public void agregarDirectiva(String correoPresidente, String correoSecretario) throws Exception {
         condominio.agregarDirectiva(obtenerResidenteCorreo(correoPresidente), obtenerResidenteCorreo(correoSecretario));
     }
-    
-    public Residente obtenerResidenteCorreo(String correo) throws Exception{
-        return condominio.obtenerResidente(correo);
+
+    public Residente obtenerResidenteCorreo(String correo) throws Exception {
+        return condominio.obtenerResidentePorCorreo(correo);
     }
 
     void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
@@ -125,10 +134,10 @@ public class Administrador extends Perfil {
         directiva.agregarContrato(contratoNuevo);
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin){
+
+    public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin) {
         Autorizacion autorizacionEntrada = new Autorizacion();
-        autorizacionEntrada.completar(this.getNombreApellido(),nombreResidente,fechaActual,fechaFin);
+        autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
         autorizacionEntrada.validar(this);
         return autorizacionEntrada;
     }
