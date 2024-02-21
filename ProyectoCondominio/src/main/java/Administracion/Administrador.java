@@ -42,11 +42,12 @@ public class Administrador extends Perfil {
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        residenteNuevo.darCuentaDePago(this.cuenta);
     }
 
     public void pagarContrato(Contrato contrato) {
         ObligacionFinanciera obligacionFinanciera = cuenta.aniadirObligacion(contrato.getPrecioContrato(), "contrato de guardiania", "cuotacontrato");
-        cuenta.pagar(obligacionFinanciera);
+        cuenta.pagarObligacionFinanciera(obligacionFinanciera);
     }
 
     public Residente obtenerResidente(String nombreResidente) {

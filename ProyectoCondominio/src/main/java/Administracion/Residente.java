@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class Residente extends Perfil{
     private boolean esPropietario;
     private Departamento departamento;
-    private Cuenta cuenta;
+    
 
     public Residente(String nombre, String apellido, Boolean esPropietario) {
         super(nombre, apellido);
         this.esPropietario = esPropietario;
-        //this.cuenta = new Cuenta((Cuenta) administrador.getCuenta());
 
+    }
+    public void darCuentaDePago(Cuenta cuentaAdministrador) {
+        cuentaBancaria.setCuentaDePago(cuentaAdministrador);
     }
     
     public void reservarAreaComun(){
@@ -60,4 +62,6 @@ public class Residente extends Perfil{
     public Boolean compararCorreoNombre(String correo){
             return correo.equals(this.correo);
         }
+
+
 }

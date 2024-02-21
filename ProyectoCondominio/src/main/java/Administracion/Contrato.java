@@ -7,6 +7,7 @@ public class Contrato {
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
+    private Proveedor proveedor;
 
     public Contrato(String fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
         this.fechaContrato = fechaContrato;
@@ -14,6 +15,7 @@ public class Contrato {
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        proveedor = new Proveedor();
         
     }
 
