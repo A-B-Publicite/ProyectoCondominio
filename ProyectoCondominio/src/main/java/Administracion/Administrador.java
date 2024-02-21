@@ -63,9 +63,9 @@ public class Administrador extends Perfil {
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuenta);
         //Escribo a bits el residenteNuevo
-        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datosResidentes.txt");
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(residenteNuevo);
+            objectOutputStream.writeObject(condominio.obtenerResidentes());
         }
     }
     
