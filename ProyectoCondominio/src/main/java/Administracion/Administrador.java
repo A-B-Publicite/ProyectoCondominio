@@ -5,6 +5,7 @@ import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.InmuebleComun;
+import java.time.LocalDate;
 import java.util.*;
 // Considerar singleton
 
@@ -12,6 +13,7 @@ public class Administrador extends Perfil {
 
     private Condominio condominio;
     private Cuenta cuenta;
+    
 
  
     public Administrador( String nombre, String apellido) {
@@ -50,9 +52,9 @@ public class Administrador extends Perfil {
         cuenta.pagarObligacionFinanciera(obligacionFinanciera);
     }
 
-    public Residente obtenerResidente(String nombreResidente) {
+    public Residente obtenerResidente(String nombreResidente) throws Exception {
         // Implementar en inmueble
-        return condominio.obtenerResidente(nombreResidente);
+        return condominio.obtenerResidenteNombre(nombreResidente);
     }
 
     public void obtenerCondominiosRegistrados() {
@@ -69,12 +71,19 @@ public class Administrador extends Perfil {
         return condominio.mostrarContratos();
     }
 
-    public void agregarDirectiva(String correoPresidente, String correoSecretario) {
+    public void agregarDirectiva(String correoPresidente, String correoSecretario) throws Exception {
         condominio.agregarDirectiva(obtenerResidenteCorreo(correoPresidente), obtenerResidenteCorreo(correoSecretario));
     }
     
-    public Residente obtenerResidenteCorreo(String correo){
+    public Residente obtenerResidenteCorreo(String correo) throws Exception{
         return condominio.obtenerResidente(correo);
+    }
+
+    void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
+        Contrato contratoNuevo = new Contrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
+        Directiva directiva = condominio.getDirectiva();
+        directiva.agregarContrato(contratoNuevo);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
