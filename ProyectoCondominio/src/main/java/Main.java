@@ -36,7 +36,7 @@ public class Main {
         Administrador adminEnFichero = (Administrador) objectInputStream.readObject();
         objectOutputStream.close();
 
-        int opcion = 0;
+        int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("LOGIN");
@@ -46,9 +46,7 @@ public class Main {
 
         System.out.print("Contrasenia: ");
         String contrasenia = scanner.nextLine();
-
-        do {
-            System.out.println("""
+        System.out.println("""
                                Opciones para probar el sistema:
                                1. Administracion
                                2. Inmuebles
@@ -59,10 +57,13 @@ public class Main {
                                0. Salir
                                """);
 
-            opcion = scanner.nextInt();
-            switch (opcion) {
+            opcion[0] = scanner.nextInt();
+
+        do {
+            
+            switch (opcion[0]) {
                 case 1:
-                    Menu.menuAdministracion(adminEnFichero);
+                    Menu.menuAdministracion(adminEnFichero, opcion);
                     
                     break;
                 case 2:
@@ -83,6 +84,6 @@ public class Main {
                 default:
                     throw new AssertionError("No ha escogido una opcion correcta");
             }
-        } while (opcion != 0);
+        } while (opcion[0] != 0);
     }
 }

@@ -9,8 +9,8 @@ import java.util.Date;
 
 public class Menu {
 
-    public static void menuAdministracion(Administrador administrador) {
-        int opcion = 0;
+    public static void menuAdministracion(Administrador administrador, int[] opcionesMenuGeneral) {
+        int opcionesMenu;
         int opcionSubMenu = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -26,10 +26,10 @@ public class Menu {
                                0. Salir
                                """);
 
-        opcion = scanner.nextInt();
+        opcionesMenu = scanner.nextInt();
         scanner.nextLine();
         try {
-            switch (opcion) {
+            switch (opcionesMenu) {
                 case 1:
                     System.out.print("Nombre del condominio: ");
                     String nombreCondominio = scanner.nextLine();
@@ -128,10 +128,18 @@ public class Menu {
                     double precio = scanner.nextDouble();
                     administrador.agregarContrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
                     break;
+                case 0:
+                    opcionesMenuGeneral[0] = 0;
+                    return;
+                default:
+                    System.out.print("No existe esa opcion");
+                    break;
 
             }
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }
+        opcionesMenuGeneral[0] = 1;
+        return;
     }
 }
