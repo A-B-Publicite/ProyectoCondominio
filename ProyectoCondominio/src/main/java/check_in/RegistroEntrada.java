@@ -46,6 +46,10 @@ public class RegistroEntrada implements Serializable{
     }
     
     public void usarParqueaderoAsignado(String fechaFin,ParqueaderoPrivado parqueadero){
+        if(parqueadero==null){
+            System.out.println("No cuenta con un espacio de parqueadero privado");
+            return;}
+        
         parqueadero.usar();
         usoParqueadero = parqueadero;
     }
@@ -57,6 +61,6 @@ public class RegistroEntrada implements Serializable{
                 "\nAutorización: " + 
                     "\nAutorizador: " + autorizacion.autorizador + " Autorizado: " + autorizacion.autorizado +
                      "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
-                "\n reservaParqueadero=" + usoParqueadero + '}';
+                "\n usoParqueadero=" + usoParqueadero + '}';
     }   
 }

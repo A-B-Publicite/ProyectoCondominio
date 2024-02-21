@@ -24,14 +24,13 @@ public class Guardia extends Perfil implements Serializable{
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
     
-    /*
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero, ){
+    
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero, EspacioDeParqueadero espacio){
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(autorizacion);        
-        registro.registrarEntrada(fechaLlegada, horaLlegada);
-        registro.asignarParqueadero(this,espacioParqueadero);
-        registro.registrarEntrada(fechaLlegada, horaLlegada);      
-    }*/
+        registro.asignarParqueadero(reservadorParqueadero, espacio);
+        registro.registrarEntrada(fechaLlegada, horaLlegada); 
+    }
     
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, Visitante visitante, Perfil residente, boolean quiereEstacionamiento, EspacioDeParqueadero espacio){
         RegistroEntrada registro = new RegistroEntrada();
