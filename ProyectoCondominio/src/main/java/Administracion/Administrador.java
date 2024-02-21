@@ -120,7 +120,7 @@ public class Administrador extends Perfil {
     }
     
     public Residente obtenerResidenteCorreo(String correo) throws Exception{
-        return condominio.obtenerResidente(correo);
+        return condominio.obtenerResidentePorCorreo(correo);
     }
 
     void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
