@@ -46,5 +46,13 @@ public class Directiva {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Residente getPresidente() {
+        return presidente;
+    }
 
+    public Residente getSecretario() {
+        return secretario;
+    }
+
+    
 }

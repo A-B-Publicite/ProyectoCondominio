@@ -21,22 +21,16 @@ public class MenuComunicacion {
     
     public static void mostrar (Perfil origen) throws IOException, ClassNotFoundException {
         
-        List<Perfil> residentes = new ArrayList<Residente>();
+        
         try {
-            FileInputStream fileInputStream = new FileInputStream("Residentes.txt");
+            FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            residentes = (List<Perfil>) objectInputStream.readObject();
+            Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
-        Condominio condominio = new Condominio("HOLAAA");
-        
-        List<Perfil> directiva = new ArrayList<Residente>();
-        
-        
 
         Scanner scanner = new Scanner(System.in);
         int tipo = 0;
@@ -47,14 +41,6 @@ public class MenuComunicacion {
         tipo = scanner.nextInt();
         scanner.nextLine();
         int pos=1;
-        if (tipo!=1) {
-            System.out.println("Eliga el destinatario");
-            for (int i = 0; i < residentes.size(); i++) {
-                System.out.println((i + 1) + ". " + residentes.get(i).getNombre());
-
-            }
-            pos= scanner.nextInt();
-        }
         
         Mensaje mensaje;
         

@@ -68,4 +68,8 @@ public class Residente extends Perfil{
         return nombreResidente.equals(this.nombre);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> a4305ce3ab6dca0941b22fbd2ea9d3125cfa86e3
 }
