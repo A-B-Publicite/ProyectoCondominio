@@ -6,6 +6,8 @@ package ModuloReservas;
 
 import Administracion.*;
 import Inmueble.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -26,17 +28,15 @@ public class MenuR {
                                1. Crear reserva
                                2. Cancelar reserva
                                3. Reprogramar reserva
-                               4. Consultar reserva
+                               4. Listar reserva
                                0. Salir
                                """);
 
         opcionReserva = scanner.nextInt();
-        scanner.nextLine();
-
-        try {
+        
+        try{
             switch (opcionReserva) {
                 case 1: //Crear reserva
-
                     do {
                         int opcionInmuebleComun;
                         scanner = new Scanner(System.in);
@@ -52,12 +52,16 @@ public class MenuR {
                         opcionInmuebleComun = scanner.nextInt();
                         switch (opcionInmuebleComun) {
                             case 1 -> { //Cancha
-                                //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), detalleReserva, usuarioReserva);
+                                String detalleReserva = "Futbol";
                                 System.out.println(" " + administrador.obtenerInmuebleComun());
-                                //System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                //double metrosCuadrados = scanner.nextDouble();
-                                //Cancha canchaNueva = new Cancha(metrosCuadrados);
-                                //administrador.agregarInmuebleComun(canchaNueva);
+                                
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                // Verificar si el inmueble actual es una instancia de Cancha.
+                                if (inmueble instanceof Cancha) {
+                                    Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                }
+                            }
+                            break;
                             }
 
                             default ->
@@ -67,16 +71,6 @@ public class MenuR {
 
                     } while (scanner.nextBoolean());
                     break;
-
-                    //Pedimos el detalle de la reserva
-                    //String detalleReserva;
-                    //detalleReserva = scanner.nextLine();
-
-                    //Creamos la reserva
-                    //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), administrador.condominio., detalleReserva, usuarioReserva);
-                    //System.out.print("Nombre del condominio: ");
-                    //String nombreCondominio = scanner.nextLine();
-                    //administrador.agregarCondominio(nombreCondominio);
 
                 case 2: //Cancelar reserva
                     System.out.print("Nombre: ");
@@ -88,7 +82,7 @@ public class MenuR {
 
                     administrador.registrarResidente(nombre, apellido, esPropietario);
                     break;
-                case 3:
+                case 3://Reprogramar
                     System.out.print("Ingrese el correo del presidente: ");
                     String correoPresidente = scanner.nextLine();
                     System.out.print("Ingrese el correo del secretario: ");
@@ -97,67 +91,23 @@ public class MenuR {
                     System.out.print("Se creo exitosamente");
 
                     break;
-                case 4:
-                    System.out.print("Ingrese el numero de departamentos: ");
-                    administrador.agregarDepartamento(scanner.nextInt());
-                    break;
-                case 5:
-                    do {
-                        int opcionInmuebleComun;
-                        scanner = new Scanner(System.in);
-
-                        System.out.println("""
-                                    Opciones:
-                                    1. Cancha
-                                    2. Gimnasio
-                                    3. Espacio de parqueadero
-                                    4. Piscina
-                                    5. Terraza
-                                    0. Salir
-                               """);
-
-                        opcionInmuebleComun = scanner.nextInt();
-                        switch (opcionInmuebleComun) {
-                            case 1 -> {
-                                System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                double metrosCuadrados = scanner.nextDouble();
-                                Cancha canchaNueva = new Cancha(metrosCuadrados);
-                                administrador.agregarInmuebleComun(canchaNueva);
-                            }
-                            case 2 -> {
-                                System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                double metrosCuadrados = scanner.nextDouble();
-                                Gimnasio gymNuevo = new Gimnasio(metrosCuadrados);
-                                administrador.agregarInmuebleComun(gymNuevo);
-                            }
-                            case 3 -> {
-                                System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                double metrosCuadrados = scanner.nextDouble();
-                                EspacioDeParqueadero espacioParqueo = new EspacioDeParqueadero(metrosCuadrados);
-                                administrador.agregarInmuebleComun(espacioParqueo);
-                            }
-                            case 4 -> {
-                                System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                double metrosCuadrados = scanner.nextDouble();
-                                Piscina piscinaNueva = new Piscina(metrosCuadrados);
-                                administrador.agregarInmuebleComun(piscinaNueva);
-                            }
-                            case 5 -> {
-                                System.out.print("Coloque los metros cuadrados del inmueble: ");
-                                double metrosCuadrados = scanner.nextDouble();
-                                Terraza terrazaNueva = new Terraza(metrosCuadrados);
-                                administrador.agregarInmuebleComun(terrazaNueva);
-                            }
-                            default ->
-                                System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                case 4: // Listar Reservas
+                    
+                    System.out.print("Todas las reservas son: ");
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                        System.out.println(inmueble.obtenerReservas());
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+                        reservas = inmueble.obtenerReservas();
+                        for (Reserva reserva : reservas){
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\n Para: " + reserva.getDetalle() +
+                                    "\n En el día: " + reserva.getDia() + "\n Del usuario: " + reserva.getUsuario().getNombreApellido());
                         }
-                        System.out.println("Desea agregar otro: "); //ver el salir
-
-                    } while (scanner.nextBoolean());
+                    }
                     break;
-            }
-        } catch (Exception e) {
+                
+            } while (scanner.nextBoolean());
+        }catch (Exception e){
             System.out.print(e.getMessage());
-        }
+        }            
     }
 }
