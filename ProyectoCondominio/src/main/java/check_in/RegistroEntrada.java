@@ -26,10 +26,12 @@ public class RegistroEntrada implements Serializable{
     }
     
     public void registrarEntrada(String fechaLlegada, String horaLlegada){
-        if(autorizacion==null)
+        if(autorizacion==null){
             System.out.println("Se necesita una autorización. Envíe una autorización válida");
-        if(!autorizacion.getAprobado())
+            return;}
+        if(!autorizacion.getAprobado()){
             System.out.println("La autorización no ha sido aprobada");
+            return;}
         this.fechaLlegada = fechaLlegada;
         this.horaLlegada = horaLlegada;        
     }
