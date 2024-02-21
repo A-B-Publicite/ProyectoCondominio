@@ -20,9 +20,11 @@ public class MenuComunicacion {
     
     public static void mostrar () throws IOException, ClassNotFoundException {
 
-        FileInputStream fileInputStream = new FileInputStream("datosAdmin.txt");
+        List<Perfil> residentes = new ArrayList<>();
+        
+        FileInputStream fileInputStream = new FileInputStream("datosResidentes.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
+        Residente adminEnFichero = (Residente)objectInputStream.readObject();
         objectInputStream.close();
         fileInputStream.close();
         
@@ -38,15 +40,9 @@ public class MenuComunicacion {
         
         Mensaje mensaje;
         
-        List<Perfil> directiva = new ArrayList<>();
+        /*List<Perfil> directiva = new ArrayList<>();
         directiva.add(adminEnFichero.getCondominio().getDirectiva().getPresidente());
-        directiva.add(adminEnFichero.getCondominio().getDirectiva().getSecretario());   
-        
-        List<Perfil> residentes = new ArrayList<>();
-        
-        for (Residente residente : adminEnFichero.obtenerResidentes()) {
-            residentes.add(residente); // Esto es posible debido a la herencia
-        }
+        directiva.add(adminEnFichero.getCondominio().getDirectiva().getSecretario());  */ 
         
         switch (tipo) {
             case 1:
@@ -58,7 +54,7 @@ public class MenuComunicacion {
                 mensaje.crear();
             break;
             case 3:
-                mensaje = new Consejo(adminEnFichero, directiva);
+                mensaje = new Consejo(adminEnFichero, residentes);
                 mensaje.crear();
             default:
                 throw new AssertionError();

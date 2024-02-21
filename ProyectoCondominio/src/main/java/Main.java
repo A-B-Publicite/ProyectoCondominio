@@ -46,7 +46,10 @@ public class Main {
 
         System.out.print("Contrasenia: ");
         String contrasenia = scanner.nextLine();
-        System.out.println("""
+        
+
+        do {
+            System.out.println("""
                                Opciones para probar el sistema:
                                1. Administracion
                                2. Inmuebles
@@ -58,8 +61,6 @@ public class Main {
                                """);
 
             opcion[0] = scanner.nextInt();
-
-        do {
             
             switch (opcion[0]) {
                 case 1:
