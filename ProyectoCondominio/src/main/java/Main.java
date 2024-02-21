@@ -3,7 +3,6 @@ import Administracion.*;
 import Comunicacion.*;
 import Finanzas.*;
 import Inmueble.*;
-import areaComun.*;
 import check_in.*;
 import java.util.*;
 /**

@@ -5,7 +5,7 @@
 package check_in;
 
 import Administracion.Perfil;
-import areaComun.Reserva;
+import ModuloReservas.Reserva;
 
 /**
  *
