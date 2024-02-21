@@ -4,18 +4,20 @@
  */
 package ModuloReservas;
 
+import Administracion.*;
+import Inmueble.*;
 import java.util.Scanner;
 
 /**
  *
  * @author bejar
  */
-public class Menu {
-    
-    public static void menuReservas() {
+public class MenuR {
+
+    public static void menuReservas(Administrador administrador) {
         // Creamos el Administrador de las Reservas
         AdministrarReserva adminReserva = new AdministrarReserva();
-        
+
         int opcionReserva;
         Scanner scanner = new Scanner(System.in);
 
@@ -30,22 +32,54 @@ public class Menu {
 
         opcionReserva = scanner.nextInt();
         scanner.nextLine();
-        
+
         try {
             switch (opcionReserva) {
                 case 1: //Crear reserva
 
-                    // Pedimos el detalle de la reserva
-                    String detalleReserva;
-                    detalleReserva = scanner.nextLine();
-                    
-                    //Creamos la reserva
-                    Reserva nuevaReserva = adminReserva.realizarReserva(areaComunReserva, diaReserva, detalleReserva, usuarioReserva);
-                    
-                    System.out.print("Nombre del condominio: ");
-                    String nombreCondominio = scanner.nextLine();
-                    administrador.agregarCondominio(nombreCondominio);
+                    do {
+                        int opcionInmuebleComun;
+                        scanner = new Scanner(System.in);
+
+                        System.out.println("""
+                                    Opciones a reservar:
+                                    1. Cancha
+                                    2. Gimnasio
+                                    3. Espacio de parqueadero
+                                    0. Salir
+                               """);
+
+                        opcionInmuebleComun = scanner.nextInt();
+                        switch (opcionInmuebleComun) {
+                            case 1 -> {
+                                //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), detalleReserva, usuarioReserva);
+                                System.out.println(" " + administrador.obtenerInmuebleComun());
+                                //System.out.print("Coloque los metros cuadrados del inmueble: ");
+                                //double metrosCuadrados = scanner.nextDouble();
+                                //Cancha canchaNueva = new Cancha(metrosCuadrados);
+                                //administrador.agregarInmuebleComun(canchaNueva);
+                            }
+
+                            default ->
+                                System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                        }
+                        System.out.println("Desea agregar otro: "); //ver el salir
+
+                    } while (scanner.nextBoolean());
                     break;
+
+                    // Pedimos el detalle de la reserva
+                    //String detalleReserva;
+                    //detalleReserva = scanner.nextLine();
+
+                    //administrador.obtenerInmuebleComun();
+
+                    //Creamos la reserva
+                    //Reserva nuevaReserva = adminReserva.realizarReserva(administrador.obtenerInmuebleComun(), administrador.condominio., detalleReserva, usuarioReserva);
+                    //System.out.print("Nombre del condominio: ");
+                    //String nombreCondominio = scanner.nextLine();
+                    //administrador.agregarCondominio(nombreCondominio);
+
                 case 2: //Cancelar reserva
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
@@ -63,7 +97,7 @@ public class Menu {
                     String correoSecretario = scanner.nextLine();
                     administrador.agregarDirectiva(correoPresidente, correoSecretario);
                     System.out.print("Se creo exitosamente");
-                    
+
                     break;
                 case 4:
                     System.out.print("Ingrese el numero de departamentos: ");
@@ -123,24 +157,9 @@ public class Menu {
 
                     } while (scanner.nextBoolean());
                     break;
-                case 6:
-                    System.out.println(administrador.mostrarContratos());
-                    break;
-                case 7:
-                    LocalDate fechaContrato = LocalDate.now();
-                    System.out.print("Fecha inicio: ");
-                    String fechaInicio = scanner.nextLine();
-                    System.out.print("Fecha finalizacion: ");
-                    String fechaFinalizacion = scanner.nextLine();
-                    System.out.print("Descripcion: ");
-                    String descripcion = scanner.nextLine();
-                    System.out.print("Precio: ");
-                    double precio = scanner.nextDouble();
-                    administrador.agregarContrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
-                    break;
-
             }
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }
+    }
 }

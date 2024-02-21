@@ -42,6 +42,11 @@ public class Condominio {
         }
         return null;
     }
+    
+    public ArrayList<InmuebleComun> obtenerInmuebleComun(){
+        return inmueblesComunes;
+    }
+    
     //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setPropietario(residenteNuevo);
