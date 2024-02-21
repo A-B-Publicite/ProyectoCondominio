@@ -4,11 +4,13 @@
  */
 package Finanzas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alejo
  */
-public class EstadoCompletado implements EstadoObligacion {
+public class EstadoCompletado implements EstadoObligacion, Serializable {
 
     @Override
     public void cambiarEstado(ObligacionFinanciera obligacionFinanciera, String senial) {

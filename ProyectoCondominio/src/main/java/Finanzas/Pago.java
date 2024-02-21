@@ -7,11 +7,14 @@ package Finanzas;
 /**
  *
  * @author alejo
- */import java.time.LocalDate;
-public class Pago {
+ */
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class Pago implements Serializable {
     private LocalDate fechaPago;
     private ObligacionFinanciera obligacionFinanciera;
-    private Cuenta cuenta;
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
     private double monto;
@@ -22,19 +25,27 @@ public class Pago {
     }
 
     public void pagarObligacionFinancieraResidente(ObligacionFinanciera obligacionFinancieraAPagar, Cuenta cuentaAdministrador) {
-        this.obligacionFinanciera = obligacionFinancieraAPagar;
-        double monto = obligacionFinancieraAPagar.getMonto();
-        //cuneta.verificar retiro
-        cuentaOrigen.debitar(monto);
 
+         monto = obligacionFinancieraAPagar.getMonto();
 
-        cuentaAdministrador.depositar(monto);
-        cuentaDestino = cuentaAdministrador;
-       // cuentaDestino.depositar(monto);
-        cuentaAdministrador.agregarRegistro(this);
-        obligacionFinancieraAPagar.cambiarEstado("completado");
+        if (cuentaOrigen.getSaldo() >= monto )
+        {
+            cuentaOrigen.debitar(monto);
+            cuentaAdministrador.depositar(monto);
+            cuentaDestino = cuentaAdministrador;
 
-        cuentaOrigen.eliminarObligacion(obligacionFinancieraAPagar);
+           obligacionFinancieraAPagar.cambiarEstado("completado");
+
+            cuentaOrigen.eliminarObligacion(obligacionFinancieraAPagar);
+
+        }
+        else
+        {
+            System.out.println("Saldo insuficiente en la cuenta , Recarge el saldo ");
+
+        }
+        obligacionFinanciera = obligacionFinancieraAPagar;
+
     }
 /*
     public void pagar(ObligacionFinanciera obligacionFinancieraAPagar) {
@@ -59,16 +70,16 @@ public class Pago {
 */
     @Override
     public String toString() {
-        return "Pago = (" +
-                this.fechaPago +
-                ')';
+        return  "PAGO REALIZADO: " + "Fecha:" +
+                this.fechaPago + " Monto: " + monto+
+               "\n"+ " Cuenta origen: "+ cuentaOrigen +  " \nCuenta Admin: " + cuentaDestino +"\n------------------------------------------" ;
     }
 
     public void pagarContrato(double precioContrato) {
         monto = precioContrato;
         cuentaOrigen.debitar(monto);
         cuentaOrigen.agregarRegistro(this);
-        //cuentaOrigen.agregarFecha(cuentaOrigen);
+
     }
-    
+
 }
