@@ -4,13 +4,16 @@
  */
 package check_in;
 
+import Administracion.Guardia;
 import Administracion.Perfil;
+import Comunicacion.Directo;
+import Comunicacion.Mensaje;
 
 /**
  *
  * @author MARQUEZ
  */
-public abstract class Autorizacion {
+public class Autorizacion {
     String autorizador;
     String autorizado; 
     String fechaInicio;
@@ -21,13 +24,30 @@ public abstract class Autorizacion {
         this.aprobado = false;
     }
     
-    public abstract void validar();
-    
-    public abstract void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin);
+    public void completar(String autorizador, String autorizado, String fechaInicio, String fechaFin) {
+        this.autorizador = autorizador;
+        this.autorizado = autorizado;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }    
 
+    public void validar(Perfil autorizador) {
+        if(autorizador == null){
+            System.out.println("Envíe un autorizador valido");
+            return;}
+        if(autorizador.getNombre()!= this.autorizador){
+            System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
+            return;}
+        aprobado = true;
+    }
+    
+    public void notificar(Perfil autorizador, Guardia guardia){
+        //String contenido = this;
+        //Mensaje mensaje = new Directo(guardia, autorizador,contenido, "Nueva visita");
+        //mensaje.enviar();
+    }   
     public boolean getAprobado() {
         return aprobado;
     }
-    
     
 }

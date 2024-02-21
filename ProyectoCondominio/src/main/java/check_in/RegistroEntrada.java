@@ -33,7 +33,7 @@ public class RegistroEntrada {
         this.horaLlegada = horaLlegada;        
     }
     
-    public void asignarParqueadero(String fechaFin, Perfil reservador){
+    /*public void asignarParqueadero(String fechaFin, Perfil reservador){
         reservaParqueadero = new Reserva(10,"Lunes", "Uso de parqueadero", reservador);
-    }
+    }*/
 }
