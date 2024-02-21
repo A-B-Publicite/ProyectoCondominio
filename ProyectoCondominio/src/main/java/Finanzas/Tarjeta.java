@@ -10,10 +10,18 @@ package Finanzas;
  */
 public class Tarjeta extends MetodoRecarga {
 
-    private final String numeroCuenta;
+    private  String numeroCuenta;
+    private  String pinTarjeta;
 
-    public Tarjeta(String numeroCuenta) {
+    public Tarjeta(double abono, String numeroTarjeta,String pinTarjeta) {
+        super (abono);
+        this.numeroCuenta = numeroTarjeta;
+        this.pinTarjeta = pinTarjeta;
+        realizarTransaccion();
+    }
 
-        this.numeroCuenta = numeroCuenta;
+    @Override
+    void realizarTransaccion() {
+        descripcion = "El método de recarga fue con tarjeta";
     }
 }

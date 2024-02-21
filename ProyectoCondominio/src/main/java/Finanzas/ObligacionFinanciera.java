@@ -10,13 +10,17 @@ package Finanzas;
  */
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
-public abstract class ObligacionFinanciera {
+
+public abstract class ObligacionFinanciera implements Observable {
     protected EstadoObligacion estado;
     protected double monto;
     protected LocalDate fechaCreacion;
     protected String descripcion;
     protected String idObligacion;
+    private List<Cuenta> observadores = new ArrayList<>();
 
     public ObligacionFinanciera(double valor, LocalDate fechaCreacion, String descripcion, String idObligacion) {
         //Valor corresponde a m2, valorMulta, valorCuota.
@@ -27,13 +31,25 @@ public abstract class ObligacionFinanciera {
         this.idObligacion = idObligacion;
     }
 
+    public void agregarObservador(Cuenta observador) {
+        observadores.add(observador);
+    }
+
+    @Override
+    public void notificarCambioEstado(ObligacionFinanciera obligacion) {
+        for (Cuenta observador : observadores) {
+            observador.actualizar(obligacion);
+        }
+    }
+
     public EstadoObligacion getEstado() {
         return estado;
     }
 
-    public abstract double calcularMonto(double monto);
+    public abstract double calcularMonto(double valor);
 
-    public abstract void cambiarEstado(String senial);
+    public void cambiarEstado(String senial) {
+    }
 
     public void setEstado(EstadoObligacion estado) {
         this.estado = estado;
@@ -46,6 +62,7 @@ public abstract class ObligacionFinanciera {
     public String getIdObligacion() {
         return idObligacion;
     }
+    
 
     @Override
     public String toString() {

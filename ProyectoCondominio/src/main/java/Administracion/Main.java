@@ -13,7 +13,10 @@ import Inmueble.Gimnasio;
  */
 public class Main {
 /*
-    Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa");
+    Administrador administrador = new Administrador("juan.correa@epn.edu.ec", "admin1234", "Juan Correa"); 
+    
+    
+    
     Directiva directiva = new Directiva(administrador);
     Gimnasio gym = new Gimnasio(24, administrador);
     Contrato contrato = new Contrato("00/00/0000", 125.12, "descripcion", "11/11/1111", "22/2/2222");

@@ -42,7 +42,7 @@ public class Condominio {
         }
         return null;
     }
-    
+    //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setPropietario(residenteNuevo);
     }
@@ -82,6 +82,11 @@ public class Condominio {
         directiva.agregarDirectiva(presidente, secretario);
     }
 
+//<<<<<<< HEAD
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        return directiva.getContrato(descripcionContratoAPagar);
+    }
+//=======
     public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
         Residente resAux;
         for (Departamento departamento : departamentos) {
@@ -98,6 +103,14 @@ public class Condominio {
 
     public Directiva getDirectiva() {
         return directiva;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+    }
+
+    public ArrayList<Residente> obtenerResidentes() {
+        ArrayList<Residente> residentes = new ArrayList<>();
+        for (Departamento departamento : departamentos) {
+            residentes.add((Residente) departamento.getPropietario());
+        }
+        return residentes;
     }
 }

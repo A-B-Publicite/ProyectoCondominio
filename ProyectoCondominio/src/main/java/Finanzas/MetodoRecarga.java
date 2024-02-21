@@ -8,6 +8,18 @@ package Finanzas;
  *
  * @author alejo
  */
-public class MetodoRecarga {
-}
+public abstract class MetodoRecarga {
+    private  double abono;
+    protected String descripcion;
 
+    public MetodoRecarga(double abono) {
+        this.abono = abono;
+    }
+
+     abstract void realizarTransaccion();
+
+    @Override
+    public String toString() {
+        return descripcion + ". Se añadió a la cuenta el abono de: " + abono;
+    }
+}

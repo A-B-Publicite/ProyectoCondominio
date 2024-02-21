@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package areaComun;
+package ModuloReservas;
 import Inmueble.InmuebleComun;
 import Administracion.Perfil;
 import java.util.*;
@@ -16,11 +16,11 @@ import java.util.Random;
 public class AdministrarReserva {
 
     // Método para realizar una reserva
-    public Reserva realizarReserva(InmuebleComun areaComun, String dia, String detalle, Perfil usuario) {
-        ArrayList<String> disponibilidad = areaComun.consultarDiasDisponibles();
+    public Reserva realizarReserva(InmuebleComun inmuebleComun, String dia, String detalle, Perfil usuario) {
+        ArrayList<String> disponibilidad = inmuebleComun.consultarDiasDisponibles();
         if (disponibilidad.contains(dia) ) {
             Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), dia, detalle, usuario); 
-            areaComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
+            inmuebleComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
             return nuevaReserva;
         } else {
             return null;  // No se puede realizar la reserva debido a un conflicto

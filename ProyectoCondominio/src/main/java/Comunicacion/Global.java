@@ -6,6 +6,7 @@ package Comunicacion;
 
 
 import Administracion.Perfil;
+import Administracion.Residente;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,8 +14,25 @@ public class Global extends Mensaje {
 
 
 
-    public Global(Perfil origen, List<Perfil> destino, String contenido, String titulo) {
-        super(origen, destino, contenido, titulo);
+    public Global(Perfil origen, List<Perfil> destino) {
+        super(origen, destino);
+
+    }
+    
+    @Override
+    public void crear () {
+        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Destino: Todos");
+
+        System.out.println("Escriba el Titulo del mensaje:");
+        setTitulo(scanner.nextLine());
+
+        System.out.println("Escriba el contenido del mensaje:");
+        setContenido(scanner.nextLine());
+
+        enviar();
 
     }
 
@@ -35,5 +53,7 @@ public class Global extends Mensaje {
                 "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() +
                 "\n=============================================\n");
     }
+
+    
     
 }

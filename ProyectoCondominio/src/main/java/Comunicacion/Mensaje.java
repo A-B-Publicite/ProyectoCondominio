@@ -5,6 +5,7 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import Administracion.Residente;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,29 +18,21 @@ import java.util.Scanner;
  */
 public abstract class Mensaje {
     private Perfil origen;
-    private Perfil destino;
     private List<Perfil> destinos= new ArrayList<>();
     private String contenido;
     private LocalDateTime fecha;
     private String titulo;
 
     //Crea el mensaje
-    public Mensaje(Perfil origen, List<Perfil> destino, String contenido,  String titulo) {
+    public Mensaje(Perfil origen, List<Perfil> destino) {
         this.origen = origen;
         this.destinos = destino;
-        this.contenido = contenido;
         this.fecha = LocalDateTime.now();
-        this.titulo = titulo;
-    }
-    public Mensaje(Perfil origen, Perfil destino, String contenido,  String titulo) {
-        this.origen = origen;
-        this.destino = destino;
-        this.contenido = contenido;
-        this.fecha = LocalDateTime.now();
-        this.titulo = titulo;
     }
     
+    
 
+    public abstract void crear();
     public abstract void enviar();
 
     public abstract void mostrar();
@@ -66,14 +59,6 @@ public abstract class Mensaje {
 
     public void setOrigen(Perfil origen) {
         this.origen = origen;
-    }
-
-    public Perfil getDestino() {
-        return destino;
-    }
-
-    public void setDestino(Perfil destino) {
-        this.destino = destino;
     }
 
     public String getFecha() {
