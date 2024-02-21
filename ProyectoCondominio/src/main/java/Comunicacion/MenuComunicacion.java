@@ -4,8 +4,7 @@
  */
 package Comunicacion;
 
-import Administracion.Perfil;
-import Administracion.Residente;
+import Administracion.*;
 import Inmueble.Condominio;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import java.util.Scanner;
  */
 public class MenuComunicacion {
     
-    public static void mostrar (Perfil origen, Perfil destino) throws IOException, ClassNotFoundException {
+    public static void mostrar (Perfil origen) throws IOException, ClassNotFoundException {
         
         List<Perfil> residentes = new ArrayList<Residente>();
         try {
@@ -75,8 +74,5 @@ public class MenuComunicacion {
                 throw new AssertionError();
         }
     }
-    
-    
-    
     
 }
