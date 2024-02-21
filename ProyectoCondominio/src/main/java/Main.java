@@ -72,7 +72,7 @@ public class Main {
                     //MenuR.menuReservas(administrador);
                     break;
                 case 4:
-                    
+                    administrador.realizarCheckIn("20/2/2024", "23:00");
                     break;
                 case 5:
                     

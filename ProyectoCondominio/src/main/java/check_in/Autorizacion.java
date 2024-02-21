@@ -8,13 +8,14 @@ import Administracion.Guardia;
 import Administracion.Perfil;
 import Comunicacion.Directo;
 import Comunicacion.Mensaje;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author MARQUEZ
  */
-public class Autorizacion {
+public class Autorizacion implements Serializable{
     String autorizador;
     String autorizado; 
     String fechaInicio;

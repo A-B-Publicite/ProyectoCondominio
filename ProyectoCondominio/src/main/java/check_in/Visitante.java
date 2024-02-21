@@ -4,11 +4,13 @@
  */
 package check_in;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JHON
  */
-public class Visitante {
+public class Visitante implements Serializable{
     private String motivoVisita;
     private String nombre;
     private String personaAVisitar;
