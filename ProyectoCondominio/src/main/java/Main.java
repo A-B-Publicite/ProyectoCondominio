@@ -81,8 +81,7 @@ public class Main {
                 case 6:
                     //MenuComunicacion.mostrar(adminEnFichero);
                     break;
-                default:
-                    throw new AssertionError("No ha escogido una opcion correcta");
+                
             }
         } while (opcion[0] != 0);
     }

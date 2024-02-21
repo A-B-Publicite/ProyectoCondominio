@@ -129,7 +129,6 @@ public class Menu {
                     administrador.agregarContrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
                     break;
                 case 0:
-                    opcionesMenuGeneral[0] = 0;
                     return;
                 default:
                     System.out.print("No existe esa opcion");
