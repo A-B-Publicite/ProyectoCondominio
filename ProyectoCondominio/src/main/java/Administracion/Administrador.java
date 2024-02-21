@@ -63,19 +63,14 @@ public class Administrador extends Perfil {
 
     }
     
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) {
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
+        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        residenteNuevo.setAutorizacion(autorizacionEntrada);
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuenta);
-    }
-    
-    public void registrarGuardia(String nombre, String apellido, String fechaActual, String fechaFin) {
-        Guardia guardiaNuevo = new Guardia(nombre,apellido);
-        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
-        guardiaNuevo.setAutorizacion(autorizacionEntrada);
-        condominio.agregarGuardia(guardiaNuevo);
     }
             
 
@@ -127,7 +122,7 @@ public class Administrador extends Perfil {
     public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin){
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.nombre,nombreResidente,fechaActual,fechaFin);
-        autorizacionEntrada = validarAutorizacion(autorizacionEntrada);
+        autorizacionEntrada.validar(this);
         return autorizacionEntrada;
     }
 
