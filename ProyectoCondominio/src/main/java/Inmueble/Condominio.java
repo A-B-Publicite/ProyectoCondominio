@@ -34,11 +34,11 @@ public class Condominio {
     }
     
     public Departamento obtenerDepartamentoLibre(){
-        Departamento departamentoLibre = null;
+        
         for (Departamento departamento : departamentos) {
             if (departamento.getPropietario() == null) {
-                departamentoLibre = departamento;
-                return departamentoLibre;
+                
+                return departamento;
             }
         }
         return null;
