@@ -60,7 +60,9 @@ public class Administrador extends Perfil {
         FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosResidentes.txt");
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(condominio.obtenerResidentes());
+            objectOutputStream.close();
         }
+        
     }
     
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
