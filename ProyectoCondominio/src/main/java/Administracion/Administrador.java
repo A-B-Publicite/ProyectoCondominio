@@ -44,7 +44,10 @@ public class Administrador extends Perfil {
     public void agregarDepartamento(int numeroDepartamento) {
         condominio.agregarDepartamentos(numeroDepartamento);
     }
-
+    
+    public ArrayList<InmuebleComun> obtenerInmuebleComun(){
+        return condominio.obtenerInmuebleComun();
+    }
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario) throws FileNotFoundException, IOException, ClassNotFoundException {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);

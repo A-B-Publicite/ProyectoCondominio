@@ -3,6 +3,7 @@ import Administracion.*;
 import Comunicacion.*;
 import Finanzas.*;
 import Inmueble.*;
+import ModuloReservas.MenuR;
 import check_in.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -66,7 +67,7 @@ public class Main {
                     
                     break;
                 case 3:
-                    
+                    MenuR.menuReservas(administrador);
                     break;
                 case 4:
                     

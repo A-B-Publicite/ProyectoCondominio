@@ -16,10 +16,9 @@ import java.util.Random;
 public class AdministrarReserva {
 
     // Método para realizar una reserva
-    public Reserva realizarReserva(InmuebleComun inmuebleComun, String dia, String detalle, Perfil usuario) {
-        ArrayList<String> disponibilidad = inmuebleComun.consultarDiasDisponibles();
-        if (disponibilidad.contains(dia) ) {
-            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), dia, detalle, usuario); 
+    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Perfil usuario) {
+        if (inmuebleComun.consultarDiasDisponibles().contains("Lunes") ) {
+            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), "Lunes", detalle, usuario); 
             inmuebleComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
             return nuevaReserva;
         } else {
