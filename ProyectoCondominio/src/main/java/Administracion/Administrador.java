@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.*;
 // Considerar singleton
 
-public class Administrador extends Perfil {
+public class Administrador extends Perfil implements Serializable {
 
     private Condominio condominio;
 
