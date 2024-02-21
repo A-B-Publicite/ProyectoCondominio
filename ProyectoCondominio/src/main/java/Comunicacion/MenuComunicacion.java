@@ -21,16 +21,13 @@ public class MenuComunicacion {
     
     public static void mostrar (Perfil origen) throws IOException, ClassNotFoundException {
         
+
+        FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
         
-        try {
-            FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         Scanner scanner = new Scanner(System.in);
         int tipo = 0;
@@ -43,6 +40,16 @@ public class MenuComunicacion {
         int pos=1;
         
         Mensaje mensaje;
+        
+        List<Perfil> directiva = new ArrayList<>();
+        directiva.add(adminEnFichero.getCondominio().getDirectiva().getPresidente());
+        directiva.add(adminEnFichero.getCondominio().getDirectiva().getSecretario());   
+        
+        List<Perfil> residentes = new ArrayList<>();
+        
+        for (Residente hijo : adminEnFichero.obtenerResidentes()) {
+            residentes.add(hijo); // Esto es posible debido a la herencia
+        }
         
         switch (tipo) {
             case 1:
