@@ -8,6 +8,6 @@ package Finanzas;
  *
  * @author alejo
  */
-public interface Observable {
+public interface Observable  {
     void notificarCambioEstado(ObligacionFinanciera obligacion);
 }

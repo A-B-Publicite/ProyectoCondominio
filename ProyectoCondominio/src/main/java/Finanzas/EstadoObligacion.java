@@ -9,6 +9,6 @@ package Finanzas;
  * @author alejo
  */
 
-public interface EstadoObligacion {
+public interface EstadoObligacion  {
     abstract void cambiarEstado(ObligacionFinanciera obligacionFinanciera, String senial);
 }

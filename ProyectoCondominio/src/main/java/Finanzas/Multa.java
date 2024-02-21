@@ -11,7 +11,7 @@ package Finanzas;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Multa extends ObligacionFinanciera implements Serializable {
+public class Multa extends ObligacionFinanciera {
     public Multa(double valorAlicuotaAtrasada, String descripcion, String id) {
         super(valorAlicuotaAtrasada, LocalDate.now(), descripcion, id);
     }
