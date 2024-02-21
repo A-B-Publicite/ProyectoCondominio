@@ -6,7 +6,6 @@ package Comunicacion;
 
 
 import Administracion.Perfil;
-import Administracion.Residente;
 import java.util.List;
 import java.util.Scanner;
 
