@@ -5,6 +5,12 @@ import Finanzas.*;
 import Inmueble.*;
 import areaComun.*;
 import check_in.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 /**
  *
@@ -12,11 +18,23 @@ import java.util.*;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador administrador = new Administrador("Juan", "Zambrano");
         
+        
+        //Carga a bits el admin
+        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(administrador);
+        objectOutputStream.close();
+
+        //Lectura del objeto admin
+        FileInputStream fileInputStream = new FileInputStream("Datos/datos.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
+        objectOutputStream.close();
         
         
         
@@ -46,7 +64,7 @@ public class Main {
         do {
             switch (opcion) {
                 case 1:
-                    Menu.menuAdministracion(administrador);
+                    Menu.menuAdministracion(adminEnFichero);
                     break;
                 case 2:
                     
