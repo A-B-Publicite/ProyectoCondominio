@@ -61,7 +61,7 @@ public class Administrador extends Perfil {
 
     public void pagarContrato(String descripcionContratoAPagar) {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
-        cuenta.pagarCOntrato(contrato.getPrecioContrato());
+        cuenta.pagarContrato(contrato.getPrecioContrato());
     }
 
     public Residente obtenerResidente(String nombreResidente) throws Exception {
