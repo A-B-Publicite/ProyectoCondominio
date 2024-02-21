@@ -20,10 +20,10 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-        /*
+        
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador administrador = new Administrador("Juan", "Zambrano");
-
+           /*
         //Escribo a bits el admin
         FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -85,10 +85,14 @@ public class Main {
             }
         } while (opcion[0] != 0);
         
-        //Escribo a bits el admin
-        fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-        objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(administrador);
-        objectOutputStream.close();
+        try {
+    FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+    objectOutputStream.writeObject(adminEnFichero);
+    objectOutputStream.close();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
     }
 }
