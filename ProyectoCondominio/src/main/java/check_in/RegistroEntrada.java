@@ -40,7 +40,7 @@ public class RegistroEntrada {
     @Override
     public String toString() {
         return "RegistroEntrada: " + 
-                "\nfechaLlegada: " + fechaLlegada + ", horaLlegada:" + horaLlegada + 
+                "\nfechaLlegada: " + fechaLlegada + " horaLlegada:" + horaLlegada + 
                 "\nAutorización: " + 
                     "\nResidente: " + autorizacion.autorizador + "Visitante: " + autorizacion.autorizado +
                      "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
