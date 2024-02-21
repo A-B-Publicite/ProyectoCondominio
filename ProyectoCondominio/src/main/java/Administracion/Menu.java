@@ -110,7 +110,7 @@ public class Menu {
                         System.out.println("Desea agregar otro: 1. Si 0. NO"); //ver el salir
                         opcionSubMenu = scanner.nextInt();
                         
-                    } while (opcionSubMenu);
+                    } while (opcionSubMenu == 0);
                     break;
                 case 6:
                     System.out.println(administrador.mostrarContratos());
