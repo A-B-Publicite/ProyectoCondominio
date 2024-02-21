@@ -20,7 +20,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-
+        /*
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador administrador = new Administrador("Juan", "Zambrano");
 
@@ -29,12 +29,12 @@ public class Main {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(administrador);
         objectOutputStream.close();
-
+        */
         //Lectura del objeto admin
         FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Administrador adminEnFichero = (Administrador) objectInputStream.readObject();
-        objectOutputStream.close();
+        objectInputStream.close();
 
         int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
