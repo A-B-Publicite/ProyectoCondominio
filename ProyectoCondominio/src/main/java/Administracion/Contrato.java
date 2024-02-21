@@ -1,4 +1,4 @@
-cpackage Administracion;
+package Administracion;
 
 import java.time.LocalDate;
 
