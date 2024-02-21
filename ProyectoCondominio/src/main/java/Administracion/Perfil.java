@@ -12,7 +12,7 @@ public abstract class Perfil implements Serializable{
     protected String contrasenia;
     protected String nombre;
     protected String apellido;
-    protected BandejaDeEntrada bandejaDeEntrada;
+    protected BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(this);
     protected Cuenta cuentaBancaria;
     private Autorizacion autorizacion;
     

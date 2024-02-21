@@ -80,7 +80,7 @@ public class Main {
 
                     break;
                 case 6:
-                    //MenuComunicacion.mostrar(adminEnFichero);
+                    MenuComunicacion.mostrar();
                     break;
                 
             }

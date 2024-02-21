@@ -20,6 +20,7 @@ import java.util.*;
 public class Administrador extends Perfil implements Serializable {
 
     private Condominio condominio;
+    
 
     public Administrador(String nombre, String apellido) {
         super(nombre, apellido);
@@ -55,21 +56,26 @@ public class Administrador extends Perfil implements Serializable {
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
+        residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
         //Escribo a bits el residenteNuevo
         
         ArrayList<Residente> listaResidentes = new ArrayList<>();
         listaResidentes = condominio.obtenerResidentes();
+        
         FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(listaResidentes);
         objectOutputStream.close();
 
-        //Lectura del objeto admin
+        //Lectura del objeto main
+        
         FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
-        objectOutputStream.close();
+        objectInputStream.close();
+        
     }
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
@@ -124,6 +130,7 @@ public class Administrador extends Perfil implements Serializable {
     }
 
     public void agregarDirectiva(String correoPresidente, String correoSecretario) throws Exception {
+        
         condominio.agregarDirectiva(obtenerResidenteCorreo(correoPresidente), obtenerResidenteCorreo(correoSecretario));
     }
 

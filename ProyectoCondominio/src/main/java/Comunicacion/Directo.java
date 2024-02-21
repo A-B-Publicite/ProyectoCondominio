@@ -32,6 +32,7 @@ public class Directo extends Mensaje{
             System.out.println((i + 1) + ". " + getDestinos().get(i).getNombre());
         }
         pos= scanner.nextInt();
+        scanner.nextLine();
         
         System.out.println("Destino: " + getDestinos().get(pos-1).getNombreApellido());
 
@@ -47,7 +48,7 @@ public class Directo extends Mensaje{
     
     @Override
     public void enviar() {
-        getDestinos().get(pos).getBandejaDeEntrada().recibirMensaje(this);
+        getDestinos().get(pos-1).getBandejaDeEntrada().recibirMensaje(this);
     }
 
     @Override

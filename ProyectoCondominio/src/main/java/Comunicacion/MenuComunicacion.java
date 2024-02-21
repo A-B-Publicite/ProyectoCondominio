@@ -20,48 +20,70 @@ public class MenuComunicacion {
     
     public static void mostrar () throws IOException, ClassNotFoundException {
 
-        List<Perfil> residentes = new ArrayList<>();
         
+        List<Perfil> residentes = new ArrayList<>();
         FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Residente adminEnFichero = (Residente)objectInputStream.readObject();
+        residentes = (List<Perfil>)objectInputStream.readObject();
         objectInputStream.close();
         fileInputStream.close();
-        
+        FileInputStream fileInputStreamA = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectInputStream objectInputStreamA = new ObjectInputStream(fileInputStreamA);
+        Perfil admin = (Perfil)objectInputStreamA.readObject();
+        objectInputStreamA.close();
+        fileInputStreamA.close();
 
-        Scanner scanner = new Scanner(System.in);
-        int tipo = 0;
-        System.out.println("Elija el tipo de mensaje a enviar (escriba un numero): \n" +
-                "1. Global\n" +
-                "2. Directo\n" +
-                "3. Directiva\n");
-        tipo = scanner.nextInt();
-        scanner.nextLine();
+        int tipo=1;
         
-        Mensaje mensaje;
-        
-        /*List<Perfil> directiva = new ArrayList<>();
-        directiva.add(adminEnFichero.getCondominio().getDirectiva().getPresidente());
-        directiva.add(adminEnFichero.getCondominio().getDirectiva().getSecretario());  */ 
-        
-        switch (tipo) {
-            case 1:
-                mensaje = new Global(adminEnFichero, residentes);
-                mensaje.crear();
-            break;
-            case 2:
-                mensaje = new Directo(adminEnFichero, residentes);
-                mensaje.crear();
-            break;
-            case 3:
-                mensaje = new Consejo(adminEnFichero, residentes);
-                mensaje.crear();
-            default:
-                throw new AssertionError();
+        while (tipo!=0) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Elija el tipo de mensaje a enviar (escriba un numero): \n" +
+                    "1. Global\n" +
+                    "2. Directo\n" +
+                    "3. Directiva\n" +
+                    "4. Ver Bandejas"
+                    + "0. Salir\n");
+            tipo = scanner.nextInt();
+            scanner.nextLine();
+
+            Mensaje mensaje;
+
+            /*List<Perfil> directiva = new ArrayList<>();
+            directiva.add(adminEnFichero.getCondominio().getDirectiva().getPresidente());
+            directiva.add(adminEnFichero.getCondominio().getDirectiva().getSecretario());  */ 
+
+            switch (tipo) {
+                case 1:
+                    mensaje = new Global(admin, residentes);
+                    mensaje.crear();
+                break;
+                case 2:
+                    mensaje = new Directo(admin, residentes);
+                    mensaje.crear();
+                break;
+                case 3:
+                    mensaje = new Consejo(admin, residentes);
+                    mensaje.crear();
+                break;
+                case 4:
+                    int pos;
+                    System.out.println("Elija el perfil a ver: ");
+                    System.out.println("Eliga el destinatario");
+                    for (int i = 0; i < residentes.size(); i++) {
+                        System.out.println((i + 1) + ". " + residentes.get(i).getNombre());
+                    }
+                    pos=scanner.nextInt();
+                    scanner.nextLine();
+                    residentes.get(pos-1).getBandejaDeEntrada().mostrar();
+                    residentes.get(pos-1).getBandejaDeEntrada().getMensajePorIndice();
+                break;
+                default:
+                    System.out.println("Salio de comunicacion");;
+            }
+
+              
         }
         
-        residentes.get(0).getBandejaDeEntrada().mostrar();
-        residentes.get(0).getBandejaDeEntrada().getMensajePorIndice();
 
     }
     
