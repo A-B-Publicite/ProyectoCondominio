@@ -8,6 +8,7 @@ import Administracion.Guardia;
 import Administracion.Perfil;
 import Comunicacion.Directo;
 import Comunicacion.Mensaje;
+import java.util.List;
 
 /**
  *
@@ -58,7 +59,7 @@ public class Autorizacion {
     }
     
     public void notificar(Perfil autorizador, Guardia guardia){
-        Mensaje mensaje = new Directo(guardia, autorizador,this, "Nueva visita");
+        Mensaje mensaje = new Directo(guardia, (List<Perfil>) autorizador);
         mensaje.enviar();
     }   
     public boolean getAprobado() {

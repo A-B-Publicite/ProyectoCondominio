@@ -58,6 +58,8 @@ public class Main {
 
         opcion = scanner.nextInt();
 
+        Menu.menuAdministracion(adminEnFichero);
+        /*
         do {
             switch (opcion) {
                 case 1:
@@ -67,7 +69,7 @@ public class Main {
                     
                     break;
                 case 3:
-                    MenuR.menuReservas(administrador);
+                    //MenuR.menuReservas(administrador);
                     break;
                 case 4:
                     
@@ -76,11 +78,11 @@ public class Main {
                     
                     break;
                 case 6:
-                    MenuComunicacion.mostrar(adminEnFichero);
+                    //MenuComunicacion.mostrar(adminEnFichero);
                     break;
                 default:
                     throw new AssertionError("No ha escogido una opcion correcta");
             }
-        } while (opcion != 0);
+        } while (opcion != 0);*/
     }
 }

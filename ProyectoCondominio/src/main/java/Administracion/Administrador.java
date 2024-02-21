@@ -27,6 +27,13 @@ public class Administrador extends Perfil {
         super(nombre, apellido);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    //CONSTRUCTOR PARA ISNTANCIAR UN ADMINISTRADOR CON AUTORIZACION DE ENTRADA
+    public Administrador( String nombre, String apellido,String fechaActual, String fechaFin) {
+        super(nombre, apellido);
+        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        this.setAutorizacion(autorizacionEntrada);
+    }
 
     public Cuenta getCuenta() {
         return cuenta;
@@ -60,7 +67,6 @@ public class Administrador extends Perfil {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(residenteNuevo);
         }
-
     }
     
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
@@ -72,7 +78,14 @@ public class Administrador extends Perfil {
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
         residenteNuevo.darCuentaDePago(this.cuenta);
     }
-            
+    
+    //PORFAVOR NO BORRAR, ES DE USO PARA AGREGAR UN GUARDIA AL CONDOMINIO
+    public void registrarGuardia(String nombre, String apellido, String fechaActual, String fechaFin) {
+        Guardia guardiaNuevo = new Guardia(nombre,apellido);
+        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        guardiaNuevo.setAutorizacion(autorizacionEntrada);
+        condominio.agregarGuardia(guardiaNuevo);
+    }
 
     public void pagarContrato(String descripcionContratoAPagar) {
         Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
@@ -129,6 +142,4 @@ public class Administrador extends Perfil {
     public Condominio getCondominio() {
         return condominio;
     }
-    
-    
 }
