@@ -125,5 +125,7 @@ public class Condominio implements Serializable {
         this.guardia = guardiaNuevo;
     }
 
-    
+    public Object getGuardia() {
+        return guardia;
+    }    
 }
