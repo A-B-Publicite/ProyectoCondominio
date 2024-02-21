@@ -42,7 +42,7 @@ public class Condominio {
         }
         return null;
     }
-    
+    //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setPropietario(residenteNuevo);
     }
