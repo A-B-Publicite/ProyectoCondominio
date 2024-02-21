@@ -9,6 +9,7 @@ import Administracion.Perfil;
 import Comunicacion.Directo;
 import Comunicacion.Mensaje;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,8 +61,10 @@ public class Autorizacion implements Serializable{
     }
     
     public void notificar(Perfil autorizador, Guardia guardia){
-        Mensaje mensaje = new Directo(guardia, (List<Perfil>) autorizador);
-        mensaje.enviar();
+        List<Perfil> autorizadorL= new ArrayList<>();
+        autorizadorL.add(autorizador);
+        Mensaje mensaje = new Directo(guardia, autorizadorL);
+        mensaje.crear();
     }   
     public boolean getAprobado() {
         return aprobado;

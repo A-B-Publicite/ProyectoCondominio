@@ -14,7 +14,7 @@ public abstract class Perfil implements Serializable{
     protected String apellido;
     protected BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(this);
     protected Cuenta cuentaBancaria;
-    private Autorizacion autorizacion;
+    Autorizacion autorizacion;
     
     public Perfil(String nombre, String apellido) {
         this.correo = nombre + "." + apellido + "@policondominio.com";
@@ -61,5 +61,7 @@ public abstract class Perfil implements Serializable{
         this.autorizacion = autorizacion;
     }
     
-    
+    public void validarUnaAutorizacion(Autorizacion autorizacion){
+        autorizacion.validar(this);
+    }
 }

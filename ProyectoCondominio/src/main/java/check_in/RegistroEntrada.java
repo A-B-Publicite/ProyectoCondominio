@@ -5,6 +5,9 @@
 package check_in;
 
 import Administracion.Perfil;
+import Inmueble.EspacioDeParqueadero;
+import Inmueble.ParqueaderoPrivado;
+import ModuloReservas.AdministrarReserva;
 import ModuloReservas.Reserva;
 import java.io.Serializable;
 
@@ -16,7 +19,7 @@ public class RegistroEntrada implements Serializable{
     private String fechaLlegada;
     private String horaLlegada;
     private Autorizacion autorizacion;
-    private Reserva reservaParqueadero;
+    private Object usoParqueadero;
 
     public RegistroEntrada() {
     }
@@ -37,8 +40,14 @@ public class RegistroEntrada implements Serializable{
         System.out.println(this.toString());
     }
     
-    public void asignarParqueadero(String fechaFin, Perfil reservador){
-        reservaParqueadero = new Reserva(10,"Lunes", "Uso de parqueadero", reservador);
+    public void asignarParqueadero(Perfil reservador, EspacioDeParqueadero espacio){
+        AdministrarReserva adminReserva = new AdministrarReserva();        
+        usoParqueadero = adminReserva.realizarReserva(espacio, "uso de parqueadero", reservador);
+    }
+    
+    public void usarParqueaderoAsignado(String fechaFin,ParqueaderoPrivado parqueadero){
+        parqueadero.usar();
+        usoParqueadero = parqueadero;
     }
 
     @Override
@@ -48,6 +57,6 @@ public class RegistroEntrada implements Serializable{
                 "\nAutorización: " + 
                     "\nAutorizador: " + autorizacion.autorizador + " Autorizado: " + autorizacion.autorizado +
                      "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
-                "\n reservaParqueadero=" + reservaParqueadero + '}';
-    }     
+                "\n reservaParqueadero=" + usoParqueadero + '}';
+    }   
 }

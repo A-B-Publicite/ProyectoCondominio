@@ -2,6 +2,7 @@ package Administracion;
 
 import Finanzas.Cuenta;
 import Inmueble.Departamento;
+import check_in.RegistroEntrada;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -68,6 +69,14 @@ public class Residente extends Perfil implements Serializable{
     public boolean compararNombre(String nombreResidente) {
         return nombreResidente.equals(this.nombre);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, boolean estacionarse) {
+        RegistroEntrada registro = new RegistroEntrada();
+        registro.setAutorizacion(this.autorizacion);        
+        if(estacionarse)
+            registro.usarParqueaderoAsignado(fechaLlegada, departamento.getParqueaderoPrivado());
+        registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
 
 }

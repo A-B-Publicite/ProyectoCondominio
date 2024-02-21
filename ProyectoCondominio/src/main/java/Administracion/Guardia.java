@@ -4,6 +4,7 @@
  */
 package Administracion;
 
+import Inmueble.EspacioDeParqueadero;
 import check_in.*;
 import java.io.Serializable;
 
@@ -23,25 +24,24 @@ public class Guardia extends Perfil implements Serializable{
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
     
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero){
+    /*
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Autorizacion autorizacion, Perfil reservadorParqueadero, ){
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(autorizacion);        
         registro.registrarEntrada(fechaLlegada, horaLlegada);
-        registro.asignarParqueadero(fechaLlegada, this);
-    }
+        registro.asignarParqueadero(this,espacioParqueadero);
+        registro.registrarEntrada(fechaLlegada, horaLlegada);      
+    }*/
     
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada, String motivoVisita, String nombre, String personaAVisitar, Perfil residente){
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada, Visitante visitante, Perfil residente, boolean quiereEstacionamiento, EspacioDeParqueadero espacio){
         RegistroEntrada registro = new RegistroEntrada();
-        Visitante visitanteNuevo = new Visitante(motivoVisita, nombre, personaAVisitar);
         Autorizacion autorizacionInmediata = new Autorizacion();
-        
-        autorizacionInmediata.completar(personaAVisitar, visitanteNuevo.getNombre(), fechaLlegada, fechaLlegada);
-        autorizacionInmediata.notificar(residente,this);
-        
-        this.bandejaDeEntrada.mostrar();
-        
-        
-        
+        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
+        //autorizacionInmediata.notificar(residente,this);
+        residente.validarUnaAutorizacion(autorizacionInmediata);  
+        registro.setAutorizacion(autorizacionInmediata);
+        if (quiereEstacionamiento)
+            registro.asignarParqueadero(residente, espacio);
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
 }

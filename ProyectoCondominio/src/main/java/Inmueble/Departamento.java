@@ -38,4 +38,13 @@ public class Departamento extends InmueblePrivado implements Serializable {
         }
     }
 
+    public ParqueaderoPrivado getParqueaderoPrivado() {
+        for (InmueblePrivado inmueble : inmueblesPrivados) {
+                if (inmueble instanceof ParqueaderoPrivado) {
+                    return (ParqueaderoPrivado) inmueble;                 
+                }
+            }
+        return new ParqueaderoPrivado();
+    }
+
 }

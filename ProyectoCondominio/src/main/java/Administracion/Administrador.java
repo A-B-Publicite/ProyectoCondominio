@@ -148,7 +148,7 @@ public class Administrador extends Perfil implements Serializable {
     public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin) {
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
-        autorizacionEntrada.validar(this);
+        validarUnaAutorizacion(autorizacionEntrada);
         return autorizacionEntrada;
     }
 
