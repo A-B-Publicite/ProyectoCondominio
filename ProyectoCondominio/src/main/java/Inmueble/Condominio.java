@@ -62,9 +62,9 @@ public class Condominio {
     }
     
     
-    //public ArrayList<Contrato> mostrarContratos(){
-      //  return directiva.mostrarContratos();
-    //}
+    public ArrayList<Contrato> mostrarContratos(){
+        return directiva.mostrarContratos();
+    }
     
     
     public Residente obtenerResidente(String correo) throws Exception{
@@ -83,9 +83,9 @@ public class Condominio {
     }
 
 //<<<<<<< HEAD
-    //public Contrato getContrato(String descripcionContratoAPagar) {
-      //  return directiva.getContrato(descripcionContratoAPagar);
-    //}
+    public Contrato getContrato(String descripcionContratoAPagar) {
+        return directiva.getContrato(descripcionContratoAPagar);
+    }
 //=======
     public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
         Residente resAux;
