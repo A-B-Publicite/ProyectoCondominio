@@ -55,7 +55,9 @@ public class Administrador extends Perfil implements Serializable {
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
+        residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados() , "hola", "alicuota");
         //Escribo a bits el residenteNuevo
         
         ArrayList<Residente> listaResidentes = new ArrayList<>();
@@ -71,6 +73,19 @@ public class Administrador extends Perfil implements Serializable {
         ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
         objectOutputStream.close();
     }
+    
+    public Residente obtenerResidenteGuardado() throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentes.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
+        objectInputStream.close();
+    
+    // Suponiendo que quieres obtener el último residente agregado
+        return residentes.get(residentes.size() - 1);
+    }
+    
+    
+    
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
@@ -79,7 +94,9 @@ public class Administrador extends Perfil implements Serializable {
         residenteNuevo.setAutorizacion(autorizacionEntrada);
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
+        residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados() , "hola", "alicuota");
     }
 
     //PORFAVOR NO BORRAR, ES DE USO PARA AGREGAR UN GUARDIA AL CONDOMINIO
