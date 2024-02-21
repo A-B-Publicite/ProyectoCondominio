@@ -33,7 +33,7 @@ public class Directo extends Mensaje{
         }
         pos= scanner.nextInt();
         
-        System.out.println("Destino: " + getDestinos().get(pos-1));
+        System.out.println("Destino: " + getDestinos().get(pos-1).getNombreApellido());
 
         System.out.println("Escriba el Titulo del mensaje:");
         setTitulo(scanner.nextLine());

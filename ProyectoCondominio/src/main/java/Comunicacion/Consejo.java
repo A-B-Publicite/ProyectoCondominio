@@ -42,7 +42,7 @@ public class Consejo extends Mensaje{
         for (Perfil destinatario : getDestinos()) {
             destinatario.getBandejaDeEntrada().recibirMensaje(this);
         }
-    
+
     }
 
     @Override
