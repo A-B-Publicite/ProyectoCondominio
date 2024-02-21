@@ -48,6 +48,6 @@ public class Autorizacion {
     }   
     public boolean getAprobado() {
         return aprobado;
-    }
-    
+    }   
+     
 }
