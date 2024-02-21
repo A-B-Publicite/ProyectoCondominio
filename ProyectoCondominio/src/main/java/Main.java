@@ -79,7 +79,7 @@ public class Main {
                     
                     break;
                 case 6:
-                    
+                    MenuComunicacion.mostrar(administrador);
                     break;
                 default:
                     throw new AssertionError("No ha escogido una opcion correcta");
