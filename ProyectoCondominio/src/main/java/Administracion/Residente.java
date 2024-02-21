@@ -79,4 +79,9 @@ public class Residente extends Perfil implements Serializable{
         registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
 
+    @Override
+    public String toString() {
+        return "Residente{" + "esPropietario=" + esPropietario + ", departamento=" + departamento + '}';
+    }
+    
 }

@@ -52,11 +52,10 @@ public class Main {
             System.out.println("""
                                Opciones para probar el sistema:
                                1. Administracion
-                               2. Inmuebles
+                               2. Finanzas
                                3. Reservas
                                4. Check In
-                               5. Finanzas
-                               6. Comunicacion
+                               5. Comunicacion
                                0. Salir
                                """);
 
@@ -64,7 +63,7 @@ public class Main {
             
             switch (opcion[0]) {
                 case 1:
-                    Menu.menuAdministracion(adminEnFichero, opcion);
+                    Menu.menuAdministracion(administrador, opcion);
                     
                     break;
                 case 2:

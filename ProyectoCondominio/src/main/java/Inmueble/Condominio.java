@@ -74,9 +74,10 @@ public class Condominio implements Serializable {
     
     public Residente obtenerResidentePorCorreo(String correo) {
         Residente resAux;
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : this.departamentos) {
             resAux = (Residente) departamento.getPropietario(); 
             if (resAux != null && resAux.compararCorreoNombre(correo)) {
+                                            
                 return resAux;
             }
         }

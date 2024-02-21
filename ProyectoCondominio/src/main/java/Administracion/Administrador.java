@@ -51,7 +51,7 @@ public class Administrador extends Perfil implements Serializable {
         return condominio.obtenerInmuebleComun();
     }
 
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public void registrarResidente(String nombre, String apellido, Boolean esPropietario)  {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
@@ -59,8 +59,9 @@ public class Administrador extends Perfil implements Serializable {
         
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
+        System.out.println(residenteNuevo);
         //Escribo a bits el residenteNuevo
-        
+        /*
         ArrayList<Residente> listaResidentes = new ArrayList<>();
         listaResidentes = condominio.obtenerResidentes();
         
@@ -75,6 +76,7 @@ public class Administrador extends Perfil implements Serializable {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
         objectInputStream.close();
+        */
         
     }
 
@@ -134,7 +136,7 @@ public class Administrador extends Perfil implements Serializable {
         condominio.agregarDirectiva(obtenerResidenteCorreo(correoPresidente), obtenerResidenteCorreo(correoSecretario));
     }
 
-    public Residente obtenerResidenteCorreo(String correo) throws Exception {
+    public Residente obtenerResidenteCorreo(String correo)  {
         return condominio.obtenerResidentePorCorreo(correo);
     }
 
