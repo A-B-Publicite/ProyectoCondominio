@@ -208,4 +208,8 @@ public class Cuenta {
     public void setCuentaDePago(Cuenta cuentaAdministrador) {
         this.cuentaAdministrador = cuentaAdministrador;
     }
+
+    public void pagarContrato(double precioContrato) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
