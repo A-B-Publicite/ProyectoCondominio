@@ -36,9 +36,9 @@ public class MenuCI {
         EspacioDeParqueadero espacio = new EspacioDeParqueadero(10.0);
         for (InmuebleComun inmueble : adminEnFichero.obtenerInmuebleComun()) {
             if (inmueble instanceof EspacioDeParqueadero) {
-                espacio = (EspacioDeParqueadero) inmueble;                
+                espacio = (EspacioDeParqueadero) inmueble;                 
             }
-        }
+        }        
         Guardia guardia = (Guardia) adminEnFichero.getCondominio().getGuardia();
         guardia.realizarCheckIn("20/2/204", "12:00", autorizacionVi, espacio);
     }
