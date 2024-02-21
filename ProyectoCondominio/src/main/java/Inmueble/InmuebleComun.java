@@ -13,7 +13,7 @@ public abstract class InmuebleComun{
 
     public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
-        this.listaReservas = null;
+        this.listaReservas = new ArrayList<Reserva>();
         this.diasDisponibles = new ArrayList<String>();
         diasDisponibles.add("Lunes");
         diasDisponibles.add("Martes");
@@ -28,8 +28,13 @@ public abstract class InmuebleComun{
     }
 
     //para el modulo de reserva
+    
     public void agregarReserva(Reserva reserva){
-        listaReservas.add(reserva);               
+        try{
+            listaReservas.add(reserva);     
+        }catch(Exception e){
+            System.out.println("Error"+e);
+        }
     }
     
     public void eliminarReserva(Reserva reserva){
