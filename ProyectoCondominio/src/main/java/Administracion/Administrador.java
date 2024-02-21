@@ -66,7 +66,7 @@ public class Administrador extends Perfil {
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
-        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        Autorizacion autorizacionEntrada = crearAutorizacion(residenteNuevo.getNombreApellido(),fechaActual,fechaFin);
         residenteNuevo.setAutorizacion(autorizacionEntrada);
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
@@ -76,7 +76,7 @@ public class Administrador extends Perfil {
     //PORFAVOR NO BORRAR, ES DE USO PARA AGREGAR UN GUARDIA AL CONDOMINIO
     public void registrarGuardia(String nombre, String apellido, String fechaActual, String fechaFin) {
         Guardia guardiaNuevo = new Guardia(nombre,apellido);
-        Autorizacion autorizacionEntrada = crearAutorizacion(nombre+" "+apellido,fechaActual,fechaFin);
+        Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(),fechaActual,fechaFin);
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
     }
@@ -128,7 +128,7 @@ public class Administrador extends Perfil {
     
     public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin){
         Autorizacion autorizacionEntrada = new Autorizacion();
-        autorizacionEntrada.completar(this.nombre,nombreResidente,fechaActual,fechaFin);
+        autorizacionEntrada.completar(this.getNombreApellido(),nombreResidente,fechaActual,fechaFin);
         autorizacionEntrada.validar(this);
         return autorizacionEntrada;
     }

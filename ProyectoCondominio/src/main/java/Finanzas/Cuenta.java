@@ -5,6 +5,7 @@ package Finanzas;
  *
  * @author alejo
  */
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.TimerTask;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class Cuenta {
+public class Cuenta implements Serializable{
     private ArrayList<ObligacionFinanciera> obligacionesFinancieras = new ArrayList<>();
     private ArrayList<Pago> registros = new ArrayList<>();
     private ArrayList<Recarga> recargas = new ArrayList<>();
