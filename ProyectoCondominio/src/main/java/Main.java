@@ -3,7 +3,6 @@ import Administracion.*;
 import Comunicacion.*;
 import Finanzas.*;
 import Inmueble.*;
-import areaComun.*;
 import check_in.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,8 +22,7 @@ public class Main {
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador administrador = new Administrador("Juan", "Zambrano");
         
-        
-        //Carga a bits el admin
+        //Escribo a bits el admin
         FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(administrador);
@@ -35,9 +33,7 @@ public class Main {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Administrador adminEnFichero = (Administrador)objectInputStream.readObject();
         objectOutputStream.close();
-        
-        
-        
+
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -79,12 +75,17 @@ public class Main {
                     
                     break;
                 case 6:
-                    MenuComunicacion.mostrar(administrador);
+                    MenuComunicacion.mostrar(adminEnFichero);
                     break;
                 default:
                     throw new AssertionError("No ha escogido una opcion correcta");
             }
         } while (opcion != 0);
+        //Escribo a bits el admin
+        FileOutputStream fileOutputStream = new FileOutputStream("Datos/datos.txt");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(adminEnFichero);
+        objectOutputStream.close();
 
     }
 }
