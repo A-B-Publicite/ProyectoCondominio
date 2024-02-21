@@ -5,12 +5,13 @@
 package Administracion;
 
 import check_in.*;
+import java.io.Serializable;
 
 /**
  *
  * @author MARQUEZ
  */
-public class Guardia extends Perfil{
+public class Guardia extends Perfil implements Serializable{
             
     public Guardia(String nombre, String apellido) {
         super(nombre, apellido);

@@ -2,9 +2,10 @@ package Administracion;
 
 import Finanzas.Cuenta;
 import Inmueble.Departamento;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Residente extends Perfil{
+public class Residente extends Perfil implements Serializable{
     private boolean esPropietario;
     private Departamento departamento;
     
