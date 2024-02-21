@@ -6,6 +6,7 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -20,17 +21,40 @@ public class Consejo extends Mensaje{
 
     @Override
     public void crear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Destino: Directiva");
+
+        System.out.println("Escriba el Titulo del mensaje:");
+        setTitulo(scanner.nextLine());
+
+        System.out.println("Escriba el contenido del mensaje:");
+        setContenido(scanner.nextLine());
+
+        enviar();
+        
+    }
+    
     @Override
     public void enviar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        for (Perfil destinatario : getDestinos()) {
+            destinatario.getBandejaDeEntrada().recibirMensaje(this);
+        }
+    
     }
 
     @Override
     public void mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        System.out.println("\n=============================================\n"
+                + "Origen: " + this.getOrigen().getNombreApellido()+"\n"+
+                "Destino: Directiva \n"+
+                "Fecha: " + getFecha() +
+                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() +
+                "\n=============================================\n");
+        
     }
     
 }
