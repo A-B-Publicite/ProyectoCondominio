@@ -52,4 +52,10 @@ public abstract class Perfil implements Serializable{
         registro.setAutorizacion(this.autorizacion);
         registro.registrarEntrada(fechaLlegada, horaLlegada);        
     }
+
+    public void setAutorizacion(Autorizacion autorizacion) {
+        this.autorizacion = autorizacion;
+    }
+    
+    
 }
