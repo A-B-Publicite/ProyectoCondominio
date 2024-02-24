@@ -54,5 +54,6 @@ public class Disponibilidad {
         return this.areaComun.obtenerReservas();
     }
     asdasd
-
+    //funcion 1 crear algo
+            
 } /*hola c:*/
