@@ -53,4 +53,5 @@ public class Disponibilidad {
     public List<Reserva> getListaReservas() {
         return this.areaComun.obtenerReservas();
     }
+    asdasd
 } 
