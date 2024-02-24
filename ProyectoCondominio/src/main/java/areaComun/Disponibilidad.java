@@ -54,4 +54,4 @@ public class Disponibilidad {
         return this.areaComun.obtenerReservas();
     }
     asdasd
-} 
+} /*hola c:*/
