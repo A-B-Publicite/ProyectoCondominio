@@ -22,22 +22,23 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
-        Administrador adminLeido = new Administrador("Juan", "Zambrano");
+        Administrador admin = new Administrador("Julio", "Zambrano");
         //Administrador adminLeido = null;
-        // Crear un objeto
+        //ESCRIBIR
+        FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(admin);
+        System.out.println("Me guarde");
+        oos.close();
+        fos.close();
+        
         
         // Leer el objeto desde el archivo
         FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
-        adminLeido = (Administrador) ois.readObject();
+        Administrador adminLeido = (Administrador) ois.readObject();
         ois.close();
         fis.close();
-        
-        FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        
-
-        
 
         int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
@@ -82,23 +83,19 @@ public class Main {
                     MenuComunicacion.mostrar();
                     break;
                 case 0:
-                    System.exit(0);
+                    opcion[0] = 0;
                     break;
                 
             }
         } while (opcion[0] != 0);
         
+        //Sobreescribo
+        fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        oos = new ObjectOutputStream(fos);
         oos.writeObject(adminLeido);
         System.out.println("Me guarde");
         oos.close();
         fos.close();
-        
-        
-        
-            // Guardar el objeto en un archivo
-            
-
-        
     }
 
 }
