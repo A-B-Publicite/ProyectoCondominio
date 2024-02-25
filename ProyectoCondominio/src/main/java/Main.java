@@ -27,7 +27,7 @@ public class Main {
             
 
             // Guardar el objeto en un archivo
-            FileOutputStream fos = new FileOutputStream("src/Dato/archivo.txt");
+            FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(administrador);
             System.out.println("Me guarde");
@@ -35,13 +35,12 @@ public class Main {
             fos.close();
 
             // Leer el objeto desde el archivo
-            FileInputStream fis = new FileInputStream("src/Dato/archivo.txt");
+            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Residente objetoLeido = (Residente) ois.readObject();
+            Administrador objetoLeido = (Administrador) ois.readObject();
             ois.close();
             fis.close();
-
-            objetoLeido.setNombre("Antonio");
+               /*
 
             // Reabrir el flujo de salida para escribir el objeto modificado
             fos = new FileOutputStream("src/Dato/archivo.txt");
@@ -115,6 +114,7 @@ public class Main {
 } catch (IOException e) {
     e.printStackTrace();
 }
-
+*/
     }
+
 }
