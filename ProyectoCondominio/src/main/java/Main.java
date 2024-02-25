@@ -4,6 +4,7 @@ import Comunicacion.*;
 import Finanzas.*;
 import GUI.AutenticadorMenu;
 import Inmueble.*;
+import ModuloMueble.MenuAlquilerMueble;
 import ModuloReservas.MenuR;
 import check_in.*;
 import java.io.FileInputStream;
@@ -63,6 +64,7 @@ public class Main {
                                3. Reservas
                                4. Check In
                                5. Comunicacion
+                               6. Alquiler Muebles
                                0. Salir
                                """);
 
@@ -85,6 +87,10 @@ public class Main {
                 case 5:
                     MenuComunicacion.mostrar();
                     break;
+                    
+                case 6:
+                    MenuAlquilerMueble.mostrar();
+                    break;    
                 case 0:
                     opcion[0] = 0;
                     break;
