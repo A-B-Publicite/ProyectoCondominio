@@ -128,18 +128,25 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
 
     private void gestionCondominioButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionCondominioButtomActionPerformed
         // TODO add your handling code here:
+        GestionCondominio gestionCondominio = new GestionCondominio(administrador);
+        gestionCondominio.setVisible(true);
     }//GEN-LAST:event_gestionCondominioButtomActionPerformed
 
     private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
         // TODO add your handling code here:
+        GestionContrato gestionContrato = new GestionContrato(administrador);
+        gestionContrato.setVisible(true);
     }//GEN-LAST:event_gestionContratosButtonActionPerformed
 
     private void gestionPerfilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPerfilesButtonActionPerformed
         // TODO add your handling code here:
+        GestionPerfil gestionPerfil = new GestionPerfil(administrador);
+        gestionPerfil.setVisible(true);
     }//GEN-LAST:event_gestionPerfilesButtonActionPerformed
 
     /**
