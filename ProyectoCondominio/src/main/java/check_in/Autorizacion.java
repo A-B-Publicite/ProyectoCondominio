@@ -34,16 +34,6 @@ public class Autorizacion implements Serializable{
         this.fechaFin = fechaFin;
     }    
 
-    public void validar(Perfil autorizador) {
-        if(autorizador == null){
-            System.out.println("Envíe un autorizador valido");
-            return;}
-        if(!autorizador.getNombreApellido().equals(this.autorizador)){
-            System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
-            return;}
-        aprobado = true;
-    }
-
     public String getAutorizador() {
         return autorizador;
     }
@@ -69,5 +59,8 @@ public class Autorizacion implements Serializable{
     public boolean getAprobado() {
         return aprobado;
     }   
-     
+    
+    public void validar() {
+        aprobado = true;
+    } 
 }
