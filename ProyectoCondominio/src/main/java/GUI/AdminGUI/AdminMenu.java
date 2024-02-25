@@ -45,15 +45,30 @@ public class AdminMenu extends javax.swing.JFrame {
         label2.setText("Cristian Zambrano");
 
         jButton1.setText("Gestión del Condominio");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionCondominioButtomActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Gestión de contratos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionContratosButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Gestión de perfiles");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionPerfilesButtonActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Bandeja de entrada");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bandejaEntradaButtonActionPerformed(evt);
             }
         });
 
@@ -103,14 +118,24 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        label1.getAccessibleContext().setAccessibleName("¡Hola, bienvenido de vuelta!,");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
+
+    private void gestionCondominioButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionCondominioButtomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionCondominioButtomActionPerformed
+
+    private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionContratosButtonActionPerformed
+
+    private void gestionPerfilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPerfilesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionPerfilesButtonActionPerformed
 
     /**
      * @param args the command line arguments
