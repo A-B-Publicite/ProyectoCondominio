@@ -22,40 +22,22 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
-        Administrador administrador = new Administrador("Juan", "Zambrano");
+        Administrador adminLeido = new Administrador("Juan", "Zambrano");
+        //Administrador adminLeido = null;
         // Crear un objeto
-            
+        
+        // Leer el objeto desde el archivo
+        FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        adminLeido = (Administrador) ois.readObject();
+        ois.close();
+        fis.close();
+        
+        FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        
 
-            // Guardar el objeto en un archivo
-            FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(administrador);
-            System.out.println("Me guarde");
-            oos.close();
-            fos.close();
-
-            // Leer el objeto desde el archivo
-            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            Administrador objetoLeido = (Administrador) ois.readObject();
-            ois.close();
-            fis.close();
-               /*
-
-            // Reabrir el flujo de salida para escribir el objeto modificado
-            fos = new FileOutputStream("src/Dato/archivo.txt");
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(objetoLeido);
-            System.out.println("Me guarde");
-            oos.close();
-            fos.close();
-
-            // Reabrir el flujo de entrada para leer el objeto modificado
-            fis = new FileInputStream("src/Dato/archivo.txt");
-            ois = new ObjectInputStream(fis);
-            Residente objetoLeido2 = (Residente) ois.readObject();
-            ois.close();
-            fis.close();
+        
 
         int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
@@ -84,17 +66,17 @@ public class Main {
             
             switch (opcion[0]) {
                 case 1:
-                    Menu.menuAdministracion(adminEnFichero, opcion);
+                    Menu.menuAdministracion(adminLeido, opcion);
                     
                     break;
                 case 2:
-                    MenuFinanzas.menuFinanzas(adminEnFichero); 
+                    MenuFinanzas.menuFinanzas(adminLeido); 
                     break;
                 case 3:
-                    MenuR.menuReservas(adminEnFichero);
+                    MenuR.menuReservas(adminLeido);
                     break;
                 case 4:
-                    MenuCI.menuCheckIn(adminEnFichero, opcion);
+                    MenuCI.menuCheckIn(adminLeido, opcion);
                     break;
                 case 5:
                     MenuComunicacion.mostrar();
@@ -106,15 +88,17 @@ public class Main {
             }
         } while (opcion[0] != 0);
         
-        try {
-    FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-    objectOutputStream.writeObject(adminEnFichero);
-    objectOutputStream.close();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-*/
+        oos.writeObject(adminLeido);
+        System.out.println("Me guarde");
+        oos.close();
+        fos.close();
+        
+        
+        
+            // Guardar el objeto en un archivo
+            
+
+        
     }
 
 }
