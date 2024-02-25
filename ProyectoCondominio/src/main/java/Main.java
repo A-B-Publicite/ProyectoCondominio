@@ -23,18 +23,40 @@ public class Main {
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador administrador = new Administrador("Juan", "Zambrano");
-           /*
-        //Escribo a bits el admin
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(administrador);
-        objectOutputStream.close();
-        */
-        //Lectura del objeto admin
-        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Administrador adminEnFichero = (Administrador) objectInputStream.readObject();
-        objectInputStream.close();
+        // Crear un objeto
+            
+
+            // Guardar el objeto en un archivo
+            FileOutputStream fos = new FileOutputStream("src/Dato/archivo.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(administrador);
+            System.out.println("Me guarde");
+            oos.close();
+            fos.close();
+
+            // Leer el objeto desde el archivo
+            FileInputStream fis = new FileInputStream("src/Dato/archivo.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Residente objetoLeido = (Residente) ois.readObject();
+            ois.close();
+            fis.close();
+
+            objetoLeido.setNombre("Antonio");
+
+            // Reabrir el flujo de salida para escribir el objeto modificado
+            fos = new FileOutputStream("src/Dato/archivo.txt");
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(objetoLeido);
+            System.out.println("Me guarde");
+            oos.close();
+            fos.close();
+
+            // Reabrir el flujo de entrada para leer el objeto modificado
+            fis = new FileInputStream("src/Dato/archivo.txt");
+            ois = new ObjectInputStream(fis);
+            Residente objetoLeido2 = (Residente) ois.readObject();
+            ois.close();
+            fis.close();
 
         int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
