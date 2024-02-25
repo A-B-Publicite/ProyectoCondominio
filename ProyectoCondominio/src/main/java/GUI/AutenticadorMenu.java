@@ -16,12 +16,14 @@ import java.io.ObjectInputStream;
  * @author intel
  */
 public class AutenticadorMenu extends javax.swing.JFrame {
+    //Administrador administrador;
 
     /**
      * Creates new form login
      */
     public AutenticadorMenu() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -149,43 +151,6 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AutenticadorMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AutenticadorMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AutenticadorMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AutenticadorMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AutenticadorMenu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasenia;
@@ -197,25 +162,44 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> selectorPerfilCombo;
     // End of variables declaration//GEN-END:variables
 
+    /*
     private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
-        Administrador adminLeido = null;
+        Administrador adminLeido;
         try {
             FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             adminLeido = (Administrador) ois.readObject();
+            System.out.println("Me leiste");
             ois.close();
             fis.close();
+            
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace(); 
         }
         if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
             return adminLeido;
-        }   
-   
-        return null;
+        }
+        return null;   
+    }*/
+    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
+    try {
+        FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Administrador adminLeido = (Administrador) ois.readObject();
         
         
+        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
+            return adminLeido;
+        }
+        System.out.println("Me leiste");
+        ois.close();
+        fis.close();
+    } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace(); 
     }
+    return null;
+}
+
 
     private Residente obtenterResidenteDelTxt(String correo, String contrasenia) {
         Residente residente = null;

@@ -12,9 +12,7 @@ public class Departamento extends InmueblePrivado implements Serializable {
     public Departamento() {
         super(M2DEPARTAMENTO, null);
         inmueblesPrivados = new ArrayList<InmueblePrivado>();
-        inmueblesPrivados.add(new ParqueaderoPrivado());
-                
-        
+        inmueblesPrivados.add(new ParqueaderoPrivado()); 
     }
 
 

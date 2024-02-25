@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         AutenticadorMenu menu = new AutenticadorMenu();
         
-        /*
+        
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
         Administrador admin = new Administrador("Julio", "Zambrano");
         //Administrador adminLeido = null;
@@ -99,7 +99,7 @@ public class Main {
         System.out.println("Me guarde");
         oos.close();
         fos.close();
-*/
+
     }
 
 }
