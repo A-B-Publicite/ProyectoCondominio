@@ -64,4 +64,14 @@ public abstract class Perfil implements Serializable{
     public void validarUnaAutorizacion(Autorizacion autorizacion){
         autorizacion.validar(this);
     }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+    
+    
 }

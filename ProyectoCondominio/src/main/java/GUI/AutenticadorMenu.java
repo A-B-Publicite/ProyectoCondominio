@@ -5,6 +5,11 @@
 package GUI;
 
 import Administracion.*;
+import GUI.AdminGUI.AdminMenu;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 /**
  *
@@ -124,7 +129,24 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_selectorPerfilComboActionPerformed
 
     private void ingresarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBotonActionPerformed
-        Perfil perfil = obtenerPerfilIngresado(selectorPerfilCombo.getSelectedItem(), correo.getText(), contrasenia.getText() );
+        switch ((String) selectorPerfilCombo.getSelectedItem()) { 
+            case "Administrador":   
+                Administrador administrador = obtenerAdministradorDelTxt(correo.getText(), contrasenia.getText() );
+                AdminMenu adminMenu = new AdminMenu(administrador);
+            case "Residente":
+                Residente residente = obtenterResidenteDelTxt(correo.getText(), contrasenia.getText() );
+                //ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+            case "Guardia":
+                //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
+                //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
+            default:
+                
+                break;
+            
+     // Default secuencia de sentencias.
+        }
+        
+                
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
     /**
@@ -175,7 +197,50 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> selectorPerfilCombo;
     // End of variables declaration//GEN-END:variables
 
-    private Perfil obtenerPerfilIngresado(Object selectedItem, String text, String text0) {
-        return null
+    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
+        Administrador adminLeido = null;
+        try {
+            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            adminLeido = (Administrador) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
+            return adminLeido;
+        }   
+   
+        return null;
+        
+        
     }
+
+    private Residente obtenterResidenteDelTxt(String correo, String contrasenia) {
+        Residente residente = null;
+        Administrador adminLeido = null;
+        try {
+            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            adminLeido = (Administrador) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+        residente = adminLeido.obtenerResidentePorCorreo(correo);
+        
+        if(residente.getCorreo().equals(correo) && residente.getContrasenia().equals(contrasenia)){
+            return residente;
+        }
+        
+        return null;
+        
+    }
+
+    private Guardia obtenterGuardiaDelTxt(String correo, String contrasenia) {
+        return null;        
+    }
+    
 }
