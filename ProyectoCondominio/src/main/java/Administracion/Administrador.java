@@ -27,6 +27,13 @@ public class Administrador extends Perfil implements Serializable {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public String toString() {
+        return "Administrador: " + nombre + " " + apellido;
+    }
+    
+    
+
     //CONSTRUCTOR PARA ISNTANCIAR UN ADMINISTRADOR CON AUTORIZACION DE ENTRADA
     public Administrador(String nombre, String apellido, String fechaActual, String fechaFin) {
         super(nombre, apellido);
@@ -161,4 +168,6 @@ public class Administrador extends Perfil implements Serializable {
     public Condominio getCondominio() {
         return condominio;
     }
+    
+    
 }

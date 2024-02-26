@@ -2,6 +2,7 @@
 import Administracion.*;
 import Comunicacion.*;
 import Finanzas.*;
+import GUI.AutenticadorMenu;
 import Inmueble.*;
 import ModuloReservas.MenuR;
 import check_in.*;
@@ -20,21 +21,27 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+        AutenticadorMenu menu = new AutenticadorMenu();
+        
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
-        Administrador administrador = new Administrador("Juan", "Zambrano");
-           /*
-        //Escribo a bits el admin
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(administrador);
-        objectOutputStream.close();
-        */
-        //Lectura del objeto admin
-        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Administrador adminEnFichero = (Administrador) objectInputStream.readObject();
-        objectInputStream.close();
+        Administrador admin = new Administrador("Julio", "Zambrano");
+        //Administrador adminLeido = null;
+        //ESCRIBIR
+        FileOutputStream fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(admin);
+        System.out.println("Me guarde");
+        oos.close();
+        fos.close();
+        
+        
+        // Leer el objeto desde el archivo
+        FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Administrador adminLeido = (Administrador) ois.readObject();
+        ois.close();
+        fis.close();
 
         int opcion[] = new int[1];
         Scanner scanner = new Scanner(System.in);
@@ -63,14 +70,14 @@ public class Main {
             
             switch (opcion[0]) {
                 case 1:
-                    Menu.menuAdministracion(adminEnFichero, opcion);
+                    Menu.menuAdministracion(adminLeido, opcion);
                     
                     break;
                 case 2:
-                    MenuFinanzas.menuFinanzas(adminEnFichero); 
+                    MenuFinanzas.menuFinanzas(adminLeido); 
                     break;
                 case 3:
-                    MenuR.menuReservas(adminEnFichero);
+                    MenuR.menuReservas(adminLeido);
                     break;
                 case 4:
                     //MenuCI.menuCheckIn(adminEnFichero, opcion);
@@ -79,20 +86,20 @@ public class Main {
                     MenuComunicacion.mostrar();
                     break;
                 case 0:
-                    System.exit(0);
+                    opcion[0] = 0;
                     break;
                 
             }
         } while (opcion[0] != 0);
         
-        try {
-    FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
-    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-    objectOutputStream.writeObject(adminEnFichero);
-    objectOutputStream.close();
-} catch (IOException e) {
-    e.printStackTrace();
-}
+        //Sobreescribo
+        fos = new FileOutputStream("src/main/java/Datos/datosAdmin.txt");
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(adminLeido);
+        System.out.println("Me guarde");
+        oos.close();
+        fos.close();
 
     }
+
 }
