@@ -60,10 +60,6 @@ public abstract class Perfil implements Serializable{
     public void setAutorizacion(Autorizacion autorizacion) {
         this.autorizacion = autorizacion;
     }
-    
-    public void validarUnaAutorizacion(Autorizacion autorizacion){
-        autorizacion.validar(this);
-    }
 
     public String getCorreo() {
         return correo;
@@ -71,7 +67,5 @@ public abstract class Perfil implements Serializable{
 
     public String getContrasenia() {
         return contrasenia;
-    }
-    
-    
+    }    
 }
