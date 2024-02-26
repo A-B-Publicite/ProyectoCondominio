@@ -66,7 +66,7 @@ public class MenuCI {
                         Residente residentePruebas;
                         try {
                             System.out.print("Realizando registro de "+residenteABuscar);
-                            residentePruebas = adminEnFichero.obtenerResidente(residenteABuscar);
+                            residentePruebas = adminEnFichero.getResidentePorNombre(residenteABuscar);
                             
                             scanner = new Scanner(System.in);
 
@@ -100,7 +100,7 @@ public class MenuCI {
                         System.out.print("Fecha fin: ");
                         String feFi = scanner.nextLine();
                         try {
-                            residentePruebas = adminEnFichero.obtenerResidente(residenteBuscar);
+                            residentePruebas = adminEnFichero.getResidentePorNombre(residenteBuscar);
                             System.out.print("Realizando autorizacion de "+residenteBuscar);
                             Autorizacion autorizacionNueva = adminEnFichero.crearAutorizacion(residentePruebas.getNombreApellido(), feI, feFi);
                             residentePruebas.setAutorizacion(autorizacionNueva);
@@ -141,10 +141,10 @@ public class MenuCI {
                             scanner = new Scanner(System.in);
                             
                             String[] partes = persona.split(" ");
-                            residenteAVisitar = adminEnFichero.obtenerResidente(partes[0]);
+                            residenteAVisitar = adminEnFichero.getResidentePorNombre(partes[0]);
                             EspacioDeParqueadero espacio = new EspacioDeParqueadero(10.0);
 
-                            for (InmuebleComun inmueble : adminEnFichero.obtenerInmuebleComun()) {
+                            for (InmuebleComun inmueble : adminEnFichero.getInmueblesComunes()) {
                                 if (inmueble instanceof EspacioDeParqueadero) {
                                     espacio = (EspacioDeParqueadero) inmueble;                 
                                 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Departamento extends InmueblePrivado implements Serializable {
-    private Residente propietario;
+    private Residente residente;
     private ArrayList<InmueblePrivado> inmueblesPrivados;
     private static final double M2DEPARTAMENTO=12;
     
@@ -17,11 +17,11 @@ public class Departamento extends InmueblePrivado implements Serializable {
 
 
     public Perfil getPropietario() {
-        return propietario;
+        return residente;
     }
 
-    public void setPropietario(Perfil propietario) {
-        this.propietario = (Residente) propietario;
+    public void setResidente(Perfil propietario) {
+        this.residente = (Residente) propietario;
         setPropietarioATodosLosInmueblesPrivados();
     }
 
@@ -32,7 +32,7 @@ public class Departamento extends InmueblePrivado implements Serializable {
 
     private void setPropietarioATodosLosInmueblesPrivados() {
         for (InmueblePrivado inmueblePrivado : inmueblesPrivados) {
-            inmueblePrivado.setPropietario(propietario);
+            inmueblePrivado.setResidente(residente);
         }
     }
 

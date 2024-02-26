@@ -57,7 +57,7 @@ public class Menu {
                         break;
                     case 4:
                         System.out.print("Ingrese el numero de departamentos: ");
-                        administrador.agregarDepartamento(scanner.nextInt());
+                        administrador.agregarDepartamentos(scanner.nextInt());
                         break;
                     case 5:
                         do {

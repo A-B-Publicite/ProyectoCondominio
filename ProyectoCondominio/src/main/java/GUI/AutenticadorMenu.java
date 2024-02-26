@@ -5,11 +5,10 @@
 package GUI;
 
 import Administracion.*;
+import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import GUI.ResidenteGUI.ResidenteMenu;
+
 
 /**
  *
@@ -22,8 +21,10 @@ public class AutenticadorMenu extends javax.swing.JFrame {
      * Creates new form login
      */
     public AutenticadorMenu() {
+        registrarAdminBoton.setVisible(false);
         initComponents();
         this.setVisible(true);
+        verificarAdminCreado();
     }
 
     /**
@@ -44,6 +45,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ingresarBoton = new javax.swing.JButton();
+        registrarAdminBoton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,40 +90,51 @@ public class AutenticadorMenu extends javax.swing.JFrame {
             }
         });
 
+        registrarAdminBoton.setText("Registrar Admin");
+        registrarAdminBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarAdminBotonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(142, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrarAdminBoton)
+                .addGap(65, 65, 65))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ingresarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(ingresarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registrarAdminBoton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -129,7 +142,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(ingresarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -148,12 +161,12 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private void ingresarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBotonActionPerformed
         switch ((String) selectorPerfilCombo.getSelectedItem()) { 
             case "Administrador":   
-                Administrador administrador = obtenerAdministradorDelTxt(correo.getText(), contrasenia.getText() );
+                Administrador administrador = BaseDeDatos.leerAdministrador();
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
             case "Residente":
-                Residente residente = obtenterResidenteDelTxt(correo.getText(), contrasenia.getText() );
-                //ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                Residente residente =  BaseDeDatos.getResidente(correo.getText(), contrasenia.getText() );
+                ResidenteMenu residenteMenu = new ResidenteMenu(residente);
             case "Guardia":
                 //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
                 //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
@@ -167,6 +180,10 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
+    private void registrarAdminBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdminBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarAdminBotonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasenia;
@@ -177,72 +194,19 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton registrarAdminBoton;
     private javax.swing.JComboBox<String> selectorPerfilCombo;
     // End of variables declaration//GEN-END:variables
 
-    /*
-    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
-        Administrador adminLeido;
-        try {
-            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            adminLeido = (Administrador) ois.readObject();
-            System.out.println("Me leiste");
-            ois.close();
-            fis.close();
-            
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace(); 
-        }
-        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
-            return adminLeido;
-        }
-        return null;   
-    }*/
-    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
-    try {
-        FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        Administrador adminLeido = (Administrador) ois.readObject();
-        
-        
-        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
-            return adminLeido;
-        }
-        System.out.println("Me leiste");
-        ois.close();
-        fis.close();
-    } catch (IOException | ClassNotFoundException e) {
-        e.printStackTrace(); 
-    }
-    return null;
-}
+ 
 
-
-    private Residente obtenterResidenteDelTxt(String correo, String contrasenia) {
-        Residente residente = null;
-        Administrador adminLeido = null;
-        try {
-            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            adminLeido = (Administrador) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace(); 
+    private void verificarAdminCreado() {
+        if(BaseDeDatos.leerAdministrador() == null){
+            registrarAdminBoton.setVisible(true);
         }
-        residente = adminLeido.obtenerResidentePorCorreo(correo);
-        
-        if(residente.getCorreo().equals(correo) && residente.getContrasenia().equals(contrasenia)){
-            return residente;
-        }
-        
-        return null;
         
     }
 
-    private Guardia obtenterGuardiaDelTxt(String correo, String contrasenia) {
-        return null;        
-    }
+
     
 }

@@ -16,7 +16,7 @@ public abstract class InmueblePrivado{
         return metrosCuadrados;
     }
 
-    public void setPropietario(Perfil propietario) {
+    public void setResidente(Perfil propietario) {
         this.propietario = propietario;
     }
     
