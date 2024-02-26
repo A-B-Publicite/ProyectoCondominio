@@ -34,21 +34,21 @@ public class Prueba {
         System.out.println(buscarResidente(visitante.getPersonaAVisitar()));
         //registrar(visitante);
         //registrar(visitante, quiereEstacionamiento, espacio); 
-        registrar(visitante.getNombre(),quiereEstacionamiento);
+        //registrar(visitante.getNombre(),quiereEstacionamiento);
     }    
     
-    public static void registrar(String visitante, boolean quiereEstacionamiento){
+    public static void registrar(String visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento){
         RegistroEntrada registro = new RegistroEntrada();
         if(compararAutorizaciones(visitante) == null){
             System.out.println("No tengo el registro de una autorizacion para usted");
             return;}
         registro.setAutorizacion(autorizacionPre);
-        if (quiereEstacionamiento)
-            registro.asignarParqueadero(residente, espacio);
-        registro.registrarEntrada("25/2/2024", "15:00");
+        //if (quiereEstacionamiento)
+        //    registro.asignarParqueadero(residente, espacio);
+        registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
     
-    public static void registrar(Visitante visitante, boolean quiereEstacionamiento, EspacioDeParqueadero espacio) {
+    public static void registrar(Visitante visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento, EspacioDeParqueadero espacio) {
         RegistroEntrada registro = new RegistroEntrada();
         Autorizacion autorizacionInmediata = new Autorizacion();
         Comparacion comparador = new Comparacion();
@@ -56,18 +56,19 @@ public class Prueba {
         if(residente == null){
             System.out.println("No tengo el registro de ningun residente denominado asi");
             return;}
-        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), "25/2/2024", "25/2/2024");
-        comparador.compararValidar(residente, autorizacionInmediata.getAutorizador(), autorizacionInmediata);
+        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
+        comparador.compararValidar(residente, autorizacionInmediata);
         registro.setAutorizacion(autorizacionInmediata);
-        if (quiereEstacionamiento)
-            registro.asignarParqueadero(residente, espacio);    //Poner el guardia
-        registro.registrarEntrada("25/2/2024", "15:00");
+        //if (quiereEstacionamiento)
+        //    registro.asignarParqueadero(residente, espacio);    //Poner el guardia
+        registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
-    public static void registrar(Visitante visitante){
-        registrar(visitante,false,new EspacioDeParqueadero(0));
+    
+    public static void registrar(Visitante visitante, String fechaLlegada, String horaLlegada){
+        registrar(visitante, fechaLlegada,horaLlegada, false,null);
     }
 
-    public static String buscarResidente(String personaAVisitar) {
+    private static String buscarResidente(String personaAVisitar) {
         String residente = null;
         for (String resi : residentes) {
             if (resi.equals(personaAVisitar)) {

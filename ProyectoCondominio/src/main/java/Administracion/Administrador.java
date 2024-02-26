@@ -153,7 +153,11 @@ public class Administrador extends Perfil implements Serializable {
         validarUnaAutorizacion(autorizacionEntrada);
         return autorizacionEntrada;
     }
-
+    
+    public void validarUnaAutorizacion(Autorizacion autorizacion){
+        autorizacion.validar();
+    }
+    
     public Condominio getCondominio() {
         return condominio;
     }

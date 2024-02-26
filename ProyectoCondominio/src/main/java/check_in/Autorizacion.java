@@ -12,10 +12,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author MARQUEZ
- */
 public class Autorizacion implements Serializable{
     String autorizador;
     String autorizado; 
@@ -33,6 +29,10 @@ public class Autorizacion implements Serializable{
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }    
+    
+    public void validar() {
+        aprobado = true;
+    }
 
     public String getAutorizador() {
         return autorizador;
@@ -50,18 +50,7 @@ public class Autorizacion implements Serializable{
         return fechaFin;
     }
     
-    public void notificar(Perfil autorizador, Guardia guardia){
-        List<Perfil> autorizadorL= new ArrayList<>();
-        autorizadorL.add(autorizador);
-        Mensaje mensaje = new Directo(guardia, autorizadorL);
-        mensaje.crear();
-    }   
-    
     public boolean getAprobado() {
         return aprobado;
     }   
-    
-    public void validar() {
-        aprobado = true;
-    } 
 }

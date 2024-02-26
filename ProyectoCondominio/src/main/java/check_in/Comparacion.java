@@ -9,8 +9,8 @@ public class Comparacion {
     public Comparacion() {
     }
     
-    public void compararValidar(String receptor, String autorizador, Autorizacion autorizacion){            
-        if(!receptor.equals(autorizador)){
+    public void compararValidar(String receptor, Autorizacion autorizacion){            
+        if(!compararAutorizador(receptor,autorizacion.getAutorizador())){
             System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
             return;}
         autorizacion.validar();
@@ -18,5 +18,9 @@ public class Comparacion {
     
     public boolean compararAutorizado(String autorizado, Autorizacion autorizacion){      
         return autorizacion.getAutorizado().equals(autorizado);
+    }
+    
+    public boolean compararAutorizador(String receptor, String autorizador){      
+        return receptor.equals(autorizador);
     }
 }

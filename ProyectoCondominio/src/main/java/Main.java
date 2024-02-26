@@ -73,7 +73,7 @@ public class Main {
                     MenuR.menuReservas(adminEnFichero);
                     break;
                 case 4:
-                    MenuCI.menuCheckIn(adminEnFichero, opcion);
+                    //MenuCI.menuCheckIn(adminEnFichero, opcion);
                     break;
                 case 5:
                     MenuComunicacion.mostrar();
