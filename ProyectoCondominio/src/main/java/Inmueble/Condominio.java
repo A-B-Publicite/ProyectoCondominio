@@ -1,6 +1,7 @@
 package Inmueble;
 
 import Administracion.*;
+import check_in.Autorizacion;
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -12,11 +13,13 @@ public class Condominio implements Serializable {
     private ArrayList<Departamento> departamentos;
     private Directiva directiva;
     private Guardia guardia;
+    private ArrayList<Autorizacion> autorizacionesEntrada;
     
     public Condominio(String nombreCondominio) {
         this.nombre = nombreCondominio;
         inmueblesComunes = new ArrayList<InmuebleComun>();
         departamentos = new ArrayList<Departamento>();
+        autorizacionesEntrada = new ArrayList<Autorizacion>();
         directiva = new Directiva(admin);
     }
        
@@ -130,5 +133,11 @@ public class Condominio implements Serializable {
        return guardia;
     }
 
+    public ArrayList<Autorizacion> obtenerAutorizaciones() {
+        return this.autorizacionesEntrada;
+    }
     
+    public void aniadirAutorizacion(Autorizacion autorizacion){
+        autorizacionesEntrada.add(autorizacion);
+    }
 }
