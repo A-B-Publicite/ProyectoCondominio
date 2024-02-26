@@ -7,7 +7,6 @@ import java.util.Date;
 public class Alquiler {
    
 
-    private int idReserva;
     private String diaInicio;
     private String diaFin;
     private int cantidadDias;
@@ -16,10 +15,11 @@ public class Alquiler {
     private Mueble mueble; 
 
     public Alquiler() {
+        
     }
 
     public Alquiler(int idReserva, String diaInicio, String diaFin, int cantidadDias, double montoTotal, Date fechaRegistro, Mueble mueble) {
-        this.idReserva = idReserva;
+      
         this.diaInicio = diaInicio;
         this.diaFin = diaFin;
         this.cantidadDias = cantidadDias;
@@ -28,9 +28,30 @@ public class Alquiler {
         this.mueble = mueble;
     }
 
-    public int getIdReserva() {
-        return idReserva;
-    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public String getDiaInicio() {
         return diaInicio;
@@ -56,9 +77,6 @@ public class Alquiler {
         return mueble;
     }
 
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
-    }
 
     public void setDiaInicio(String diaInicio) {
         this.diaInicio = diaInicio;

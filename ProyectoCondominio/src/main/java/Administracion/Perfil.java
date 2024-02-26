@@ -7,7 +7,7 @@ import check_in.Autorizacion;
 import check_in.RegistroEntrada;
 import java.io.Serializable;
 
-public abstract class Perfil implements Serializable{
+public abstract class Perfil implements Serializable {
     protected String correo;
     protected String contrasenia;
     protected String nombre;

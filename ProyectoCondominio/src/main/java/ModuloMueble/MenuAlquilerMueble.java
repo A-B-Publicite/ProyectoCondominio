@@ -2,95 +2,174 @@ package ModuloMueble;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-
 import Administracion.Residente;
 import java.util.Date;
 
 public class MenuAlquilerMueble {
-   
+   static Scanner scanner = new Scanner(System.in);      
 public static void mostrar() {
- 
- //menu alquiler mueble
- 
- String tipoMueble; 
- int    cantidad; 
- Date   diaInicio; 
- Date   diaFin; 
- 
-    
-Scanner scanner = new Scanner(System.in);
-        Map<String, Integer> mueblesAlquilados = new HashMap<>();
+       
+        int opcion;
+      Alquiler alquiler= new Alquiler();
 
-        boolean salir = false;
+        System.out.println("""
+                               Opciones:
+                               1. Realizar Alquiler
+                               2. Eliminar Alquiler
+                               3. Visualizar lista de alquiler 
+                               4. Reprogramar Alquiler
+                               0. Salir
+                               """);
 
-        do {
-            System.out.println("ALQUILER DE MUEBLES ");
-            System.out.println("INGRESE EL TIPO DE MUEBLES");
-            System.out.println("1.- MESA");
-            System.out.println("2.- SILLA");
-            System.out.println("3.- CARPA");
+         opcion= scanner.nextInt();
+        
+        try{
             
-            System.out.println("INGRESE LA CANTIDAD DE MUEBLES");         
-
-            int opcion = scanner.nextInt();
-
+            
+           
             switch (opcion) {
-                case 1:
-                         System.out.println("INGRESE LA FECHA DE FIN E INICIO DE ALQUILER");  
-                         // VERIFICAR SI ESTÁ LA FECHA DISPONIBLE
-                         diaInicio = scanner.nextLine(); 
-                    // FECHA 
-                    // NUMERO DE MUEBLES
-                    // VERIFICAR SI ESE MUEBLE ESTA DISPONIBLE PARA ESA FECHA.      
-                         
-                         
-                    alquilarMueble("Silla", scanner, mueblesAlquilados);
+ // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------               
+                case 1: {//Crear alquiler
+                    do {
+                        scanner = new Scanner(System.in);
+                        System.out.println(" Ingrese el tipo de MUEBLE que desea alquilar"); 
+                        System.out.println("""
+                                    Opciones a reservar:
+                                    1. Mesa
+                                    2. Silla
+                                    3. Carpa                                               
+                                    0. Salir
+                               """);
+                        int opcionTipoMueble = scanner.nextInt();
+                        switch (opcionTipoMueble) {
+                            case 1 -> {  ///// MESA
+                                System.out.println("Ingrese el dia de inicio: ");
+                                String diaInicio = scanner.next();      
+                                System.out.println("Ingrese el dia de fin: ");
+                                String diaFin = scanner.next();
+                                
+                                
+                                
+                                
+                                
+                                for (Mueble mueble : residente.obtenerMueble()) {
+                                // Verificar si el mueble actual es una instancia de Mesa.
+                                    if (mueble instanceof Mesa) {
+                                        Alquiler nuevoAlquiler = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }
+                            }                            
+                            case 2 -> { //Gimnasio
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Gimnasio) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            case 3 -> { //Espacio de Parqueadero
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof EspacioDeParqueadero) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            case 4 -> { //Piscina
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.nextLine(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Piscina) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            case 5 -> { //Terraza
+                                System.out.println("Ingrese el detalle de la reserva: ");
+                                String detalleReserva = scanner.next(); 
+                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                    // Verificar si el inmueble actual es una instancia de Cancha.
+                                    if (inmueble instanceof Terraza) {
+                                        Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
+                                    }
+                                }   
+                            break;
+                            }
+                            default -> {
+                                System.out.println("No ha escogido una opcion correcta"); //ver el salir
+                            }
+                        }
+                    }while (scanner.nextBoolean());
+                    System.out.println("Desea agregar otra reserva: 1. SI 0. NO"); //ver el salir
+                    break;   
+                }
+                case 2: {//Cancelar reserva
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {	                    
+                        System.out.println(inmueble.obtenerReservas());	                   
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();	                    
+                        reservas = inmueble.obtenerReservas();	                    
+                        for (Reserva reserva : reservas){	                    
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +	                    
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());	
+                            System.out.println("Ingrese el ID de la reserva: ");	
+                            int id = scanner.nextInt(); 	
+                            if(reserva.getId() == id){                             	
+                                reserva.cancelar();	
+                            }else{ System.out.println("La reserva no existe");}	
+                        }	
+                    }
                     break;
+                }
+                case 3:{//Reprogramar reserva	                case 3:{//Reprogramar
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                        System.out.println(inmueble.obtenerReservas());
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+                        reservas = inmueble.obtenerReservas();
+                        for (Reserva reserva : reservas){
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +	                    
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());	
+                            System.out.println("Ingrese el ID de la reserva: ");	
+                            int id = scanner.nextInt(); 	
+                            System.out.println(reserva.getId() == id);	
+                            if(reserva.getId() == id){	
+                                System.out.println("Ingrese el día a ser reprogaramada: ");	
+                                String diaReprogramado = scanner.next(); 	
+                                reserva.reprogramar(diaReprogramado);	
+                                break;	
+                            }	
+                        }	
+                    }
+                    break;
+                }
+                case 4: {// Listar Reservas
                     
-                    
-                    
-                case 2:
-                    alquilarMueble("Mesa", scanner, mueblesAlquilados);
+                    System.out.print("Todas las reservas son: ");
+                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                        System.out.println(inmueble.obtenerReservas());
+                        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+                        reservas = inmueble.obtenerReservas();
+                        for (Reserva reserva : reservas){
+                            System.out.println("La reserva con ID: " + reserva.getId() + "\nDetalle: " + reserva.getDetalle() +
+                                    "\nEn el día: " + reserva.getDia() + "\nDel usuario: " + reserva.getUsuario().getNombreApellido());
+                        }
+                    }
                     break;
-                case 3:
-                    alquilarMueble("Carpa", scanner, mueblesAlquilados);
-                    break;
-                case 4:
-                    verMueblesAlquilados(mueblesAlquilados);
-                    break;
-                case 5:
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("Opción no válida. Por favor, ingrese un número válido.");
+                }                              
+                case 0: {	
+                    System.out.println("Saliendo del Modulo Reservas");	
+                }                              
             }
-
-        } while (!salir);
-
-        System.out.println("Gracias por utilizar el sistema de alquiler de muebles. ¡Hasta luego!");
-    }
-
-    private static void alquilarMueble(String tipoMueble, Scanner scanner, Map<String, Integer> mueblesAlquilados) {
-        System.out.print("Ingrese la cantidad de " + tipoMueble + " que desea alquilar: ");
-        int cantidad = scanner.nextInt();
-
-        if (mueblesAlquilados.containsKey(tipoMueble)) {
-            cantidad += mueblesAlquilados.get(tipoMueble);
-        }
-
-        mueblesAlquilados.put(tipoMueble, cantidad);
-        System.out.println("Ha alquilado " + cantidad + " " + tipoMueble + "(s).");
-    }
-
-    private static void verMueblesAlquilados(Map<String, Integer> mueblesAlquilados) {
-        System.out.println("Muebles alquilados:");
-        for (Map.Entry<String, Integer> entry : mueblesAlquilados.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        } 
-    
-    
-    
+        }catch (Exception e){
+            System.out.print(e.getMessage());
+        }            
     
     
       
