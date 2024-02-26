@@ -49,7 +49,7 @@ public class Condominio implements Serializable {
     
     //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
-        departamentoLibre.setPropietario(residenteNuevo);
+        departamentoLibre.setResidente(residenteNuevo);
     }
     
     public Residente obtenerResidentePorNombre(String nombreResidente){
