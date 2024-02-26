@@ -5,12 +5,19 @@ import java.util.Scanner;
 
 
 import Administracion.Residente;
+import java.util.Date;
 
 public class MenuAlquilerMueble {
    
 public static void mostrar() {
  
- //menu alquiler mueble  
+ //menu alquiler mueble
+ 
+ String tipoMueble; 
+ int    cantidad; 
+ Date   diaInicio; 
+ Date   diaFin; 
+ 
     
 Scanner scanner = new Scanner(System.in);
         Map<String, Integer> mueblesAlquilados = new HashMap<>();
@@ -18,20 +25,31 @@ Scanner scanner = new Scanner(System.in);
         boolean salir = false;
 
         do {
-            System.out.println("Menú de Alquiler de Muebles");
-            System.out.println("1. Alquilar Silla");
-            System.out.println("2. Alquilar Mesa");
-            System.out.println("3. Alquilar Carpa");
-            System.out.println("4. Ver Muebles Alquilados");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("ALQUILER DE MUEBLES ");
+            System.out.println("INGRESE EL TIPO DE MUEBLES");
+            System.out.println("1.- MESA");
+            System.out.println("2.- SILLA");
+            System.out.println("3.- CARPA");
+            
+            System.out.println("INGRESE LA CANTIDAD DE MUEBLES");         
 
             int opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
+                         System.out.println("INGRESE LA FECHA DE FIN E INICIO DE ALQUILER");  
+                         // VERIFICAR SI ESTÁ LA FECHA DISPONIBLE
+                         diaInicio = scanner.nextLine(); 
+                    // FECHA 
+                    // NUMERO DE MUEBLES
+                    // VERIFICAR SI ESE MUEBLE ESTA DISPONIBLE PARA ESA FECHA.      
+                         
+                         
                     alquilarMueble("Silla", scanner, mueblesAlquilados);
                     break;
+                    
+                    
+                    
                 case 2:
                     alquilarMueble("Mesa", scanner, mueblesAlquilados);
                     break;
