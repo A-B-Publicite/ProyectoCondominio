@@ -158,6 +158,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
         validarUnaAutorizacion(autorizacionEntrada);
+        condominio.aniadirAutorizacion(autorizacionEntrada);
         return autorizacionEntrada;
     }
     
@@ -169,5 +170,19 @@ public class Administrador extends Perfil implements Serializable {
         return condominio;
     }
     
+    public void enviarResidentesGuardia(){
+        //LOGICA
+        List<String> residentes = new ArrayList<>();
+        
+        for (Residente residente : condominio.obtenerResidentes()) {
+            residentes.add(residente.getNombreApellido());
+        }       
+        
+        condominio.getGuardia().setResidentes(residentes);
+    }
     
+    public void enviarAutorizacionesGuardia(){
+        ArrayList<Autorizacion> autorizaciones = condominio.obtenerAutorizaciones();
+        condominio.getGuardia().setAutorizaciones(autorizaciones);
+    }
 }

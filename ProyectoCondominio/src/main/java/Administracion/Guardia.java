@@ -12,9 +12,10 @@ import java.util.List;
 
 public class Guardia extends Perfil implements Serializable{
     private List<String> residentes = new ArrayList<>();
-    private List<Autorizacion> autorizaciones = new ArrayList<>();   
+    private List<Autorizacion> autorizaciones = new ArrayList<>();  
+    private HistorialEntrada entradasVisitantes = new HistorialEntrada();
     
-    public Guardia(String nombre, String apellido) {
+    public Guardia(String nombre, String apellido) {        
         super(nombre, apellido);
     }
    
@@ -33,6 +34,7 @@ public class Guardia extends Perfil implements Serializable{
             registro.asignarParqueadero(this,espacio);
         }
         registro.registrarEntrada(fechaLlegada, horaLlegada);
+        entradasVisitantes.aniadirRegistro(registro);
     }
     
     public void registrarEntrada(Visitante visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento) {
@@ -54,6 +56,7 @@ public class Guardia extends Perfil implements Serializable{
             registro.asignarParqueadero(this,espacio);
         }   
         registro.registrarEntrada(fechaLlegada, horaLlegada);
+        entradasVisitantes.aniadirRegistro(registro);
     }
     
     public void registrarEntrada(Visitante visitante, String fechaLlegada, String horaLlegada){
