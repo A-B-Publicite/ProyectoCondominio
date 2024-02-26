@@ -5,6 +5,7 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import java.util.List;
 
 /**
  *
@@ -12,15 +13,26 @@ import Administracion.Perfil;
  */
 public class GUIBandejaDeEntrada extends javax.swing.JFrame {
 
+    private javax.swing.table.DefaultTableModel modeloTabla;
+    
     /**
      * Creates new form GUIBandejaDeEntrada
      */
     public GUIBandejaDeEntrada(Perfil perfil) {
         initComponents();
+        modeloTabla = (javax.swing.table.DefaultTableModel) jTable1.getModel();
     }
 
     
-    
+    public void setListaMensajes(List<Mensaje> listaMensajes) {
+        // Elimina las filas existentes en el modelo de tabla
+        modeloTabla.setRowCount(0);
+
+        // Agrega cada mensaje a la tabla
+        for (Mensaje mensaje : listaMensajes) {
+            modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

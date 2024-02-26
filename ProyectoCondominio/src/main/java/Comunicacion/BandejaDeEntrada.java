@@ -24,6 +24,11 @@ public class BandejaDeEntrada implements Serializable{
         listaMensajes.add(mensaje);
     }
 
+    public List<Mensaje> getListaMensajes() {
+        return listaMensajes;
+    }
+
+    
     public void mostrar() {
         System.out.println("Bandeja de entrada de " + perfil.getNombreApellido()+ ":");
         int index = 1;
