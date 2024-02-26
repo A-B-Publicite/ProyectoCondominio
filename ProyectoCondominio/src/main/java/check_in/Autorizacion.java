@@ -56,6 +56,7 @@ public class Autorizacion implements Serializable{
         Mensaje mensaje = new Directo(guardia, autorizadorL);
         mensaje.crear();
     }   
+    
     public boolean getAprobado() {
         return aprobado;
     }   

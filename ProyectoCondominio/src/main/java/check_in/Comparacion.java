@@ -15,4 +15,8 @@ public class Comparacion {
             return;}
         autorizacion.validar();
     }
+    
+    public boolean compararAutorizado(String autorizado, Autorizacion autorizacion){      
+        return autorizacion.getAutorizado().equals(autorizado);
+    }
 }
