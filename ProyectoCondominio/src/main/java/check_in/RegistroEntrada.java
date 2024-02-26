@@ -36,8 +36,7 @@ public class RegistroEntrada implements Serializable{
             System.out.println("La autorización no ha sido aprobada");
             return;}
         this.fechaLlegada = fechaLlegada;
-        this.horaLlegada = horaLlegada;  
-        System.out.println(this.toString());
+        this.horaLlegada = horaLlegada;
     }
     
     public void asignarParqueadero(Perfil reservador, EspacioDeParqueadero espacio){
@@ -56,11 +55,11 @@ public class RegistroEntrada implements Serializable{
 
     @Override
     public String toString() {
-        return "RegistroEntrada: " + 
-                "\nfechaLlegada: " + fechaLlegada + " horaLlegada:" + horaLlegada + 
-                "\nAutorización: " + 
+        return "\nRegistroEntrada: " + 
+                "\nFecha Llegada: " + fechaLlegada + " Hora Llegada:" + horaLlegada + 
+                "\nDatos de Autorización: " + 
                     "\nAutorizador: " + autorizacion.autorizador + " Autorizado: " + autorizacion.autorizado +
                      "\nFecha inicio: " + autorizacion.fechaInicio + "\nFecha fin: " + autorizacion.fechaFin + 
-                "\n usoParqueadero=" + usoParqueadero + '}';
+                "\n Uso de parqueadero=" + usoParqueadero + '\n';
     }   
 }
