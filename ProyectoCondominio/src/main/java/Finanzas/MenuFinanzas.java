@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class MenuFinanzas {
     public static void menuFinanzas(Administrador administrador) {
         try {
-            Residente residente = administrador.obtenerResidenteCorreo("x.x@policondominio.com");
+            Residente residente = administrador.obtenerResidentePorCorreo("x.x@policondominio.com");
             
             
             Scanner scanner = new Scanner(System.in);

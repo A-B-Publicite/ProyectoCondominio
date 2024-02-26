@@ -54,7 +54,7 @@ public class MenuR {
                             case 1 -> { //Cancha
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 String detalleReserva = scanner.next();                                                               
-                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                                 // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Cancha) {
                                         Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
@@ -65,7 +65,7 @@ public class MenuR {
                             case 2 -> { //Gimnasio
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 String detalleReserva = scanner.nextLine(); 
-                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                                     // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Gimnasio) {
                                         Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
@@ -76,7 +76,7 @@ public class MenuR {
                             case 3 -> { //Espacio de Parqueadero
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 String detalleReserva = scanner.nextLine(); 
-                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                                     // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof EspacioDeParqueadero) {
                                         Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
@@ -87,7 +87,7 @@ public class MenuR {
                             case 4 -> { //Piscina
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 String detalleReserva = scanner.nextLine(); 
-                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                                     // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Piscina) {
                                         Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
@@ -98,7 +98,7 @@ public class MenuR {
                             case 5 -> { //Terraza
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 String detalleReserva = scanner.next(); 
-                                for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                                     // Verificar si el inmueble actual es una instancia de Cancha.
                                     if (inmueble instanceof Terraza) {
                                         Reserva nuevaReserva = adminReserva.realizarReserva(inmueble, detalleReserva, administrador);
@@ -115,7 +115,7 @@ public class MenuR {
                     break;   
                 }
                 case 2: {//Cancelar reserva
-                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {	                    
+                    for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {	                    
                         System.out.println(inmueble.obtenerReservas());	                   
                         ArrayList<Reserva> reservas = new ArrayList<Reserva>();	                    
                         reservas = inmueble.obtenerReservas();	                    
@@ -132,7 +132,7 @@ public class MenuR {
                     break;
                 }
                 case 3:{//Reprogramar reserva	                case 3:{//Reprogramar
-                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                    for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                         System.out.println(inmueble.obtenerReservas());
                         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
                         reservas = inmueble.obtenerReservas();
@@ -155,7 +155,7 @@ public class MenuR {
                 case 4: {// Listar Reservas
                     
                     System.out.print("Todas las reservas son: ");
-                    for (InmuebleComun inmueble : administrador.obtenerInmuebleComun()) {
+                    for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
                         System.out.println(inmueble.obtenerReservas());
                         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
                         reservas = inmueble.obtenerReservas();
