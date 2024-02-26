@@ -62,10 +62,6 @@ public class MenuComunicacion {
                     mensaje.crear();
                 break;
                 case 3:
-                    mensaje = new Consejo(admin, residentes);
-                    mensaje.crear();
-                break;
-                case 4:
                     int pos;
                     System.out.println("Elija el perfil a ver: ");
                     System.out.println("Eliga el destinatario");

@@ -5,6 +5,7 @@
 package GUI.AdminGUI;
 
 import Administracion.*;
+import Comunicacion.GUIBandejaDeEntrada;
 
 /**
  *
@@ -128,7 +129,9 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
-        
+        GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(administrador);
+        bandeja.setListaMensajes(administrador.getBandejaDeEntrada().getListaMensajes());
+        bandeja.setVisible(true);
     }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
 
     private void gestionCondominioButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionCondominioButtomActionPerformed
