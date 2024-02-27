@@ -5,6 +5,7 @@
 package GUI.AdminGUI;
 
 import Administracion.*;
+import BD.BaseDeDatos;
 import Comunicacion.GUIBandejaDeEntrada;
 import Comunicacion.GUIMensaje;
 import Comunicacion.ListaResidente;
@@ -101,6 +102,11 @@ public class AdminMenu extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnAgregarCondominio.setText("Agregar Condominio");
         btnAgregarCondominio.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +225,11 @@ public class AdminMenu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAgregarCondominioActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        BaseDeDatos.escribirAdmin(administrador);
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

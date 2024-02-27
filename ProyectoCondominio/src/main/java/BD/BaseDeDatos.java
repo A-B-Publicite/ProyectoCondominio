@@ -78,4 +78,8 @@ public class BaseDeDatos {
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         return residentes;
     }
+
+    public static void escribirAdmin(Administrador administrador) {
+        escribir(administrador, "src/main/java/Datos/datosAdmin.txt");
+    }
 }
