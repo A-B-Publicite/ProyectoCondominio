@@ -23,7 +23,6 @@ public class GestionContrato extends javax.swing.JFrame {
     public GestionContrato(Administrador administrador) {
         initComponents();
         this.administrador = administrador;
-        rellenarcmbSelectorDeCOntrato();
     }
 
     /**
@@ -238,7 +237,7 @@ public class GestionContrato extends javax.swing.JFrame {
     private javax.swing.JTextField tfvalorContrato;
     // End of variables declaration//GEN-END:variables
 
-    private void rellenarcmbSelectorDeCOntrato() {
+    private void rellenarcmbSelectorDeContrato() {
         ArrayList<Contrato> contratos = administrador.getContratos();
         for(Contrato contrato : contratos){
             cmbSelectorDeCOntrato.addItem(contrato.getDescripcion());
