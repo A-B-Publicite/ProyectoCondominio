@@ -17,11 +17,8 @@ public class AdministrarReserva {
     ArrayList <Reserva> listaReservas = new ArrayList<Reserva>();
    
     // Método para realizar una reserva
-    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Administrador usuario) {
-        int opcionReserva;
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("""
+    public boolean realizarReserva(String detalleReserva, Administrador usuario, int opcionReserva, String diaReserva, String correo) {        
+        /*System.out.println("""
                                Opciones:
                                1. Cancha
                                2. Gimnasio
@@ -29,57 +26,34 @@ public class AdministrarReserva {
                                4. Piscina
                                5. Terraza
                                0. Salir
-                               """);
-        
-        opcionReserva = scanner.nextInt();
-        
+                               """);*/
+        Residente residente = usuario.obtenerResidentePorCorreo(correo);
+        /*if(residente == null){
+            return false;
+        }*/
+        System.out.println(opcionReserva);
         switch(opcionReserva){
-            case 1:  {
+            case 0:  {
                 System.out.println("Ingrese el dia de la reserva: ");
-                String diaReserva = scanner.next();
-                for (InmuebleComun inmueble : usuario.obtenerInmuebleComun()) {
-                    // Verificar si el inmueble actual es una instancia de Cancha.
+                for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                    System.out.println(inmueble);
+// Verificar si el inmueble actual es una instancia de Cancha.
                     if (inmueble instanceof Cancha) {
+                        System.out.println(inmueble.toString());
                         Disponibilidad disponibilidad = new Disponibilidad(inmueble);
                         if(disponibilidad.verificarDisponibilidad(diaReserva)){
                             System.out.println("Ingrese el detalle de la reserva: ");
-                            String detalleReserva = scanner.next();
-                            //to do: pedir el correo del usuario y no enviar el de administrador
                             Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
                             this.listaReservas.add(nuevaReserva);
-                        }else{
-                            System.out.println("No se pudo realizar la reserva: ");
+                            return true;
                         }
                     }
                 }    
             }
-            
-            case 2:  {
-                System.out.println("Ingrese el dia de la reserva: ");
-                String diaReserva = scanner.next();
-                for (InmuebleComun inmueble : usuario.obtenerInmuebleComun()) {
-                    // Verificar si el inmueble actual es una instancia de Cancha.
-                    if (inmueble instanceof Gimnasio) {
-                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                        if(disponibilidad.verificarDisponibilidad(diaReserva)){
-                            System.out.println("Ingrese el detalle de la reserva: ");
-                            String detalleReserva = scanner.next();
-                            //to do: pedir el correo del usuario y no enviar el de administrador
-                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
-                            this.listaReservas.add(nuevaReserva);
-                        }else{
-                            System.out.println("No se pudo realizar la reserva: ");
-                        }
-                    }
-                }    
+            default:{
+                System.out.println("Caso no existe");
+                return false; 
             }
-        }
-        if (inmuebleComun.consultarDiasDisponibles().contains("Lunes") ) {
-            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), "Lunes", detalle, usuario); 
-            inmuebleComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
-            return nuevaReserva;
-        } else {
-            return null;  // No se puede realizar la reserva debido a un conflicto
         }
     }
 

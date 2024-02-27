@@ -22,7 +22,7 @@ public class Disponibilidad {
     // Método para verificar la disponibilidad
     public boolean verificarDisponibilidad(String dia) {
         ArrayList<String> reservas = this.areaComun.consultarDiasDisponibles();
-        if (reservas.contains(dia)) {
+        if (!reservas.contains(dia)) {
             return false;  // Hay un conflicto de reserva
             }
         return true;  // No hay conflictos, está disponible
