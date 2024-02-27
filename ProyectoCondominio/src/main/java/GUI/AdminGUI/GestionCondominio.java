@@ -5,6 +5,7 @@
 package GUI.AdminGUI;
 
 import Administracion.Administrador;
+import BD.BaseDeDatos;
 import Inmueble.*;
 
 /**
@@ -200,6 +201,7 @@ public class GestionCondominio extends javax.swing.JFrame {
         administrador.agregarInmuebleComun(nuevoInmuebleComun);
         System.out.println("SALI");
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
+        BaseDeDatos.escribirAdmin(administrador); // Para escribir la accion
     }//GEN-LAST:event_btnAgregarInmuebleActionPerformed
 
     private void txtMetrosCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMetrosCuadradoActionPerformed

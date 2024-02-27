@@ -5,14 +5,14 @@
 package GUI.AdminGUI;
 
 import Administracion.*;
+import BD.BaseDeDatos;
 import Comunicacion.GUIBandejaDeEntrada;
 import Comunicacion.GUIMensaje;
 import Comunicacion.ListaResidente;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.JFrame;
 
 /**
@@ -29,6 +29,8 @@ public class AdminMenu extends javax.swing.JFrame {
     public AdminMenu(Administrador administrador) {
         initComponents();
         this.administrador = administrador;
+        lblNombreAdministrador.setText(administrador.getNombresCompletos());
+        tieneCondomino(administrador);
     }
 
     /**
@@ -48,6 +50,9 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         btnGestionContratos = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btnAgregarCondominio = new javax.swing.JButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +62,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
         lblNombreAdministrador.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblNombreAdministrador.setName("adminNameLabel"); // NOI18N
-        lblNombreAdministrador.setText("Cristian Zambrano");
 
         jButton1.setText("Gestión del Condominio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,8 +84,8 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("¿Qué deseas hacer el día de hoy?");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("¿Qué deseas hacer el día de hoy?");
 
         jButton5.setText("Redactar Mensaje");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -90,10 +94,30 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        ModuloAdministracionG6
         btnGestionContratos.setText("Gestión de contratos");
         btnGestionContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionContratosActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        btnAgregarCondominio.setText("Agregar Condominio");
+        btnAgregarCondominio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCondominioActionPerformed(evt);
+      jButton6.setText("Ver pagos");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+
             }
         });
 
@@ -110,29 +134,46 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addComponent(lblNombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+
                                 .addComponent(btnGestionContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                                .addComponent(jButton1)
+
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton3))))
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregarCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSalir))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(btnSalir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNombreAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregarCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
@@ -140,8 +181,15 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGestionContratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
+
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(69, Short.MAX_VALUE))
+
         );
 
         pack();
@@ -185,11 +233,30 @@ public class AdminMenu extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jButton5bandejaEntradaButtonActionPerformed
 
+
     private void btnGestionContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionContratosActionPerformed
         // TODO add your handling code here:
         GestionContrato gestionContrato = new GestionContrato(administrador);
         gestionContrato.setVisible(true);
     }//GEN-LAST:event_btnGestionContratosActionPerformed
+
+    private void btnAgregarCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCondominioActionPerformed
+        //TODO: agrefar condominio
+        CreacionCondominioMenu nuevoCondominioMenu = new CreacionCondominioMenu(administrador);
+        nuevoCondominioMenu.setVisible(true);
+        btnAgregarCondominio.setVisible(false);      
+    }//GEN-LAST:event_btnAgregarCondominioActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        BaseDeDatos.escribirAdmin(administrador);
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        FinanzasAdministrador menuFinanzasAdministrador = new FinanzasAdministrador(administrador);
+        menuFinanzasAdministrador.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -197,13 +264,22 @@ public class AdminMenu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarCondominio;
     private javax.swing.JButton btnGestionContratos;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private java.awt.Label label1;
     private java.awt.Label lblNombreAdministrador;
     // End of variables declaration//GEN-END:variables
+
+    private void tieneCondomino(Administrador administrador) {
+        if(administrador.getCondominio() == null){
+            btnAgregarCondominio.setVisible(true);
+        }
+    }
 }
