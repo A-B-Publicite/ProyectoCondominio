@@ -8,7 +8,6 @@ import Administracion.*;
 import Comunicacion.GUIBandejaDeEntrada;
 import Comunicacion.GUIMensaje;
 import Comunicacion.ListaResidente;
-import GUI_Finanzas.FinanzasAdministrador;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;

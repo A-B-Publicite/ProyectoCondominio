@@ -1,5 +1,5 @@
 
-package GUI_Finanzas;
+package GUI.AdminGUI;
 
 import Administracion.Administrador;
 import GUI.AdminGUI.AdminMenu;

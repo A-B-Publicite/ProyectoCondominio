@@ -6,7 +6,6 @@ package GUI.ResidenteGUI;
 
 import Administracion.Residente;
 import Comunicacion.GUIMensaje;
-import GUI_Finanzas.FinanzasResidente;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
