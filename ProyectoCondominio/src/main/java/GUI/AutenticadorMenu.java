@@ -162,9 +162,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         switch ((String) selectorPerfilCombo.getSelectedItem()) { 
             case "Administrador":   
                 Administrador administrador = BaseDeDatos.leerAdministrador();
-                if(!estaAutenticado(administrador, correo.getText(), contrasenia.getText())){
-                return;
-                }
+                System.out.println(administrador);
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
                 this.setVisible(false);
