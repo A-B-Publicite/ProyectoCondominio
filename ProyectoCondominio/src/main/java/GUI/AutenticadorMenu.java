@@ -205,10 +205,16 @@ public class AutenticadorMenu extends javax.swing.JFrame {
 
     private void verificarAdminCreado() {
         if(BaseDeDatos.leerAdministrador() == null){
-            System.out.println(BaseDeDatos.leerAdministrador());
             registrarAdminBoton.setVisible(false);
         }
         
     }
 
+    private boolean estaAutenticado(Perfil perfil, String correo, String contrasenia) {
+        return perfil.getCorreo() == correo && perfil.getCorreo() == contrasenia;
+            
+    }
+
+
+    
 }
