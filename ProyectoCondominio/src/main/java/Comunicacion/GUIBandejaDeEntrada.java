@@ -6,6 +6,7 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import java.util.List;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,13 +15,17 @@ import java.util.List;
 public class GUIBandejaDeEntrada extends javax.swing.JFrame {
 
     private javax.swing.table.DefaultTableModel modeloTabla;
+    int tipo;
     
     /**
      * Creates new form GUIBandejaDeEntrada
      */
-    public GUIBandejaDeEntrada(Perfil perfil) {
+    public GUIBandejaDeEntrada(Perfil perfil, int tipo) {
         initComponents();
         modeloTabla = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        this.tipo=tipo;
+        jTable1.setVisible(false);
+        jTable2.setVisible(false);
     }
 
     
@@ -32,6 +37,21 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         for (Mensaje mensaje : listaMensajes) {
             modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen()});
         }
+        
+        switch (tipo) {
+            case 0:
+                jTable1.setVisible(true);
+                jTable2.setVisible(true);
+            break;
+            case 1:
+                this.setSize(500,363);
+                jTable1.setVisible(true);
+            break;
+                
+            default:
+                throw new AssertionError();
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,7 +90,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha", "Residente", "Valor", "Tipo"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -80,20 +100,20 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(85, 85, 85)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         pack();

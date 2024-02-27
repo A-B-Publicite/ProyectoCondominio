@@ -4,6 +4,7 @@
  */
 package Comunicacion;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import check_in.Autorizacion;
@@ -21,6 +22,10 @@ public class Directo extends Mensaje{
     int pos;
 
     public Directo(Perfil origen, Residente destino) {
+        super(origen, destino);
+    }
+    
+    public Directo(Perfil origen, Administrador destino) {
         super(origen, destino);
     }
 
