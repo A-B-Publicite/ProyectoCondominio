@@ -4,6 +4,7 @@
  */
 package Comunicacion;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import java.io.Serializable;
@@ -20,6 +21,7 @@ public abstract class Mensaje implements Serializable{
     private Perfil origen;
     private ArrayList<Residente> destinos= new ArrayList<>();
     private Residente destino;
+    private Administrador destinoAdmin;
     private String contenido;
     private LocalDateTime fecha;
     private String titulo;
@@ -38,6 +40,11 @@ public abstract class Mensaje implements Serializable{
         this.fecha = LocalDateTime.now();
     }
     
+    public Mensaje (Perfil origen, Administrador destino) {
+        this.origen = origen;
+        this.destinoAdmin = destino;
+        this.fecha = LocalDateTime.now();
+    }    
     
 
     public abstract void crear();

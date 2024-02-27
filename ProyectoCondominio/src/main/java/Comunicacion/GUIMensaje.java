@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -38,6 +39,24 @@ public class GUIMensaje extends javax.swing.JFrame {
         initComponents();
         this.origen = perfil;
         this.tipo=tipo;
+        if (tipo == 1) {
+            jLabel4.setText("Administrador");
+            // Obtén el modelo de datos actual del JComboBox
+            DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBox3.getModel();
+
+            // Limpia el modelo actual
+            model.removeAllElements();
+
+            // Agrega las nuevas opciones
+            model.addElement("Administrador");
+            model.addElement("Directo");
+
+            // Repinta el JComboBox para reflejar los cambios
+            jComboBox3.repaint();
+            jComboBox3.setSelectedIndex(-1);
+        } else {
+            jLabel4.setText("TODOS");
+        }
         jLabel4.setVisible(false);
         jButton3.setVisible(false);
         jButton1.setVisible(false);
@@ -132,7 +151,7 @@ public class GUIMensaje extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -174,7 +193,7 @@ public class GUIMensaje extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,31 +210,59 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        Mensaje mensaje;
+        
         if (jTextField1.getText().isBlank() || jTextArea1.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Por Favor Llene todos los campos");
         } else {
-            Mensaje mensaje;
-            try {
-                if (jComboBox3.getSelectedIndex() == 0) {
-                    mensaje = new Global(origen, BaseDeDatos.obtenerListaResidente());
-                    mensaje.setTitulo(jTextField1.getText());
-                    mensaje.setContenido(jTextArea1.getText());
-                    jTextArea1.setText("");
-                    jTextField1.setText("");
-                    mensaje.enviar();
-                } else {
-                    if (jComboBox3.getSelectedIndex() == 1) {
-                        mensaje = new Directo(origen, residenteSeleccionado);
+            switch (tipo) {
+                case 0:
+                    try {
+                        if (jComboBox3.getSelectedIndex() == 0) {
+                            mensaje = new Global(origen, BaseDeDatos.obtenerListaResidente());
+                            mensaje.setTitulo(jTextField1.getText());
+                            mensaje.setContenido(jTextArea1.getText());
+                            jTextArea1.setText("");
+                            jTextField1.setText("");
+                            mensaje.enviar();
+                        } else {
+                            if (jComboBox3.getSelectedIndex() == 1) {
+                                mensaje = new Directo(origen, residenteSeleccionado);
+                                mensaje.setTitulo(jTextField1.getText());
+                                mensaje.setContenido(jTextArea1.getText());
+                                jTextArea1.setText("");
+                                jTextField1.setText("");
+                                mensaje.enviar();
+                            }
+                        }
+                    } catch (IOException | ClassNotFoundException ex) {
+                        ex.toString();
+                    }
+                break;
+                case 1:
+                    if (jComboBox3.getSelectedIndex() == 0) {
+                        mensaje = new Directo(origen, BaseDeDatos.leerAdministrador());
                         mensaje.setTitulo(jTextField1.getText());
                         mensaje.setContenido(jTextArea1.getText());
                         jTextArea1.setText("");
                         jTextField1.setText("");
                         mensaje.enviar();
+                    } else {
+                        if (jComboBox3.getSelectedIndex() == 1) {
+                            mensaje = new Directo(origen, residenteSeleccionado);
+                            mensaje.setTitulo(jTextField1.getText());
+                            mensaje.setContenido(jTextArea1.getText());
+                            jTextArea1.setText("");
+                            jTextField1.setText("");
+                            mensaje.enviar();
+                        }
                     }
-                }
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.toString();
+                break;
+                default:
+                    throw new AssertionError();
             }
+            
         }
         
         residenteSeleccionado.getBandejaDeEntrada().mostrar();
@@ -309,7 +356,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIMensaje(new Administrador("Juanito", "Perez")).setVisible(true);
+                new GUIMensaje(new Residente("Juan", "Perez", true),1).setVisible(true);
             }
         });
     }
