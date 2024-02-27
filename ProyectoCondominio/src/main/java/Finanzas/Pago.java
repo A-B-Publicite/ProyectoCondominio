@@ -1,8 +1,5 @@
 package Finanzas;
 
-/**
- * @author alejo
- */
 import java.io.Serializable;
 import java.time.LocalDate;
 

@@ -21,7 +21,7 @@ public class MenuFinanzas {
 
     public static void menuFinanzas(Administrador administrador) {
         try {
-            Residente residente = administrador.obtenerResidentePorCorreo("x.x@policondominio.com");
+            Residente residente = administrador.obtenerResidenteCorreo("x.x@policondominio.com");
 
             Scanner scanner = new Scanner(System.in);
 
@@ -108,7 +108,7 @@ public class MenuFinanzas {
                         ObligacionFinanciera obligacionFinancieraAPagar = residente.getCuenta().recuperarObligacion(idPago);
 
                         if (obligacionFinancieraAPagar != null) {
-                            //residente.pagar(obligacionFinancieraAPagar);
+                            residente.pagar(obligacionFinancieraAPagar);
                             System.out.println("Pago realizado con éxito. Saldo actual: " + residente.getCuenta().getSaldo());
                         } else {
                             System.out.println("Obligación no pagada.");
@@ -153,6 +153,5 @@ public class MenuFinanzas {
         } catch (Exception ex) {
             Logger.getLogger(MenuFinanzas.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

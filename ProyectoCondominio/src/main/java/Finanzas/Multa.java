@@ -16,7 +16,7 @@ public class Multa extends ObligacionFinanciera {
 
     @Override
     public double calcularMonto(double valorAlicuotaAtrasada) {
-        return 10 + (valorAlicuotaAtrasada * 0.15);
+        return valorAlicuotaAtrasada * 2.25;
     }
 
     @Override

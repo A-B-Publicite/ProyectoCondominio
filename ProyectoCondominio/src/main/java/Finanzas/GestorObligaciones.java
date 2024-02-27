@@ -1,9 +1,10 @@
 package Finanzas;
 
+import java.io.Serializable;
 import java.time.ZoneId;
 import java.util.*;
 
-public class GestorObligaciones {
+public class GestorObligaciones implements Serializable {
 
     private final Cuenta cuenta;
     private double valorInicialAlicuota;
@@ -80,12 +81,11 @@ public class GestorObligaciones {
 
     public String mostrarObligaciones() {
         String salida = "";
-        if (cuenta.getCuentaAdministrador() != null) {
-            salida = "================  OBLIGACION RESIDENTE ==================\n";
-        } else {
-            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
-        }
-
+//        if (cuenta.getCuentaAdministrador() != null) {
+//            salida = "================  OBLIGACION RESIDENTE ==================\n";
+//        } else {
+//            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
+//        }
         for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             salida += obligacionFinanciera.toString() + "\n";
         }
