@@ -1,28 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Finanzas;
 
+public class Tarjeta extends MetodoRecarga {
 
-/**
- *
- * @author alejo
- */
-public class Tarjeta extends MetodoRecarga  {
+    private String numeroTarjeta;
+    private String pinTarjeta;
 
-    private  String numeroCuenta;
-    private  String pinTarjeta;
-
-    public Tarjeta(double abono, String numeroTarjeta,String pinTarjeta) {
-        super (abono);
-        this.numeroCuenta = numeroTarjeta;
+    public Tarjeta(String numeroTarjeta, String pinTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
         this.pinTarjeta = pinTarjeta;
-        realizarTransaccion();
     }
 
     @Override
     void realizarTransaccion() {
         descripcion = "El método de recarga fue con tarjeta";
+    }
+
+    @Override
+    public String toString() {
+        return "Numero de cuenta= " + numeroTarjeta
+                + ", descripcion= '" + descripcion + '\'';
     }
 }

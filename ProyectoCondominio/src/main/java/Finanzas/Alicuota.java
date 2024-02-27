@@ -1,27 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Finanzas;
 
-/**
- *
- * @author alejo
- */
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.time.Duration;
 
-
 public class Alicuota extends ObligacionFinanciera {
+
     protected LocalDateTime fechaLimite;
 
-    private Multa multa;
-
-    public Alicuota(double metrosCuadrados, String descripcion, String id) {
-        super(metrosCuadrados, LocalDate.now(), descripcion, id);
+    public Alicuota(double metrosCuadrados, String descripcion, String idObligacion) {
+        super(metrosCuadrados, LocalDate.now(), descripcion, idObligacion);
         //fechaLimite = LocalDateTime.now().plusDays(30);
         fechaLimite = LocalDateTime.now().plusMinutes(2);
         verificarFechaLimite();
@@ -46,7 +37,7 @@ public class Alicuota extends ObligacionFinanciera {
 
     @Override
     public double calcularMonto(double metrosCuadrados) {
-        return metrosCuadrados * 0.25;
+        return metrosCuadrados * 0.35;
     }
 
     @Override
@@ -59,12 +50,12 @@ public class Alicuota extends ObligacionFinanciera {
 
     @Override
     public String toString() {
-        return "[Obligacion N. " + idObligacion +
-                "] | Alicuota = (" +
-                "fechaLimite= " + fechaLimite +
-                ", estado= " + estado +
-                ", monto= " + monto +
-                ", fechaCreacion= " + fechaCreacion +
-                ", descripcion= '" + descripcion + "')";
+        return "[Obligacion N. " + idObligacion
+                + "] | Alicuota = ("
+                + "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
+                + ", estado= " + estado
+                + ", monto= " + monto
+                + ", fechaCreacion= " + fechaCreacion
+                + ", descripcion= '" + descripcion + "')";
     }
 }
