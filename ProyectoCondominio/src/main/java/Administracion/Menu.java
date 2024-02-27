@@ -115,7 +115,7 @@ public class Menu {
                         } while (opcionSubMenu != 0);
                         break;
                     case 6:
-                        System.out.println(administrador.mostrarContratos());
+                        System.out.println(administrador.getContratos());
                         break;
                     case 7:
                         LocalDate fechaContrato = LocalDate.now();
@@ -127,7 +127,7 @@ public class Menu {
                         String descripcion = scanner.nextLine();
                         System.out.print("Precio: ");
                         double precio = scanner.nextDouble();
-                        administrador.agregarContrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
+                        //administrador.agregarContrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
                         break;
                     case 0:
                         opcionesMenuGeneral[0] = -1;

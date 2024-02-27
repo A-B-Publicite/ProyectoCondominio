@@ -99,7 +99,7 @@ public class Administrador extends Perfil implements Serializable {
         System.out.print(condominio.toString());
     }
 
-    public ArrayList<Contrato> mostrarContratos() {
+    public ArrayList<Contrato> getContratos() {
         return condominio.mostrarContratos();
     }
 
@@ -108,8 +108,8 @@ public class Administrador extends Perfil implements Serializable {
     }
   
 
-    void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
-        Contrato contratoNuevo = new Contrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
+    public void agregarContrato(Double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
+        Contrato contratoNuevo = new Contrato( precio, descripcion, fechaInicio, fechaFinalizacion);
         Directiva directiva = condominio.getDirectiva();
         directiva.agregarContrato(contratoNuevo);
     }

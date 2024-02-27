@@ -170,7 +170,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 ResidenteMenu residenteMenu = new ResidenteMenu(residente);
                 this.setVisible(false);
             case "Guardia":
-                //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
+                //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
                 //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
             default:
                 
