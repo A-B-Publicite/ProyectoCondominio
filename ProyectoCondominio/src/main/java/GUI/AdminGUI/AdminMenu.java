@@ -150,7 +150,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
         GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(administrador, 0);
-        bandeja.setListaMensajes(administrador.getBandejaDeEntrada().getListaMensajes());
+        //bandeja.setListaMensajes(administrador.getBandejaDeEntrada().getListaMensajes());
         bandeja.setVisible(true);
     }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
 
