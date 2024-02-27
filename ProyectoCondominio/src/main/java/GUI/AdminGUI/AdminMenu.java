@@ -221,9 +221,9 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnAgregarCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCondominioActionPerformed
         //TODO: agrefar condominio
-        btnAgregarCondominio.setVisible(false);
-        
-        
+        CreacionCondominioMenu nuevoCondominioMenu = new CreacionCondominioMenu(administrador);
+        nuevoCondominioMenu.setVisible(true);
+        btnAgregarCondominio.setVisible(false);      
     }//GEN-LAST:event_btnAgregarCondominioActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
