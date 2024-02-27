@@ -162,6 +162,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         switch ((String) selectorPerfilCombo.getSelectedItem()) { 
             case "Administrador":   
                 Administrador administrador = BaseDeDatos.leerAdministrador();
+                System.out.println(administrador);
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
                 this.setVisible(false);
@@ -210,6 +211,4 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         
     }
 
-
-    
 }
