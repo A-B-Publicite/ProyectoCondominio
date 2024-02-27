@@ -68,4 +68,10 @@ public abstract class Perfil implements Serializable{
     public String getContrasenia() {
         return contrasenia;
     }    
+
+    public String getNombresCompletos() {
+        return nombre + " "+ apellido;
+    }
+    
+    
 }
