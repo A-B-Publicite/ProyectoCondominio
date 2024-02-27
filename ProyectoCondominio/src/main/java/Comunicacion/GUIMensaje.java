@@ -63,6 +63,11 @@ public class GUIMensaje extends javax.swing.JFrame {
   
     }
    
+    public void llenarObligacion(String titulo, double monto, String nombre, String estado) {
+        jTextField1.setText(titulo);
+        jTextArea1.setText("Estimado " + nombre + " se le recuerda de la manera mas cordial cancelar el monto de $" + monto +
+                "\nde su alicuota que tiene estado: " + estado);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -265,7 +270,7 @@ public class GUIMensaje extends javax.swing.JFrame {
             
         }
         
-        residenteSeleccionado.getBandejaDeEntrada().mostrar();
+        this.dispose();
         
         
         
