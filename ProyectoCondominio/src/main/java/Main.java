@@ -4,7 +4,7 @@ import Comunicacion.*;
 import Finanzas.*;
 import GUI.AutenticadorMenu;
 import Inmueble.*;
-import ModuloReservas.MenuR;
+//import ModuloReservas.MenuR;
 import check_in.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,7 +77,7 @@ public class Main {
                     MenuFinanzas.menuFinanzas(adminLeido); 
                     break;
                 case 3:
-                    MenuR.menuReservas(adminLeido);
+                    //MenuR.menuReservas(adminLeido);
                     break;
                 case 4:
                     //MenuCI.menuCheckIn(adminEnFichero, opcion);
