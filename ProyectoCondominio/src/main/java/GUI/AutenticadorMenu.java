@@ -21,10 +21,11 @@ public class AutenticadorMenu extends javax.swing.JFrame {
      * Creates new form login
      */
     public AutenticadorMenu() {
-        registrarAdminBoton.setVisible(false);
         initComponents();
-        this.setVisible(true);
+        registrarAdminBoton.setVisible(false);
         verificarAdminCreado();
+        this.setVisible(true);
+        
     }
 
     /**
@@ -181,7 +182,9 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
     private void registrarAdminBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdminBotonActionPerformed
-        // TODO add your handling code here:
+        RegistroAdminGUI nuevoMenuRegistroAdminGUI = new RegistroAdminGUI();
+        nuevoMenuRegistroAdminGUI.setVisible(true);
+        registrarAdminBoton.setVisible(false);
     }//GEN-LAST:event_registrarAdminBotonActionPerformed
 
 
@@ -261,6 +264,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
 
     private void verificarAdminCreado() {
         if(BaseDeDatos.leerAdministrador() == null){
+            System.out.println(BaseDeDatos.leerAdministrador());
             registrarAdminBoton.setVisible(true);
         }
         
