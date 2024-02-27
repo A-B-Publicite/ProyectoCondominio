@@ -2,6 +2,7 @@ package Finanzas;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Cuenta implements Serializable {
     private ArrayList<Pago> pagos = new ArrayList<>();
@@ -30,25 +31,25 @@ public class Cuenta implements Serializable {
     }
 
     public void pagarObligacionFinanciera(ObligacionFinanciera obligacionFinanciera) {
+        
         if (esSaldoMayorOIgualMonto(obligacionFinanciera.getMonto())) {
             Pago nuevoPago = new Pago(this);
             nuevoPago.pagarObligacionFinanciera(obligacionFinanciera, cuentaAdministrador);
             pagos.add(nuevoPago);
+            JOptionPane.showMessageDialog(null, "SE REALIZO EL PAGO CON EXITO");
         } else {
-            System.out.println("Saldo insuficiente");
+            JOptionPane.showMessageDialog(null, "SALDO INSUFICIENTE PARA PAGAR LA OBLIGACION.");
         }
-
-
     }
 
     public void pagarContrato(double precioContrato) {
-
         if (esSaldoMayorOIgualMonto(precioContrato)) {
             Pago nuevoPago = new Pago(this);
             nuevoPago.pagarContrato(precioContrato);
             pagos.add(nuevoPago);
+            JOptionPane.showMessageDialog(null, "SE REALIZO EL PAGO CON EXITO");
         } else {
-            System.out.println("Saldo insuficiente");
+            JOptionPane.showMessageDialog(null, "SALDO INSUFICIENTE PARA PAGAR EL CONTRATO.");
         }
     }
 
@@ -64,8 +65,6 @@ public class Cuenta implements Serializable {
 
     public String mostrarRecargas() {
         String salida = "";
-        salida = "================  RECARGAS RESIDENTE ==================\n";
-
         for (Recarga recarga : recargas) {
             salida += recarga + "\n";
         }
@@ -93,20 +92,9 @@ public class Cuenta implements Serializable {
 
     public String mostrarRegistros() {
         String salida = "";
-        if (cuentaAdministrador != null) {
-            salida += "================  REGISTRO RESIDENTE ==================\n";
-        } else {
-            salida += "================  REGISTRO ADMINISTRADOR ==================\n";
-        }
-
         for (Pago pago : pagos) {
             salida += pago + "\n"; // Ahora esto imprimirá el formato ajustado de cada pago
         }
-
-        // Información de saldo después de listar todos los pagos
-        salida += "=================  CUENTA ==================\n" +
-                "Saldo Actual= " + getSaldo();
-
         return salida;
     }
 

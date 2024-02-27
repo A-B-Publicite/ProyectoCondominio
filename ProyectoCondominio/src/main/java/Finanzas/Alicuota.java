@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.time.Duration;
-//ojko
+
 
 public class Alicuota extends ObligacionFinanciera implements Serializable {
     protected LocalDateTime fechaLimite;

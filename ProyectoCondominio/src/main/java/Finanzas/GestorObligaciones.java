@@ -81,12 +81,11 @@ public class GestorObligaciones implements Serializable {
 
     public String mostrarObligaciones() {
         String salida = "";
-        if (cuenta.getCuentaAdministrador() != null) {
-            salida = "================  OBLIGACION RESIDENTE ==================\n";
-        } else {
-            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
-        }
-
+//        if (cuenta.getCuentaAdministrador() != null) {
+//            salida = "================  OBLIGACION RESIDENTE ==================\n";
+//        } else {
+//            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
+//        }
         for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             salida += obligacionFinanciera.toString() + "\n";
         }

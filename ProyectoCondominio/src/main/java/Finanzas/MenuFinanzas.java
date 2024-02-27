@@ -18,9 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MenuFinanzas {
-    public static void menuFinanzas(Administrador administrador) {
+    public static void menuFinanzas(Administrador administrador) {/*
         try {
-            Residente residente = administrador.obtenerResidenteCorreo("x.x@policondominio.com");
+            //Residente residente = administrador.obtenerResidenteCorreo("x.x@policondominio.com");
             
             
             Scanner scanner = new Scanner(System.in);
@@ -154,6 +154,6 @@ public class MenuFinanzas {
         }
         } catch (Exception ex) {
             Logger.getLogger(MenuFinanzas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 }
