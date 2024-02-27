@@ -205,7 +205,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private void verificarAdminCreado() {
         if(BaseDeDatos.leerAdministrador() == null){
             System.out.println(BaseDeDatos.leerAdministrador());
-            registrarAdminBoton.setVisible(true);
+            registrarAdminBoton.setVisible(false);
         }
         
     }
