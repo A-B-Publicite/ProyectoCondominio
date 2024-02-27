@@ -49,10 +49,14 @@ public class BaseDeDatos {
         try {
             FileInputStream fis = new FileInputStream(dir);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            objetoleido = ois.readObject();
+            if (ois.available() > 0) {
+                objetoleido = ois.readObject();
+                System.out.println("Objeto leído correctamente.");
+            } else {
+                System.out.println("No hay más datos para leer en el archivo.");
+            }
             fis.close();
             ois.close();
-            System.out.println("Objeto leído correctamente.");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
