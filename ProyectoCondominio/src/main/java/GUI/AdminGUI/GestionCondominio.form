@@ -173,6 +173,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ingrese el numero de departamentos:"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumerosDeDepartamentosFocusGained"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumerosDeDepartamentosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAceptarIngresoDepartamentos">
       <Properties>

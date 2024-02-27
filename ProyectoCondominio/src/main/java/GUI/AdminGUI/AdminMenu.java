@@ -27,8 +27,8 @@ public class AdminMenu extends javax.swing.JFrame {
      * Creates new form adminMeni
      */
     public AdminMenu(Administrador administrador) {
-        this.administrador = administrador;
         initComponents();
+        this.administrador = administrador;
     }
 
     /**
@@ -41,13 +41,13 @@ public class AdminMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
+        lblNombreAdministrador = new java.awt.Label();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        btnGestionContratos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,21 +55,14 @@ public class AdminMenu extends javax.swing.JFrame {
         label1.setName("mensajeBienvenidaLabel"); // NOI18N
         label1.setText("¡Hola, bienvenido de vuelta!,");
 
-        label2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        label2.setName("adminNameLabel"); // NOI18N
-        label2.setText("Cristian Zambrano");
+        lblNombreAdministrador.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblNombreAdministrador.setName("adminNameLabel"); // NOI18N
+        lblNombreAdministrador.setText("Cristian Zambrano");
 
         jButton1.setText("Gestión del Condominio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gestionCondominioButtomActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Gestión de contratos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionContratosButtonActionPerformed(evt);
             }
         });
 
@@ -87,13 +80,20 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("¿Qué deseas hacer el día de hoy?");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jButton5.setText("Redactar Mensaje");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5bandejaEntradaButtonActionPerformed(evt);
+            }
+        });
+
+        btnGestionContratos.setText("Gestión de contratos");
+        btnGestionContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionContratosActionPerformed(evt);
             }
         });
 
@@ -107,14 +107,14 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblNombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(btnGestionContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3))
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -129,16 +129,16 @@ public class AdminMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNombreAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionContratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
@@ -159,12 +159,6 @@ public class AdminMenu extends javax.swing.JFrame {
         GestionCondominio gestionCondominio = new GestionCondominio(administrador);
         gestionCondominio.setVisible(true);
     }//GEN-LAST:event_gestionCondominioButtomActionPerformed
-
-    private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
-        // TODO add your handling code here:
-        GestionContrato gestionContrato = new GestionContrato(administrador);
-        gestionContrato.setVisible(true);
-    }//GEN-LAST:event_gestionContratosButtonActionPerformed
 
     private void gestionPerfilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPerfilesButtonActionPerformed
         // TODO add your handling code here:
@@ -191,19 +185,25 @@ public class AdminMenu extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jButton5bandejaEntradaButtonActionPerformed
 
+    private void btnGestionContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionContratosActionPerformed
+        // TODO add your handling code here:
+        GestionContrato gestionContrato = new GestionContrato(administrador);
+        gestionContrato.setVisible(true);
+    }//GEN-LAST:event_btnGestionContratosActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGestionContratos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private java.awt.Label label1;
-    private java.awt.Label label2;
+    private java.awt.Label lblNombreAdministrador;
     // End of variables declaration//GEN-END:variables
 }

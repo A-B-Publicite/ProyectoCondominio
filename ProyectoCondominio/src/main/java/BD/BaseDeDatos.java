@@ -1,27 +1,15 @@
 package BD;
 
-
 import Administracion.Administrador;
 import Administracion.Residente;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author intel
- */
 public class BaseDeDatos {
-    public static ArrayList<Residente>residentes;
+    public static ArrayList<Residente> residentes;
     public static Administrador administrador;
-    
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
         residentes.add(nuevoResidente);
@@ -29,7 +17,13 @@ public class BaseDeDatos {
     }
     
     public static Administrador leerAdministrador() {
-        return (Administrador) leer("src/main/java/Datos/datosAdmin.txt"); 
+        Object objetoLeido = leer("src/main/java/Datos/datosAdmin.txt");
+        if (objetoLeido instanceof Administrador) {
+            return (Administrador) objetoLeido;
+        } else {
+            System.out.println("El objeto leído no es una instancia de Administrador.");
+            return null;
+        }
     }
 
     public static Residente getResidente(String correo, String contrasenia) {
@@ -44,21 +38,28 @@ public class BaseDeDatos {
             oos.writeObject(objetoALeer);
             oos.close();
             fos.close();
+            System.out.println("Objeto escrito correctamente.");
         } catch (Exception ex) {
-            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }    
     }
     
     public static Object leer(String dir) {
         Object objetoleido = null;
-        try {
-        FileInputStream fis = new FileInputStream(dir);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        objetoleido = ois.readObject();
-        fis.close();
-        ois.close();
-        } catch (Exception ex) {
-            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        File file = new File(dir);
+        if (file.exists() && file.length() != 0) {
+            try {
+                FileInputStream fis = new FileInputStream(dir);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                objetoleido = ois.readObject();
+                System.out.println("Objeto leído correctamente.");
+                fis.close();
+                ois.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("El archivo no existe o está vacío.");
         }
         
         return objetoleido;
@@ -77,6 +78,4 @@ public class BaseDeDatos {
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         return residentes;
     }
-
-    
 }
