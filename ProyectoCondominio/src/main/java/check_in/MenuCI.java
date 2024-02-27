@@ -158,20 +158,20 @@ public class MenuCI {
                                """);
 
                             opcionSubMenu = scanner.nextInt();
-                            switch (opcionSubMenu) {
+                            /*switch (opcionSubMenu) {
                                 case 1 -> {
-                                    //adminEnFichero.getCondominio().getGuardia().realizarCheckIn(fechaLlegada, horaLle, 
-                                                    //visitante,
-                                                    //residenteAVisitar, false, espacio);
+                                    adminEnFichero.getCondominio().getGuardia().realizarCheckIn(fechaLlegada, horaLle, 
+                                                    visitante,
+                                                    residenteAVisitar, false, espacio);
                                 }
                                 case 2 -> {
-                                    //adminEnFichero.getCondominio().getGuardia().realizarCheckIn(fechaLlegada, horaLle, 
-                                                    //visitante,
-                                                    //residenteAVisitar, true, espacio);
+                                    adminEnFichero.getCondominio().getGuardia().realizarCheckIn(fechaLlegada, horaLle, 
+                                                    visitante,
+                                                    residenteAVisitar, true, espacio);
                                 }
                                 default ->
                                     System.out.println("No ha escogido una opcion correcta"); //ver el salir
-                            }                            
+                            } */                           
                         } catch (Exception ex) {
                             System.out.println(ex.getMessage());
                         }

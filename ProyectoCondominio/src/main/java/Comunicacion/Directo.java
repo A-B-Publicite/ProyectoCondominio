@@ -5,8 +5,10 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import Administracion.Residente;
 import check_in.Autorizacion;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class Directo extends Mensaje{
     
     int pos;
 
-    public Directo(Perfil origen, List<Perfil> destino) {
+    public Directo(Perfil origen, Residente destino) {
         super(origen, destino);
     }
 
@@ -48,7 +50,7 @@ public class Directo extends Mensaje{
     
     @Override
     public void enviar() {
-        getDestinos().get(pos-1).getBandejaDeEntrada().recibirMensaje(this);
+        getDestino().getBandejaDeEntrada().recibirMensaje(this);
     }
 
     @Override

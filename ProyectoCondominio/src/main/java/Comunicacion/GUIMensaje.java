@@ -4,13 +4,20 @@
  */
 package Comunicacion;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
+import Administracion.Residente;
+import BD.BaseDeDatos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -19,17 +26,22 @@ import java.util.logging.Logger;
  */
 public class GUIMensaje extends javax.swing.JFrame {
 
+    ListaResidente lista=null;
+    Perfil origen;
+    Residente residenteSeleccionado;
+    
     /**
      * Creates new form GUIMensaje
      */
-    public GUIMensaje() {
+    public GUIMensaje(Perfil perfil) {
         initComponents();
+        this.origen = perfil;
         jLabel4.setVisible(false);
         jButton3.setVisible(false);
         jButton1.setVisible(false);
   
     }
-    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,6 +183,38 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (jTextField1.getText().isBlank() || jTextArea1.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Por Favor Llene todos los campos");
+        } else {
+            Mensaje mensaje;
+            try {
+                if (jComboBox3.getSelectedIndex() == 0) {
+                    mensaje = new Global(origen, BaseDeDatos.obtenerListaResidente());
+                    mensaje.setTitulo(jTextField1.getText());
+                    mensaje.setContenido(jTextArea1.getText());
+                    jTextArea1.setText("");
+                    jTextField1.setText("");
+                    mensaje.enviar();
+                } else {
+                    if (jComboBox3.getSelectedIndex() == 1) {
+                        mensaje = new Directo(origen, residenteSeleccionado);
+                        mensaje.setTitulo(jTextField1.getText());
+                        mensaje.setContenido(jTextArea1.getText());
+                        jTextArea1.setText("");
+                        jTextField1.setText("");
+                        mensaje.enviar();
+                    }
+                }
+            } catch (IOException | ClassNotFoundException ex) {
+                ex.toString();
+            }
+        }
+        
+        residenteSeleccionado.getBandejaDeEntrada().mostrar();
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -189,16 +233,33 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        ListaResidente lista=null;
         try {
+            // Crear una nueva instancia de ListaResidente
             lista = new ListaResidente();
+            // Hacer visible la nueva ventana
+            lista.setVisible(true);
+            // Hacer invisible la ventana actual
+            this.setVisible(false); 
         } catch (IOException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         }
-        lista.setVisible(true);
-        
+        // Configurar el comportamiento al cerrar la ventana de ListaResidente
+        lista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        lista.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Se ejecuta cuando el frame se cierra
+                residenteSeleccionado = lista.getResidenteSeleccionado();
+                if (residenteSeleccionado != null) {
+                    // Realizar acciones con el residente seleccionado
+                    jButton3.setText(residenteSeleccionado.getNombreApellido());
+                }
+                // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                setVisible(true);
+            }
+        });
         
         
         
@@ -235,7 +296,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIMensaje().setVisible(true);
+                new GUIMensaje(new Administrador("Juanito", "Perez")).setVisible(true);
             }
         });
     }
