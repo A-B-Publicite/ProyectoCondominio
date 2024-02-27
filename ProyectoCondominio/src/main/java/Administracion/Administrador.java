@@ -46,7 +46,7 @@ public class Administrador extends Perfil implements Serializable {
         departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
         
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        residenteNuevo.getCuenta().getGestorObligaciones().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "Esto es una alicuota", "alicuota");
+        //residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
         System.out.println(residenteNuevo);
         
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);

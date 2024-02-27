@@ -7,6 +7,7 @@ package GUI;
 import Administracion.*;
 import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
+import java.io.*;
 
 
 /**
@@ -259,7 +260,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }
 
     private void verificarAdminCreado() {
-        if(BaseDeDatos.getAdmin() == null){
+        if(BaseDeDatos.leerAdministrador() == null){
             registrarAdminBoton.setVisible(true);
         }
         

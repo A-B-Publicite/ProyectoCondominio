@@ -6,12 +6,7 @@ import GUI.AutenticadorMenu;
 import Inmueble.*;
 import ModuloReservas.MenuR;
 import check_in.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -22,6 +17,8 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         AutenticadorMenu menu = new AutenticadorMenu();
+        /*
+        
         
         
         // DATO QUEMADO PARA PROBAR LA FUNCIONALIDAD DEL MODULO ADMINISTRACION
@@ -99,7 +96,7 @@ public class Main {
         System.out.println("Me guarde");
         oos.close();
         fos.close();
-
+           */
     }
 
 }
