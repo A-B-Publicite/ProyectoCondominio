@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ModuloReservas;
-import Inmueble.InmuebleComun;
-import Administracion.Perfil;
+import Inmueble.*;
+import Administracion.*;
 import java.util.*;
 import java.util.Random;
 /**
@@ -12,11 +12,68 @@ import java.util.Random;
  * @author Grupo 4
  */
 
-//hola amigos 
 public class AdministrarReserva {
-
+    
+    ArrayList <Reserva> listaReservas = new ArrayList<Reserva>();
+   
     // Método para realizar una reserva
-    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Perfil usuario) {
+    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Administrador usuario) {
+        int opcionReserva;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("""
+                               Opciones:
+                               1. Cancha
+                               2. Gimnasio
+                               3. Espacio de parqueadero
+                               4. Piscina
+                               5. Terraza
+                               0. Salir
+                               """);
+        
+        opcionReserva = scanner.nextInt();
+        
+        switch(opcionReserva){
+            case 1:  {
+                System.out.println("Ingrese el dia de la reserva: ");
+                String diaReserva = scanner.next();
+                for (InmuebleComun inmueble : usuario.obtenerInmuebleComun()) {
+                    // Verificar si el inmueble actual es una instancia de Cancha.
+                    if (inmueble instanceof Cancha) {
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if(disponibilidad.verificarDisponibilidad(diaReserva)){
+                            System.out.println("Ingrese el detalle de la reserva: ");
+                            String detalleReserva = scanner.next();
+                            //to do: pedir el correo del usuario y no enviar el de administrador
+                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
+                            this.listaReservas.add(nuevaReserva);
+                        }else{
+                            System.out.println("No se pudo realizar la reserva: ");
+                        }
+                    }
+                }    
+            }
+            
+            case 2:  {
+                System.out.println("Ingrese el dia de la reserva: ");
+                String diaReserva = scanner.next();
+                for (InmuebleComun inmueble : usuario.obtenerInmuebleComun()) {
+                    // Verificar si el inmueble actual es una instancia de Cancha.
+                    if (inmueble instanceof Gimnasio) {
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if(disponibilidad.verificarDisponibilidad(diaReserva)){
+                            System.out.println("Ingrese el detalle de la reserva: ");
+                            String detalleReserva = scanner.next();
+                            //to do: pedir el correo del usuario y no enviar el de administrador
+                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
+                            this.listaReservas.add(nuevaReserva);
+                        }else{
+                            System.out.println("No se pudo realizar la reserva: ");
+                        }
+                    }
+                }    
+            }
+        }
         if (inmuebleComun.consultarDiasDisponibles().contains("Lunes") ) {
             Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), "Lunes", detalle, usuario); 
             inmuebleComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
