@@ -163,7 +163,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
         GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(administrador, 0);
-        bandeja.setListaMensajes(administrador.getBandejaDeEntrada().getListaMensajes());
+        //bandeja.setListaMensajes(administrador.getBandejaDeEntrada().getListaMensajes());
         bandeja.setVisible(true);
     }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
 
@@ -174,7 +174,6 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionCondominioButtomActionPerformed
 
     private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
-        // TODO add your handling code here:
         GestionContrato gestionContrato = new GestionContrato(administrador);
         gestionContrato.setVisible(true);
     }//GEN-LAST:event_gestionContratosButtonActionPerformed

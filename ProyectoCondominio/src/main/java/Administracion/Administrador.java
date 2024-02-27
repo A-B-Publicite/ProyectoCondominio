@@ -46,7 +46,7 @@ public class Administrador extends Perfil implements Serializable {
         departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
         
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        residenteNuevo.getCuenta().getGestorObligaciones().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "Esto es una alicuota", "alicuota");
+        //residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
         System.out.println(residenteNuevo);
         
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
@@ -99,7 +99,7 @@ public class Administrador extends Perfil implements Serializable {
         System.out.print(condominio.toString());
     }
 
-    public ArrayList<Contrato> mostrarContratos() {
+    public ArrayList<Contrato> getContratos() {
         return condominio.mostrarContratos();
     }
 
@@ -108,8 +108,8 @@ public class Administrador extends Perfil implements Serializable {
     }
   
 
-    void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
-        Contrato contratoNuevo = new Contrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
+    public void agregarContrato(Double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
+        Contrato contratoNuevo = new Contrato( precio, descripcion, fechaInicio, fechaFinalizacion);
         Directiva directiva = condominio.getDirectiva();
         directiva.agregarContrato(contratoNuevo);
     }

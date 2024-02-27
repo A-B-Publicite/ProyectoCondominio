@@ -9,7 +9,6 @@ import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
 import GUI.ResidenteGUI.ResidenteMenu;
 
-
 /**
  *
  * @author intel
@@ -21,10 +20,11 @@ public class AutenticadorMenu extends javax.swing.JFrame {
      * Creates new form login
      */
     public AutenticadorMenu() {
-        registrarAdminBoton.setVisible(false);
         initComponents();
-        this.setVisible(true);
+        registrarAdminBoton.setVisible(false);
         verificarAdminCreado();
+        this.setVisible(true);
+        
     }
 
     /**
@@ -40,7 +40,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         correo = new java.awt.TextField();
-        contrasenia = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         selectorPerfilCombo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -70,7 +70,17 @@ public class AutenticadorMenu extends javax.swing.JFrame {
             }
         });
 
-        contrasenia.setText("jPasswordField1");
+        txtContrasena.setText("jPasswordField1");
+        txtContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusGained(evt);
+            }
+        });
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
 
         selectorPerfilCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Residente", "Guardia" }));
         selectorPerfilCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +116,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registrarAdminBoton)
-                .addGap(65, 65, 65))
+                .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -116,7 +126,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -130,17 +140,17 @@ public class AutenticadorMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectorPerfilCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registrarAdminBoton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(34, 34, 34)
                 .addComponent(ingresarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,13 +172,18 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         switch ((String) selectorPerfilCombo.getSelectedItem()) { 
             case "Administrador":   
                 Administrador administrador = BaseDeDatos.leerAdministrador();
+                if(!estaAutenticado(administrador, correo.getText(), contrasenia.getText())){
+                return;
+                }
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
+                this.setVisible(false);
             case "Residente":
-                Residente residente =  BaseDeDatos.getResidente(correo.getText(), contrasenia.getText() );
+                Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText() );
                 ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                this.setVisible(false);
             case "Guardia":
-                //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
+                //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
                 //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
             default:
                 
@@ -181,12 +196,21 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
     private void registrarAdminBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdminBotonActionPerformed
-        // TODO add your handling code here:
+        RegistroAdminGUI nuevoMenuRegistroAdminGUI = new RegistroAdminGUI();
+        nuevoMenuRegistroAdminGUI.setVisible(true);
+        registrarAdminBoton.setVisible(false);
     }//GEN-LAST:event_registrarAdminBotonActionPerformed
+
+    private void txtContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusGained
+        txtContrasena.setText("");
+    }//GEN-LAST:event_txtContrasenaFocusGained
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField contrasenia;
     private java.awt.TextField correo;
     private javax.swing.JButton ingresarBoton;
     private javax.swing.JLabel jLabel1;
@@ -196,15 +220,19 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton registrarAdminBoton;
     private javax.swing.JComboBox<String> selectorPerfilCombo;
+    private javax.swing.JPasswordField txtContrasena;
     // End of variables declaration//GEN-END:variables
-
- 
 
     private void verificarAdminCreado() {
         if(BaseDeDatos.leerAdministrador() == null){
             registrarAdminBoton.setVisible(true);
         }
-        
+        //registrarAdminBoton.setVisible(false);
+    }
+
+    private boolean estaAutenticado(Perfil perfil, String correo, String contrasenia) {
+        return perfil.getCorreo() == correo && perfil.getCorreo() == contrasenia;
+            
     }
 
 
