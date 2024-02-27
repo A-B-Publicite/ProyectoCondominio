@@ -24,7 +24,7 @@ public class HistorialEntrada {
 
     @Override
     public String toString() {
-        return "HistorialEntrada\n" + "===========" + registros.toString();
+        return "HistorialEntrada \n" + "===========" + registros.toString();
     }
-    
+    //AÑADIDO
 }
