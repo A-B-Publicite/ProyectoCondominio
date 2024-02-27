@@ -12,8 +12,7 @@ import Comunicacion.ListaResidente;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.JFrame;
 
 /**
