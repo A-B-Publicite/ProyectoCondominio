@@ -92,4 +92,8 @@ public class GestorObligaciones implements Serializable {
         return salida;
     }
 
+    public ArrayList<ObligacionFinanciera> getObligacionesFinancieras() {
+        return obligacionesFinancieras;
+    }
+
 }
