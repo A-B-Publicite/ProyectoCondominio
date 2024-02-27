@@ -7,6 +7,13 @@ package GUI.AdminGUI;
 import Administracion.*;
 import Comunicacion.GUIBandejaDeEntrada;
 import Comunicacion.GUIMensaje;
+import Comunicacion.ListaResidente;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -83,7 +90,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("¿Qué deseas hacer el día de hoy?");
 
-        jButton5.setLabel("Enviar Mensaje");
+        jButton5.setText("Redactar Mensaje");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5bandejaEntradaButtonActionPerformed(evt);
@@ -133,8 +140,8 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(88, 88, 88))
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,8 +174,21 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void jButton5bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
-        GUIMensaje gUIMensaje = new GUIMensaje(administrador);
+        GUIMensaje gUIMensaje = new GUIMensaje(administrador,0);
+        // Hacer visible la nueva ventana
         gUIMensaje.setVisible(true);
+        // Hacer invisible la ventana actual
+        this.setVisible(false);
+        // Configurar el comportamiento al cerrar la ventana de ListaResidente
+        gUIMensaje.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        gUIMensaje.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+   
+                // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                setVisible(true);
+            }
+        });
     }//GEN-LAST:event_jButton5bandejaEntradaButtonActionPerformed
 
     /**
