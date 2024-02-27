@@ -42,7 +42,6 @@ public class BaseDeDatos {
             FileOutputStream fos = new FileOutputStream(dir);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(objetoALeer);
-            System.out.println("Me guarde");
             oos.close();
             fos.close();
         } catch (Exception ex) {

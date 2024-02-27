@@ -1,19 +1,20 @@
 package Administracion;
 
+import java.awt.PopupMenu;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 
 public class Contrato implements Serializable {
-    private LocalDate fechaContrato;
-    private double precioContrato;
+    private String fechaContrato;
+    private Double precioContrato;
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
     
 
-    public Contrato(LocalDate fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
-        this.fechaContrato = fechaContrato;
+    public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
+        this.fechaContrato = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy"));
         this.precioContrato = precioContrato;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
@@ -45,6 +46,12 @@ public class Contrato implements Serializable {
     boolean compararDescripcion(String descripcionContratoAPagar) {
         return (descripcion == null ? descripcionContratoAPagar == null : descripcion.equals(descripcionContratoAPagar));
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+
     
     
 }
