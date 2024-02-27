@@ -98,7 +98,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Ver pagos");
+        jButton6.setText("Gestión finanzas");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
