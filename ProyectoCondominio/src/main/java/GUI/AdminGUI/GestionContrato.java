@@ -50,7 +50,7 @@ public class GestionContrato extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cmbSelectorDeCOntrato = new javax.swing.JComboBox<>();
         btnPagarContrato = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +92,12 @@ public class GestionContrato extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Volver");
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +139,7 @@ public class GestionContrato extends javax.swing.JFrame {
                         .addGap(136, 136, 136)
                         .addComponent(btnPagarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(btnVolver)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
@@ -185,7 +190,7 @@ public class GestionContrato extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPagarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -210,13 +215,17 @@ public class GestionContrato extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPagarContrato;
     private javax.swing.JButton btnProponerContrato;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbSelectorDeCOntrato;
     private com.github.lgooddatepicker.components.DatePicker dpfechaFin;
     private com.github.lgooddatepicker.components.DatePicker dpfechaInicio;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
