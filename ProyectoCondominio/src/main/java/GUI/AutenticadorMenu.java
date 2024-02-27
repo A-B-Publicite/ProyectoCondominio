@@ -7,8 +7,7 @@ package GUI;
 import Administracion.*;
 import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
-import java.io.*;
-
+import GUI.ResidenteGUI.ResidenteMenu;
 
 /**
  *
@@ -165,9 +164,11 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 Administrador administrador = BaseDeDatos.leerAdministrador();
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
+                this.setVisible(false);
             case "Residente":
-                Residente residente = obtenterResidenteDelTxt(correo.getText(), contrasenia.getText() );
-                //ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                Residente residente = BaseDeDatos.getResidente(correo.getText(), contrasenia.getText() );
+                ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                this.setVisible(false);
             case "Guardia":
                 //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
                 //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
@@ -200,67 +201,6 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private javax.swing.JButton registrarAdminBoton;
     private javax.swing.JComboBox<String> selectorPerfilCombo;
     // End of variables declaration//GEN-END:variables
-
-    /*
-    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
-        Administrador adminLeido;
-        try {
-            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            adminLeido = (Administrador) ois.readObject();
-            System.out.println("Me leiste");
-            ois.close();
-            fis.close();
-            
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace(); 
-        }
-        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
-            return adminLeido;
-        }
-        return null;   
-    }*/
-    private Administrador obtenerAdministradorDelTxt(String correo, String contrasenia)  {
-    try {
-        FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        Administrador adminLeido = (Administrador) ois.readObject();
-        
-        
-        if(adminLeido.getCorreo().equals(correo) && adminLeido.getContrasenia().equals(contrasenia)){
-            return adminLeido;
-        }
-        System.out.println("Me leiste");
-        ois.close();
-        fis.close();
-    } catch (IOException | ClassNotFoundException e) {
-        e.printStackTrace(); 
-    }
-    return null;
-}
-
-
-    private Residente obtenterResidenteDelTxt(String correo, String contrasenia) {
-        Residente residente = null;
-        Administrador adminLeido = null;
-        try {
-            FileInputStream fis = new FileInputStream("src/main/java/Datos/datosAdmin.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            adminLeido = (Administrador) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace(); 
-        }
-        
-        
-        if(residente.getCorreo().equals(correo) && residente.getContrasenia().equals(contrasenia)){
-            return residente;
-        }
-        
-        return null;
-        
-    }
 
     private void verificarAdminCreado() {
         if(BaseDeDatos.leerAdministrador() == null){
