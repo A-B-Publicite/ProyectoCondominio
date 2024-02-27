@@ -88,6 +88,11 @@ public class Reservar extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,6 +179,10 @@ public class Reservar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Reserva no hecha", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
