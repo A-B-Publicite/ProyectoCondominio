@@ -13,12 +13,10 @@ import java.util.*;
  */
 public class Disponibilidad {
     private InmuebleComun areaComun;
-    private String dia;
 
     // Constructor
-    public Disponibilidad(InmuebleComun areaComun, String Dia) {
+    public Disponibilidad(InmuebleComun areaComun) {
         this.areaComun = areaComun;
-        this.dia = dia;
     }
 
     // Método para verificar la disponibilidad
@@ -41,14 +39,6 @@ public class Disponibilidad {
     }
 
     // Getters y setters
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(String Dia) {
-        this.dia = dia;
-    }
-
     public ArrayList<Reserva> getListaReservas() {
         return this.areaComun.obtenerReservas();
     }
