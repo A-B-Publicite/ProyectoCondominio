@@ -5,7 +5,6 @@
 package GUI.AdminGUI;
 
 import Administracion.Administrador;
-import BD.BaseDeDatos;
 
 /**
  *
@@ -90,18 +89,17 @@ public class CreacionCondominioMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCondominioActionPerformed
-        
+        txtNombreCondominio.setText("");
     }//GEN-LAST:event_txtNombreCondominioActionPerformed
 
     private void txtNombreCondominioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreCondominioFocusGained
-        txtNombreCondominio.setText("");
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreCondominioFocusGained
 
     private void btnCrearCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCondominioActionPerformed
         administrador.agregarCondominio(txtNombreCondominio.getText());
         javax.swing.JOptionPane.showMessageDialog(null, "Condominio creado");
         this.setVisible(false);
-        BaseDeDatos.escribirAdmin(administrador);
     }//GEN-LAST:event_btnCrearCondominioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

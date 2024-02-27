@@ -46,11 +46,10 @@ public class BaseDeDatos {
     
     public static Object leer(String dir) {
         Object objetoleido = null;
-        FileInputStream fis = null;
         File file = new File(dir);
         if (file.exists() && file.length() != 0) {
             try {
-                fis = new FileInputStream(dir);
+                FileInputStream fis = new FileInputStream(dir);
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 objetoleido = ois.readObject();
                 System.out.println("Objeto leído correctamente.");

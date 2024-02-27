@@ -172,8 +172,8 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         switch ((String) selectorPerfilCombo.getSelectedItem()) { 
             case "Administrador":   
                 Administrador administrador = BaseDeDatos.leerAdministrador();
-                if(!estaAutenticado(administrador, correo.getText(),txtContrasena.getText())){
-                    return;
+                if(!estaAutenticado(administrador, correo.getText(), contrasenia.getText())){
+                return;
                 }
                 AdminMenu adminMenu = new AdminMenu(administrador);
                 adminMenu.setVisible(true);
@@ -231,7 +231,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }
 
     private boolean estaAutenticado(Perfil perfil, String correo, String contrasenia) {
-        return perfil.getCorreo().equals(correo) && perfil.getContrasenia().equals(contrasenia);
+        return perfil.getCorreo() == correo && perfil.getCorreo() == contrasenia;
             
     }
 
