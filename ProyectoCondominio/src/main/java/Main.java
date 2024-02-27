@@ -83,7 +83,7 @@ public class Main {
                     //MenuCI.menuCheckIn(adminEnFichero, opcion);
                     break;
                 case 5:
-                    MenuComunicacion.mostrar();
+                    //MenuComunicacion.mostrar();
                     break;
                 case 0:
                     opcion[0] = 0;

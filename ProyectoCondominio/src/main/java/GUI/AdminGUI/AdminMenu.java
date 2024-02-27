@@ -6,6 +6,7 @@ package GUI.AdminGUI;
 
 import Administracion.*;
 import Comunicacion.GUIBandejaDeEntrada;
+import Comunicacion.GUIMensaje;
 
 /**
  *
@@ -166,6 +167,8 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void jButton5bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5bandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
+        GUIMensaje gUIMensaje = new GUIMensaje(administrador);
+        gUIMensaje.setVisible(true);
     }//GEN-LAST:event_jButton5bandejaEntradaButtonActionPerformed
 
     /**

@@ -25,18 +25,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaResidente extends javax.swing.JFrame {
 
-
+    ArrayList<Residente> residentes = new ArrayList<>();
+    
     int filaSeleccionada;
     /**
      * Creates new form ListaResidente
      */
     public ListaResidente() throws IOException, ClassNotFoundException {
         initComponents();
+        jTable1.setDefaultEditor(Object.class, null);
         
-        //ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
-        ArrayList<Residente> residentes = new ArrayList<>();
-        Residente res1 = new Residente("Mateo", "espinoza", true);
-        residentes.add(res1);
+        residentes = BaseDeDatos.obtenerListaResidente();
+        
+        /*Residente res1 = new Residente("Mateo", "espinoza", true);
+        residentes.add(res1);*/
        
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
 
@@ -45,11 +47,17 @@ public class ListaResidente extends javax.swing.JFrame {
 
         // Llena el modelo con los datos de los residentes
         for (Residente residente : residentes) {
-            tableModel.addRow(new Object[]{residente.getNombre(), residente.getCorreo()});
+            tableModel.addRow(new Object[]{residente.getNombreApellido(), residente.getCorreo()});
         }
 
     }
 
+    
+    public Residente getResidenteSeleccionado() {
+        //ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
+
+        return residentes.get(filaSeleccionada);
+    }
     
     
     /**
@@ -108,8 +116,10 @@ public class ListaResidente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
             filaSeleccionada = jTable1.getSelectedRow();
-            
+            this.dispose();
         }
+        
+        
         
     }//GEN-LAST:event_jTable1MouseClicked
 
