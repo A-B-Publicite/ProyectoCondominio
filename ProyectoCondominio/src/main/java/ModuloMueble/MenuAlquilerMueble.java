@@ -1,9 +1,18 @@
 package ModuloMueble;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MenuAlquilerMueble {
 
@@ -14,6 +23,38 @@ public class MenuAlquilerMueble {
 		mueblesDisponibles.put("Mesa", 52);
 		mueblesDisponibles.put("Carpa", 21);
 	}
+        
+        public boolean realizarReserva(int ID, String DInicio, String diaReserva, String mueble, int cantidad) throws ParseException {
+           
+            Mueble nuevoMueble = null;
+            
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date fechaInicio = formatoFecha.parse(DInicio);
+            Date fechaFinal = formatoFecha.parse(diaReserva);
+            
+            switch (mueble) {
+		case "Silla":
+			nuevoMueble = new Silla(cantidad, fechaInicio, fechaFinal);
+			break;
+		case "Mesa":
+			nuevoMueble = new Mesa(cantidad, fechaInicio, fechaFinal);
+			break;
+		case "Carpa":
+			nuevoMueble = new Carpa(cantidad, fechaInicio, fechaFinal);
+			break;
+		}
+            
+            Object objetoLeido = leer("src/main/java/Datos/datosAdmin.txt");
+            if (objetoLeido instanceof Mueble) {
+                
+            } else {
+                System.out.println("El objeto leído no es una instancia de Mueble.");
+               
+            }
+        
+        return false;
+    }
 
 	public static void mostrar() {
 
@@ -183,4 +224,26 @@ public class MenuAlquilerMueble {
 		mueblesDisponibles.put(tipoMueble, mueblesDisponibles.get(tipoMueble) + cantidadAnular);
 		System.out.println("\033[1mSe han anulado " + cantidadAnular + " reservas de " + tipoMueble + ".\033[0m");
 	}
+        
+        public static Object leer(String dir) {
+        Object objetoleido = null;
+        FileInputStream fis;
+        File file = new File(dir);
+        if (file.exists() && file.length() != 0) {
+            try {
+                fis = new FileInputStream(dir);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                objetoleido = ois.readObject();
+                System.out.println("Objeto leído correctamente.");
+                fis.close();
+                ois.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("El archivo no existe o está vacío.");
+        }
+        
+        return objetoleido;
+    }
 }

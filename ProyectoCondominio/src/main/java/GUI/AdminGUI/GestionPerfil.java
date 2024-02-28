@@ -241,6 +241,9 @@ public class GestionPerfil extends javax.swing.JFrame {
 
     private void btnAgregarGuardiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarGuardiaActionPerformed
         administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(),txtFInicioGuardia.getText() , txtFFinGuardia.getText());
+        administrador.enviarAutorizacionesGuardia();
+        administrador.enviarEspaciosParqueaderoGuardia();
+        administrador.enviarResidentesGuardia();
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Guardia registrado con exito");
     }//GEN-LAST:event_btnAgregarGuardiaActionPerformed
