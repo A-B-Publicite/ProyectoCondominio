@@ -18,10 +18,10 @@ public class Multa extends ObligacionFinanciera implements Serializable {
     public String toString() {
         return "[Obligacion N. " + idObligacion
                 + "] | Multa = ("
-                + ", estado= " + estado
-                + ", monto= " + monto
-                + ", fechaCreacion= " + fechaCreacion
-                + ", descripcion= '" + descripcion + "')";
+                + "Estado= " + estado
+                + ", Monto= " + monto
+                + ", Fecha de creacion= " + fechaCreacion
+                + ", Descripcion= '" + descripcion + "')";
     }
 
 }

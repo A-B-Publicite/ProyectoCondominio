@@ -119,12 +119,13 @@ public class BaseDeDatos implements Serializable{
     
     public static Guardia  leerGuardia() throws IOException, ClassNotFoundException {
         
-        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosGuardia.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        Guardia guardia = (Guardia) objectInputStream.readObject();
-        objectInputStream.close();
-        fileInputStream.close();
-        return guardia;
+        Object objetoLeido = leer("src/main/java/Datos/datosGuardia.txt");
+        if (objetoLeido instanceof Guardia) {
+            return (Guardia) objetoLeido;
+        } else {
+            System.out.println("El objeto leído no es una instancia de guardia.");
+            return null;
+        }
         
     }
     
