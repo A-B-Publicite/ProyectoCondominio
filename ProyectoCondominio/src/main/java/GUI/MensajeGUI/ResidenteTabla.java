@@ -17,17 +17,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ResidenteTabla extends javax.swing.JFrame {
 
-    ArrayList<Residente> residentes = new ArrayList<>();
+    ArrayList<Residente> residentes;
     
     int filaSeleccionada;
     /**
      * Creates new form ListaResidente
      */
-    public ResidenteTabla() throws IOException, ClassNotFoundException {
+    public ResidenteTabla(ArrayList<Residente> res) throws IOException, ClassNotFoundException {
         initComponents();
         jTable1.setDefaultEditor(Object.class, null);
         
-        
+        this.residentes=res;
         
         /*Residente res1 = new Residente("Mateo", "espinoza", true);
         residentes.add(res1);*/

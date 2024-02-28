@@ -1,4 +1,3 @@
-
 package Administracion;
 
 import Comunicacion.BandejaDeEntrada;
@@ -7,7 +6,8 @@ import check_in.Autorizacion;
 import check_in.RegistroEntrada;
 import java.io.Serializable;
 
-public abstract class Perfil implements Serializable{
+public abstract class Perfil implements Serializable {
+
     protected String correo;
     protected String contrasenia;
     protected String nombre;
@@ -16,32 +16,32 @@ public abstract class Perfil implements Serializable{
     protected BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(this);
     protected Cuenta cuentaBancaria;
     Autorizacion autorizacion;
-    
+
     public Perfil(String nombre, String apellido) {
-        this.correo = nombre + "." + apellido + "@policondominio.com";
-        this.contrasenia = nombre+ "123";
+        this.correo = nombre.toLowerCase() + "." + apellido.toLowerCase() + "@policon.com";
+        this.contrasenia = nombre.toLowerCase() + "123";
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuentaBancaria = new Cuenta();
         this.aprobacionDeContrato = null;
-        
-        }
-    
-    
+
+    }
+
     public Cuenta getCuenta() {
         return cuentaBancaria;
     }
-    public Perfil(String correo, String contrasena, String nombreApellido){
+
+    public Perfil(String correo, String contrasena, String nombreApellido) {
         this.correo = correo;
         this.contrasenia = contrasena;
         this.nombre = nombreApellido;
         this.bandejaDeEntrada = new BandejaDeEntrada(this);
     }
-    
+
     public String getNombreApellido() {
-        return nombre+" "+apellido;
+        return nombre + " " + apellido;
     }
-    
+
     public BandejaDeEntrada getBandejaDeEntrada() {
         return bandejaDeEntrada;
     }
@@ -49,11 +49,11 @@ public abstract class Perfil implements Serializable{
     public String getNombre() {
         return nombre;
     }
-    
-    public void realizarCheckIn(String fechaLlegada, String horaLlegada){
+
+    public void realizarCheckIn(String fechaLlegada, String horaLlegada) {
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(this.autorizacion);
-        registro.registrarEntrada(fechaLlegada, horaLlegada);        
+        registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
 
     public void setAutorizacion(Autorizacion autorizacion) {
@@ -66,11 +66,10 @@ public abstract class Perfil implements Serializable{
 
     public String getContrasenia() {
         return contrasenia;
-    }    
+    }
 
     public String getNombresCompletos() {
-        return nombre + " "+ apellido;
+        return nombre + " " + apellido;
     }
-    
-    
+
 }
