@@ -293,6 +293,8 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     private void verificarAdminCreado() {
         if (BaseDeDatos.leerAdministrador() == null) {
             registrarAdminBoton.setVisible(true);
+        } else {
+            registrarAdminBoton.setVisible(false);
         }
         //registrarAdminBoton.setVisible(false);
     }
