@@ -61,6 +61,8 @@ public class Directiva implements Serializable{
 
     private void verificarQueElContratoSeaAprobado(Contrato contrato) {
         if(contrato.estaAprobado()){
+            contratosPorAprobar.remove(contrato);
+            contrato.iniciar();
             contratosAprobados.add(contrato);
         }
     }

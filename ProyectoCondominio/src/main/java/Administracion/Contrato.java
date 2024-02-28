@@ -13,6 +13,7 @@ public class Contrato implements Serializable {
     private String fechaFin;
     private boolean aprobacionNumero1;
     private boolean aprobacionNumero2;
+    private Servicio servicio;
     
 
     public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
@@ -27,11 +28,11 @@ public class Contrato implements Serializable {
     }
 
     public void iniciar() {
-        System.out.print("Se inicio el contrato");
+        servicio.ejecutar();
     }
 
     public void terminar() {
-        System.out.print("Se termino el contrato");
+        servicio = null;
     }
 
     @Override
