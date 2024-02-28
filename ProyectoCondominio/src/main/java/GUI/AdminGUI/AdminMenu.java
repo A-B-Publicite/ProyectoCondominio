@@ -5,9 +5,9 @@
 package GUI.AdminGUI;
 
 import Administracion.*;
-import Comunicacion.GUIBandejaDeEntrada;
-import Comunicacion.GUIMensaje;
-import Comunicacion.ListaResidente;
+import GUI.MensajeGUI.GUIBandejaDeEntrada;
+import GUI.MensajeGUI.GUIMensaje;
+import GUI.MensajeGUI.ListaResidente;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;

@@ -7,11 +7,10 @@ package Comunicacion;
 import Administracion.Perfil;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BandejaDeEntrada implements Serializable{
-    private List<Mensaje> listaMensajes;
+    private ArrayList<Mensaje> listaMensajes;
     private Perfil perfil;
 
 
@@ -24,7 +23,7 @@ public class BandejaDeEntrada implements Serializable{
         listaMensajes.add(mensaje);
     }
 
-    public List<Mensaje> getListaMensajes() {
+    public ArrayList<Mensaje> getListaMensajes() {
         return listaMensajes;
     }
 

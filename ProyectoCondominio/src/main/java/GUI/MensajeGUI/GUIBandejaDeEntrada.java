@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Comunicacion;
+package GUI.MensajeGUI;
 
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
+import Comunicacion.Mensaje;
 import Finanzas.GestorObligaciones;
 import Finanzas.ObligacionFinanciera;
 import java.awt.event.MouseEvent;
@@ -48,7 +49,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
 
     
     public void setListaMensajes(ArrayList<Mensaje> listaMensajes) throws IOException, ClassNotFoundException {
-        // Elimina las filas existentes en el modelo de tabla
+        
         this.residentes = BaseDeDatos.obtenerListaResidente();
         this.mensajes=listaMensajes;
         modeloTabla2.setRowCount(0);
@@ -199,7 +200,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
             if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
                 GUIMensaje guiMen = new GUIMensaje(perf,tipo);
                 guiMen.setVisible(true);
-                //guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
+                guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
             }
         }
         }

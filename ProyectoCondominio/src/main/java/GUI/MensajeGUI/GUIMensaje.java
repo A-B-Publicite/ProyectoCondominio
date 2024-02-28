@@ -2,12 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Comunicacion;
+package GUI.MensajeGUI;
 
 import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
+import Comunicacion.Directo;
+import Comunicacion.Global;
+import Comunicacion.Mensaje;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
