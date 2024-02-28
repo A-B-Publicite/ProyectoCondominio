@@ -37,7 +37,7 @@ public class GUIMensaje extends javax.swing.JFrame {
     /**
      * Creates new form GUIMensaje
      */
-    public GUIMensaje(Administrador administrador, int tipo) {
+    public GUIMensaje(Administrador administrador, int tipo) throws IOException, ClassNotFoundException {
         initComponents();
         this.residentes = administrador.getResidentes();
         this.origen = administrador;
@@ -334,8 +334,8 @@ public class GUIMensaje extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         try {
-
-            lista = new ResidenteTabla(this.residentes);
+            
+            lista = new ResidenteTabla(BaseDeDatos.leerLista());
             // Hacer visible la nueva ventana
             lista.setVisible(true);
             // Hacer invisible la ventana actual

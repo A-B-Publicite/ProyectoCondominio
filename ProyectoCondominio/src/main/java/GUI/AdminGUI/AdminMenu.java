@@ -268,7 +268,14 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnRedactarMensajebandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedactarMensajebandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
-        GUIMensaje gUIMensaje = new GUIMensaje(administrador,0);
+        GUIMensaje gUIMensaje = null;
+        try {
+            gUIMensaje = new GUIMensaje(administrador,0);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // Hacer visible la nueva ventana
         gUIMensaje.setVisible(true);
         // Hacer invisible la ventana actual

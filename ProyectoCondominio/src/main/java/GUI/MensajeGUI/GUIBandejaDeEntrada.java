@@ -66,7 +66,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
 
         // Agrega cada mensaje a la tabla
         for (Mensaje mensaje : listaMensajes) {
-            modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen()});
+            modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen().getNombreApellido()});
         }
         this.setResizable(false);
         switch (tipo) {
@@ -226,18 +226,25 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
             obligacionSeleccionada = jTable2.getSelectedRow();
             for (Residente res : residentes) {
-            if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
-                GUIMensaje guiMen = new GUIMensaje((Administrador) perf,tipo);
-                guiMen.setVisible(true);
-                try {
-                    guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
+                    GUIMensaje guiMen = null;
+                    try {
+                        guiMen = new GUIMensaje((Administrador) perf,tipo);
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    guiMen.setVisible(true);
+                    try {
+                        guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
-        }
         }
         
     }//GEN-LAST:event_jTable2MouseClicked
