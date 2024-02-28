@@ -41,7 +41,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
+        txtNombreAdmin = new java.awt.Label();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -56,9 +56,9 @@ public class AdminMenu extends javax.swing.JFrame {
         label1.setName("mensajeBienvenidaLabel"); // NOI18N
         label1.setText("¡Hola, bienvenido de vuelta!,");
 
-        label2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        label2.setName("adminNameLabel"); // NOI18N
-        label2.setText("Cristian Zambrano");
+        txtNombreAdmin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        txtNombreAdmin.setName("adminNameLabel"); // NOI18N
+        txtNombreAdmin.setText("Cristian Zambrano");
 
         jButton1.setText("Gestión del Condominio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -140,7 +140,7 @@ public class AdminMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
@@ -222,6 +222,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private java.awt.Label label1;
-    private java.awt.Label label2;
+    private java.awt.Label txtNombreAdmin;
     // End of variables declaration//GEN-END:variables
 }
