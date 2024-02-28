@@ -1,11 +1,12 @@
 package ModuloReservas;
 import Administracion.Perfil;
+import java.io.Serializable;
 
 /**
  *
  * @author Grupo 4
  */
-public class Reserva {
+public class Reserva implements Serializable{
     private int id;
     private String dia;
     private String detalle;

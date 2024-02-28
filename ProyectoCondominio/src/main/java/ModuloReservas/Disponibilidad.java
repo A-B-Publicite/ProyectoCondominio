@@ -5,13 +5,14 @@
 package ModuloReservas;
 
 import Inmueble.InmuebleComun;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Grupo 4
  */
-public class Disponibilidad {
+public class Disponibilidad implements Serializable{
 
     private InmuebleComun areaComun;
     // Constructor
