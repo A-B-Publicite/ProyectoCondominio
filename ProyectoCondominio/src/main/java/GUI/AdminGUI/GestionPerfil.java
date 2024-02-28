@@ -5,6 +5,7 @@
 package GUI.AdminGUI;
 
 import Administracion.Administrador;
+import BD.BaseDeDatos;
 
 /**
  *
@@ -12,11 +13,14 @@ import Administracion.Administrador;
  */
 public class GestionPerfil extends javax.swing.JFrame {
 
+    private final Administrador administrador;
+
     /**
      * Creates new form GestionPerfil
      */
     public GestionPerfil(Administrador administrador) {
         initComponents();
+        this.administrador = administrador;
     }
 
     /**
@@ -52,6 +56,11 @@ public class GestionPerfil extends javax.swing.JFrame {
         jLabel1.setText("Agregar a un residente");
 
         btnAgregarResidente.setText("Agregar ");
+        btnAgregarResidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarResidenteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Ingrese el nombre:");
 
@@ -67,8 +76,18 @@ public class GestionPerfil extends javax.swing.JFrame {
         jLabel8.setText("Ingrese el apellido:");
 
         btnAgregarGuardia.setText("Agregar");
+        btnAgregarGuardia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarGuardiaActionPerformed(evt);
+            }
+        });
 
         btnVolverGestionPerfil.setText("Volver");
+        btnVolverGestionPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverGestionPerfilActionPerformed(evt);
+            }
+        });
 
         cmbEsPorpietario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Sí", "No" }));
 
@@ -179,6 +198,27 @@ public class GestionPerfil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarResidenteActionPerformed
+        boolean opcion = false;
+        if (cmbEsPorpietario.getSelectedItem().equals("Sí")) {
+            opcion = true;
+        } else if (cmbEsPorpietario.getSelectedItem().equals("No")) {
+            opcion = false;
+        }
+        administrador.registrarResidente(txtNombreResidente.getText(), txtApellidoResidente.getText(), opcion);
+        BaseDeDatos.escribirAdmin(administrador);
+        javax.swing.JOptionPane.showMessageDialog(null, "Residente registrado con exito");
+    }//GEN-LAST:event_btnAgregarResidenteActionPerformed
+
+    private void btnAgregarGuardiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarGuardiaActionPerformed
+        //administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(), , fechaFin);
+    }//GEN-LAST:event_btnAgregarGuardiaActionPerformed
+
+    private void btnVolverGestionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverGestionPerfilActionPerformed
+        BaseDeDatos.escribirAdmin(administrador);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverGestionPerfilActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarGuardia;
