@@ -210,7 +210,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
             mensajeSeleccionado = jTable1.getSelectedRow();
             JOptionPane.showMessageDialog(null, "Titulo: " + mensajes.get(mensajeSeleccionado).getTitulo() +
-                    "\nOrigen: " + mensajes.get(mensajeSeleccionado).getOrigen() +
+                    "\nOrigen: " + mensajes.get(mensajeSeleccionado).getOrigen().getNombreApellido() +
                     "\nFecha: " +  mensajes.get(mensajeSeleccionado).getFecha() + 
                     "\nContenido: " +  mensajes.get(mensajeSeleccionado).getContenido());
         }
@@ -224,12 +224,16 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+
             obligacionSeleccionada = jTable2.getSelectedRow();
+
             for (Residente res : residentes) {
-                if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
+
+                if (res.getNombreApellido().equals(jTable2.getValueAt(obligacionSeleccionada, 2))) {
                     GUIMensaje guiMen = null;
                     try {
                         guiMen = new GUIMensaje((Administrador) perf,tipo);
+
                     } catch (IOException ex) {
                         Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -237,12 +241,13 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                     }
                     guiMen.setVisible(true);
                     try {
-                        guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
+                        guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString(),res);
                     } catch (IOException ex) {
                         Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    break;
                 }
             }
         }
