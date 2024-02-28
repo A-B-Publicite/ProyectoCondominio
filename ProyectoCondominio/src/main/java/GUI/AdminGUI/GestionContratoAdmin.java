@@ -14,14 +14,14 @@ import java.util.ArrayList;
  *
  * @author usuario
  */
-public class GestionContrato extends javax.swing.JFrame {
+public class GestionContratoAdmin extends javax.swing.JFrame {
 
     private final Administrador administrador;
 
     /**
      * Creates new form GestionContrato
      */
-    public GestionContrato(Administrador administrador) {
+    public GestionContratoAdmin(Administrador administrador) {
         initComponents();
         this.administrador = administrador;
         rellenarcmbSelectorDeContrato();
