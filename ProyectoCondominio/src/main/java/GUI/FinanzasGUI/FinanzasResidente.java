@@ -6,11 +6,13 @@ import Finanzas.MetodoRecarga;
 import Finanzas.ObligacionFinanciera;
 import Finanzas.Tarjeta;
 import Finanzas.Transferencia;
+import GUI.ResidenteGUI.ResidenteMenu;
 import javax.swing.JOptionPane;
 
 public class FinanzasResidente extends javax.swing.JFrame {
 
     static Residente residente;
+    ResidenteMenu residenteMenu;
 
     public FinanzasResidente(Residente residente) {
         initComponents();
@@ -351,6 +353,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         jMenuItem1.setText("Regresar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -464,6 +471,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
         System.out.println(residente.getCuenta().mostrarPagos());
         jTAListaPagos.setText(residente.getCuenta().mostrarPagos());
     }//GEN-LAST:event_btnMostrarListaPagosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.setVisible(false);
+        residenteMenu.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public void limpiarDatosObligaciones() {
         jTAObligaciones.setText("");
