@@ -18,24 +18,7 @@ public class AdministrarReserva {
    
     // Método para realizar una reserva
     public boolean realizarReserva(String detalleReserva, Administrador usuario, int opcionReserva, String diaReserva, String correo) {        
-        /*System.out.println("""
-    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Administrador usuario) {
-        int opcionReserva;
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("""
-                               Opciones:
-                               1. Cancha
-                               2. Gimnasio
-                               3. Espacio de parqueadero
-                               4. Piscina
-                               5. Terraza
-                               0. Salir
-                               """);*/
         Residente residente = usuario.obtenerResidentePorCorreo(correo);
-        /*if(residente == null){
-            return false;
-        }*/
         System.out.println(opcionReserva);
         switch(opcionReserva){
             case 0:  {
@@ -48,7 +31,7 @@ public class AdministrarReserva {
                         Disponibilidad disponibilidad = new Disponibilidad(inmueble);
                         if(disponibilidad.verificarDisponibilidad(diaReserva)){
                             System.out.println("Ingrese el detalle de la reserva: ");
-                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
+                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha"); 
                             this.listaReservas.add(nuevaReserva);
                             return true;
                         }
@@ -87,4 +70,11 @@ public class AdministrarReserva {
         int numero = rand.nextInt(90000) + 10000; // Genera un número aleatorio entre 10000 y 99999
         return numero;
     }
+
+    public ArrayList<Reserva> getListaReservas() {
+        return listaReservas;
+    }
+
+    
+    
 }

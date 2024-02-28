@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BaseDeDatos {
-    public static ArrayList<Residente> residentes;
+    public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static Administrador administrador;
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
@@ -28,7 +28,12 @@ public class BaseDeDatos {
 
     public static Residente getResidente(String correo, String contrasenia) {
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
-        return buscarResidente( residentes, correo, contrasenia);
+        try {
+            return buscarResidente(residentes, correo, contrasenia);
+        } catch (Exception ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public static void escribir(Object objetoALeer, String dir) {
@@ -66,13 +71,14 @@ public class BaseDeDatos {
         return objetoleido;
     }
 
-    private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) {
+    private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) throws Exception {
         for(Residente residente : residentes){
             if(residente.getCorreo().equals(correo)&& residente.getContrasenia().equals(contrasenia)){
                 return residente;
             }
         }
-        return null;
+        throw new Exception("No existe ese residente");
+        //return null;
     }
     
     public static ArrayList<Residente> obtenerListaResidente () throws IOException, ClassNotFoundException {

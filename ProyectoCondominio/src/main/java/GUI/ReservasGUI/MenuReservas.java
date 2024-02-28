@@ -1,10 +1,12 @@
 package GUI.ReservasGUI;
 
 import Administracion.*;
+import GUI.AdminGUI.AdminMenu;
 import Inmueble.*;
 import ModuloReservas.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author JEREMY
@@ -14,20 +16,22 @@ public class MenuReservas extends javax.swing.JFrame {
     /**
      * Creates new form MenuReservas
      */
-    Administrador administrador = new Administrador("Jose", "Perez");
-    Cancha cancha = new Cancha (32);
-    AdministrarReserva admin = new AdministrarReserva();
-    
-    public MenuReservas() {
+    //Administrador administrador = new Administrador("Jose", "Perez");
+    //Cancha cancha = new Cancha (32);
+    AdministrarReserva administrarReserva = new AdministrarReserva();
+    Administrador administrador;
+
+    public MenuReservas(Administrador administrador) {
         initComponents();
-        administrador.agregarCondominio("EPN");
-        administrador.agregarInmuebleComun(cancha);
+        this.administrador = administrador;
+        //administrador.agregarCondominio("EPN");
+        //administrador.agregarInmuebleComun(cancha);
         ArrayList<Residente> listaResidente = administrador.getResidentes();
         for (Residente residente : listaResidente) {
             System.out.println(residente);
-            
+
         }
-        
+
         System.out.println("hola");
     }
 
@@ -36,6 +40,10 @@ public class MenuReservas extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTListaTReservas = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
@@ -67,8 +75,47 @@ public class MenuReservas extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTListaTReservas.setColumns(20);
+        jTListaTReservas.setRows(5);
+        jTListaTReservas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Reservas"));
+        jScrollPane4.setViewportView(jTListaTReservas);
+
+        jButton6.setText("Recargar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jButton6)))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(24, 24, 24))
+        );
+
+        jTabbedPane1.addTab("Todas las reservas", jPanel4);
 
         jLabel2.setText("Correo");
 
@@ -311,6 +358,13 @@ public class MenuReservas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Bienvenido al modulo de reservas");
 
+        jButton5.setText("Volver");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -318,7 +372,10 @@ public class MenuReservas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5))
                     .addComponent(jSeparator1)
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
@@ -327,7 +384,9 @@ public class MenuReservas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,11 +406,12 @@ public class MenuReservas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDiaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        boolean reserva = admin.realizarReserva(this.txtDetalle.getText(), administrador,
-            this.cmBoxAreaComun.getSelectedIndex(), this.txtDia.getText(), this.txtCorreo.getText());
-        if(reserva){
+        boolean reserva = administrarReserva.realizarReserva(this.txtDetalle.getText(), administrador,
+                this.cmBoxAreaComun.getSelectedIndex(), this.txtDia.getText(), this.txtCorreo.getText());
+        System.out.println(this.administrador.getNombresCompletos());
+        if (reserva) {
             JOptionPane.showMessageDialog(null, "Reserva hecha", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Reserva no hecha", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -380,7 +440,32 @@ public class MenuReservas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AdminMenu ad = new AdminMenu(administrador);
+        ad.setVisible(true);
+        this.setVisible(false);
 
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        imprimirReservas();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    public void imprimirReservas() {
+        ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
+        listaReservas = administrarReserva.getListaReservas();
+        for (Reserva lista : listaReservas) {
+            this.jTListaTReservas.setText(
+                    "Espacio de reserva: " + lista.getAreaComun() + "\n" +
+                    "Usuario: " + lista.getUsuario() + "\n" +
+                    "Detalle: " + lista.getDetalle() + "\n" +
+                    "Día de reserva: " + lista.getDia() + "\n" +
+                    "--------------------------------------------"           
+            );
+
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
@@ -389,6 +474,8 @@ public class MenuReservas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -400,10 +487,13 @@ public class MenuReservas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextArea jTListaTReservas;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;

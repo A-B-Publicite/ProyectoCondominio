@@ -88,7 +88,7 @@ public abstract class Mensaje implements Serializable{
         return fecha.format(formatter);
     }
 
-    public List<Residente> getDestinos() {
+    public ArrayList<Residente> getDestinos() {
         return destinos;
     }
 

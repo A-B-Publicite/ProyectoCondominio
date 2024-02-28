@@ -15,14 +15,16 @@ public class Reserva {
     private String detalle;
     private Perfil usuario;
     private boolean cancelada;
+    private String areaComun;
     
     // Constructor con parámetros
-    public Reserva(int id, String dia, String detalle, Perfil usuario) {
+    public Reserva(int id, String dia, String detalle, Perfil usuario, String areaComun) {
         this.id = id;
         this.dia = dia;
         this.detalle = detalle;
         this.usuario = usuario;
         this.cancelada = false;
+        this.areaComun = areaComun;
     }
 
     // Método para cancelar la reserva
@@ -74,4 +76,10 @@ public class Reserva {
     public void setUsuario(Perfil usuario) {
         this.usuario = usuario;
     }
+
+    public String getAreaComun() {
+        return areaComun;
+    }
+    
+    
 }
