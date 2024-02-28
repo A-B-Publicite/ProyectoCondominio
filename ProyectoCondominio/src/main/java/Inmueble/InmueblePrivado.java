@@ -1,9 +1,10 @@
 package Inmueble;
 
 import Administracion.Perfil;
+import java.io.*;
 
 
-public abstract class InmueblePrivado{
+public abstract class InmueblePrivado implements Serializable{
     double metrosCuadrados;
     Perfil propietario;
     

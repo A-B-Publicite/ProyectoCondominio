@@ -4,7 +4,11 @@
  */
 package GUI.ResidenteGUI;
 
+import Administracion.Administrador;
+import Administracion.Contrato;
 import Administracion.Residente;
+import BD.BaseDeDatos;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,8 +23,9 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
      */
     public GestionContratosDirectiva(Residente residente) {
         initComponents();
+        llenarCombo();
         this.residente = residente;
-        
+
     }
 
     /**
@@ -94,4 +99,14 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSelectorDeContrato;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+    
+    private void llenarCombo() {
+        Administrador admin = BaseDeDatos.leerAdministrador();
+        ArrayList<Contrato> contratosPorAprobar = admin.getCondominio().getDirectiva().getListaContratosPorApobar();
+        
+        for(Contrato contrato:contratosPorAprobar){
+            cmbSelectorDeContrato.addItem(contrato.getDescripcion());
+        }
+
+    }
 }

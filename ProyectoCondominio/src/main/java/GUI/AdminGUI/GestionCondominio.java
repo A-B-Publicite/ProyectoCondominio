@@ -382,6 +382,7 @@ public class GestionCondominio extends javax.swing.JFrame {
     private void btnAgregarDirectivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDirectivaActionPerformed
 
         administrador.agregarDirectiva(txtCorreoPresidente.getText(), txtCorreoSecretario.getText());
+        BaseDeDatos.escribirAdmin(administrador);
 
     }//GEN-LAST:event_btnAgregarDirectivaActionPerformed
   
