@@ -4,13 +4,14 @@
  */
 package GUI.ResidenteGUI;
 
+import Administracion.Administrador;
 import Administracion.Residente;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.ModuloMueble.GUIMueble;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-
+import BD.*;
 /**
  *
  * @author intel
@@ -24,7 +25,10 @@ public class ResidenteMenu extends javax.swing.JFrame {
      */
     public ResidenteMenu(Residente residente) {
         initComponents();
+        btnGestionarContratos.setVisible(false);
         this.residente = residente;
+        verificarSiEsDeLaDirectiva(residente);
+        
     }
 
     /**
@@ -141,9 +145,8 @@ public class ResidenteMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnGestionarContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarContratosActionPerformed
-        // TODO add your handling code here:
-        //gfsdf
-        //sdfsdf
+        GestionContratosDirectiva gcd = new GestionContratosDirectiva(residente);
+        gcd.setVisible(true);
     }//GEN-LAST:event_btnGestionarContratosActionPerformed
 
     /**
@@ -157,4 +160,12 @@ public class ResidenteMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void verificarSiEsDeLaDirectiva(Residente residente) {
+        Administrador administrador = BaseDeDatos.leerAdministrador();
+        if(administrador.getCondominio().getDirectiva().esParte(residente)){
+            btnGestionarContratos.setVisible(true);
+        }
+        
+    }
 }
