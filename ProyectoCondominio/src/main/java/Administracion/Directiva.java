@@ -66,6 +66,10 @@ public class Directiva implements Serializable{
     public boolean esParte(Residente residente) {
         return residente.equals(presidente) || residente.equals(secretario);
     }
+    
+    public ArrayList<Contrato> getListaContratosPorApobar(){
+        return contratosPorAprobar;
+    }
 
     
 }
