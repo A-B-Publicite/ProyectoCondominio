@@ -27,16 +27,16 @@ public class GUIMueble extends javax.swing.JPanel {
     
     public GUIMueble() {
         initComponents();
-        jTextField2.setEnabled(false);
-        establecerFechaActual();
-        jTextField1.setText(String.valueOf(numeroEntero));
-        
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+//        jTextField2.setEnabled(false);
+//        establecerFechaActual();
+//        jTextField1.setText(String.valueOf(numeroEntero));
+//        
+//        jButton1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent evt) {
+//                jButton1ActionPerformed(evt);
+//            }
+//        });
     }
     
      private void establecerFechaActual() {
@@ -51,13 +51,7 @@ public class GUIMueble extends javax.swing.JPanel {
         jTextField2.setText(fechaActualStr);
     }
      
-     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIMueble().setVisible(true);
-            }
-        });
-    }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
