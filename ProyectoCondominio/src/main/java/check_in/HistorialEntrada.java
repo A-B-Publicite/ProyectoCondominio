@@ -1,10 +1,11 @@
 
 package check_in;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistorialEntrada {
+public class HistorialEntrada implements Serializable{
     private List<RegistroEntrada> registros = new ArrayList<>();
 
     public HistorialEntrada() {
