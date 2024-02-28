@@ -13,6 +13,7 @@ import Comunicacion.Mensaje;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -62,10 +63,17 @@ public class GUIMensaje extends javax.swing.JFrame {
   
     }
    
-    public void llenarObligacion(String titulo, double monto, String nombre, String estado) {
+    public void llenarObligacion(String titulo, double monto, String nombre, String estado) throws IOException, ClassNotFoundException {
         jTextField1.setText(titulo);
         jTextArea1.setText("Estimado " + nombre + " se le recuerda de la manera mas cordial cancelar el monto de $" + monto +
                 "\nde su alicuota que tiene estado: " + estado);
+        for (Residente res : BaseDeDatos.obtenerListaResidente()) {
+            if (res.getNombreApellido()==nombre) {
+                jTextField1.setText(nombre);
+                residenteSeleccionado=res;
+                jComboBox3.setSelectedIndex(1);
+            }
+        }
     }
 
     /**
@@ -291,8 +299,16 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        System.out.println("HOLA");
+        
         try {
             // Crear una nueva instancia de ListaResidente
+            System.out.println("PASO 1");
+            ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
+            for (Residente res : residentes) {
+                System.out.println(res.getNombre());
+            }
+            System.out.println("PASO 2");
             lista = new ResidenteTabla();
             // Hacer visible la nueva ventana
             lista.setVisible(true);
@@ -319,7 +335,7 @@ public class GUIMensaje extends javax.swing.JFrame {
             }
         });
         
-        
+        System.out.println("HOLA");
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
