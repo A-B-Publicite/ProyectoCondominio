@@ -7,7 +7,16 @@ package GUI;
 import Administracion.*;
 import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
+import GUI.MensajeGUI.GUIMensaje;
+import GUI.MensajeGUI.ResidenteTabla;
 import GUI.ResidenteGUI.ResidenteMenu;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -21,7 +30,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
      */
     public AutenticadorMenu() {
         initComponents();
-        registrarAdminBoton.setVisible(false);
+        registrarAdminBoton.setVisible(true);
         verificarAdminCreado();
         this.setVisible(true);
 
@@ -179,12 +188,44 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     AdminMenu adminMenu = new AdminMenu(administrador);
                     adminMenu.setVisible(true);
                     this.setVisible(false);
+                    // Configurar el comportamiento al cerrar la ventana de ListaResidente
+                    adminMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    adminMenu.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            // Se ejecuta cuando el frame se cierra
+                            
+                            // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                            setVisible(true);
+                        }
+                    });
                     break;
                 case "Residente":
-                    Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
-                    ResidenteMenu residenteMenu = new ResidenteMenu(residente);
-                    residenteMenu.setVisible(true);
-                    this.setVisible(false);
+                    ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+                    //Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
+                    
+                    for (Residente res : residentes){
+                        System.out.println("HHH" + res.getCorreo() + "CON "+res.getContrasenia());
+                        System.out.println("COOOO" + correo.getText());
+                        if(correo.getText().equals(res.getCorreo()) && txtContrasena.getText().equals(res.getContrasenia())) {
+                            System.out.println("ENTROO");
+                            ResidenteMenu residenteMenu = new ResidenteMenu(res);
+                            residenteMenu.setVisible(true);
+                            
+                            residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            this.setVisible(false);
+                            
+                            residenteMenu.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    // Se ejecuta cuando el frame se cierra
+
+                                    // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                                    setVisible(true);
+                                }
+                            });
+                        }
+                    }
                     break;
                 case "Guardia":
                     //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
@@ -197,7 +238,8 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         } catch (Exception e) {
             e.getCause();
         }
-
+        
+       
         // Default secuencia de sentencias.
     
 

@@ -101,7 +101,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         jTextField1.setText(titulo);
         jTextArea1.setText("Estimado " + nombre + " se le recuerda de la manera mas cordial cancelar el monto de $" + monto +
                 "\nde su alicuota que tiene estado: " + estado);
-        for (Residente res : BaseDeDatos.obtenerListaResidente()) {
+        for (Residente res : BaseDeDatos.leerLista()) {
             if (res.getNombreApellido()==nombre) {
                 jTextField1.setText(nombre);
                 residenteSeleccionado=res;
@@ -265,27 +265,24 @@ public class GUIMensaje extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
             switch (tipo) {
                 case 0:
-                    try {
-                        if (jComboBox3.getSelectedIndex() == 0) {
-                            mensaje = new Global(origen, BaseDeDatos.obtenerListaResidente());
+                    if (jComboBox3.getSelectedIndex() == 0) {
+                        mensaje = new Global(origen, residentes);
+                        mensaje.setTitulo(jTextField1.getText());
+                        mensaje.setContenido(jTextArea1.getText());
+                        jTextArea1.setText("");
+                        jTextField1.setText("");
+                        mensaje.enviar();
+                    } else {
+                        if (jComboBox3.getSelectedIndex() == 1) {
+                            mensaje = new Directo(origen, residenteSeleccionado);
                             mensaje.setTitulo(jTextField1.getText());
                             mensaje.setContenido(jTextArea1.getText());
                             jTextArea1.setText("");
                             jTextField1.setText("");
                             mensaje.enviar();
-                        } else {
-                            if (jComboBox3.getSelectedIndex() == 1) {
-                                mensaje = new Directo(origen, residenteSeleccionado);
-                                mensaje.setTitulo(jTextField1.getText());
-                                mensaje.setContenido(jTextArea1.getText());
-                                jTextArea1.setText("");
-                                jTextField1.setText("");
-                                mensaje.enviar();
-                            }
                         }
-                    } catch (IOException | ClassNotFoundException ex) {
-                        ex.toString();
                     }
+                    
                 break;
                 case 1:
                     if (jComboBox3.getSelectedIndex() == 0) {
@@ -336,16 +333,8 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        System.out.println("HOLA");
-        
         try {
-            // Crear una nueva instancia de ListaResidente
-            System.out.println("PASO 1");
-            
-            for (Residente res : this.residentes) {
-                System.out.println(res.getNombreApellido());
-            }
-            System.out.println("PASO 2");
+
             lista = new ResidenteTabla(this.residentes);
             // Hacer visible la nueva ventana
             lista.setVisible(true);
@@ -371,8 +360,7 @@ public class GUIMensaje extends javax.swing.JFrame {
                 setVisible(true);
             }
         });
-        
-        System.out.println("HOLA");
+
         
         
     }//GEN-LAST:event_jButton3ActionPerformed

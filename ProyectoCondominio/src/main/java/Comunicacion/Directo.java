@@ -7,13 +7,14 @@ package Comunicacion;
 import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author usuario
  */
-public class Directo extends Mensaje{
+public class Directo extends Mensaje implements Serializable{
     
     int pos;
 
@@ -52,7 +53,7 @@ public class Directo extends Mensaje{
     @Override
     public void enviar() {
         
-        getDestino().getBandejaDeEntrada().recibirMensaje(this);
+        this.getDestino().getBandejaDeEntrada().recibirMensaje(this);
     }
 
     @Override

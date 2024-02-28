@@ -48,17 +48,19 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
     }
 
     
-    public void setListaMensajes(ArrayList<Mensaje> listaMensajes, ArrayList<Residente> resid) throws IOException, ClassNotFoundException {
+    public void setListaMensajes(ArrayList<Mensaje> listaMensajes) throws IOException, ClassNotFoundException {
         
-        this.residentes=resid;
+        
         this.mensajes=listaMensajes;
         modeloTabla2.setRowCount(0);
-        
-        for (Residente res : residentes) {
-            for (ObligacionFinanciera obligaciones : res.getCuenta().getGestorObligaciones().getObligacionesFinancieras()) {
-                modeloTabla2.addRow(new Object[]{obligaciones.getEstado(), obligaciones.getMonto(), res.getNombreApellido()});
+        if (tipo==0) {
+            for (Residente res : residentes) {
+                for (ObligacionFinanciera obligaciones : res.getCuenta().getGestorObligaciones().getObligacionesFinancieras()) {
+                    modeloTabla2.addRow(new Object[]{obligaciones.getEstado(), obligaciones.getMonto(), res.getNombreApellido()});
+                }
             }
-        }        
+        }
+                
         
         modeloTabla.setRowCount(0);
 
@@ -66,7 +68,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         for (Mensaje mensaje : listaMensajes) {
             modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen()});
         }
-        
+        this.setResizable(false);
         switch (tipo) {
             case 0:
                 this.setSize(800,500);
@@ -74,7 +76,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                 jTable2.setVisible(true);
             break;
             case 1:
-                this.setSize(500,500);
+                this.setSize(350,500);
                 jTable1.setVisible(true);
                 jTable2.setVisible(false);
             break;

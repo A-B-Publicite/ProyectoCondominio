@@ -20,7 +20,7 @@ public class BandejaDeEntrada implements Serializable{
     }
 
     public void recibirMensaje(Mensaje mensaje) {
-        listaMensajes.add(mensaje);
+        this.listaMensajes.add(mensaje);
     }
 
     public ArrayList<Mensaje> getListaMensajes() {

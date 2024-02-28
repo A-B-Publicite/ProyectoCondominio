@@ -7,10 +7,15 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import Administracion.Residente;
+import BD.BaseDeDatos;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Global extends Mensaje {
+public class Global extends Mensaje implements Serializable{
 
 
 
@@ -38,6 +43,7 @@ public class Global extends Mensaje {
 
     @Override
     public void enviar() {
+                
         for (Perfil destinatario : getDestinos()) {
             destinatario.getBandejaDeEntrada().recibirMensaje(this);
         }

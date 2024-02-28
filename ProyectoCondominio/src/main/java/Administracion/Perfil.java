@@ -46,6 +46,12 @@ public abstract class Perfil implements Serializable {
         return bandejaDeEntrada;
     }
 
+    public void setBandejaDeEntrada(BandejaDeEntrada bandejaDeEntrada) {
+        this.bandejaDeEntrada = bandejaDeEntrada;
+    }
+    
+    
+
     public String getNombre() {
         return nombre;
     }
