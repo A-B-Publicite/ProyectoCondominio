@@ -46,18 +46,12 @@ public class Directiva implements Serializable{
         return secretario;
     }
 
-    private void solicitarAprobacion(Contrato contrato) {
-        //presidente.darContratoParaAprobar(contrato);
-        //secretario.darContratoParaAprobar(contrato);
-        /*
-        if(!presidente.aprobar(contrato) || !secretario.aprobar(contrato)){
-            System.out.print("No se aprobo el contrato");
-            return;
+    public void actualizarAprobacion(String descripcionContrato) {
+        for (Contrato contrato : contratosAprobados) {
+            if (contrato.compararDescripcion(descripcionContrato)) {
+                contrato.darAprobacion();
+            }
         }
-        
-        System.out.print("Se aprobo el contrato");
-        contratosAprobados.add(contrato);
-*/
     }
 
     
