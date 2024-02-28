@@ -24,7 +24,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         registrarAdminBoton.setVisible(false);
         verificarAdminCreado();
         this.setVisible(true);
-        
+
     }
 
     /**
@@ -169,30 +169,38 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_selectorPerfilComboActionPerformed
 
     private void ingresarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBotonActionPerformed
-        switch ((String) selectorPerfilCombo.getSelectedItem()) { 
-            case "Administrador":   
-                Administrador administrador = BaseDeDatos.leerAdministrador();
-                if(!estaAutenticado(administrador, correo.getText(), txtContrasena.getText())){
-                return;
-                }
-                AdminMenu adminMenu = new AdminMenu(administrador);
-                adminMenu.setVisible(true);
-                this.setVisible(false);
-            case "Residente":
-                Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText() );
-                ResidenteMenu residenteMenu = new ResidenteMenu(residente);
-                this.setVisible(false);
-            case "Guardia":
-                //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
-                //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
-            default:
-                
-                break;
-            
-     // Default secuencia de sentencias.
+        try {
+            switch ((String) selectorPerfilCombo.getSelectedItem()) {
+                case "Administrador":
+                    Administrador administrador = BaseDeDatos.leerAdministrador();
+                    if (!estaAutenticado(administrador, correo.getText(), txtContrasena.getText())) {
+                        return;
+                    }
+                    AdminMenu adminMenu = new AdminMenu(administrador);
+                    adminMenu.setVisible(true);
+                    this.setVisible(false);
+                    break;
+                case "Residente":
+                    Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
+                    ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                    this.setVisible(false);
+                    break;
+                case "Guardia":
+                    //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
+                    //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
+                    break;
+                default:
+
+                    break;
+            }
+        } catch (Exception e) {
+            e.getCause();
         }
-        
-                
+
+        // Default secuencia de sentencias.
+    
+
+
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
     private void registrarAdminBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdminBotonActionPerformed
@@ -224,7 +232,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void verificarAdminCreado() {
-        if(BaseDeDatos.leerAdministrador() == null){
+        if (BaseDeDatos.leerAdministrador() == null) {
             registrarAdminBoton.setVisible(true);
         }
         //registrarAdminBoton.setVisible(false);
@@ -232,9 +240,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
 
     private boolean estaAutenticado(Perfil perfil, String correo, String contrasenia) {
         return perfil.getCorreo().equals(correo) && perfil.getContrasenia().equals(contrasenia);
-            
+
     }
 
-
-    
 }

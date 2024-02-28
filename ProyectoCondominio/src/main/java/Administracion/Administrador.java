@@ -61,7 +61,7 @@ public class Administrador extends Perfil implements Serializable {
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setResidente(residenteNuevo);    
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        
+        enviarResidentesGuardia();
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
     }
 
@@ -118,6 +118,8 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
         validarAutorizacion(autorizacionEntrada);
+        condominio.aniadirAutorizacion(autorizacionEntrada);
+        enviarAutorizacionesGuardia();
         return autorizacionEntrada;
     }
 
@@ -132,5 +134,20 @@ public class Administrador extends Perfil implements Serializable {
     
     public void validarAutorizacion(Autorizacion autorizacion){
         autorizacion.validar();
+    }
+    
+    public void enviarResidentesGuardia(){
+        List<String> residentes = new ArrayList<>();
+
+        for (Residente residente : condominio.obtenerResidentes()) {
+            residentes.add(residente.getNombreApellido());
+        }       
+
+        condominio.getGuardia().setResidentes(residentes);
+    }
+
+    public void enviarAutorizacionesGuardia(){
+        ArrayList<Autorizacion> autorizaciones = condominio.obtenerAutorizaciones();
+        condominio.getGuardia().setAutorizaciones(autorizaciones);
     }
 }
