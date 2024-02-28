@@ -4,26 +4,18 @@
  */
 package GUI.MensajeGUI;
 
-import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
-import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author usuario
  */
-public class ListaResidente extends javax.swing.JFrame {
+public class ResidenteTabla extends javax.swing.JFrame {
 
     ArrayList<Residente> residentes = new ArrayList<>();
     
@@ -31,7 +23,7 @@ public class ListaResidente extends javax.swing.JFrame {
     /**
      * Creates new form ListaResidente
      */
-    public ListaResidente() throws IOException, ClassNotFoundException {
+    public ResidenteTabla() throws IOException, ClassNotFoundException {
         initComponents();
         jTable1.setDefaultEditor(Object.class, null);
         

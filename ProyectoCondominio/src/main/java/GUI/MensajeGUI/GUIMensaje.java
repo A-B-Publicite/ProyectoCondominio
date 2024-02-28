@@ -4,7 +4,6 @@
  */
 package GUI.MensajeGUI;
 
-import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
@@ -13,10 +12,7 @@ import Comunicacion.Global;
 import Comunicacion.Mensaje;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -30,7 +26,7 @@ import javax.swing.JOptionPane;
  */
 public class GUIMensaje extends javax.swing.JFrame {
 
-    ListaResidente lista=null;
+    ResidenteTabla lista=null;
     Perfil origen;
     Residente residenteSeleccionado;
     int tipo;
@@ -298,7 +294,7 @@ public class GUIMensaje extends javax.swing.JFrame {
 
         try {
             // Crear una nueva instancia de ListaResidente
-            lista = new ListaResidente();
+            lista = new ResidenteTabla();
             // Hacer visible la nueva ventana
             lista.setVisible(true);
             // Hacer invisible la ventana actual
