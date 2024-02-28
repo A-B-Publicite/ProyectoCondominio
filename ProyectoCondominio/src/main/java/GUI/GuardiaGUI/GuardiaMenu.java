@@ -43,9 +43,11 @@ public class GuardiaMenu extends javax.swing.JFrame {
 
         btBandejaEntrada = new javax.swing.JButton();
         btRedactarMensaje = new javax.swing.JButton();
-        btRegistrarEntrada = new javax.swing.JButton();
+        btRegistrarEntradaV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btSalir = new javax.swing.JButton();
+        btRegistrarEntradaP = new javax.swing.JButton();
+        btRegistrarEntradaS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,10 +65,10 @@ public class GuardiaMenu extends javax.swing.JFrame {
             }
         });
 
-        btRegistrarEntrada.setText("Registrar entrada");
-        btRegistrarEntrada.addActionListener(new java.awt.event.ActionListener() {
+        btRegistrarEntradaV.setText("Registrar entrada visita");
+        btRegistrarEntradaV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRegistrarEntradaActionPerformed(evt);
+                btRegistrarEntradaVActionPerformed(evt);
             }
         });
 
@@ -79,12 +81,30 @@ public class GuardiaMenu extends javax.swing.JFrame {
             }
         });
 
+        btRegistrarEntradaP.setText("Registrar entrada propia");
+        btRegistrarEntradaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarEntradaPActionPerformed(evt);
+            }
+        });
+
+        btRegistrarEntradaS.setText("Registrar entrada servicio");
+        btRegistrarEntradaS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarEntradaSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btRegistrarEntradaV)
+                    .addComponent(btRegistrarEntradaS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btRedactarMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btBandejaEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -92,30 +112,43 @@ public class GuardiaMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(btRegistrarEntrada))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btSalir)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(25, 25, 25)
+                    .addComponent(btRegistrarEntradaP)
+                    .addContainerGap(219, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(80, 80, 80)
-                .addComponent(btBandejaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btRegistrarEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(btRedactarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(btBandejaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btRegistrarEntradaV, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRedactarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btRegistrarEntradaS, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSalir)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(63, 63, 63)
+                    .addComponent(btRegistrarEntradaP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(192, Short.MAX_VALUE)))
         );
 
         pack();
@@ -153,21 +186,33 @@ public class GuardiaMenu extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_btRedactarMensajeActionPerformed
 
-    private void btRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaActionPerformed
-        CheckInGUI menuRegistro = new CheckInGUI(guardia);
-        menuRegistro.setVisible(true);
-    }//GEN-LAST:event_btRegistrarEntradaActionPerformed
+    private void btRegistrarEntradaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaVActionPerformed
+        RegistrarVisita registroVisita = new RegistrarVisita(guardia);
+        registroVisita.setVisible(true);
+    }//GEN-LAST:event_btRegistrarEntradaVActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
         BaseDeDatos.escribirGuardia(guardia);
         System.exit(0);
     }//GEN-LAST:event_btSalirActionPerformed
+
+    private void btRegistrarEntradaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaPActionPerformed
+        RegistroPropio registroPropio = new RegistroPropio(guardia);
+        registroPropio.setVisible(true);
+    }//GEN-LAST:event_btRegistrarEntradaPActionPerformed
+
+    private void btRegistrarEntradaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaSActionPerformed
+        RegistrarServicio registroServicio = new RegistrarServicio(guardia);
+        registroServicio.setVisible(true);
+    }//GEN-LAST:event_btRegistrarEntradaSActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBandejaEntrada;
     private javax.swing.JButton btRedactarMensaje;
-    private javax.swing.JButton btRegistrarEntrada;
+    private javax.swing.JButton btRegistrarEntradaP;
+    private javax.swing.JButton btRegistrarEntradaS;
+    private javax.swing.JButton btRegistrarEntradaV;
     private javax.swing.JButton btSalir;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
