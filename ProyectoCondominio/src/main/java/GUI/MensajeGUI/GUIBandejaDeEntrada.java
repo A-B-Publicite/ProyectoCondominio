@@ -50,8 +50,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
     
     public void setListaMensajes(ArrayList<Mensaje> listaMensajes) throws IOException, ClassNotFoundException {
         
-        Administrador ad = (Administrador) perf;
-        residentes = ad.getResidentes();
+        residentes = BaseDeDatos.leerAdministrador().getResidentes();
         this.mensajes=listaMensajes;
         modeloTabla2.setRowCount(0);
         if (tipo==0) {
