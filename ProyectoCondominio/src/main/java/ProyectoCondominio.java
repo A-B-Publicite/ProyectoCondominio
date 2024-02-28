@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @author jorman Chuquer, echar la culpa a el si algo sale mal
  */
-public class Main {
+public class ProyectoCondominio {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         AutenticadorMenu menu = new AutenticadorMenu();
