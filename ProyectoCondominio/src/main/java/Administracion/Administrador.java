@@ -141,7 +141,8 @@ public class Administrador extends Perfil implements Serializable {
         List<String> residentes = new ArrayList<>();
 
         for (Residente residente : condominio.obtenerResidentes()) {
-            residentes.add(residente.getNombreApellido());
+            if(residente != null)
+                residentes.add(residente.getNombreApellido());
         }       
 
         condominio.getGuardia().setResidentes(residentes);
