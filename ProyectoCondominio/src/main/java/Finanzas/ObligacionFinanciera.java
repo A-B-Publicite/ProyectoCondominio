@@ -44,8 +44,7 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
 
     public abstract double calcularMonto(double valor);
 
-    public void cambiarEstado(String senial) {
-    }
+    public abstract void cambiarEstado(String senial);
 
     public void setEstado(EstadoObligacion estado) {
         this.estado = estado;

@@ -7,7 +7,7 @@ import java.util.*;
 public class GestorObligaciones implements Serializable {
 
     private final Cuenta cuenta;
-    private double valorInicialAlicuota;
+    private double valorBase;
     private int contadorObligaciones = 1;
     private ArrayList<ObligacionFinanciera> obligacionesFinancieras = new ArrayList<>();
 
@@ -15,25 +15,25 @@ public class GestorObligaciones implements Serializable {
         this.cuenta = cuenta;
     }
 
-    public ObligacionFinanciera aniadirObligacion(double valor, String descripcion, String tipo) {
+    public void aniadirObligacion(double valor, String descripcion, String tipo) {
 
         switch (tipo.toLowerCase(Locale.ROOT)) {
             case "alicuota":
                 if (contadorObligaciones == 1) { // Asumiendo que es la primera obligación añadida
-                    valorInicialAlicuota = valor; // Almacena el valor inicial
+                    valorBase = valor; // Almacena el valor inicial
                 }
                 Alicuota alicuota = new Alicuota(valor, descripcion, String.valueOf(contadorObligaciones++));
                 obligacionesFinancieras.add(alicuota);
                 alicuota.agregarObservador(this);
                 programarSiguienteAlicuota(alicuota, cuenta);
-                return alicuota;
+                break;
             case "multa":
                 ObligacionFinanciera multa = new Multa(valor, descripcion, String.valueOf(contadorObligaciones++));
                 obligacionesFinancieras.add(multa);
-                return multa;
+                break;
 
             default:
-                return null;
+                break;
         }
     }
 
@@ -42,11 +42,11 @@ public class GestorObligaciones implements Serializable {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String descripcion = alicuota.descripcion; // Usa la descripción de la alicuota actual o actualízala según sea necesario
+                String descripcion = alicuota.getDescripcion(); // Usa la descripción de la alicuota actual o actualízala según sea necesario
                 // Utiliza valorInicialAlicuota para la nueva Alicuota
-                aniadirObligacion(valorInicialAlicuota, descripcion, "alicuota");
+                aniadirObligacion(valorBase, descripcion, "alicuota");
             }
-        }, Date.from(alicuota.fechaLimite.atZone(ZoneId.systemDefault()).toInstant()));
+        }, Date.from(alicuota.getFechaLimite().atZone(ZoneId.systemDefault()).toInstant()));
     }
 
     public void crearNuevaAlicuota(ObligacionFinanciera obligacionAtrasada) {
@@ -62,7 +62,6 @@ public class GestorObligaciones implements Serializable {
         for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             if (Objects.equals(obligacionFinanciera.getIdObligacion(), obligacion.getIdObligacion())) {
                 encontrada = obligacionFinanciera;
-                //                obligacionesFinancieras.remove(obligacionFinanciera);
                 break;
             }
         }
@@ -70,7 +69,7 @@ public class GestorObligaciones implements Serializable {
         obligacionesFinancieras.remove(encontrada);
     }
 
-    public ObligacionFinanciera recuperarObligacion(String idObligacion) {
+    public ObligacionFinanciera getObligacion(String idObligacion) {
         for (Finanzas.ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             if (Objects.equals(obligacionFinanciera.getIdObligacion(), idObligacion)) {
                 return obligacionFinanciera;

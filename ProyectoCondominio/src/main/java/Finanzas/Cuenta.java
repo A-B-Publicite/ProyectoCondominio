@@ -90,7 +90,7 @@ public class Cuenta implements Serializable {
     }
 
 
-    public String mostrarRegistros() {
+    public String mostrarPagos() {
         String salida = "";
         for (Pago pago : pagos) {
             salida += pago + "\n"; // Ahora esto imprimirá el formato ajustado de cada pago
@@ -99,7 +99,7 @@ public class Cuenta implements Serializable {
     }
 
     public ObligacionFinanciera recuperarObligacion(String idPago) {
-        return gestorObligaciones.recuperarObligacion(idPago);
+        return gestorObligaciones.getObligacion(idPago);
     }
 
     public String mostrarObligaciones() {

@@ -8,9 +8,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.time.Duration;
 
-
 public class Alicuota extends ObligacionFinanciera implements Serializable {
-    protected LocalDateTime fechaLimite;
+
+    private LocalDateTime fechaLimite;
 
     public Alicuota(double metrosCuadrados, String descripcion, String idObligacion) {
         super(metrosCuadrados, LocalDate.now(), descripcion, idObligacion);
@@ -27,13 +27,17 @@ public class Alicuota extends ObligacionFinanciera implements Serializable {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    if (Alicuota.this.estado instanceof EstadoPendiente) {
+                    if (estado instanceof EstadoPendiente) {
                         cambiarEstado("atrasado");
                         timer.cancel();
                     }
                 }
             }, delay);
         }
+    }
+
+    public LocalDateTime getFechaLimite() {
+        return fechaLimite;
     }
 
     @Override
@@ -44,19 +48,19 @@ public class Alicuota extends ObligacionFinanciera implements Serializable {
     @Override
     public void cambiarEstado(String senial) {
         if ("atrasado".equals(senial)) {
-            this.estado = new EstadoAtrasado(); // Asumiendo que existe esta clase de estado
+            estado = new EstadoAtrasado(); // Asumiendo que existe esta clase de estado
             notificarCambioEstado(this); // Notificar a los observadores sobre el cambio de estado
         }
     }
 
     @Override
     public String toString() {
-        return "[Obligacion N. " + idObligacion +
-                "] | Alicuota = (" +
-                "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")) +
-                ", estado= " + estado +
-                ", monto= " + monto +
-                ", fechaCreacion= " + fechaCreacion +
-                ", descripcion= '" + descripcion + "')";
+        return "[Obligacion N. " + idObligacion
+                + "] | Alicuota = ("
+                + "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
+                + ", estado= " + estado
+                + ", monto= " + monto
+                + ", fechaCreacion= " + fechaCreacion
+                + ", descripcion= '" + descripcion + "')";
     }
 }
