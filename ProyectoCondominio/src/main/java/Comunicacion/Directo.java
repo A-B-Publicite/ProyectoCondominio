@@ -7,10 +7,6 @@ package Comunicacion;
 import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
-import check_in.Autorizacion;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
