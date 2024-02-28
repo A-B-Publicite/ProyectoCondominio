@@ -43,10 +43,27 @@ public class Global extends Mensaje implements Serializable{
 
     @Override
     public void enviar() {
-                
-        for (Perfil destinatario : getDestinos()) {
-            destinatario.getBandejaDeEntrada().recibirMensaje(this);
+        
+        try {
+            ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+            for (Residente res : residentes) {
+                for (Perfil destinatario : getDestinos()) {
+                    if (res.getCorreo().equals(destinatario.getCorreo())) {
+                        destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
+                        destinatario.getBandejaDeEntrada().recibirMensaje(this);
+                        break;
+                    }
+                }
+            }
+            BaseDeDatos.escribirLista(getDestinos());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
         
     }
 
