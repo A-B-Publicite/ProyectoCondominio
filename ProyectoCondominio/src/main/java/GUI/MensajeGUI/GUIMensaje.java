@@ -273,7 +273,9 @@ public class GUIMensaje extends javax.swing.JFrame {
                 break;
                 default:
                     throw new AssertionError();
+
             }
+            JOptionPane.showConfirmDialog(null, "MENSAJE ENVIADO");
             this.dispose();
         }
         
