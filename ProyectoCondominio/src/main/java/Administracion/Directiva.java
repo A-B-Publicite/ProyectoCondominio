@@ -10,12 +10,12 @@ public class Directiva implements Serializable{
     ArrayList<Contrato> contratosPorAprobar;
     
     public Directiva(Administrador administrador){
+        contratosPorAprobar = new ArrayList<Contrato>();
+        contratosAprobados = new ArrayList<Contrato>();
         this.administrador = administrador;
     }
     
     public void agregarDirectiva(Residente presidente, Residente secretario){
-        contratosPorAprobar = new ArrayList<Contrato>();
-        contratosAprobados = new ArrayList<Contrato>();
         this.presidente = presidente;
         this.secretario = secretario;
         presidente.setAprobacion();
