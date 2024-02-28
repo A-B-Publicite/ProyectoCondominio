@@ -1,4 +1,4 @@
-package GUI.ResidenteGUI;
+package GUI.FinanzasGUI;
 
 import Administracion.Residente;
 import Finanzas.Efectivo;

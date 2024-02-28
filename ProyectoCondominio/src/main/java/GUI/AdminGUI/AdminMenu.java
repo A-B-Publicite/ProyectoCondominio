@@ -1,6 +1,7 @@
 
 package GUI.AdminGUI;
 
+import GUI.FinanzasGUI.FinanzasAdministrador;
 import Administracion.*;
 import BD.BaseDeDatos;
 import GUI.MensajeGUI.GUIBandejaDeEntrada;

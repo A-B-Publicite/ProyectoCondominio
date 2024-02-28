@@ -1,7 +1,8 @@
 
-package GUI.AdminGUI;
+package GUI.FinanzasGUI;
 
 import Administracion.Administrador;
+import GUI.AdminGUI.AdminMenu;
 import GUI.AdminGUI.AdminMenu;
 
 public class FinanzasAdministrador extends javax.swing.JFrame {
