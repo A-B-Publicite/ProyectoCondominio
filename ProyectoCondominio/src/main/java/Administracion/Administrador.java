@@ -4,6 +4,7 @@ import Finanzas.Cuenta;
 import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
+import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
 import check_in.Autorizacion;
 import java.io.*;
@@ -150,5 +151,16 @@ public class Administrador extends Perfil implements Serializable {
     public void enviarAutorizacionesGuardia(){
         ArrayList<Autorizacion> autorizaciones = condominio.obtenerAutorizaciones();
         condominio.getGuardia().setAutorizaciones(autorizaciones);
+    }
+    
+    public void enviarEspaciosParqueaderoGuardia(){
+        ArrayList<InmuebleComun> inmuebles = condominio.obtenerInmuebleComun();
+        ArrayList<EspacioDeParqueadero> espacios = new ArrayList<>();
+        for(InmuebleComun inmueble: inmuebles){
+            if(inmueble instanceof EspacioDeParqueadero){
+                espacios.add((EspacioDeParqueadero) inmueble);
+            }
+        }
+        condominio.getGuardia().setEspaciosParqueadero(espacios);
     }
 }

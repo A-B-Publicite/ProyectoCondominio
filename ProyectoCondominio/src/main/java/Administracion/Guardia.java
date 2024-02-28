@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Guardia extends Perfil implements Serializable{
     private List<String> residentes = new ArrayList<>();
+    private List<EspacioDeParqueadero> espaciosParqueadero = new ArrayList<>();
     private List<Autorizacion> autorizaciones = new ArrayList<>();  
     private HistorialEntrada entradasVisitantes = new HistorialEntrada();
     
@@ -86,7 +87,11 @@ public class Guardia extends Perfil implements Serializable{
     
     private EspacioDeParqueadero obtenerEspacioDisponible(){
         EspacioDeParqueadero espacioDisponible = null;
-        //Logica para obtener un espacio disponible
+        for (EspacioDeParqueadero espacio : espaciosParqueadero) {            
+            if (espacio.estaLibre()) {
+                espacioDisponible = espacio;
+            }
+        }    
         return espacioDisponible;
     }
 
@@ -97,4 +102,8 @@ public class Guardia extends Perfil implements Serializable{
     public void setAutorizaciones(List<Autorizacion> autorizaciones) {
         this.autorizaciones = autorizaciones;
     }    
+
+    public void setEspaciosParqueadero(ArrayList<EspacioDeParqueadero> espaciosParqueadero) {
+        this.espaciosParqueadero = espaciosParqueadero;
+    }
 }
