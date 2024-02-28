@@ -8,13 +8,9 @@ import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
 import Comunicacion.Mensaje;
-import Finanzas.GestorObligaciones;
-import Finanzas.ObligacionFinanciera;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
