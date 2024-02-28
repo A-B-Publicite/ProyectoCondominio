@@ -51,6 +51,7 @@ public class Directo extends Mensaje{
     
     @Override
     public void enviar() {
+        
         getDestino().getBandejaDeEntrada().recibirMensaje(this);
     }
 

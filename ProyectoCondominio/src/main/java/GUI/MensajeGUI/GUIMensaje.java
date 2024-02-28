@@ -13,6 +13,7 @@ import Comunicacion.Mensaje;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -291,8 +292,14 @@ public class GUIMensaje extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        
+        
         try {
             // Crear una nueva instancia de ListaResidente
+            ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
+            for (Residente res : residentes) {
+                System.out.println(res.getNombre());
+            }
             lista = new ResidenteTabla();
             // Hacer visible la nueva ventana
             lista.setVisible(true);

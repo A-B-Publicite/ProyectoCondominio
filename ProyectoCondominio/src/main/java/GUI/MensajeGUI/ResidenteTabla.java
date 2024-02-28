@@ -27,7 +27,7 @@ public class ResidenteTabla extends javax.swing.JFrame {
         initComponents();
         jTable1.setDefaultEditor(Object.class, null);
         
-        residentes = BaseDeDatos.obtenerListaResidente();
+        
         
         /*Residente res1 = new Residente("Mateo", "espinoza", true);
         residentes.add(res1);*/
