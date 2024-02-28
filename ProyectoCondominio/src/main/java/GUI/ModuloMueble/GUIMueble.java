@@ -8,6 +8,10 @@ import javax.swing.DefaultComboBoxModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -18,10 +22,21 @@ public class GUIMueble extends javax.swing.JPanel {
     /**
      * Creates new form GUIMueble
      */
+    
+    private int numeroEntero = 0;
+    
     public GUIMueble() {
         initComponents();
         jTextField2.setEnabled(false);
         establecerFechaActual();
+        jTextField1.setText(String.valueOf(numeroEntero));
+        
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
     }
     
      private void establecerFechaActual() {
@@ -113,6 +128,11 @@ public class GUIMueble extends javax.swing.JPanel {
         jLabel7.setText("ID Alquiler");
 
         jTextField1.setEditable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setEditable(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -428,7 +448,29 @@ public class GUIMueble extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        numeroEntero++;
+        jTextField1.setText(String.valueOf(numeroEntero));
+        
+        // Obtener datos de los JTextField y JComboBox
+        String datoTextField1 = jTextField1.getText();
+        String datoTextField2 = jTextField2.getText();
+        String datoTextField4 = jTextField4.getText();
+        String datoTextField5 = jTextField5.getText();
+        String datoComboBox1 = jComboBox1.getSelectedItem().toString();
+
+        // Almacenar datos en un ArrayList
+        ArrayList<String> datos = new ArrayList<>();
+        datos.add(datoTextField1);
+        datos.add(datoTextField2);
+        datos.add(datoTextField4);
+        datos.add(datoTextField5);
+        datos.add(datoComboBox1);
+
+        // Puedes imprimir los datos o realizar otras operaciones con ellos
+        System.out.println("Datos almacenados: " + datos);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
@@ -446,6 +488,10 @@ public class GUIMueble extends javax.swing.JPanel {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

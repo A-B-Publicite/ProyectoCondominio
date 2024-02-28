@@ -1,5 +1,1 @@
-CantidadSillas=48;
-CantidadMesas=12;
-CantidadCarpas=24;
-ListaAlquileres=();
-ListaCancelados=();
+
