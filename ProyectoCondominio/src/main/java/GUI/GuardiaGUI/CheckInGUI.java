@@ -5,6 +5,7 @@
 package GUI.GuardiaGUI;
 
 import Administracion.Guardia;
+import check_in.Visitante;
 
 /**
  *
@@ -34,31 +35,27 @@ public class CheckInGUI extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtPersonInside = new javax.swing.JTextField();
+        txtNombreVisita = new javax.swing.JTextField();
+        txtPersonaAVisitar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtaReason = new javax.swing.JTextArea();
+        txtMotivoVisita = new javax.swing.JTextArea();
         lblVehiculo = new javax.swing.JLabel();
-        rbnYes = new javax.swing.JRadioButton();
+        necesitaEstacionamiento = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         lblDate = new javax.swing.JLabel();
         lblHour = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
-        txtHour = new javax.swing.JTextField();
+        fechaIngresoVisita = new javax.swing.JTextField();
+        horaIngresoVisita = new javax.swing.JTextField();
         btRealizarRegistro = new javax.swing.JButton();
         pnService = new javax.swing.JPanel();
         lblName2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtName2 = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtaReason2 = new javax.swing.JTextArea();
+        txPersonaServicio = new javax.swing.JTextField();
         lblVehiculo2 = new javax.swing.JLabel();
-        rbnYes2 = new javax.swing.JRadioButton();
-        jButton3 = new javax.swing.JButton();
+        checkServicioAuto = new javax.swing.JRadioButton();
         lblDate2 = new javax.swing.JLabel();
         lblHour2 = new javax.swing.JLabel();
-        txtDate2 = new javax.swing.JTextField();
-        txtHour2 = new javax.swing.JTextField();
+        txtFIngresoServicio = new javax.swing.JTextField();
+        txtHIngresoServicio = new javax.swing.JTextField();
         btRealizarRegistroServicio = new javax.swing.JButton();
         pnProfile = new javax.swing.JPanel();
         lblDate1 = new javax.swing.JLabel();
@@ -75,13 +72,13 @@ public class CheckInGUI extends javax.swing.JPanel {
 
         jLabel3.setText("Motivo de visita:");
 
-        txtaReason.setColumns(20);
-        txtaReason.setRows(5);
-        jScrollPane1.setViewportView(txtaReason);
+        txtMotivoVisita.setColumns(20);
+        txtMotivoVisita.setRows(5);
+        jScrollPane1.setViewportView(txtMotivoVisita);
 
         lblVehiculo.setText("¿Tiene vehículo?");
 
-        rbnYes.setText("Si");
+        necesitaEstacionamiento.setText("Si");
 
         jButton1.setText("Solicitar autorización");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -91,6 +88,11 @@ public class CheckInGUI extends javax.swing.JPanel {
         lblHour.setText("Hora ingreso:");
 
         btRealizarRegistro.setText("Realizar registro");
+        btRealizarRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRealizarRegistroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnVisitorLayout = new javax.swing.GroupLayout(pnVisitor);
         pnVisitor.setLayout(pnVisitorLayout);
@@ -98,33 +100,31 @@ public class CheckInGUI extends javax.swing.JPanel {
             pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnVisitorLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(lblName)
+                        .addGroup(pnVisitorLayout.createSequentialGroup()
+                            .addComponent(lblVehiculo)
+                            .addGap(25, 25, 25)))
+                    .addComponent(lblDate)
+                    .addComponent(fechaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtNombreVisita, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                        .addComponent(txtPersonaAVisitar)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(lblHour, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGroup(pnVisitorLayout.createSequentialGroup()
-                        .addComponent(txtDate)
-                        .addGap(55, 55, 55))
-                    .addGroup(pnVisitorLayout.createSequentialGroup()
-                        .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(lblName)
-                                .addGroup(pnVisitorLayout.createSequentialGroup()
-                                    .addComponent(lblVehiculo)
-                                    .addGap(25, 25, 25)))
-                            .addComponent(lblDate))
-                        .addGap(18, 18, 18)))
-                .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                    .addComponent(txtPersonInside)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblHour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtHour)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGap(107, 107, 107)
+                        .addComponent(horaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnVisitorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbnYes)
+                    .addComponent(necesitaEstacionamiento)
                     .addComponent(jButton1))
                 .addGap(132, 132, 132))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnVisitorLayout.createSequentialGroup()
@@ -138,11 +138,11 @@ public class CheckInGUI extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtPersonInside, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPersonaAVisitar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -152,15 +152,15 @@ public class CheckInGUI extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVehiculo)
-                    .addComponent(rbnYes))
+                    .addComponent(necesitaEstacionamiento))
                 .addGap(27, 27, 27)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDate)
                     .addComponent(lblHour, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btRealizarRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addContainerGap())
@@ -170,62 +170,51 @@ public class CheckInGUI extends javax.swing.JPanel {
 
         lblName2.setText("Nombre:");
 
-        jLabel7.setText("Motivo de ingreso:");
-
-        txtaReason2.setColumns(20);
-        txtaReason2.setRows(5);
-        jScrollPane3.setViewportView(txtaReason2);
-
         lblVehiculo2.setText("¿Tiene vehículo?");
 
-        rbnYes2.setText("Si");
-
-        jButton3.setText("Solicitar autorización");
-        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        checkServicioAuto.setText("Si");
 
         lblDate2.setText("Fecha ingreso:");
 
         lblHour2.setText("Hora ingreso:");
 
         btRealizarRegistroServicio.setText("Realizar registro");
+        btRealizarRegistroServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRealizarRegistroServicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnServiceLayout = new javax.swing.GroupLayout(pnService);
         pnService.setLayout(pnServiceLayout);
         pnServiceLayout.setHorizontalGroup(
             pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnServiceLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDate2)
-                    .addGroup(pnServiceLayout.createSequentialGroup()
-                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnServiceLayout.createSequentialGroup()
-                                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(lblName2)
-                                    .addGroup(pnServiceLayout.createSequentialGroup()
-                                        .addComponent(lblVehiculo2)
-                                        .addGap(25, 25, 25)))
-                                .addGap(18, 18, 18))
-                            .addGroup(pnServiceLayout.createSequentialGroup()
-                                .addComponent(txtDate2)
-                                .addGap(55, 55, 55)))
-                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName2, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblHour2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtHour2))
-                            .addGroup(pnServiceLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(rbnYes2)))))
-                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnServiceLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btRealizarRegistroServicio)
-                    .addComponent(jButton3))
+                .addComponent(btRealizarRegistroServicio)
                 .addGap(132, 132, 132))
+            .addGroup(pnServiceLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnServiceLayout.createSequentialGroup()
+                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblVehiculo2)
+                            .addComponent(lblName2)
+                            .addComponent(lblDate2))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txPersonaServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnServiceLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(checkServicioAuto)))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(pnServiceLayout.createSequentialGroup()
+                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtFIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblHour2)
+                                .addComponent(txtHIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnServiceLayout.setVerticalGroup(
             pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,33 +222,21 @@ public class CheckInGUI extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName2)
-                    .addComponent(txtName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnServiceLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel7))
-                    .addGroup(pnServiceLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
+                    .addComponent(txPersonaServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVehiculo2)
-                    .addComponent(rbnYes2))
+                    .addComponent(checkServicioAuto))
+                .addGap(35, 35, 35)
+                .addComponent(lblDate2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(txtFIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblHour2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDate2)
-                    .addComponent(lblHour2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnServiceLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnServiceLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btRealizarRegistroServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(txtHIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(btRealizarRegistroServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -338,19 +315,28 @@ public class CheckInGUI extends javax.swing.JPanel {
         guardia.realizarCheckIn(txtFechaIn.getText(), txtHoraIn.getText());
     }//GEN-LAST:event_btRealizarRegistroPropioActionPerformed
 
+    private void btRealizarRegistroServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarRegistroServicioActionPerformed
+        guardia.registrarEntrada(txPersonaServicio.getText(), txtFIngresoServicio.getText(), txtHIngresoServicio.getText(), checkServicioAuto.isContentAreaFilled());
+    }//GEN-LAST:event_btRealizarRegistroServicioActionPerformed
+
+    private void btRealizarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarRegistroActionPerformed
+        Visitante visitante = new Visitante(txtMotivoVisita.getText(),txtNombreVisita.getText(),txtPersonaAVisitar.getText());
+        guardia.registrarEntrada(visitante, fechaIngresoVisita.getText(), horaIngresoVisita.getText(), necesitaEstacionamiento.isContentAreaFilled());
+    }//GEN-LAST:event_btRealizarRegistroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btRealizarRegistro;
     private javax.swing.JButton btRealizarRegistroPropio;
     private javax.swing.JButton btRealizarRegistroServicio;
+    private javax.swing.JRadioButton checkServicioAuto;
     private javax.swing.JTabbedPane containerCI;
+    private javax.swing.JTextField fechaIngresoVisita;
+    private javax.swing.JTextField horaIngresoVisita;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDate1;
     private javax.swing.JLabel lblDate2;
@@ -361,21 +347,17 @@ public class CheckInGUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblName2;
     private javax.swing.JLabel lblVehiculo;
     private javax.swing.JLabel lblVehiculo2;
+    private javax.swing.JRadioButton necesitaEstacionamiento;
     private javax.swing.JPanel pnProfile;
     private javax.swing.JPanel pnService;
     private javax.swing.JPanel pnVisitor;
-    private javax.swing.JRadioButton rbnYes;
-    private javax.swing.JRadioButton rbnYes2;
-    private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtDate2;
+    private javax.swing.JTextField txPersonaServicio;
+    private javax.swing.JTextField txtFIngresoServicio;
     private javax.swing.JTextField txtFechaIn;
+    private javax.swing.JTextField txtHIngresoServicio;
     private javax.swing.JTextField txtHoraIn;
-    private javax.swing.JTextField txtHour;
-    private javax.swing.JTextField txtHour2;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName2;
-    private javax.swing.JTextField txtPersonInside;
-    private javax.swing.JTextArea txtaReason;
-    private javax.swing.JTextArea txtaReason2;
+    private javax.swing.JTextArea txtMotivoVisita;
+    private javax.swing.JTextField txtNombreVisita;
+    private javax.swing.JTextField txtPersonaAVisitar;
     // End of variables declaration//GEN-END:variables
 }
