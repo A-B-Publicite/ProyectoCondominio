@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BaseDeDatos {
+public class BaseDeDatos implements Serializable{
     public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static Administrador administrador;
     

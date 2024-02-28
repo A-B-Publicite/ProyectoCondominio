@@ -183,6 +183,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 case "Residente":
                     Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
                     ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                    residenteMenu.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Guardia":
