@@ -316,7 +316,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAutorizacionActionPerformed
         CrearAutorizacion crearAutorizacion = new CrearAutorizacion(administrador);
-        crearAutorizacion.setVisible(true);
+        crearAutorizacion.show();
     }//GEN-LAST:event_btnCrearAutorizacionActionPerformed
 
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed

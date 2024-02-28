@@ -231,7 +231,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 case "Guardia":
                     
                     Guardia guardia = BaseDeDatos.leerGuardia();
-                    if(correo.getText().equals(guardia.getCorreo().equalsIgnoreCase(correo.getText())) && txtContrasena.getText().equals(guardia.getContrasenia())) {
+                    if(correo.getText().equals(guardia.getCorreo()) && txtContrasena.getText().equals(guardia.getContrasenia())) {
                             System.out.println("ENTROO");
                             GuardiaMenu guardiaMenu = new GuardiaMenu(guardia);
                             guardiaMenu.setVisible(true);
