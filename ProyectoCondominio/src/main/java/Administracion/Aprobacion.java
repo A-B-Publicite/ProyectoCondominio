@@ -6,12 +6,13 @@ package Administracion;
 
 import java.util.ArrayList;
 import Administracion.Contrato;
+import java.io.Serializable;
 
 /**
  *
  * @author jeanp
  */
-public class Aprobacion {
+public class Aprobacion implements Serializable{
 
     private boolean aprobado = false;
     private Directiva directiva;
