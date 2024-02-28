@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ModuloReservas;
 
 import Inmueble.*;
@@ -50,7 +46,7 @@ public class AdministrarReserva {
                             System.out.println(inmueble.toString());
                             Disponibilidad disponibilidad = new Disponibilidad(inmueble);
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Gimnasio")) {
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Gimnasio");
                                 this.listaReservas.add(nuevaReserva);
                                 return true;
                             }
@@ -66,7 +62,7 @@ public class AdministrarReserva {
                             System.out.println(inmueble.toString());
                             Disponibilidad disponibilidad = new Disponibilidad(inmueble);
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Piscina")) {
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Piscina");
                                 this.listaReservas.add(nuevaReserva);
                                 return true;
                             }
@@ -82,7 +78,23 @@ public class AdministrarReserva {
                             System.out.println(inmueble.toString());
                             Disponibilidad disponibilidad = new Disponibilidad(inmueble);
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Terraza")) {
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Terraza");
+                                this.listaReservas.add(nuevaReserva);
+                                return true;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 4: {
+                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                        System.out.println(inmueble);
+                        // Verificar si el inmueble actual es una instancia de Cancha.
+                        if (inmueble instanceof EspacioDeParqueadero) {
+                            System.out.println(inmueble.toString());
+                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "ParqueaderoComun")) {
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "ParqueaderoComun");
                                 this.listaReservas.add(nuevaReserva);
                                 return true;
                             }
@@ -173,13 +185,7 @@ public class AdministrarReserva {
         return false;
     }
 
-    //System.out.println("La reserva ha sido reprogramada con éxito.");
-    /*boolean disponible = verificarDisponibilidad();
-        if (disponible) {
-            
-        } else {
-            System.out.println("No se puede reprogramar la reserva, las fechas no están disponibles.")*/
-// Método para cancelar una reserva
+    // Método para cancelar una reserva
     public boolean cancelarReserva(int id, Administrador administrador) {
         // Verificar si el inmueble actual es una instancia de Cancha.
         for (Reserva reserva : listaReservas) {
