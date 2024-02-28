@@ -86,7 +86,7 @@ public class Cuenta implements Serializable {
         this.cuentaAdministrador = cuentaAdministrador;
     }
 
-    public String mostrarRegistros() {
+    public String mostrarPagos() {
         String salida = "";
         if (cuentaAdministrador != null) {
             salida += "================  REGISTRO RESIDENTE ==================\n";
@@ -105,8 +105,8 @@ public class Cuenta implements Serializable {
         return salida;
     }
 
-    public ObligacionFinanciera recuperarObligacion(String idPago) {
-        return gestorObligaciones.recuperarObligacion(idPago);
+    public ObligacionFinanciera getObligacion(String idPago) {
+        return gestorObligaciones.getObligacion(idPago);
     }
 
     public String mostrarObligaciones() {
