@@ -4,10 +4,18 @@
  */
 package Administracion;
 
+import java.util.ArrayList;
+import Administracion.Contrato;
 /**
  *
  * @author jeanp
  */
-public class Aprobacion {
+public class AdministracionContrato {
+    private boolean aprobado = false;
+
+    void aprobar(Contrato contrato) {
+        aprobado = true;
+ 
+    }
     
 }
