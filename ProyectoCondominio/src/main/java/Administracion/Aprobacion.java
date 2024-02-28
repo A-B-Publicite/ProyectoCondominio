@@ -13,14 +13,7 @@ import java.io.Serializable;
  * @author jeanp
  */
 public class Aprobacion implements Serializable{
-
-    private boolean aprobado = false;
     private Directiva directiva;
-
-    public void aprobar(Contrato contrato) {
-        aprobado = true;
-
-    }
 
     public void notificarAprobacion(String descripcionContrato) {
         directiva.actualizarAprobacion(descripcionContrato);
