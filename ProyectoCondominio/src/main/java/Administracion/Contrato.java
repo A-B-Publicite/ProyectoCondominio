@@ -62,6 +62,10 @@ public class Contrato implements Serializable {
         }
     }
 
+    boolean estaAprobado() {
+       return aprobacionNumero1 && aprobacionNumero2;
+    }
+
 
     
     

@@ -47,10 +47,19 @@ public class Directiva implements Serializable{
     }
 
     public void actualizarAprobacion(String descripcionContrato) {
-        for (Contrato contrato : contratosAprobados) {
+        Contrato contratoAux = null;
+        for (Contrato  contrato : contratosAprobados) {
             if (contrato.compararDescripcion(descripcionContrato)) {
+                contratoAux = contrato;
                 contrato.darAprobacion();
             }
+        }
+        verificarQueElContratoSeaAprobado(contratoAux);
+    }
+
+    private void verificarQueElContratoSeaAprobado(Contrato contrato) {
+        if(contrato.estaAprobado()){
+            contratosAprobados.add(contrato);
         }
     }
 
