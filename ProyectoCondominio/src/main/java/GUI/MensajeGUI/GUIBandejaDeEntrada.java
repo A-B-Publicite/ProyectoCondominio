@@ -8,9 +8,12 @@ import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
 import Comunicacion.Mensaje;
+import Finanzas.ObligacionFinanciera;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,12 +52,12 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         this.residentes = BaseDeDatos.obtenerListaResidente();
         this.mensajes=listaMensajes;
         modeloTabla2.setRowCount(0);
-        /*
+        
         for (Residente res : residentes) {
             for (ObligacionFinanciera obligaciones : res.getCuenta().getGestorObligaciones().getObligacionesFinancieras()) {
                 modeloTabla2.addRow(new Object[]{obligaciones.getEstado(), obligaciones.getMonto(), res.getNombreApellido()});
             }
-        }        */
+        }        
         
         modeloTabla.setRowCount(0);
 
@@ -223,7 +226,13 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
             if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
                 GUIMensaje guiMen = new GUIMensaje(perf,tipo);
                 guiMen.setVisible(true);
-                guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
+                try {
+                    guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         }
