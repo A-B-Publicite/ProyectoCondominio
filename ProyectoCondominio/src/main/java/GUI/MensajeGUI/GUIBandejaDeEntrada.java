@@ -4,6 +4,7 @@
  */
 package GUI.MensajeGUI;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
@@ -224,7 +225,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
             obligacionSeleccionada = jTable2.getSelectedRow();
             for (Residente res : residentes) {
             if (res.getNombreApellido() == jTable2.getValueAt(obligacionSeleccionada, 2)) {
-                GUIMensaje guiMen = new GUIMensaje(perf,tipo);
+                GUIMensaje guiMen = new GUIMensaje((Administrador) perf,tipo);
                 guiMen.setVisible(true);
                 try {
                     guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString());

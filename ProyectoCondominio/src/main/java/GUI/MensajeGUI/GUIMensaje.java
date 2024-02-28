@@ -4,6 +4,7 @@
  */
 package GUI.MensajeGUI;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
@@ -31,13 +32,15 @@ public class GUIMensaje extends javax.swing.JFrame {
     Perfil origen;
     Residente residenteSeleccionado;
     int tipo;
+    ArrayList<Residente> residentes;
     
     /**
      * Creates new form GUIMensaje
      */
-    public GUIMensaje(Perfil perfil, int tipo) {
+    public GUIMensaje(Administrador administrador, int tipo) {
         initComponents();
-        this.origen = perfil;
+        this.residentes = administrador.getResidentes();
+        this.origen = administrador;
         this.tipo=tipo;
         if (tipo == 1) {
             jLabel4.setText("Administrador");
@@ -62,6 +65,37 @@ public class GUIMensaje extends javax.swing.JFrame {
         jButton1.setVisible(false);
   
     }
+    
+    
+    public GUIMensaje(Residente residente, int tipo) {
+        initComponents();
+        
+        this.origen = residente;
+        this.tipo=tipo;
+        if (tipo == 1) {
+            jLabel4.setText("Administrador");
+            // Obtén el modelo de datos actual del JComboBox
+            DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBox3.getModel();
+
+            // Limpia el modelo actual
+            model.removeAllElements();
+
+            // Agrega las nuevas opciones
+            model.addElement("Administrador");
+            model.addElement("Directo");
+
+            // Repinta el JComboBox para reflejar los cambios
+            jComboBox3.repaint();
+            jComboBox3.setSelectedIndex(-1);
+        } else {
+            jLabel4.setText("TODOS");
+        }
+        jLabel4.setVisible(false);
+        jButton3.setVisible(false);
+        jButton1.setVisible(false);
+  
+    }
+    
    
     public void llenarObligacion(String titulo, double monto, String nombre, String estado) throws IOException, ClassNotFoundException {
         jTextField1.setText(titulo);
@@ -307,12 +341,12 @@ public class GUIMensaje extends javax.swing.JFrame {
         try {
             // Crear una nueva instancia de ListaResidente
             System.out.println("PASO 1");
-            ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
-            for (Residente res : residentes) {
-                System.out.println(res.getNombre());
+            
+            for (Residente res : this.residentes) {
+                System.out.println(res.getNombreApellido());
             }
             System.out.println("PASO 2");
-            lista = new ResidenteTabla();
+            lista = new ResidenteTabla(this.residentes);
             // Hacer visible la nueva ventana
             lista.setVisible(true);
             // Hacer invisible la ventana actual
