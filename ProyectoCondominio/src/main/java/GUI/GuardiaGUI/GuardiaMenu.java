@@ -189,6 +189,7 @@ public class GuardiaMenu extends javax.swing.JFrame {
     private void btRegistrarEntradaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaVActionPerformed
         RegistrarVisita registroVisita = new RegistrarVisita(guardia);
         registroVisita.setVisible(true);
+        System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaVActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
@@ -199,11 +200,13 @@ public class GuardiaMenu extends javax.swing.JFrame {
     private void btRegistrarEntradaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaPActionPerformed
         RegistroPropio registroPropio = new RegistroPropio(guardia);
         registroPropio.setVisible(true);
+        System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaPActionPerformed
 
     private void btRegistrarEntradaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaSActionPerformed
         RegistrarServicio registroServicio = new RegistrarServicio(guardia);
         registroServicio.setVisible(true);
+        System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaSActionPerformed
     
     

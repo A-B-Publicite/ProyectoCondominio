@@ -13,12 +13,15 @@ import static BD.BaseDeDatos.guardia;
  */
 public class RegistrarServicio extends javax.swing.JFrame {
 
+    private final Guardia guardia;
+
     /**
      * Creates new form RegistrarServicio
      * @param guardia
      */
     public RegistrarServicio(Guardia guardia) {
         initComponents();
+        this.guardia = guardia;
     }
 
     /**
@@ -33,20 +36,18 @@ public class RegistrarServicio extends javax.swing.JFrame {
         lblName2 = new javax.swing.JLabel();
         txPersonaServicio = new javax.swing.JTextField();
         lblVehiculo2 = new javax.swing.JLabel();
-        checkServicioAuto = new javax.swing.JRadioButton();
         lblDate2 = new javax.swing.JLabel();
         txtFIngresoServicio = new javax.swing.JTextField();
         lblHour2 = new javax.swing.JLabel();
         txtHIngresoServicio = new javax.swing.JTextField();
         btRealizarRegistroServicio = new javax.swing.JButton();
+        txtQuiereEstacionamiento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblName2.setText("Nombre:");
 
         lblVehiculo2.setText("¿Tiene vehículo?");
-
-        checkServicioAuto.setText("Si");
 
         lblDate2.setText("Fecha ingreso:");
 
@@ -63,32 +64,32 @@ public class RegistrarServicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btRealizarRegistroServicio)
-                        .addGap(86, 86, 86))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblVehiculo2)
-                            .addComponent(lblName2)
-                            .addComponent(lblDate2))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txPersonaServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(checkServicioAuto))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtFIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblHour2)
-                                .addComponent(txtHIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(169, 169, 169)))
-                .addGap(49, 49, 49))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblVehiculo2)
+                                    .addComponent(lblName2)
+                                    .addComponent(lblDate2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txPersonaServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(72, 72, 72)
+                                        .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtFIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblHour2)
+                                    .addComponent(txtHIngresoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btRealizarRegistroServicio)
+                        .addGap(135, 135, 135))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,10 +98,10 @@ public class RegistrarServicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName2)
                     .addComponent(txPersonaServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVehiculo2)
-                    .addComponent(checkServicioAuto))
+                    .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(lblDate2)
                 .addGap(18, 18, 18)
@@ -118,13 +119,16 @@ public class RegistrarServicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRealizarRegistroServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarRegistroServicioActionPerformed
-        guardia.registrarEntrada(txPersonaServicio.getText(), txtFIngresoServicio.getText(), txtHIngresoServicio.getText(), checkServicioAuto.isContentAreaFilled());
+        boolean estacionamiento = false;
+        if(txtQuiereEstacionamiento.getText().equals("SI"))
+            estacionamiento = true;
+        guardia.registrarEntrada(txPersonaServicio.getText(), txtFIngresoServicio.getText(), txtHIngresoServicio.getText(), estacionamiento);
+        System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRealizarRegistroServicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btRealizarRegistroServicio;
-    private javax.swing.JRadioButton checkServicioAuto;
     private javax.swing.JLabel lblDate2;
     private javax.swing.JLabel lblHour2;
     private javax.swing.JLabel lblName2;
@@ -132,5 +136,6 @@ public class RegistrarServicio extends javax.swing.JFrame {
     private javax.swing.JTextField txPersonaServicio;
     private javax.swing.JTextField txtFIngresoServicio;
     private javax.swing.JTextField txtHIngresoServicio;
+    private javax.swing.JTextField txtQuiereEstacionamiento;
     // End of variables declaration//GEN-END:variables
 }
