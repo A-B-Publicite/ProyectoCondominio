@@ -15,7 +15,6 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
     protected String idObligacion;
 
     public ObligacionFinanciera(double valor, LocalDate fechaCreacion, String descripcion, String idObligacion) {
-        //Valor corresponde a m2, valorBaseMulta
         monto = calcularMonto(valor);
         this.fechaCreacion = fechaCreacion;
         estado = new EstadoPendiente(this);
@@ -23,13 +22,7 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
         this.idObligacion = idObligacion;
     }
 
-    public void agregarObservador(GestorObligaciones observador) {
-        observadores.add(observador);
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public abstract double calcularMonto(double valor);
 
     @Override
     public void notificarCambioEstado(ObligacionFinanciera obligacion) {
@@ -38,14 +31,16 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
         }
     }
 
-    public EstadoObligacion getEstado() {
-        return estado;
+    public void agregarObservador(GestorObligaciones observador) {
+        observadores.add(observador);
     }
-
-    public abstract double calcularMonto(double valor);
 
     public void setEstado(EstadoObligacion estado) {
         this.estado = estado;
+    }
+
+    public EstadoObligacion getEstado() {
+        return estado;
     }
 
     public double getMonto() {
@@ -54,6 +49,10 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
 
     public String getIdObligacion() {
         return idObligacion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     @Override
