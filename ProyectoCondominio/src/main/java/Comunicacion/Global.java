@@ -51,9 +51,11 @@ public class Global extends Mensaje implements Serializable{
                     if (res.getCorreo().equals(destinatario.getCorreo())) {
                         destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
                         destinatario.getBandejaDeEntrada().recibirMensaje(this);
+                        
                         break;
                     }
                 }
+                
             }
             BaseDeDatos.escribirLista(getDestinos());
             

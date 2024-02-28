@@ -57,7 +57,7 @@ public class Directo extends Mensaje implements Serializable{
     
     @Override
     public void enviar() {
-        ArrayList<Residente> residentes = null;
+ 
         if (getDestinoAdmin()!= null) {
             Administrador ad =BaseDeDatos.leerAdministrador();
             ad.getBandejaDeEntrada().recibirMensaje(this);  
@@ -65,10 +65,12 @@ public class Directo extends Mensaje implements Serializable{
         } else {
                if (getDestino()!=null) {
                    try {
-                        residentes = BaseDeDatos.leerLista();
+                       System.out.println("ENTRO TRY");
+                        ArrayList<Residente> residentes = BaseDeDatos.leerLista();
                         for (Residente res : residentes) {
                             if (res.getCorreo().equals(getDestino().getCorreo())) {
                                 res.getBandejaDeEntrada().recibirMensaje(this);
+                                
                                 break;
                             }
                         }
@@ -81,6 +83,7 @@ public class Directo extends Mensaje implements Serializable{
 
                }
             }
+        
         
     }
 

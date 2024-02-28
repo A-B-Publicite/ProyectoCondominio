@@ -48,7 +48,7 @@ public class ResidenteTabla extends javax.swing.JFrame {
     public Residente getResidenteSeleccionado() {
         //ArrayList<Residente> residentes = BaseDeDatos.obtenerListaResidente();
 
-        return residentes.get(filaSeleccionada);
+        return this.residentes.get(filaSeleccionada);
     }
     
     
@@ -107,7 +107,7 @@ public class ResidenteTabla extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
-            filaSeleccionada = jTable1.getSelectedRow();
+            this.filaSeleccionada = jTable1.getSelectedRow();
             this.dispose();
         }
         

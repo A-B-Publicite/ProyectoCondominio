@@ -39,7 +39,7 @@ public class GUIMensaje extends javax.swing.JFrame {
      */
     public GUIMensaje(Administrador administrador, int tipo) throws IOException, ClassNotFoundException {
         initComponents();
-        this.residentes = administrador.getResidentes();
+        this.residentes = BaseDeDatos.leerLista();
         this.origen = administrador;
         this.tipo=tipo;
         if (tipo == 1) {
