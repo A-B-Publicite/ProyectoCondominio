@@ -67,42 +67,38 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtDate" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lblVehiculo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="lblDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblVehiculo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fechaIngresoVisita" min="-2" pref="86" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtNombreVisita" pref="178" max="32767" attributes="0"/>
+                              <Component id="txtPersonaAVisitar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lblHour" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
+                              <Component id="horaIngresoVisita" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtName" pref="178" max="32767" attributes="0"/>
-                          <Component id="txtPersonInside" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblHour" max="32767" attributes="0"/>
-                              <Component id="txtHour" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="rbnYes" min="-2" max="-2" attributes="0"/>
+                          <Component id="necesitaEstacionamiento" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
@@ -120,12 +116,12 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreVisita" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPersonInside" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPersonaAVisitar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -137,7 +133,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rbnYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="necesitaEstacionamiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -146,8 +142,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtHour" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fechaIngresoVisita" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="horaIngresoVisita" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btRealizarRegistro" pref="33" max="32767" attributes="0"/>
@@ -172,9 +168,9 @@
                 <Property name="text" type="java.lang.String" value="Motivo de visita:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName">
+            <Component class="javax.swing.JTextField" name="txtNombreVisita">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtPersonInside">
+            <Component class="javax.swing.JTextField" name="txtPersonaAVisitar">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -183,7 +179,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtaReason">
+                <Component class="javax.swing.JTextArea" name="txtMotivoVisita">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -196,7 +192,7 @@
                 <Property name="text" type="java.lang.String" value="&#xbf;Tiene veh&#xed;culo?"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rbnYes">
+            <Component class="javax.swing.JRadioButton" name="necesitaEstacionamiento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Si"/>
               </Properties>
@@ -221,14 +217,17 @@
                 <Property name="text" type="java.lang.String" value="Hora ingreso:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDate">
+            <Component class="javax.swing.JTextField" name="fechaIngresoVisita">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtHour">
+            <Component class="javax.swing.JTextField" name="horaIngresoVisita">
             </Component>
             <Component class="javax.swing.JButton" name="btRealizarRegistro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizar registro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRealizarRegistroActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -244,51 +243,41 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblDate2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblName2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lblVehiculo2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtDate2" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtName2" alignment="0" pref="178" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane3" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblHour2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtHour2" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="rbnYes2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btRealizarRegistroServicio" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btRealizarRegistroServicio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblVehiculo2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblName2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDate2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txPersonaServicio" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Component id="checkServicioAuto" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txtFIngresoServicio" alignment="1" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblHour2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtHIngresoServicio" min="-2" pref="107" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -298,43 +287,23 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txPersonaServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblVehiculo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rbnYes2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkServicioAuto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="lblDate2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFIngresoServicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lblHour2" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblDate2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblHour2" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtDate2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtHour2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="btRealizarRegistroServicio" min="-2" pref="37" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="txtHIngresoServicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="btRealizarRegistroServicio" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -346,46 +315,16 @@
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Motivo de ingreso:"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txPersonaServicio">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName2">
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtaReason2">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="rows" type="int" value="5"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JLabel" name="lblVehiculo2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#xbf;Tiene veh&#xed;culo?"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rbnYes2">
+            <Component class="javax.swing.JRadioButton" name="checkServicioAuto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Si"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Solicitar autorizaci&#xf3;n"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDate2">
@@ -398,14 +337,17 @@
                 <Property name="text" type="java.lang.String" value="Hora ingreso:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDate2">
+            <Component class="javax.swing.JTextField" name="txtFIngresoServicio">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtHour2">
+            <Component class="javax.swing.JTextField" name="txtHIngresoServicio">
             </Component>
             <Component class="javax.swing.JButton" name="btRealizarRegistroServicio">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizar registro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRealizarRegistroServicioActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
