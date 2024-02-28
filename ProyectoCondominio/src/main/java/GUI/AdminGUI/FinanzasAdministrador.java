@@ -115,7 +115,7 @@ public class FinanzasAdministrador extends javax.swing.JFrame {
 
     private void btnMostrarListaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarListaPagosActionPerformed
         lblSaldoPagos.setText(String.valueOf(administrador.getCuenta().getSaldo()));
-        jTAListaPagos.setText(administrador.getCuenta().mostrarRegistros());
+        jTAListaPagos.setText(administrador.getCuenta().mostrarPagos());
     }//GEN-LAST:event_btnMostrarListaPagosActionPerformed
 
   

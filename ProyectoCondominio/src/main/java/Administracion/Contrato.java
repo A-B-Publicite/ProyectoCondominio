@@ -19,8 +19,7 @@ public class Contrato implements Serializable {
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        
-        
+
     }
 
     public void iniciar() {

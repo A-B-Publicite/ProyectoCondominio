@@ -383,7 +383,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVisualizarObligacionesActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().recuperarObligacion(txtIDObligacion.getText());
+        ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(txtIDObligacion.getText());
         if (obligacionAPagar != null) {
             residente.pagar(obligacionAPagar);
             lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
@@ -462,7 +462,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
 
     private void btnMostrarListaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarListaPagosActionPerformed
         lblSaldoPagos.setText(String.valueOf(residente.getCuenta().getSaldo()));
-        jTAListaPagos.setText(residente.getCuenta().mostrarRegistros());
+        jTAListaPagos.setText(residente.getCuenta().mostrarPagos());
     }//GEN-LAST:event_btnMostrarListaPagosActionPerformed
 
     public void limpiarDatosObligaciones() {
