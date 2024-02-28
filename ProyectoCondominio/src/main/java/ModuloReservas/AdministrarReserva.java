@@ -2,6 +2,7 @@ package ModuloReservas;
 
 import Inmueble.*;
 import Administracion.*;
+import java.io.Serializable;
 import java.util.*;
 import java.util.Random;
 
@@ -9,7 +10,7 @@ import java.util.Random;
  *
  * @author Grupo 4
  */
-public class AdministrarReserva {
+public class AdministrarReserva implements Serializable{
 
     ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 
