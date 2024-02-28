@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BaseDeDatos {
-    public static ArrayList<Residente> residentes;
+    public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static Administrador administrador;
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
