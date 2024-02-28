@@ -51,27 +51,26 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblAprobar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAutorizador" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAutorizado" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblFechaInicio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblFechaFin" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="rbnYes" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="rbnNo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="txtAutorizador" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtAutorizador" alignment="0" pref="98" max="32767" attributes="0"/>
                       <Component id="txtAutorizado" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtDateIn" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtDateOut" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtHour" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btCrearAutorizacion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,13 +102,9 @@
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtHour" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblAprobar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbnYes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbnNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <Component id="btCrearAutorizacion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,21 +135,6 @@
             <Property name="text" type="java.lang.String" value="Fecha de fin:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblAprobar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Aprobar ingreso:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rbnYes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Si"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rbnNo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="No"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtAutorizador">
         </Component>
         <Component class="javax.swing.JTextField" name="txtAutorizado">
@@ -164,6 +144,11 @@
         <Component class="javax.swing.JTextField" name="txtDateOut">
         </Component>
         <Component class="javax.swing.JTextField" name="txtHour">
+        </Component>
+        <Component class="javax.swing.JButton" name="btCrearAutorizacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Crear autorizacion"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
