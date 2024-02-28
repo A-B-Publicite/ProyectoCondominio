@@ -14,10 +14,6 @@ public class Alquiler {
     private Date fechaRegistro;
     private Mueble mueble; 
 
-    public Alquiler() {
-        
-    }
-
     public Alquiler(int idReserva, String diaInicio, String diaFin, int cantidadDias, double montoTotal, Date fechaRegistro, Mueble mueble) {
       
         this.diaInicio = diaInicio;
