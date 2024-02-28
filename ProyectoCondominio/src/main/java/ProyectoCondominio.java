@@ -4,7 +4,7 @@ import Comunicacion.*;
 import Finanzas.*;
 import GUI.AutenticadorMenu;
 import Inmueble.*;
-import ModuloReservas.MenuR;
+//import ModuloReservas.MenuR;
 import check_in.*;
 import java.io.*;
 import java.util.*;

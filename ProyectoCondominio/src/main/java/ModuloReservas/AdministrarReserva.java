@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ModuloReservas;
-import Inmueble.InmuebleComun;
-import Administracion.Perfil;
+import Inmueble.*;
+import Administracion.*;
 import java.util.*;
 import java.util.Random;
 /**
@@ -12,17 +12,53 @@ import java.util.Random;
  * @author Grupo 4
  */
 
-//hola amigos 
 public class AdministrarReserva {
-
+    
+    ArrayList <Reserva> listaReservas = new ArrayList<Reserva>();
+   
     // Método para realizar una reserva
-    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Perfil usuario) {
-        if (inmuebleComun.consultarDiasDisponibles().contains("Lunes") ) {
-            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), "Lunes", detalle, usuario); 
-            inmuebleComun.agregarReserva(nuevaReserva); // Agrega la reserva también a la Arraylista de reservas del área común
-            return nuevaReserva;
-        } else {
-            return null;  // No se puede realizar la reserva debido a un conflicto
+    public boolean realizarReserva(String detalleReserva, Administrador usuario, int opcionReserva, String diaReserva, String correo) {        
+        /*System.out.println("""
+    public Reserva realizarReserva(InmuebleComun inmuebleComun, String detalle, Administrador usuario) {
+        int opcionReserva;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("""
+                               Opciones:
+                               1. Cancha
+                               2. Gimnasio
+                               3. Espacio de parqueadero
+                               4. Piscina
+                               5. Terraza
+                               0. Salir
+                               """);*/
+        Residente residente = usuario.obtenerResidentePorCorreo(correo);
+        /*if(residente == null){
+            return false;
+        }*/
+        System.out.println(opcionReserva);
+        switch(opcionReserva){
+            case 0:  {
+                System.out.println("Ingrese el dia de la reserva: ");
+                for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                    System.out.println(inmueble);
+// Verificar si el inmueble actual es una instancia de Cancha.
+                    if (inmueble instanceof Cancha) {
+                        System.out.println(inmueble.toString());
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if(disponibilidad.verificarDisponibilidad(diaReserva)){
+                            System.out.println("Ingrese el detalle de la reserva: ");
+                            Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, usuario); 
+                            this.listaReservas.add(nuevaReserva);
+                            return true;
+                        }
+                    }
+                }    
+            }
+            default:{
+                System.out.println("Caso no existe");
+                return false; 
+            }
         }
     }
 

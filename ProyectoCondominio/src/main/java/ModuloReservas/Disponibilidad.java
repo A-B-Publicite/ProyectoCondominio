@@ -13,18 +13,16 @@ import java.util.*;
  */
 public class Disponibilidad {
     private InmuebleComun areaComun;
-    private String dia;
 
     // Constructor
-    public Disponibilidad(InmuebleComun areaComun, String Dia) {
+    public Disponibilidad(InmuebleComun areaComun) {
         this.areaComun = areaComun;
-        this.dia = dia;
     }
 
     // Método para verificar la disponibilidad
     public boolean verificarDisponibilidad(String dia) {
         ArrayList<String> reservas = this.areaComun.consultarDiasDisponibles();
-        if (reservas.contains(dia)) {
+        if (!reservas.contains(dia)) {
             return false;  // Hay un conflicto de reserva
             }
         return true;  // No hay conflictos, está disponible
@@ -41,14 +39,6 @@ public class Disponibilidad {
     }
 
     // Getters y setters
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(String Dia) {
-        this.dia = dia;
-    }
-
     public ArrayList<Reserva> getListaReservas() {
         return this.areaComun.obtenerReservas();
     }
