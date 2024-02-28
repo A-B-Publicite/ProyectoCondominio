@@ -3,7 +3,7 @@ package ModuloMueble;
 import java.time.LocalDate;
 
 public class Mueble {
-	public String tipo;
+    public String tipo;
     public int cantidad;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
