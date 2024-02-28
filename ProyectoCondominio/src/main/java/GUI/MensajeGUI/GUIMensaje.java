@@ -228,6 +228,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         if (jTextField1.getText().isBlank() || jTextArea1.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Por Favor Llene todos los campos");
         } else {
+            JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
             switch (tipo) {
                 case 0:
                     try {
@@ -275,7 +276,7 @@ public class GUIMensaje extends javax.swing.JFrame {
                     throw new AssertionError();
 
             }
-            JOptionPane.showConfirmDialog(null, "MENSAJE ENVIADO");
+            
             this.dispose();
         }
         
