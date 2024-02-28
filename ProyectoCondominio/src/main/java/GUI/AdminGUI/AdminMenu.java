@@ -283,13 +283,15 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearAutorizacionActionPerformed
 
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
-        GUIMueble guiMueble = new GUIMueble();
-    
-        // Hacer visible la nueva GUI
-        guiMueble.setVisible(true);
-
-        // Opcional: Puedes configurar el comportamiento al cerrar la nueva GUI si es necesario
-        guiMueble.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        GUIMueble guiMueble = new GUIMueble();
+//    
+//        // Hacer visible la nueva GUI
+//        guiMueble.setVisible(true);
+//
+//        // Opcional: Puedes configurar el comportamiento al cerrar la nueva GUI si es necesario
+//        guiMueble.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+          MenuReservas menRes = new MenuReservas(administrador);
+        menRes.setVisible(true);
     }//GEN-LAST:event_btnGestionReservas1ActionPerformed
 
     /**
