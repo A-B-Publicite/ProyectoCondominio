@@ -97,17 +97,15 @@ public class GUIMensaje extends javax.swing.JFrame {
     }
     
    
-    public void llenarObligacion(String titulo, double monto, String nombre, String estado) throws IOException, ClassNotFoundException {
+    public void llenarObligacion(String titulo, double monto, String nombre, String estado, Residente resi) throws IOException, ClassNotFoundException {
+        jComboBox3.setSelectedIndex(1);
+        jButton3.setText(nombre);
+        this.residenteSeleccionado=resi;
         jTextField1.setText(titulo);
-        jTextArea1.setText("Estimado " + nombre + " se le recuerda de la manera mas cordial cancelar el monto de $" + monto +
+        jTextArea1.setText("Estimado " + nombre + "\n se le recuerda de la manera mas cordial \ncancelar el monto de $" + monto +
                 "\nde su alicuota que tiene estado: " + estado);
-        for (Residente res : BaseDeDatos.leerLista()) {
-            if (res.getNombreApellido()==nombre) {
-                jTextField1.setText(nombre);
-                residenteSeleccionado=res;
-                jComboBox3.setSelectedIndex(1);
-            }
-        }
+        
+        
     }
 
     /**
@@ -274,7 +272,9 @@ public class GUIMensaje extends javax.swing.JFrame {
                         mensaje.enviar();
                     } else {
                         if (jComboBox3.getSelectedIndex() == 1) {
-                            mensaje = new Directo(origen, residenteSeleccionado);
+                            System.out.println("INDICE 1");
+                            mensaje = new Directo(origen, this.residenteSeleccionado);
+                            System.out.println("SE CREO EL DIRECTO");
                             mensaje.setTitulo(jTextField1.getText());
                             mensaje.setContenido(jTextArea1.getText());
                             jTextArea1.setText("");
