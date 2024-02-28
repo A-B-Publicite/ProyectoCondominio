@@ -7,8 +7,13 @@ package Comunicacion;
 import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
+import BD.BaseDeDatos;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,8 +57,33 @@ public class Directo extends Mensaje implements Serializable{
     
     @Override
     public void enviar() {
+        if (getDestinoAdmin()!= null) {
+            Administrador ad =BaseDeDatos.leerAdministrador();
+            ad.getBandejaDeEntrada().recibirMensaje(this);  
+            BaseDeDatos.escribirAdmin(ad);
+        } else {
+               if (getDestino()!=null) {
+                   try {
+                        ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+                        for (Residente res : residentes) {
+                            if (res.getCorreo().equals(getDestino().getCorreo())) {
+                                res.getBandejaDeEntrada().recibirMensaje(this);
+                                break;
+                            }
+                        }
+                        BaseDeDatos.escribirLista(residentes);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
+                    this.getDestino().getBandejaDeEntrada().recibirMensaje(this);
+               }
+            }
         
-        this.getDestino().getBandejaDeEntrada().recibirMensaje(this);
     }
 
     @Override

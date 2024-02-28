@@ -64,6 +64,10 @@ public abstract class Mensaje implements Serializable{
         return destino;
     }
 
+    public Administrador getDestinoAdmin() {
+        return destinoAdmin;
+    }
+
     
     public void setTitulo(String titulo) {
         this.titulo = titulo;
