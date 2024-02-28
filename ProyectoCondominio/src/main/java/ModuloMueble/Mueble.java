@@ -1,4 +1,3 @@
-
 package ModuloMueble;
 import java.time.LocalDate;
 
@@ -48,6 +47,4 @@ public class Mueble {
     public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
-
-
 }
