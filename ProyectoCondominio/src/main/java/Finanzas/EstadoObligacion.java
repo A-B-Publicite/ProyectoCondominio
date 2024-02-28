@@ -1,5 +1,10 @@
 package Finanzas;
 
-public interface EstadoObligacion  {
-    abstract void cambiarEstado(ObligacionFinanciera obligacionFinanciera, String senial);
+public abstract class EstadoObligacion {
+
+    protected ObligacionFinanciera obligacionFinanciera;
+
+    public abstract void cambiarACompletado();
+
+    public abstract void cambiarAAtrasado();
 }

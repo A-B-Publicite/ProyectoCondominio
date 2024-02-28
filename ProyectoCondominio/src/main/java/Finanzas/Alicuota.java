@@ -1,6 +1,5 @@
 package Finanzas;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,8 +7,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.time.Duration;
 
+public class Alicuota extends ObligacionFinanciera {
 
-public class Alicuota extends ObligacionFinanciera implements Serializable {
     protected LocalDateTime fechaLimite;
 
     public Alicuota(double metrosCuadrados, String descripcion, String idObligacion) {
@@ -28,7 +27,8 @@ public class Alicuota extends ObligacionFinanciera implements Serializable {
                 @Override
                 public void run() {
                     if (Alicuota.this.estado instanceof EstadoPendiente) {
-                        cambiarEstado("atrasado");
+                        estado.cambiarAAtrasado();
+                        notificarCambioEstado(Alicuota.this);
                         timer.cancel();
                     }
                 }
@@ -38,25 +38,17 @@ public class Alicuota extends ObligacionFinanciera implements Serializable {
 
     @Override
     public double calcularMonto(double metrosCuadrados) {
-        return metrosCuadrados * 0.25;
-    }
-
-    @Override
-    public void cambiarEstado(String senial) {
-        if ("atrasado".equals(senial)) {
-            this.estado = new EstadoAtrasado(); // Asumiendo que existe esta clase de estado
-            notificarCambioEstado(this); // Notificar a los observadores sobre el cambio de estado
-        }
+        return metrosCuadrados * 0.35;
     }
 
     @Override
     public String toString() {
-        return "[Obligacion N. " + idObligacion +
-                "] | Alicuota = (" +
-                "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")) +
-                ", estado= " + estado +
-                ", monto= " + monto +
-                ", fechaCreacion= " + fechaCreacion +
-                ", descripcion= '" + descripcion + "')";
+        return "[Obligacion N. " + idObligacion
+                + "] | Alicuota = ("
+                + "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
+                + ", estado= " + estado
+                + ", monto= " + monto
+                + ", fechaCreacion= " + fechaCreacion
+                + ", descripcion= '" + descripcion + "')";
     }
 }

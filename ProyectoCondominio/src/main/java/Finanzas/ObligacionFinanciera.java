@@ -18,7 +18,7 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
         //Valor corresponde a m2, valorBaseMulta
         monto = calcularMonto(valor);
         this.fechaCreacion = fechaCreacion;
-        estado = new EstadoPendiente();
+        estado = new EstadoPendiente(this);
         this.descripcion = descripcion;
         this.idObligacion = idObligacion;
     }
@@ -43,9 +43,6 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
     }
 
     public abstract double calcularMonto(double valor);
-
-    public void cambiarEstado(String senial) {
-    }
 
     public void setEstado(EstadoObligacion estado) {
         this.estado = estado;
