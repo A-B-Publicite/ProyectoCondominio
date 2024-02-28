@@ -24,6 +24,7 @@ public class GestionContrato extends javax.swing.JFrame {
     public GestionContrato(Administrador administrador) {
         initComponents();
         this.administrador = administrador;
+        rellenarcmbSelectorDeContrato();
     }
 
     /**
@@ -241,10 +242,13 @@ public class GestionContrato extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarcmbSelectorDeContrato() {
-        ArrayList<Contrato> contratos = administrador.getContratos();
+    ArrayList<Contrato> contratos = administrador.getContratos();
+    if (contratos != null) {
         for(Contrato contrato : contratos){
             cmbSelectorDeCOntrato.addItem(contrato.getDescripcion());
-            
         }
+    } else {
+        System.out.println("La lista de contratos es nula.");
     }
+}
 }
