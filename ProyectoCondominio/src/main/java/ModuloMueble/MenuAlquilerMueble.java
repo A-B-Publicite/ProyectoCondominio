@@ -25,7 +25,7 @@ public class MenuAlquilerMueble {
 	}
         
         public boolean realizarReserva(int ID, String DInicio, String diaReserva, String mueble, int cantidad) throws ParseException {
-           
+           /*
             Mueble nuevoMueble = null;
             
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
@@ -245,5 +245,8 @@ public class MenuAlquilerMueble {
         }
         
         return objetoleido;
+*/
+           return false;
     }
+        
 }

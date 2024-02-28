@@ -6,7 +6,4 @@ public class Silla extends Mueble{
         super("Silla", cantidad, fechaInicio, fechaFinal);
     }
 
-    Silla(int cantidad, Date fechaInicio, Date fechaFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

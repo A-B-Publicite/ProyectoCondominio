@@ -8,7 +8,7 @@ public class Mueble {
     private LocalDate fechaFinal;
     
     // Constructor
-    public Mueble(String tipo, int cantidad,LocalDate fechaInicio, LocalDate fechaFinal) {
+    public Mueble(String tipo, int cantidad, LocalDate fechaInicio, LocalDate fechaFinal) {
     	 this.tipo = tipo;
          this.cantidad = cantidad;
          this.fechaInicio = fechaInicio;

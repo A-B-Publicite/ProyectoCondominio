@@ -235,7 +235,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                             System.out.println("ENTROO");
                             GuardiaMenu guardiaMenu = new GuardiaMenu(guardia);
                             guardiaMenu.setVisible(true);
-                            guardiaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            //guardiaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                             this.setVisible(false);
                             
                             guardiaMenu.addWindowListener(new WindowAdapter() {
