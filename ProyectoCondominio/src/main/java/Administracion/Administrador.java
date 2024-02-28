@@ -62,7 +62,6 @@ public class Administrador extends Perfil implements Serializable {
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setResidente(residenteNuevo);    
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        enviarResidentesGuardia();
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
     }
 
@@ -121,8 +120,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
         validarAutorizacion(autorizacionEntrada);
-        condominio.aniadirAutorizacion(autorizacionEntrada);
-        enviarAutorizacionesGuardia();
+        condominio.aniadirAutorizacion(autorizacionEntrada);        
         return autorizacionEntrada;
     }
 

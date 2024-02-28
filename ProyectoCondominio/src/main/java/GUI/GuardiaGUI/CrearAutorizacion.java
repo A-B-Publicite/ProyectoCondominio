@@ -127,6 +127,7 @@ public class CrearAutorizacion extends javax.swing.JPanel {
     private void btCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCrearAutorizacionActionPerformed
         txtAutorizador.setText(administrador.getNombreApellido());
         administrador.crearAutorizacion(txtAutorizado.getText(), txtDateIn.getText(), txtDateOut.getText());
+        administrador.enviarAutorizacionesGuardia();
     }//GEN-LAST:event_btCrearAutorizacionActionPerformed
 
 
