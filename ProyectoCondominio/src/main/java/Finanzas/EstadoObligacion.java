@@ -1,6 +1,8 @@
 package Finanzas;
 
-public abstract class EstadoObligacion {
+import java.io.Serializable;
+
+public abstract class EstadoObligacion implements Serializable {
 
     protected ObligacionFinanciera obligacionFinanciera;
 
