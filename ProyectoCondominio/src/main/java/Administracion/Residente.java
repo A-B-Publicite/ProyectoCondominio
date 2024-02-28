@@ -69,12 +69,13 @@ public class Residente extends Perfil implements Serializable {
     }
 
     public void setAprobacion() {
-        aprobacionDeContrato = new AdministracionContrato();
+        aprobacionDeContrato = new Aprobacion();
     }
 
     
-    public void aprobar(Contrato contrato){
-        aprobacionDeContrato.aprobar(contrato);
+    public void aprobar(String descripcionContrato){
+        aprobacionDeContrato.notificarAprobacion(descripcionContrato);
+        
     }
 
 

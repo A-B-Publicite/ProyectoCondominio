@@ -6,16 +6,23 @@ package Administracion;
 
 import java.util.ArrayList;
 import Administracion.Contrato;
+
 /**
  *
  * @author jeanp
  */
-public class AdministracionContrato {
-    private boolean aprobado = false;
+public class Aprobacion {
 
-    void aprobar(Contrato contrato) {
+    private boolean aprobado = false;
+    private Directiva directiva;
+
+    public void aprobar(Contrato contrato) {
         aprobado = true;
- 
+
     }
-    
+
+    public void notificarAprobacion(String descripcionContrato) {
+        directiva.actualizarAprobacion(descripcionContrato);
+    }
+
 }

@@ -11,6 +11,8 @@ public class Contrato implements Serializable {
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
+    private boolean aprobacionNumero1;
+    private boolean aprobacionNumero2;
     
 
     public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
@@ -19,6 +21,8 @@ public class Contrato implements Serializable {
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.aprobacionNumero1 = false;
+        this.aprobacionNumero2 = false;
 
     }
 
@@ -48,6 +52,18 @@ public class Contrato implements Serializable {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    void darAprobacion() {
+        if(!aprobacionNumero1){
+            aprobacionNumero1 = true;
+        } else {
+            aprobacionNumero2 = true;
+        }
+    }
+
+    boolean estaAprobado() {
+       return aprobacionNumero1 && aprobacionNumero2;
     }
 
 
