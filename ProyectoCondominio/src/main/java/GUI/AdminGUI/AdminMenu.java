@@ -9,6 +9,7 @@ import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.ReservasGUI.MenuReservas;
 import GUI.MensajeGUI.ResidenteTabla;
+import GUI.ModuloMueble.Alquiler;
 import GUI.ModuloMueble.GUIMueble;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -319,15 +320,12 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearAutorizacionActionPerformed
 
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
-//        GUIMueble guiMueble = new GUIMueble();
-//    
-//        // Hacer visible la nueva GUI
-//        guiMueble.setVisible(true);
-//
-//        // Opcional: Puedes configurar el comportamiento al cerrar la nueva GUI si es necesario
-//        guiMueble.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-          MenuReservas menRes = new MenuReservas(administrador);
-        menRes.setVisible(true);
+
+        
+        Alquiler a = new Alquiler();
+        a.setVisible(true);
+        
+     
     }//GEN-LAST:event_btnGestionReservas1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
