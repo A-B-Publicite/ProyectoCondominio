@@ -3,7 +3,7 @@ package Finanzas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cuenta implements Serializable {
+public class Cuenta implements Serializable{
 
     private ArrayList<Pago> pagos = new ArrayList<>();
     private ArrayList<Recarga> recargas = new ArrayList<>();
@@ -11,6 +11,7 @@ public class Cuenta implements Serializable {
     private int contadorRecargas = 1;
     private Cuenta cuentaAdministrador;
     private GestorObligaciones gestorObligaciones;
+    
 
     public Cuenta() {
         gestorObligaciones = new GestorObligaciones(this);

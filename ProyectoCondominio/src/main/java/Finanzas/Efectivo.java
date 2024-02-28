@@ -1,6 +1,8 @@
 package Finanzas;
 
-public class Efectivo extends MetodoRecarga {
+import java.io.Serializable;
+
+public class Efectivo extends MetodoRecarga implements Serializable{
 
     public Efectivo() {
     }

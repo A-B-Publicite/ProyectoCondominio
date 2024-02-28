@@ -1,5 +1,6 @@
 package Finanzas;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.time.Duration;
 
-public class Alicuota extends ObligacionFinanciera {
+public class Alicuota extends ObligacionFinanciera implements Serializable{
 
     protected LocalDateTime fechaLimite;
 

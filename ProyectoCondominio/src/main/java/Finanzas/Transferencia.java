@@ -1,6 +1,8 @@
 package Finanzas;
 
-public class Transferencia extends MetodoRecarga  {
+import java.io.Serializable;
+
+public class Transferencia extends MetodoRecarga  implements Serializable{
     private  String numeroCuentaOrigen;
     private final String numeroCuentaDestino;
 
