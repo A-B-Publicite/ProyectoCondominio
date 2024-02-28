@@ -99,11 +99,21 @@ public class MenuAlquilerMueble {
 		LocalDate fechaFinal = fechaInicio.plusDays(diasReserva);
 
 		fechaFinal = fechaFinal.plusDays(-1);
+		Mueble nuevoMueble = null;
+		switch (tipoMueble) {
+		case "Silla":
+			nuevoMueble = new Silla(cantidad, fechaInicio, fechaFinal);
+			break;
+		case "Mesa":
+			nuevoMueble = new Mesa(cantidad, fechaInicio, fechaFinal);
+			break;
+		case "Carpa":
+			nuevoMueble = new Carpa(cantidad, fechaInicio, fechaFinal);
+			break;
+		}
 
-		Mueble nuevoMueble = new Mueble(tipoMueble, cantidad, fechaInicio, fechaFinal);
 		mueblesAlquilados.put(tipoMueble, nuevoMueble);
 		mueblesDisponibles.put(tipoMueble, mueblesDisponibles.get(tipoMueble) - cantidad);
-
 		System.out.println("Ha alquilado " + cantidad + " " + tipoMueble + "(s) desde el " + fechaInicio + " hasta el "
 				+ fechaFinal + ".");
 	}
