@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class EstadoPendiente extends EstadoObligacion implements Serializable {
 
     public EstadoPendiente(ObligacionFinanciera obligacionFinanciera) {
-        this.obligacionFinanciera = obligacionFinanciera;
-    }
 
+        super(obligacionFinanciera);
+    }
 
     @Override
     public String toString() {
@@ -16,12 +16,12 @@ public class EstadoPendiente extends EstadoObligacion implements Serializable {
 
     @Override
     public void cambiarACompletado() {
-        obligacionFinanciera.setEstado(new EstadoCompletado());
+        obligacionFinanciera.setEstado(new EstadoCompletado(obligacionFinanciera));
     }
 
     @Override
     public void cambiarAAtrasado() {
-        obligacionFinanciera.setEstado(new EstadoAtrasado());
+        obligacionFinanciera.setEstado(new EstadoAtrasado(obligacionFinanciera));
 
     }
 }

@@ -14,7 +14,7 @@ public class Alicuota extends ObligacionFinanciera {
     public Alicuota(double metrosCuadrados, String descripcion, String idObligacion) {
         super(metrosCuadrados, LocalDate.now(), descripcion, idObligacion);
         //fechaLimite = LocalDateTime.now().plusDays(30);
-        fechaLimite = LocalDateTime.now().plusMinutes(2);
+        fechaLimite = LocalDateTime.now().plusMinutes(1);
         verificarFechaLimite();
     }
 
@@ -45,10 +45,10 @@ public class Alicuota extends ObligacionFinanciera {
     public String toString() {
         return "[Obligacion N. " + idObligacion
                 + "] | Alicuota = ("
-                + "fechaLimite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
-                + ", estado= " + estado
-                + ", monto= " + monto
-                + ", fechaCreacion= " + fechaCreacion
-                + ", descripcion= '" + descripcion + "')";
+                + "Fecha limite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
+                + ", Estado= " + estado
+                + ", Monto= " + monto
+                + ", Fecha de creacion= " + fechaCreacion
+                + ", Descripcion= '" + descripcion + "')";
     }
 }

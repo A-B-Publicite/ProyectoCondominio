@@ -20,6 +20,7 @@ public class Pago implements Serializable {
     }
 
     public void pagarObligacionFinanciera(ObligacionFinanciera obligacionFinancieraAPagar, Cuenta cuentaAdministrador) {
+        System.out.println("entró a pagar obligacion financiera");
         double monto = obligacionFinancieraAPagar.getMonto();
         precioPagado = monto;
 

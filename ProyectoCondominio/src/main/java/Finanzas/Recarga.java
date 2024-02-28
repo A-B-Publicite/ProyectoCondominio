@@ -27,7 +27,7 @@ public class Recarga implements Serializable {
     public String toString() {
         return "[Recarga N. " + id
                 + "] | (" + metodoRecarga + 
-                "fecha de realización: " + fechaRealizacion + ")";
+                ", fecha de realización= " + fechaRealizacion + ")";
     }
 
 }

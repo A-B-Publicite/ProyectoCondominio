@@ -373,12 +373,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
 
     private void btnVisualizarObligacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarObligacionesActionPerformed
         lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
-        jTAObligaciones.setText(residente.getCuenta().mostrarObligaciones());
+        jTAObligaciones.setText(residente.getCuenta().getGestorObligaciones().mostrarObligaciones());
         if (residente.getNombre() != null) {
-            System.out.println(residente.getNombre());
-            //jTAObligaciones.setText(residente.getNombre());
+            jTAObligaciones.setText(residente.getCuenta().getGestorObligaciones().mostrarObligaciones());
         } else {
-            System.out.println("uy vali papito");
+            System.out.println("ERROR");
         }
     }//GEN-LAST:event_btnVisualizarObligacionesActionPerformed
 
@@ -462,6 +461,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
 
     private void btnMostrarListaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarListaPagosActionPerformed
         lblSaldoPagos.setText(String.valueOf(residente.getCuenta().getSaldo()));
+        System.out.println(residente.getCuenta().mostrarPagos());
         jTAListaPagos.setText(residente.getCuenta().mostrarPagos());
     }//GEN-LAST:event_btnMostrarListaPagosActionPerformed
 

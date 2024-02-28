@@ -43,7 +43,7 @@ public class GestorObligaciones implements Serializable {
         for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             if (Objects.equals(obligacionFinanciera.getIdObligacion(), obligacion.getIdObligacion())) {
                 encontrada = obligacionFinanciera;
-                //                obligacionesFinancieras.remove(obligacionFinanciera);
+                obligacionesFinancieras.remove(obligacionFinanciera);
                 break;
             }
         }
