@@ -12,27 +12,32 @@ import java.util.*;
  * @author Grupo 4
  */
 public class Disponibilidad {
-    private InmuebleComun areaComun;
 
+    private InmuebleComun areaComun;
     // Constructor
     public Disponibilidad(InmuebleComun areaComun) {
         this.areaComun = areaComun;
     }
 
     // Método para verificar la disponibilidad
-    public boolean verificarDisponibilidad(String dia) {
+    public boolean verificarDisponibilidad(String dia, ArrayList<Reserva> listaReservas, String areaComun) {
         ArrayList<String> reservas = this.areaComun.consultarDiasDisponibles();
-        if (!reservas.contains(dia)) {
-            return false;  // Hay un conflicto de reserva
+        // No hay conflictos, está disponible
+        
+        for (Reserva reserva : listaReservas) {
+            if(reserva.getAreaComun().equals(areaComun))
+            {
+                if(reserva.getDia().equals(dia)) return false;
             }
-        return true;  // No hay conflictos, está disponible
+        }
+        return reservas.contains(dia);  
     }
-    
+
     // Método para eliminar una reserva
     public void eliminarReserva(Reserva reserva) {
         this.areaComun.eliminarReserva(reserva);
     }
-    
+
     // Método para agregar una reserva
     public void agregarReserva(Reserva reserva) {
         this.areaComun.agregarReserva(reserva);
@@ -42,4 +47,4 @@ public class Disponibilidad {
     public ArrayList<Reserva> getListaReservas() {
         return this.areaComun.obtenerReservas();
     }
-} 
+}
