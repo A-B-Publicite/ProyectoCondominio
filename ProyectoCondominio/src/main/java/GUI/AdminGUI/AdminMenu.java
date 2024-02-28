@@ -43,13 +43,13 @@ public class AdminMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         lblBienvenida = new java.awt.Label();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnGestionCondominio = new javax.swing.JButton();
+        btnGestionContratos = new javax.swing.JButton();
+        btnGestionPerfiles = new javax.swing.JButton();
+        btnBandejaDeEntrada = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnRedactarMensaje = new javax.swing.JButton();
+        btnVerPagos = new javax.swing.JButton();
         btnCrearCondominio = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGestionReservas = new javax.swing.JButton();
@@ -60,29 +60,29 @@ public class AdminMenu extends javax.swing.JFrame {
         lblBienvenida.setName("mensajeBienvenidaLabel"); // NOI18N
         lblBienvenida.setText("¡Hola, bienvenido de vuelta!,");
 
-        jButton1.setText("Gestión del Condominio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionCondominio.setText("Gestión del Condominio");
+        btnGestionCondominio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gestionCondominioButtomActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Gestión de contratos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionContratos.setText("Gestión de contratos");
+        btnGestionContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gestionContratosButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Gestión de perfiles");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionPerfiles.setText("Gestión de perfiles");
+        btnGestionPerfiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gestionPerfilesButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Bandeja de entrada");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnBandejaDeEntrada.setText("Bandeja de entrada");
+        btnBandejaDeEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bandejaEntradaButtonActionPerformed(evt);
             }
@@ -91,17 +91,17 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("¿Qué deseas hacer el día de hoy?");
 
-        jButton5.setText("Redactar Mensaje");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnRedactarMensaje.setText("Redactar Mensaje");
+        btnRedactarMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5bandejaEntradaButtonActionPerformed(evt);
+                btnRedactarMensajebandejaEntradaButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Ver pagos");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnVerPagos.setText("Ver pagos");
+        btnVerPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnVerPagosActionPerformed(evt);
             }
         });
 
@@ -139,19 +139,19 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnGestionCondominio)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnGestionReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnVerPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jButton2)
+                                            .addComponent(btnGestionContratos)
                                             .addGap(18, 18, 18)
-                                            .addComponent(jButton3)))))
+                                            .addComponent(btnGestionPerfiles)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
                                 .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -159,8 +159,8 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4))
+                                    .addComponent(btnRedactarMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBandejaDeEntrada))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 66, Short.MAX_VALUE)
@@ -184,14 +184,14 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnGestionContratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGestionCondominio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGestionPerfiles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBandejaDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnVerPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRedactarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnGestionReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -225,7 +225,7 @@ public class AdminMenu extends javax.swing.JFrame {
         gestionPerfil.setVisible(true);
     }//GEN-LAST:event_gestionPerfilesButtonActionPerformed
 
-    private void jButton5bandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5bandejaEntradaButtonActionPerformed
+    private void btnRedactarMensajebandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedactarMensajebandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
         GUIMensaje gUIMensaje = new GUIMensaje(administrador,0);
         // Hacer visible la nueva ventana
@@ -242,12 +242,12 @@ public class AdminMenu extends javax.swing.JFrame {
                 setVisible(true);
             }
         });
-    }//GEN-LAST:event_jButton5bandejaEntradaButtonActionPerformed
+    }//GEN-LAST:event_btnRedactarMensajebandejaEntradaButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnVerPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPagosActionPerformed
         FinanzasAdministrador menuFinanzasAdministrador = new FinanzasAdministrador(administrador);
         menuFinanzasAdministrador.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnVerPagosActionPerformed
 
     private void btnCrearCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCondominioActionPerformed
         CreacionCondominio nuevaCreacionCondominio = new CreacionCondominio(administrador);
@@ -271,15 +271,15 @@ public class AdminMenu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBandejaDeEntrada;
     private javax.swing.JButton btnCrearCondominio;
+    private javax.swing.JButton btnGestionCondominio;
+    private javax.swing.JButton btnGestionContratos;
+    private javax.swing.JButton btnGestionPerfiles;
     private javax.swing.JButton btnGestionReservas;
+    private javax.swing.JButton btnRedactarMensaje;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnVerPagos;
     private javax.swing.JLabel jLabel1;
     private java.awt.Label lblBienvenida;
     // End of variables declaration//GEN-END:variables
