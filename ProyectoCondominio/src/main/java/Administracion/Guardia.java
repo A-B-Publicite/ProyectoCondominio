@@ -106,4 +106,8 @@ public class Guardia extends Perfil implements Serializable{
     public void setEspaciosParqueadero(ArrayList<EspacioDeParqueadero> espaciosParqueadero) {
         this.espaciosParqueadero = espaciosParqueadero;
     }
+
+    public HistorialEntrada getEntradasVisitantes() {
+        return entradasVisitantes;
+    }
 }

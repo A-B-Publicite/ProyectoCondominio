@@ -39,14 +39,13 @@ public class RegistrarVisita extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMotivoVisita = new javax.swing.JTextArea();
-        btSolicitarAprobacion = new javax.swing.JButton();
         lblVehiculo = new javax.swing.JLabel();
-        necesitaEstacionamiento = new javax.swing.JRadioButton();
         lblDate = new javax.swing.JLabel();
         lblHour = new javax.swing.JLabel();
         fechaIngresoVisita = new javax.swing.JTextField();
         horaIngresoVisita = new javax.swing.JTextField();
         btRealizarRegistro = new javax.swing.JButton();
+        txtQuiereEstacionamiento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,12 +59,7 @@ public class RegistrarVisita extends javax.swing.JFrame {
         txtMotivoVisita.setRows(5);
         jScrollPane1.setViewportView(txtMotivoVisita);
 
-        btSolicitarAprobacion.setText("Solicitar autorización");
-        btSolicitarAprobacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
         lblVehiculo.setText("¿Tiene vehículo?");
-
-        necesitaEstacionamiento.setText("Si");
 
         lblDate.setText("Fecha ingreso:");
 
@@ -85,6 +79,10 @@ public class RegistrarVisita extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(btRealizarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(151, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -96,27 +94,22 @@ public class RegistrarVisita extends javax.swing.JFrame {
                                     .addGap(25, 25, 25)))
                             .addComponent(lblDate)
                             .addComponent(fechaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombreVisita)
-                                .addComponent(txtPersonaAVisitar)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblHour, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(horaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(necesitaEstacionamiento)
-                            .addComponent(btSolicitarAprobacion))
-                        .addGap(102, 102, 102))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btRealizarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNombreVisita)
+                                        .addComponent(txtPersonaAVisitar)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblHour, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(107, 107, 107)
+                                        .addComponent(horaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(42, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,12 +126,10 @@ public class RegistrarVisita extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(btSolicitarAprobacion)
-                .addGap(18, 18, 18)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVehiculo)
-                    .addComponent(necesitaEstacionamiento))
+                    .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDate)
@@ -156,14 +147,17 @@ public class RegistrarVisita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRealizarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarRegistroActionPerformed
+        boolean estacionamiento = false;
+        if(txtQuiereEstacionamiento.getText().equals("SI"))
+            estacionamiento = true;
         Visitante visitante = new Visitante(txtMotivoVisita.getText(),txtNombreVisita.getText(),txtPersonaAVisitar.getText());
-        guardia.registrarEntrada(visitante, fechaIngresoVisita.getText(), horaIngresoVisita.getText(), necesitaEstacionamiento.isContentAreaFilled());
+        guardia.registrarEntrada(visitante, fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento);
+        System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRealizarRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btRealizarRegistro;
-    private javax.swing.JButton btSolicitarAprobacion;
     private javax.swing.JTextField fechaIngresoVisita;
     private javax.swing.JTextField horaIngresoVisita;
     private javax.swing.JLabel jLabel2;
@@ -173,9 +167,9 @@ public class RegistrarVisita extends javax.swing.JFrame {
     private javax.swing.JLabel lblHour;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblVehiculo;
-    private javax.swing.JRadioButton necesitaEstacionamiento;
     private javax.swing.JTextArea txtMotivoVisita;
     private javax.swing.JTextField txtNombreVisita;
     private javax.swing.JTextField txtPersonaAVisitar;
+    private javax.swing.JTextField txtQuiereEstacionamiento;
     // End of variables declaration//GEN-END:variables
 }
