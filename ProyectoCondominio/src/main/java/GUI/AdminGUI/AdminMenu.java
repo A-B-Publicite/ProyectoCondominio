@@ -269,7 +269,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCondominioActionPerformed
 
     private void btnGestionReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservasActionPerformed
-        MenuReservas menRes = new MenuReservas();
+        MenuReservas menRes = new MenuReservas(administrador);
         menRes.setVisible(true);
     }//GEN-LAST:event_btnGestionReservasActionPerformed
 
