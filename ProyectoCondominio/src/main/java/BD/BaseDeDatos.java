@@ -28,7 +28,12 @@ public class BaseDeDatos {
 
     public static Residente getResidente(String correo, String contrasenia) {
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
-        return buscarResidente( residentes, correo, contrasenia);
+        try {
+            return buscarResidente(residentes, correo, contrasenia);
+        } catch (Exception ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public static void escribir(Object objetoALeer, String dir) {
