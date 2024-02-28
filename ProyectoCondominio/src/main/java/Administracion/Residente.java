@@ -42,28 +42,6 @@ public class Residente extends Perfil implements Serializable {
         return esPropietario;
     }
 
-    public Boolean aprobar(Contrato contrato) {
-        System.out.print(contrato);
-        Scanner scanner = new Scanner(System.in);
-        int tipo = 0;
-        System.out.println("""
-                           Elija:
-                           1. Aprobar
-                           0. Negar
-                           """);
-        tipo = scanner.nextInt();
-        scanner.nextLine();
-
-        switch (tipo) {
-            case 1:
-                return true;
-            case 2:
-                return false;
-            default:
-                return false;
-        }
-    }
-
     public void pagar(ObligacionFinanciera obligacionAPagar) {
         cuentaBancaria.pagarObligacionFinanciera(obligacionAPagar);
     }
@@ -74,7 +52,6 @@ public class Residente extends Perfil implements Serializable {
 
     public boolean compararNombre(String nombreResidente) {
         return nombreResidente.equals(this.nombre);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void realizarCheckIn(String fechaLlegada, String horaLlegada, boolean estacionarse) {
@@ -90,5 +67,15 @@ public class Residente extends Perfil implements Serializable {
     public String toString() {
         return "Residente{" + "esPropietario=" + esPropietario + ", departamento=" + departamento + '}';
     }
+
+    public void setAprobacion() {
+        aprobacionDeContrato = new AdministracionContrato();
+    }
+
+    
+    public void aprobar(Contrato contrato){
+        aprobacionDeContrato.aprobar(contrato);
+    }
+
 
 }

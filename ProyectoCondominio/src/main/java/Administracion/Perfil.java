@@ -12,6 +12,7 @@ public abstract class Perfil implements Serializable{
     protected String contrasenia;
     protected String nombre;
     protected String apellido;
+    protected AdministracionContrato aprobacionDeContrato;
     protected BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(this);
     protected Cuenta cuentaBancaria;
     Autorizacion autorizacion;
@@ -22,9 +23,9 @@ public abstract class Perfil implements Serializable{
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuentaBancaria = new Cuenta();
+        this.aprobacionDeContrato = null;
         
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        }
     
     
     public Cuenta getCuenta() {
@@ -39,7 +40,6 @@ public abstract class Perfil implements Serializable{
     
     public String getNombreApellido() {
         return nombre+" "+apellido;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public BandejaDeEntrada getBandejaDeEntrada() {
@@ -48,7 +48,6 @@ public abstract class Perfil implements Serializable{
 
     public String getNombre() {
         return nombre;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public void realizarCheckIn(String fechaLlegada, String horaLlegada){

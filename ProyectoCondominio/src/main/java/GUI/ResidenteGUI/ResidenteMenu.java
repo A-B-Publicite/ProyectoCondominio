@@ -6,7 +6,7 @@ package GUI.ResidenteGUI;
 
 import Administracion.Residente;
 import GUI.MensajeGUI.GUIMensaje;
-
+import GUI.ModuloMueble.GUIMueble;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -133,7 +133,13 @@ public class ResidenteMenu extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        GUIMueble guiMueble = new GUIMueble();
+    
+        // Hacer visible la nueva GUI
+        guiMueble.setVisible(true);
+
+        // Opcional: Puedes configurar el comportamiento al cerrar la nueva GUI si es necesario
+        guiMueble.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -16,16 +16,8 @@ public class Directiva implements Serializable{
     public void agregarDirectiva(Residente presidente, Residente secretario){
         this.presidente = presidente;
         this.secretario = secretario;
-    }
-    
-    public void aprobarContrato(Contrato contrato){
-        if(!presidente.aprobar(contrato) || !secretario.aprobar(contrato)){
-            System.out.print("No se aprobo el contrato");
-            return;
-        }
-        
-        System.out.print("Se aprobo el contrato");
-        contratosAprobados.add(contrato);
+        presidente.setAprobacion();
+        secretario.setAprobacion();
     }
     
     public ArrayList<Contrato> mostrarContratos(){
@@ -44,7 +36,6 @@ public class Directiva implements Serializable{
 
     public void agregarContrato(Contrato contratoNuevo) {
         contratosPorAprobar.add(contratoNuevo);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Residente getPresidente() {
@@ -53,6 +44,20 @@ public class Directiva implements Serializable{
 
     public Residente getSecretario() {
         return secretario;
+    }
+
+    private void solicitarAprobacion(Contrato contrato) {
+        //presidente.darContratoParaAprobar(contrato);
+        //secretario.darContratoParaAprobar(contrato);
+        /*
+        if(!presidente.aprobar(contrato) || !secretario.aprobar(contrato)){
+            System.out.print("No se aprobo el contrato");
+            return;
+        }
+        
+        System.out.print("Se aprobo el contrato");
+        contratosAprobados.add(contrato);
+*/
     }
 
     
