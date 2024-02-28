@@ -103,8 +103,9 @@ public class Administrador extends Perfil implements Serializable {
         return condominio.mostrarContratos();
     }
 
-    public void agregarDirectiva(String correoPresidente, String correoSecretario) throws Exception {
+    public void agregarDirectiva(String correoPresidente, String correoSecretario){
         condominio.agregarDirectiva(obtenerResidentePorCorreo(correoPresidente), obtenerResidentePorCorreo(correoSecretario));
+   
     }
   
 

@@ -5,8 +5,11 @@
 package GUI.AdminGUI;
 
 import Administracion.Administrador;
+import Administracion.Residente;
 import BD.BaseDeDatos;
 import Inmueble.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,11 +17,15 @@ import Inmueble.*;
  */
 public class GestionCondominio extends javax.swing.JFrame {
     private final Administrador administrador;
+    private boolean verificacionSecretario;
+    private boolean verificacionPresidente;
 
     public GestionCondominio(Administrador administrador) {
         initComponents();
         System.out.println(administrador);
         this.administrador = administrador;
+        this.verificacionPresidente = false;
+        this.verificacionSecretario = false;
     }
 
     
@@ -36,6 +43,15 @@ public class GestionCondominio extends javax.swing.JFrame {
         btnAceptarIngresoDepartamentos = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCorreoPresidente = new javax.swing.JTextField();
+        txtCorreoSecretario = new javax.swing.JTextField();
+        btnAgregarDirectiva = new javax.swing.JButton();
+        btnBuscarPresidente = new javax.swing.JButton();
+        btnBuscarSecretario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,44 +117,121 @@ public class GestionCondominio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("Ingrese el inmueble");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Agregar una directiva:");
+
+        jLabel5.setText("Presidente:");
+
+        jLabel6.setText("Secretario/a:");
+
+        txtCorreoPresidente.setText("Inserte el correo del presidente:");
+        txtCorreoPresidente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCorreoPresidenteFocusGained(evt);
+            }
+        });
+        txtCorreoPresidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoPresidenteActionPerformed(evt);
+            }
+        });
+
+        txtCorreoSecretario.setText("Inserte el correo del secretario/a:");
+        txtCorreoSecretario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoSecretarioActionPerformed(evt);
+            }
+        });
+
+        btnAgregarDirectiva.setText("Agregar Directiva");
+        btnAgregarDirectiva.setEnabled(false);
+        btnAgregarDirectiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarDirectivaActionPerformed(evt);
+            }
+        });
+
+        btnBuscarPresidente.setText("Buscar");
+        btnBuscarPresidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPresidenteActionPerformed(evt);
+            }
+        });
+
+        btnBuscarSecretario.setText("Buscar");
+        btnBuscarSecretario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarSecretarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator2)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCorreoPresidente)
+                                    .addComponent(txtCorreoSecretario, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(186, 186, 186)
+                                .addComponent(btnAgregarDirectiva)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscarPresidente)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBuscarSecretario))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(200, 200, 200))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMetrosCuadrado)
-                                    .addComponent(cmbInmueblesComunales, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(62, 62, 62)
-                                .addComponent(btnAgregarInmueble))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
+                                .addGap(141, 141, 141)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(txtNumerosDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 43, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addComponent(txtNumerosDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(84, 84, 84)
+                                        .addComponent(btnAceptarIngresoDepartamentos))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel3)
+                                        .addGap(200, 200, 200))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtMetrosCuadrado)
+                                            .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(62, 62, 62)
+                                        .addComponent(btnAgregarInmueble)))))
+                        .addGap(0, 89, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(btnAceptarIngresoDepartamentos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,17 +246,33 @@ public class GestionCondominio extends javax.swing.JFrame {
                         .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtMetrosCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNumerosDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnAceptarIngresoDepartamentos)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptarIngresoDepartamentos)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(txtCorreoPresidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarPresidente))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtCorreoSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarSecretario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarDirectiva, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -223,15 +332,77 @@ public class GestionCondominio extends javax.swing.JFrame {
         txtNumerosDeDepartamentos.setText("");
     }//GEN-LAST:event_txtNumerosDeDepartamentosFocusGained
 
+    private void txtCorreoPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoPresidenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoPresidenteActionPerformed
+
+    private void txtCorreoPresidenteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoPresidenteFocusGained
+        txtCorreoPresidente.setText("");
+    }//GEN-LAST:event_txtCorreoPresidenteFocusGained
+
+    private void txtCorreoSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoSecretarioActionPerformed
+        txtCorreoSecretario.setText("");
+    }//GEN-LAST:event_txtCorreoSecretarioActionPerformed
+
+    private void btnBuscarPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPresidenteActionPerformed
+        try {
+            Residente presidenteAux = administrador.obtenerResidentePorCorreo(txtCorreoPresidente.getText());
+            if(presidenteAux.esPropietario()){
+                javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente con correo: " + txtCorreoPresidente.getText());
+                this.verificacionPresidente = true;
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente pero no es propietario");
+            }
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(null, "No existe el usuario con ese correo");
+            Logger.getLogger(GestionCondominio.class.getName()).log(Level.SEVERE, null, ex); 
+        }finally{
+            btnAgregarDirectiva.setEnabled(verificacionSecretario && verificacionPresidente);
+        }
+    }//GEN-LAST:event_btnBuscarPresidenteActionPerformed
+
+    private void btnBuscarSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSecretarioActionPerformed
+        try {
+            Residente secretarioAux = administrador.obtenerResidentePorCorreo(txtCorreoSecretario.getText());
+            if(secretarioAux.esPropietario()){
+                javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente con correo: " + txtCorreoSecretario.getText());
+                this.verificacionSecretario = true;
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente pero no es propietario");
+            } 
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(null, "No existe el usuario con ese correo");
+            Logger.getLogger(GestionCondominio.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+        finally{
+            btnAgregarDirectiva.setEnabled(verificacionSecretario && verificacionPresidente);
+        }
+    }//GEN-LAST:event_btnBuscarSecretarioActionPerformed
+
+    private void btnAgregarDirectivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDirectivaActionPerformed
+
+        administrador.agregarDirectiva(txtCorreoPresidente.getText(), txtCorreoSecretario.getText());
+
+    }//GEN-LAST:event_btnAgregarDirectivaActionPerformed
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarIngresoDepartamentos;
+    private javax.swing.JButton btnAgregarDirectiva;
     private javax.swing.JButton btnAgregarInmueble;
+    private javax.swing.JButton btnBuscarPresidente;
+    private javax.swing.JButton btnBuscarSecretario;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbInmueblesComunales;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txtCorreoPresidente;
+    private javax.swing.JTextField txtCorreoSecretario;
     private javax.swing.JTextField txtMetrosCuadrado;
     private javax.swing.JTextField txtNumerosDeDepartamentos;
     // End of variables declaration//GEN-END:variables
