@@ -37,6 +37,33 @@ public class GestorObligaciones implements Serializable {
         }
     }
 
+    public void eliminarObligacion(ObligacionFinanciera obligacion) {
+        ObligacionFinanciera encontrada = null;
+
+        for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
+            if (Objects.equals(obligacionFinanciera.getIdObligacion(), obligacion.getIdObligacion())) {
+                encontrada = obligacionFinanciera;
+                //                obligacionesFinancieras.remove(obligacionFinanciera);
+                break;
+            }
+        }
+
+        obligacionesFinancieras.remove(encontrada);
+    }
+
+    public String mostrarObligaciones() {
+        String salida = "";
+//        if (cuenta.getCuentaAdministrador() != null) {
+//            salida = "================  OBLIGACION RESIDENTE ==================\n";
+//        } else {
+//            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
+//        }
+        for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
+            salida += obligacionFinanciera.toString() + "\n";
+        }
+        return salida;
+    }
+
     public void programarSiguienteAlicuota(Alicuota alicuota, Cuenta cuenta) {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -56,40 +83,13 @@ public class GestorObligaciones implements Serializable {
         }
     }
 
-    public void eliminarObligacion(ObligacionFinanciera obligacion) {
-        ObligacionFinanciera encontrada = null;
-
-        for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
-            if (Objects.equals(obligacionFinanciera.getIdObligacion(), obligacion.getIdObligacion())) {
-                encontrada = obligacionFinanciera;
-                //                obligacionesFinancieras.remove(obligacionFinanciera);
-                break;
-            }
-        }
-
-        obligacionesFinancieras.remove(encontrada);
-    }
-
-    public ObligacionFinanciera recuperarObligacion(String idObligacion) {
+    public ObligacionFinanciera getObligacion(String idObligacion) {
         for (Finanzas.ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
             if (Objects.equals(obligacionFinanciera.getIdObligacion(), idObligacion)) {
                 return obligacionFinanciera;
             }
         }
         return null;
-    }
-
-    public String mostrarObligaciones() {
-        String salida = "";
-//        if (cuenta.getCuentaAdministrador() != null) {
-//            salida = "================  OBLIGACION RESIDENTE ==================\n";
-//        } else {
-//            salida = "================  OBLIGACION ADMINISTRADOR ==================\n";
-//        }
-        for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
-            salida += obligacionFinanciera.toString() + "\n";
-        }
-        return salida;
     }
 
     public ArrayList<ObligacionFinanciera> getObligacionesFinancieras() {
