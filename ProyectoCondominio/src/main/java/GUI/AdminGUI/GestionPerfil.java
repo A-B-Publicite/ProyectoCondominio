@@ -49,6 +49,10 @@ public class GestionPerfil extends javax.swing.JFrame {
         txtNombreGuardia = new javax.swing.JTextField();
         txtApellidoGuardia = new javax.swing.JTextField();
         cmbEsPorpietario = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtFInicioGuardia = new javax.swing.JTextField();
+        txtFFinGuardia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +95,10 @@ public class GestionPerfil extends javax.swing.JFrame {
 
         cmbEsPorpietario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Sí", "No" }));
 
+        jLabel9.setText("Fecha inicio autorizacion");
+
+        jLabel10.setText("Fecha fin autorizacion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,9 +137,6 @@ public class GestionPerfil extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnVolverGestionPerfil))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
@@ -142,7 +147,19 @@ public class GestionPerfil extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtApellidoGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                .addComponent(btnAgregarGuardia)))
+                                .addComponent(btnAgregarGuardia))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(48, 48, 48)
+                                        .addComponent(txtFFinGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(txtFInicioGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVolverGestionPerfil)))
                         .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
@@ -192,8 +209,19 @@ public class GestionPerfil extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtApellidoGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnVolverGestionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolverGestionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtFInicioGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtFFinGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         pack();
@@ -212,7 +240,7 @@ public class GestionPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarResidenteActionPerformed
 
     private void btnAgregarGuardiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarGuardiaActionPerformed
-        //administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(), , fechaFin);
+        administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(),txtFInicioGuardia.getText() , txtFFinGuardia.getText());
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Guardia registrado con exito");
     }//GEN-LAST:event_btnAgregarGuardiaActionPerformed
@@ -228,6 +256,7 @@ public class GestionPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnVolverGestionPerfil;
     private javax.swing.JComboBox<String> cmbEsPorpietario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -235,9 +264,12 @@ public class GestionPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txtApellidoGuardia;
     private javax.swing.JTextField txtApellidoResidente;
+    private javax.swing.JTextField txtFFinGuardia;
+    private javax.swing.JTextField txtFInicioGuardia;
     private javax.swing.JTextField txtNombreGuardia;
     private javax.swing.JTextField txtNombreResidente;
     // End of variables declaration//GEN-END:variables

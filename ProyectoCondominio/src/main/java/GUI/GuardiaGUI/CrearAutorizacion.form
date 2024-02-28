@@ -55,7 +55,6 @@
                       <Component id="lblAutorizado" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblFechaInicio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblFechaFin" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -63,7 +62,6 @@
                       <Component id="txtAutorizado" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtDateIn" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtDateOut" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtHour" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -97,13 +95,8 @@
                       <Component id="lblFechaFin" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDateOut" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
-                  <Component id="btCrearAutorizacion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <Component id="btCrearAutorizacion" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -125,11 +118,6 @@
             <Property name="text" type="java.lang.String" value="Fecha de inicio:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Hora:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblFechaFin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fecha de fin:"/>
@@ -143,12 +131,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtDateOut">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtHour">
-        </Component>
         <Component class="javax.swing.JButton" name="btCrearAutorizacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear autorizacion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCrearAutorizacionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
