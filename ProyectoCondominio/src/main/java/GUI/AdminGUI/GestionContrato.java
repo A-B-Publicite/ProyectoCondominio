@@ -6,6 +6,7 @@ package GUI.AdminGUI;
 
 import Administracion.Administrador;
 import Administracion.Contrato;
+import BD.BaseDeDatos;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -204,13 +205,15 @@ public class GestionContrato extends javax.swing.JFrame {
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        administrador.agregarContrato( precio, descripcion,  fechaInicio,  fechaFinalizacion);
+        administrador.agregarContrato(precio, descripcion,  fechaInicio,  fechaFinalizacion);
+        BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
         //public void pagarContrato(String descripcionContratoAPagar) {
         administrador.pagarContrato(cmbSelectorDeCOntrato.getSelectedItem() + "");
+        BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed
 
