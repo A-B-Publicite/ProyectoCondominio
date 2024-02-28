@@ -15,6 +15,7 @@ import java.util.*;
 public class Disponibilidad implements Serializable{
 
     private InmuebleComun areaComun;
+    private AdministrarReserva administrar;
     // Constructor
     public Disponibilidad(InmuebleComun areaComun) {
         this.areaComun = areaComun;
@@ -33,19 +34,9 @@ public class Disponibilidad implements Serializable{
         }
         return reservas.contains(dia);  
     }
-
-    // Método para eliminar una reserva
-    public void eliminarReserva(Reserva reserva) {
-        this.areaComun.eliminarReserva(reserva);
-    }
-
-    // Método para agregar una reserva
-    public void agregarReserva(Reserva reserva) {
-        this.areaComun.agregarReserva(reserva);
-    }
-
+    
     // Getters y setters
     public ArrayList<Reserva> getListaReservas() {
-        return this.areaComun.obtenerReservas();
+        return this.administrar.getListaReservas();
     }
 }

@@ -533,6 +533,7 @@ public class MenuReservas extends javax.swing.JFrame {
 
         switch (tab) {
             case 0: {
+                this.jTListaTReservas.setText(" ");
                 for (Reserva lista : listaReservas) {
                     this.jTListaTReservas.append(
                             "Id reserva: " + lista.getId() + "\n"
@@ -546,6 +547,7 @@ public class MenuReservas extends javax.swing.JFrame {
                 break;
             }
             case 1: {
+                this.jTextReservasRepro.setText(" ");
                 for (Reserva lista : listaReservas) {
                     this.jTextReservasRepro.append(
                             "Id reserva: " + lista.getId() + "\n"
