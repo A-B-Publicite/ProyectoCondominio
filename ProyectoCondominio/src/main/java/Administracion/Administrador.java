@@ -72,6 +72,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(), fechaActual, fechaFin);
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
+        BaseDeDatos.setGuardia(guardiaNuevo);
     }
 
     public void pagarContrato(String descripcionContratoAPagar) {

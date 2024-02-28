@@ -6,6 +6,7 @@ package GUI.GuardiaGUI;
 
 import Administracion.Guardia;
 import Administracion.Residente;
+import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
 import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
@@ -44,6 +45,7 @@ public class GuardiaMenu extends javax.swing.JFrame {
         btRedactarMensaje = new javax.swing.JButton();
         btRegistrarEntrada = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +72,13 @@ public class GuardiaMenu extends javax.swing.JFrame {
 
         jLabel1.setText("Bienvenido");
 
+        btSalir.setText("Salir");
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +96,10 @@ public class GuardiaMenu extends javax.swing.JFrame {
                         .addComponent(btRegistrarEntrada))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btSalir)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,7 +113,9 @@ public class GuardiaMenu extends javax.swing.JFrame {
                 .addComponent(btRegistrarEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(btRedactarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btSalir)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,12 +157,18 @@ public class GuardiaMenu extends javax.swing.JFrame {
         CheckInGUI menuRegistro = new CheckInGUI(guardia);
         menuRegistro.setVisible(true);
     }//GEN-LAST:event_btRegistrarEntradaActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        BaseDeDatos.escribirGuardia(guardia);
+        System.exit(0);
+    }//GEN-LAST:event_btSalirActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBandejaEntrada;
     private javax.swing.JButton btRedactarMensaje;
     private javax.swing.JButton btRegistrarEntrada;
+    private javax.swing.JButton btSalir;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

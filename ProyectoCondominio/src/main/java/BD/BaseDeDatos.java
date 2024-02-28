@@ -1,6 +1,7 @@
 package BD;
 
 import Administracion.Administrador;
+import Administracion.Guardia;
 import Administracion.Residente;
 import java.io.*;
 import java.util.ArrayList;
@@ -10,10 +11,15 @@ import java.util.logging.Logger;
 public class BaseDeDatos implements Serializable{
     public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static Administrador administrador;
+    public static Guardia guardia;
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
         residentes.add(nuevoResidente);
         escribir(residentes, "src/main/java/Datos/datosResidentes.txt");
+    }
+    public static void setGuardia(Guardia guardia){
+        BaseDeDatos.guardia = guardia;
+        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
     
     public static Administrador leerAdministrador() {
@@ -109,5 +115,20 @@ public class BaseDeDatos implements Serializable{
         fileInputStream.close();
         return residentes;
         
+    }
+    
+    public static Guardia  leerGuardia() throws IOException, ClassNotFoundException {
+        
+        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosGuardia.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Guardia guardia = (Guardia) objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+        return guardia;
+        
+    }
+    
+    public static void escribirGuardia(Guardia guardia) {
+        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
 }

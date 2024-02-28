@@ -7,6 +7,7 @@ package GUI;
 import Administracion.*;
 import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
+import GUI.GuardiaGUI.GuardiaMenu;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.MensajeGUI.ResidenteTabla;
 import GUI.ResidenteGUI.ResidenteMenu;
@@ -228,8 +229,23 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     }
                     break;
                 case "Guardia":
-                    //Guardia guardia = obtenterGuardiaDe????????????(correo.getText(), contrasenia.getText() );
-                    //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);
+                    
+                    Guardia guardia = BaseDeDatos.leerGuardia();
+                    if(correo.getText().equals(guardia.getCorreo().equalsIgnoreCase(correo.getText())) && txtContrasena.getText().equals(guardia.getContrasenia())) {
+                            System.out.println("ENTROO");
+                            GuardiaMenu guardiaMenu = new GuardiaMenu(guardia);
+                            guardiaMenu.setVisible(true);
+                            guardiaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            this.setVisible(false);
+                            
+                            guardiaMenu.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    setVisible(true);
+                                }
+                            });
+                    }
+                    
                     break;
                 default:
 
