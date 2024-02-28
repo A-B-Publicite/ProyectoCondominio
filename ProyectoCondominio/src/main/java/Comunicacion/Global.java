@@ -6,6 +6,8 @@ package Comunicacion;
 
 
 import Administracion.Perfil;
+import Administracion.Residente;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public class Global extends Mensaje {
 
 
 
-    public Global(Perfil origen, List<Perfil> destino) {
+    public Global(Perfil origen, ArrayList<Residente> destino) {
         super(origen, destino);
 
     }

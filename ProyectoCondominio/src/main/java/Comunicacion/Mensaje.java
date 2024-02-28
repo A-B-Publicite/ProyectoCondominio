@@ -4,7 +4,9 @@
  */
 package Comunicacion;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
+import Administracion.Residente;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,18 +19,32 @@ import java.util.List;
  */
 public abstract class Mensaje implements Serializable{
     private Perfil origen;
-    private List<Perfil> destinos= new ArrayList<>();
+    private ArrayList<Residente> destinos= new ArrayList<>();
+    private Residente destino;
+    private Administrador destinoAdmin;
     private String contenido;
     private LocalDateTime fecha;
     private String titulo;
 
     //Crea el mensaje
-    public Mensaje(Perfil origen, List<Perfil> destino) {
+    public Mensaje(Perfil origen, ArrayList<Residente> destino) {
         this.origen = origen;
         this.destinos = destino;
         this.fecha = LocalDateTime.now();
     }
     
+    //Crea el mensaje
+    public Mensaje(Perfil origen, Residente destino) {
+        this.origen = origen;
+        this.destino = destino;
+        this.fecha = LocalDateTime.now();
+    }
+    
+    public Mensaje (Perfil origen, Administrador destino) {
+        this.origen = origen;
+        this.destinoAdmin = destino;
+        this.fecha = LocalDateTime.now();
+    }    
     
 
     public abstract void crear();
@@ -44,6 +60,11 @@ public abstract class Mensaje implements Serializable{
         this.contenido = contenido;
     }
 
+    public Residente getDestino() {
+        return destino;
+    }
+
+    
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -67,7 +88,7 @@ public abstract class Mensaje implements Serializable{
         return fecha.format(formatter);
     }
 
-    public List<Perfil> getDestinos() {
+    public List<Residente> getDestinos() {
         return destinos;
     }
 

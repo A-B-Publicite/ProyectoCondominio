@@ -158,7 +158,7 @@ public class MenuCI {
                                """);
 
                             opcionSubMenu = scanner.nextInt();
-                            switch (opcionSubMenu) {
+                            /*switch (opcionSubMenu) {
                                 case 1 -> {
                                     adminEnFichero.getCondominio().getGuardia().realizarCheckIn(fechaLlegada, horaLle, 
                                                     visitante,
@@ -171,7 +171,7 @@ public class MenuCI {
                                 }
                                 default ->
                                     System.out.println("No ha escogido una opcion correcta"); //ver el salir
-                            }                            
+                            } */                           
                         } catch (Exception ex) {
                             System.out.println(ex.getMessage());
                         }
