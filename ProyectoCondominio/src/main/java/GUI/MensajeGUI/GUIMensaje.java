@@ -266,10 +266,9 @@ public class GUIMensaje extends javax.swing.JFrame {
                 default:
                     throw new AssertionError();
             }
-            
+            this.dispose();
         }
         
-        this.dispose();
         
         
         
