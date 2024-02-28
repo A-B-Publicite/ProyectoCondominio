@@ -48,9 +48,9 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
     }
 
     
-    public void setListaMensajes(ArrayList<Mensaje> listaMensajes) throws IOException, ClassNotFoundException {
+    public void setListaMensajes(ArrayList<Mensaje> listaMensajes, ArrayList<Residente> resid) throws IOException, ClassNotFoundException {
         
-        this.residentes = BaseDeDatos.obtenerListaResidente();
+        this.residentes=resid;
         this.mensajes=listaMensajes;
         modeloTabla2.setRowCount(0);
         
