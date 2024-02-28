@@ -202,10 +202,12 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     });
                     break;
                 case "Residente":
-                    residentes= BaseDeDatos.leerLista();
-                    //Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
+                    //residentes= BaseDeDatos.leerLista();
+                    Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
+                    ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                    residenteMenu.setVisible(true);
                     
-                    for (Residente res : residentes){
+                    /*for (Residente res : residentes){
                         System.out.println("HHH" + res.getCorreo() + "CON "+res.getContrasenia());
                         System.out.println("COOOO" + correo.getText());
                         if(correo.getText().equals(res.getCorreo()) && txtContrasena.getText().equals(res.getContrasenia())) {
@@ -226,7 +228,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                                 }
                             });
                         }
-                    }
+                    }*/
                     break;
                 case "Guardia":
                     
