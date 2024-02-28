@@ -176,10 +176,14 @@ public class ResidenteMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void verificarSiEsDeLaDirectiva(Residente residente) {
+        System.out.println("ANTES ADM");
         Administrador administrador = BaseDeDatos.leerAdministrador();
+        System.out.println("DESPU");
         if(administrador.getCondominio().getDirectiva().esParte(residente)){
             btnGestionarContratos.setVisible(true);
+            System.out.println("LLEGO DIRE");
         }
+        System.out.println("SALTO IF");
         
     }
 }

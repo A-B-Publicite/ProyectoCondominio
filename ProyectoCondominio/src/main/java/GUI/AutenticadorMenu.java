@@ -24,7 +24,7 @@ import javax.swing.JFrame;
  */
 public class AutenticadorMenu extends javax.swing.JFrame {
     //Administrador administrador;
-
+    ArrayList<Residente> residentes;
     /**
      * Creates new form login
      */
@@ -201,7 +201,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     });
                     break;
                 case "Residente":
-                    ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+                    residentes= BaseDeDatos.leerLista();
                     //Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
                     
                     for (Residente res : residentes){
