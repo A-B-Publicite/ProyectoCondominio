@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BandejaDeEntrada implements Serializable{
-    private ArrayList<Mensaje> listaMensajes;
+    private List<Mensaje> listaMensajes;
     private Perfil perfil;
 
 
@@ -24,7 +24,7 @@ public class BandejaDeEntrada implements Serializable{
         listaMensajes.add(mensaje);
     }
 
-    public ArrayList<Mensaje> getListaMensajes() {
+    public List<Mensaje> getListaMensajes() {
         return listaMensajes;
     }
 
