@@ -50,6 +50,14 @@ public class GUIMueble extends javax.swing.JPanel {
         // Establecer la fecha en el JTextField
         jTextField2.setText(fechaActualStr);
     }
+     
+     public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUIMueble().setVisible(true);
+            }
+        });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
