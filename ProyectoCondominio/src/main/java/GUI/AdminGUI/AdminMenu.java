@@ -4,6 +4,7 @@ package GUI.AdminGUI;
 import GUI.FinanzasGUI.FinanzasAdministrador;
 import Administracion.*;
 import BD.BaseDeDatos;
+import GUI.GuardiaGUI.CrearAutorizacion;
 import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.ReservasGUI.MenuReservas;
@@ -306,7 +307,8 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAutorizacionActionPerformed
-        // TODO add your handling code here:
+        CrearAutorizacion crearAutorizacion = new CrearAutorizacion(administrador);
+        crearAutorizacion.setVisible(true);
     }//GEN-LAST:event_btnCrearAutorizacionActionPerformed
 
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
