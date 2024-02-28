@@ -19,6 +19,7 @@ public class CheckInGUI extends javax.swing.JPanel {
     public CheckInGUI(Guardia guardia) {
         initComponents();
         this.guardia = guardia;
+        btSolicitarAprobacion.setVisible(false);
     }
 
     /**
@@ -41,7 +42,7 @@ public class CheckInGUI extends javax.swing.JPanel {
         txtMotivoVisita = new javax.swing.JTextArea();
         lblVehiculo = new javax.swing.JLabel();
         necesitaEstacionamiento = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        btSolicitarAprobacion = new javax.swing.JButton();
         lblDate = new javax.swing.JLabel();
         lblHour = new javax.swing.JLabel();
         fechaIngresoVisita = new javax.swing.JTextField();
@@ -80,8 +81,8 @@ public class CheckInGUI extends javax.swing.JPanel {
 
         necesitaEstacionamiento.setText("Si");
 
-        jButton1.setText("Solicitar autorización");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btSolicitarAprobacion.setText("Solicitar autorización");
+        btSolicitarAprobacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lblDate.setText("Fecha ingreso:");
 
@@ -125,7 +126,7 @@ public class CheckInGUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(necesitaEstacionamiento)
-                    .addComponent(jButton1))
+                    .addComponent(btSolicitarAprobacion))
                 .addGap(132, 132, 132))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnVisitorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,7 +149,7 @@ public class CheckInGUI extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(jButton1)
+                .addComponent(btSolicitarAprobacion)
                 .addGap(18, 18, 18)
                 .addGroup(pnVisitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVehiculo)
@@ -329,11 +330,11 @@ public class CheckInGUI extends javax.swing.JPanel {
     private javax.swing.JButton btRealizarRegistro;
     private javax.swing.JButton btRealizarRegistroPropio;
     private javax.swing.JButton btRealizarRegistroServicio;
+    private javax.swing.JButton btSolicitarAprobacion;
     private javax.swing.JRadioButton checkServicioAuto;
     private javax.swing.JTabbedPane containerCI;
     private javax.swing.JTextField fechaIngresoVisita;
     private javax.swing.JTextField horaIngresoVisita;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
