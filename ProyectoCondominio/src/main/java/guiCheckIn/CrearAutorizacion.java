@@ -8,12 +8,12 @@ package guiCheckIn;
  *
  * @author LENOVO
  */
-public class AutorizacionGUI extends javax.swing.JPanel {
+public class CrearAutorizacion extends javax.swing.JPanel {
 
     /**
      * Creates new form AutorizacionGUI
      */
-    public AutorizacionGUI() {
+    public CrearAutorizacion() {
         initComponents();
     }
 
@@ -32,14 +32,12 @@ public class AutorizacionGUI extends javax.swing.JPanel {
         lblFechaInicio = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblFechaFin = new javax.swing.JLabel();
-        lblAprobar = new javax.swing.JLabel();
-        rbnYes = new javax.swing.JRadioButton();
-        rbnNo = new javax.swing.JRadioButton();
         txtAutorizador = new javax.swing.JTextField();
         txtAutorizado = new javax.swing.JTextField();
         txtDateIn = new javax.swing.JTextField();
         txtDateOut = new javax.swing.JTextField();
         txtHour = new javax.swing.JTextField();
+        btCrearAutorizacion = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AUTORIZACIÓN", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 2, 18))); // NOI18N
 
@@ -53,11 +51,7 @@ public class AutorizacionGUI extends javax.swing.JPanel {
 
         lblFechaFin.setText("Fecha de fin:");
 
-        lblAprobar.setText("Aprobar ingreso:");
-
-        rbnYes.setText("Si");
-
-        rbnNo.setText("No");
+        btCrearAutorizacion.setText("Crear autorizacion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,24 +60,23 @@ public class AutorizacionGUI extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAprobar)
                     .addComponent(lblAutorizador)
                     .addComponent(lblAutorizado)
                     .addComponent(lblFechaInicio)
                     .addComponent(lblFechaFin)
                     .addComponent(jLabel4))
-                .addGap(32, 32, 32)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rbnYes)
-                        .addGap(27, 27, 27)
-                        .addComponent(rbnNo))
-                    .addComponent(txtAutorizador)
+                    .addComponent(txtAutorizador, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                     .addComponent(txtAutorizado)
                     .addComponent(txtDateIn)
                     .addComponent(txtDateOut)
                     .addComponent(txtHour))
                 .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btCrearAutorizacion)
+                .addGap(116, 116, 116))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,12 +101,9 @@ public class AutorizacionGUI extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAprobar)
-                    .addComponent(rbnYes)
-                    .addComponent(rbnNo))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btCrearAutorizacion)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -136,15 +126,13 @@ public class AutorizacionGUI extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCrearAutorizacion;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAprobar;
     private javax.swing.JLabel lblAutorizado;
     private javax.swing.JLabel lblAutorizador;
     private javax.swing.JLabel lblFechaFin;
     private javax.swing.JLabel lblFechaInicio;
-    private javax.swing.JRadioButton rbnNo;
-    private javax.swing.JRadioButton rbnYes;
     private javax.swing.JTextField txtAutorizado;
     private javax.swing.JTextField txtAutorizador;
     private javax.swing.JTextField txtDateIn;
