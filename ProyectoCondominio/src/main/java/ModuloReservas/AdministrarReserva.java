@@ -40,6 +40,55 @@ public class AdministrarReserva {
                             }
                         }
                     }
+                    break;
+                }
+                case 1: {
+                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                        System.out.println(inmueble);
+// Verificar si el inmueble actual es una instancia de Cancha.
+                        if (inmueble instanceof Gimnasio) {
+                            System.out.println(inmueble.toString());
+                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Gimnasio")) {
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                this.listaReservas.add(nuevaReserva);
+                                return true;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 2: {
+                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                        System.out.println(inmueble);
+                        // Verificar si el inmueble actual es una instancia de Cancha.
+                        if (inmueble instanceof Piscina) {
+                            System.out.println(inmueble.toString());
+                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Piscina")) {
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                this.listaReservas.add(nuevaReserva);
+                                return true;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 3: {
+                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
+                        System.out.println(inmueble);
+                        // Verificar si el inmueble actual es una instancia de Cancha.
+                        if (inmueble instanceof Terraza) {
+                            System.out.println(inmueble.toString());
+                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Terraza")) {
+                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
+                                this.listaReservas.add(nuevaReserva);
+                                return true;
+                            }
+                        }
+                    }
+                    break;
                 }
                 default: {
                     System.out.println("Caso no existe");
@@ -72,6 +121,51 @@ public class AdministrarReserva {
                     }
                 }
             }
+            case 1: {
+                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
+                    // Verificar si el inmueble actual es una instancia de Gimnasio
+                    if (inmueble instanceof Gimnasio) {
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Gimnasio")) {
+                            for (Reserva reserva : listaReservas) {
+                                if (reserva.getId() == id) {
+                                    reserva.reprogramar(dia);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            case 2: {
+                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
+                    // Verificar si el inmueble actual es una instancia de Gimnasio
+                    if (inmueble instanceof Piscina) {
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Piscina")) {
+                            for (Reserva reserva : listaReservas) {
+                                if (reserva.getId() == id) {
+                                    reserva.reprogramar(dia);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            case 3: {
+                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
+                    // Verificar si el inmueble actual es una instancia de Gimnasio
+                    if (inmueble instanceof Terraza) {
+                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
+                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Terraza")) {
+                            for (Reserva reserva : listaReservas) {
+                                if (reserva.getId() == id) {
+                                    reserva.reprogramar(dia);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             default: {
                 System.out.println("Caso no existe");
             }
@@ -85,11 +179,16 @@ public class AdministrarReserva {
             
         } else {
             System.out.println("No se puede reprogramar la reserva, las fechas no están disponibles.")*/
-
 // Método para cancelar una reserva
-    public void cancelarReserva(Reserva reserva) {
-        reserva.cancelar();
-        System.out.println("La reserva con ID: " + reserva.getId() + " ha sido cancelada.");
+    public boolean cancelarReserva(int id, Administrador administrador) {
+        // Verificar si el inmueble actual es una instancia de Cancha.
+        for (Reserva reserva : listaReservas) {
+            if (reserva.getId() == id) {
+                reserva.cancelar();
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int generarNumeroAleatorio() {
