@@ -66,7 +66,7 @@ public class Directiva implements Serializable{
     }
 
     public boolean esParte(Residente residente) {
-        return residente.equals(presidente) || residente.equals(secretario);
+        return residente.getNombre().equals(presidente.getNombre()) || residente.getNombre().equals(secretario.getNombre());
     }
     
     public ArrayList<Contrato> getListaContratosPorApobar(){

@@ -5,6 +5,7 @@ import Finanzas.ObligacionFinanciera;
 import Inmueble.Departamento;
 import check_in.RegistroEntrada;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Residente extends Perfil implements Serializable {
@@ -77,6 +78,19 @@ public class Residente extends Perfil implements Serializable {
         aprobacionDeContrato.notificarAprobacion(descripcionContrato);
         
     }
+
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        final Residente other = (Residente) obj;
+        if (this.nombre == other.nombre) {
+            return true;
+        }
+        return this.apellido == other.apellido;
+
+    }
+    
 
 
 }
