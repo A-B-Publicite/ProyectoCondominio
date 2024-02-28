@@ -66,13 +66,14 @@ public class BaseDeDatos {
         return objetoleido;
     }
 
-    private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) {
+    private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) throws Exception {
         for(Residente residente : residentes){
             if(residente.getCorreo().equals(correo)&& residente.getContrasenia().equals(contrasenia)){
                 return residente;
             }
         }
-        return null;
+        throw new Exception("No existe ese residente");
+        //return null;
     }
     
     public static ArrayList<Residente> obtenerListaResidente () throws IOException, ClassNotFoundException {
