@@ -42,82 +42,13 @@ public class AdministracionAlquiler {
         return false;
     }
 
-    // Método para reprogramar una reserva
-    public boolean reprogramarReserva(int id, String dia, Administrador administrador, int opcionReserva) {
-        // Lógica para verificar si la reprogramación es posible
-        //System.out.println("Reprogramando la reserva con ID: " + reserva.getId());
-
-        switch (opcionReserva) {
-            case 0: {
-                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
-                    // Verificar si el inmueble actual es una instancia de Cancha.
-                    if (inmueble instanceof Cancha) {
-                        System.out.println(inmueble.toString());
-                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Cancha")) {
-                            for (Reserva reserva : listaReservas) {
-                                if (reserva.getId() == id) {
-                                    reserva.reprogramar(dia);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            case 1: {
-                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
-                    // Verificar si el inmueble actual es una instancia de Gimnasio
-                    if (inmueble instanceof Gimnasio) {
-                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Gimnasio")) {
-                            for (Reserva reserva : listaReservas) {
-                                if (reserva.getId() == id) {
-                                    reserva.reprogramar(dia);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            case 2: {
-                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
-                    // Verificar si el inmueble actual es una instancia de Gimnasio
-                    if (inmueble instanceof Piscina) {
-                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Piscina")) {
-                            for (Reserva reserva : listaReservas) {
-                                if (reserva.getId() == id) {
-                                    reserva.reprogramar(dia);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            case 3: {
-                for (InmuebleComun inmueble : administrador.getInmueblesComunes()) {
-                    // Verificar si el inmueble actual es una instancia de Gimnasio
-                    if (inmueble instanceof Terraza) {
-                        Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                        if (disponibilidad.verificarDisponibilidad(dia, this.listaReservas, "Terraza")) {
-                            for (Reserva reserva : listaReservas) {
-                                if (reserva.getId() == id) {
-                                    reserva.reprogramar(dia);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            default: {
-                System.out.println("Caso no existe");
+    public Alquiler devolverAlquiler(int id, Fecha fDevolucion) {
+        for (Alquiler alquiler : listaAlquileres) {
+            if (id == alquiler.getIdAlquiler()) {
+                alquiler.getInventario().actualizarDisponibilidad(alquiler.getTipoMueble(), id, true);
             }
         }
-        return false;
-    }
-
-    public void verificarDevolucion() {
-
+        return null;
     }
 
     @Override
