@@ -38,6 +38,7 @@ public class Alquiler {
         if (inventario != null && !inventario.listaMuebles.isEmpty()) {
 
             precioMueble = inventario.verificarDisponibilidad(this.tipoMueble, this.cantidad);
+            inventario.actualizarDisponibilidad(this.tipoMueble, this.cantidad, this.devolucion);
         }
 
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
@@ -45,8 +46,8 @@ public class Alquiler {
 
     }
 
-    public void getFechaFin() {
-
+    public void Alquilar() {
+        
     }
 
 }
