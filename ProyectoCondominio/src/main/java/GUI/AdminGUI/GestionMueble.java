@@ -20,12 +20,15 @@ import java.util.logging.Logger;
 public class GestionMueble extends javax.swing.JFrame {
     private Inventario inventario;
     private int cantidad;
-    //private boolean verificacionSecretario;
-    //private boolean verificacionPresidente;
+    private final Administrador administrador;
+    private boolean verificacionSecretario;
+    private boolean verificacionPresidente;
 
     public GestionMueble(Administrador administrador) {
         initComponents();
         System.out.println(administrador); 
+        this.verificacionPresidente = false;
+        this.verificacionSecretario = false;
         
         
     }
@@ -151,26 +154,25 @@ public class GestionMueble extends javax.swing.JFrame {
         switch (opcionMueble) {
             case "Carpa":
                 for (int i = 0; i < cantidad; i++) {
-                inventario.agregarMueble(new Carpa(Double.parseDouble(TFPrecio.getText())));
+                administrador.agregarMueble(new Carpa(Double.parseDouble(TFPrecio.getText())));
                 }
                 break;
             case "Mesa":
                 for (int i = 0; i < cantidad; i++) {
-                inventario.agregarMueble(new Mesa(Double.parseDouble(TFPrecio.getText())));
+                administrador.agregarMueble(new Mesa(Double.parseDouble(TFPrecio.getText())));
                 }
                 break;
             case "Silla":
                 
                 for (int i = 0; i < cantidad; i++) {
-                inventario.agregarMueble(new Silla(Double.parseDouble(TFPrecio.getText())));
+                administrador.agregarMueble(new Silla(Double.parseDouble(TFPrecio.getText())));
                 }
                 break;
             default:
                 javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
         }
         
-        
-        //BaseDeDatos.escribirAdmin(administrador);
+        BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
     }//GEN-LAST:event_JBAgregarMuebleActionPerformed
 

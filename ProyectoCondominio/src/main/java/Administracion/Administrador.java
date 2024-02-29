@@ -23,6 +23,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(nombre + " " + apellido, fechaActual, fechaFin);
         this.setAutorizacion(autorizacionEntrada);
     }
+    
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
