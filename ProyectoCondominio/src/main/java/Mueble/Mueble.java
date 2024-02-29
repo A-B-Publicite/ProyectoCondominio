@@ -5,6 +5,7 @@ public abstract class Mueble {
     private boolean estado;
     private double precio;
 
+
     public Mueble(boolean estado, double precio) {
         this.estado = estado;
         this.precio = precio;
@@ -12,4 +13,26 @@ public abstract class Mueble {
 
 
 
+    public Mueble(float precio) {
+        this.estado = true;
+        this.precio = precio;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
+    
 }

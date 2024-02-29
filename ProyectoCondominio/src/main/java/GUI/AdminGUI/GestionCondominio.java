@@ -58,6 +58,11 @@ public class GestionCondominio extends javax.swing.JFrame {
         cmbInmueblesComunales.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cmbInmueblesComunales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Cancha", "Espacio de Parqueo", "Gimnasio", "Piscina", "Terraza" }));
         cmbInmueblesComunales.setToolTipText("");
+        cmbInmueblesComunales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbInmueblesComunalesActionPerformed(evt);
+            }
+        });
 
         txtMetrosCuadrado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtMetrosCuadrado.setText("Ingrese los metros cuadrados");
@@ -384,6 +389,10 @@ public class GestionCondominio extends javax.swing.JFrame {
         BaseDeDatos.escribirAdmin(administrador);
 
     }//GEN-LAST:event_btnAgregarDirectivaActionPerformed
+
+    private void cmbInmueblesComunalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInmueblesComunalesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbInmueblesComunalesActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarIngresoDepartamentos;

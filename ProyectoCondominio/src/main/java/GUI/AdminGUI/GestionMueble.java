@@ -46,6 +46,11 @@ public class GestionMueble extends javax.swing.JFrame {
         CBMuebles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CBMuebles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carpa", "Silla", "Mesa" }));
         CBMuebles.setToolTipText("");
+        CBMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBMueblesActionPerformed(evt);
+            }
+        });
 
         TFCantidad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         TFCantidad.setText("Ingrese cantidad");
@@ -137,29 +142,29 @@ public class GestionMueble extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAgregarMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarMuebleActionPerformed
-        String opcionInmueble = (String)CBMuebles.getSelectedItem();
-        InmuebleComun nuevoInmuebleComun = null;
-        System.out.println("HOLA ENTRE AL METODO TUYO");
-        switch (opcionInmueble) {
-            case "Cancha":
-                nuevoInmuebleComun = new Cancha(Double.parseDouble(TFCantidad.getText()));
+        String opcionMueble = (String)CBMuebles.getSelectedItem();
+        Mueble mueble = null;
+        System.out.println("AGREGAR MUEBLE");
+        switch (opcionMueble) {
+            case "Carpa":
+                mueble = new Carpa(Double.parseDouble(TFCantidad.getText()));
                 break;
-            case "Espacio de Parqueo":
-                nuevoInmuebleComun = new EspacioDeParqueadero(Double.parseDouble(TFCantidad.getText()));
+            case "Mesa":
+                inventario = new EspacioDeParqueadero(Double.parseDouble(TFCantidad.getText()));
                 break;
-            case "Gimnasio":
-                nuevoInmuebleComun = new Gimnasio(Double.parseDouble(TFCantidad.getText()));
+            case "":
+                inventario = new Gimnasio(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Piscina":
-                nuevoInmuebleComun = new Piscina(Double.parseDouble(TFCantidad.getText()));
+                inventario = new Piscina(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Terraza":
-                nuevoInmuebleComun = new Terraza(Double.parseDouble(TFCantidad.getText()));
+                inventario = new Terraza(Double.parseDouble(TFCantidad.getText()));
                 break;
             default:
                 javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
         }
-        administrador.agregarInmuebleComun(nuevoInmuebleComun);
+        administrador.agregarInmuebleComun(inventario);
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
     }//GEN-LAST:event_JBAgregarMuebleActionPerformed
@@ -179,6 +184,10 @@ public class GestionMueble extends javax.swing.JFrame {
     private void TFPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TFPrecioActionPerformed
+
+    private void CBMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBMueblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBMueblesActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBMuebles;
