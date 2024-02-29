@@ -12,12 +12,6 @@ public abstract class Mueble {
     }
 
 
-
-    public Mueble(float precio) {
-        this.estado = true;
-        this.precio = precio;
-    }
-
     public boolean getEstado() {
         return estado;
     }

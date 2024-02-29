@@ -7,10 +7,7 @@ public class Mesa extends Mueble{
         super(precio);
     }
 
-    public Mesa(float precio) {
-        super(precio);
-    }
-    
+   
     @Override
     public void setPrecio(double precio) {
         super.setPrecio(precio); 

@@ -11,11 +11,6 @@ public class Carpa extends Mueble {
     }
 
 
-
-    public Carpa(float precio) {
-        super(precio);
-    }
-
     @Override
     public void setPrecio(double precio) {
         super.setPrecio(precio); 
