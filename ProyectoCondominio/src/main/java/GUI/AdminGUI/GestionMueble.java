@@ -17,8 +17,7 @@ public class GestionMueble extends javax.swing.JFrame {
     public GestionMueble(Administrador administrador) {
         initComponents();
         System.out.println(administrador); 
-        this.verificacionPresidente = false;
-        this.verificacionSecretario = false;   
+        this.administrador = administrador;
     }
     
 
