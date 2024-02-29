@@ -18,13 +18,13 @@ public class Inventario {
         double precioMueble = 0;
         switch (tipoMueble) {
             case "Carpa": {
-                int count=0;
+                int count = 0;
                 for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Carpa) { 
-                        if (mueble.getEstado()){
+                    if (mueble instanceof Carpa) {
+                        if (mueble.getEstado()) {
                             count++;
-                            if(count==cantidad){
-                               precioMueble=mueble.getPrecio();
+                            if (count == cantidad) {
+                                precioMueble = mueble.getPrecio();
                             }
                         }
                     }
@@ -32,13 +32,13 @@ public class Inventario {
                 break;
             }
             case "Silla": {
-                int count=0;
+                int count = 0;
                 for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Silla) { 
-                        if (mueble.getEstado()){
+                    if (mueble instanceof Silla) {
+                        if (mueble.getEstado()) {
                             count++;
-                            if(count==cantidad){
-                               precioMueble=mueble.getPrecio();
+                            if (count == cantidad) {
+                                precioMueble = mueble.getPrecio();
                             }
                         }
                     }
@@ -46,25 +46,22 @@ public class Inventario {
                 break;
             }
             case "Mesa": {
-                int count=0;
+                int count = 0;
                 for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Mesa) { 
-                        if (mueble.getEstado()){
+                    if (mueble instanceof Mesa) {
+                        if (mueble.getEstado()) {
                             count++;
-                            if(count==cantidad){
-                               precioMueble=mueble.getPrecio();
+                            if (count == cantidad) {
+                                precioMueble = mueble.getPrecio();
                             }
                         }
                     }
                 }
                 break;
-            return precioMueble;
+            }
+
         }
-
-        
-    
-
-public void obtenerPrecio() {
-
+        return precioMueble;
     }
+    
 }
