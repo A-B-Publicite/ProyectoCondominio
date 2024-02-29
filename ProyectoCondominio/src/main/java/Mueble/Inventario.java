@@ -14,7 +14,7 @@ public class Inventario {
         listaMuebles.add(mueble);
     }
 
-//    public double verificarDisponibilidad(String tipoMueble, int cantidad) {
+    public double verificarDisponibilidad(String tipoMueble, int cantidad) {
         double precioMueble = 0;
         switch (tipoMueble) {
             case "Carpa" ->  {
@@ -29,6 +29,7 @@ public class Inventario {
                         }
                     }
                 }
+                break;
             }
             case "Silla" ->  {
                 int count = 0;
@@ -42,6 +43,7 @@ public class Inventario {
                         }
                     }
                 }
+                break;
             }
             case "Mesa" ->  {
                 int count = 0;
@@ -55,6 +57,7 @@ public class Inventario {
                         }
                     }
                 }
+                break;
             }
 
         }
@@ -63,47 +66,62 @@ public class Inventario {
     public void actualizarDisponibilidad(String tipoMueble, int cantidad, boolean devolucion) {
         switch (tipoMueble) {
             case "Carpa" ->  {
-                int count = 0;
+                int count1 = 0;
+                int count2 = 0;
                 for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Carpa) {
                         if (mueble.getEstado()) {
-                            if (count < cantidad && devolucion==false) {
-                                
+                            if (count1 < cantidad && devolucion==false) {
+                                count1++;
                                 mueble.setEstado(false);
-                            }else{
-                                if(devolucion){
-                                    mueble.setEstado(true)
-                                   };
-                            count++;
+                            }
+                        }else{
+                             if (count2 < cantidad && devolucion==true) {
+                                count2++;
+                                mueble.setEstado(true);
+                            }
                         }
                     }
                 }
+                break;
             }
             case "Silla" ->  {
-                int count = 0;
+                int count1 = 0;
+                int count2 = 0;
                 for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Silla) {
-                          if (mueble.getEstado()) {
-                            if (count < cantidad) {
+                        if (mueble.getEstado()) {
+                            if (count1 < cantidad && devolucion==false) {
+                                count1++;
                                 mueble.setEstado(false);
                             }
-                            count++;
+                        }else{
+                             if (count2 < cantidad && devolucion==true) {
+                                count2++;
+                                mueble.setEstado(true);
+                            }
                         }
                     }
                 }
+                break;
             }
             case "Mesa" ->  {
-                int count = 0;
+                int count1 = 0;
+                int count2 = 0;
                 for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Mesa) {
-                           if (mueble.getEstado()) {
-                            if (count < cantidad) {
-                                mueble.setEstado(false);
-                            }
-                            count++;
+                    if (mueble.getEstado()) {
+                        if (count1 < cantidad && devolucion==false) {
+                            count1++;
+                            mueble.setEstado(false);
+                        }
+                    }else{
+                         if (count2 < cantidad && devolucion==true) {
+                            count2++;
+                            mueble.setEstado(true);
                         }
                     }
                 }
+                break;
             }
         }
     }

@@ -30,9 +30,7 @@ public class Alquiler {
         this.inventario = inventario;
     }
 
-
-
-    public void calcularTotal() {
+    public void Alquilar() {
         double precioMueble = 0.0;
 
         if (inventario != null && !inventario.listaMuebles.isEmpty()) {
@@ -43,11 +41,6 @@ public class Alquiler {
 
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         precioTotal = cantidad * precioMueble;
-
-    }
-
-    public void Alquilar() {
-        
     }
 
 }
