@@ -1,5 +1,4 @@
-//hice un cambio
-package ModuloMueble;
+package Mueble;
 
 import java.io.File;
 import java.io.FileInputStream;

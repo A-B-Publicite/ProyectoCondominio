@@ -1,4 +1,4 @@
-package ModuloMueble;
+package Mueble;
 import java.time.LocalDate;
 
 public class Mueble {
