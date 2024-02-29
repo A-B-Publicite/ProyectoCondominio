@@ -14,63 +14,52 @@ public class Inventario {
         listaMuebles.add(mueble);
     }
 
-    public void verificarDisponibilidad(String tipoMueble, int cantidad) {
-
+    public double verificarDisponibilidad(String tipoMueble, int cantidad) {
+        double precioMueble = 0;
         switch (tipoMueble) {
             case "Carpa": {
+                int count=0;
                 for (Mueble mueble : listaMuebles) {
-                    System.out.println(mueble);
-                    // Verificar si el inmueble actual es una instancia de Cancha.
-                    if (mueble instanceof Carpa) {
-                        mueble.getEstado();
-                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Cancha")) {
-                                System.out.println("Ingrese el detalle de la reserva: ");
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
-                                this.listaReservas.add(nuevaReserva);
-                                return true;
+                    if (mueble instanceof Carpa) { 
+                        if (mueble.getEstado()){
+                            count++;
+                            if(count==cantidad){
+                               precioMueble=mueble.getPrecio();
                             }
                         }
                     }
-                    break;
                 }
-                case 1: {
-                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
-                        System.out.println(inmueble);
-// Verificar si el inmueble actual es una instancia de Cancha.
-                        if (inmueble instanceof Gimnasio) {
-                            System.out.println(inmueble.toString());
-                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Gimnasio")) {
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Gimnasio");
-                                this.listaReservas.add(nuevaReserva);
-                                return true;
+                break;
+            }
+            case "Silla": {
+                int count=0;
+                for (Mueble mueble : listaMuebles) {
+                    if (mueble instanceof Silla) { 
+                        if (mueble.getEstado()){
+                            count++;
+                            if(count==cantidad){
+                               precioMueble=mueble.getPrecio();
                             }
                         }
                     }
-                    break;
                 }
-                case 2: {
-                    for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
-                        System.out.println(inmueble);
-                        // Verificar si el inmueble actual es una instancia de Cancha.
-                        if (inmueble instanceof Piscina) {
-                            System.out.println(inmueble.toString());
-                            Disponibilidad disponibilidad = new Disponibilidad(inmueble);
-                            if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Piscina")) {
-                                Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Piscina");
-                                this.listaReservas.add(nuevaReserva);
-                                return true;
+                break;
+            }
+            case "Mesa": {
+                int count=0;
+                for (Mueble mueble : listaMuebles) {
+                    if (mueble instanceof Mesa) { 
+                        if (mueble.getEstado()){
+                            count++;
+                            if(count==cantidad){
+                               precioMueble=mueble.getPrecio();
                             }
                         }
                     }
-                    break;
                 }
-                default: {
-                    System.out.println("Caso no existe");
-                    return false;
-                }
-
-    }
+                break;
+            return precioMueble;
+        }
 
         
     

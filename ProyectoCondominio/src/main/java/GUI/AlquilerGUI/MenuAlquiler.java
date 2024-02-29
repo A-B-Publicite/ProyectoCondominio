@@ -135,7 +135,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             }
         });
 
-        jCBTipoMueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silla", "Mesa", "Carpa" }));
+        jCBTipoMueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carpa", "Silla", "Mesa", " " }));
         jCBTipoMueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBTipoMuebleActionPerformed(evt);
