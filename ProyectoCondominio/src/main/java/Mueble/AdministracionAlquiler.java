@@ -49,7 +49,7 @@ public class AdministracionAlquiler {
             if (id == alquiler.getIdAlquiler()) {
                 //comparar fechas
                 if(alquiler.getFechaFin().getAnio()<=fDevolucion.getAnio()){
-                    
+                    flag=true;
                 }
             }else{
                 return null;
