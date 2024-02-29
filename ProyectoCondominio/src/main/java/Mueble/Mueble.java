@@ -6,8 +6,8 @@ public abstract class Mueble {
     private double precio;
 
 
-    public Mueble(boolean estado, double precio) {
-        this.estado = estado;
+    public Mueble(double precio) {
+        this.estado = true;
         this.precio = precio;
     }
 

@@ -7,28 +7,30 @@ package GUI.AdminGUI;
 import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
-import Inmueble.*;
+import Mueble.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
+ * 
+ * 
  * @author usuario
  */
 public class GestionMueble extends javax.swing.JFrame {
-    private final Administrador administrador;
-    private boolean verificacionSecretario;
-    private boolean verificacionPresidente;
+    private Inventario inventario;
+    private int cantidad;
+    //private boolean verificacionSecretario;
+    //private boolean verificacionPresidente;
 
     public GestionMueble(Administrador administrador) {
         initComponents();
-        System.out.println(administrador);
-        this.administrador = administrador;
-        this.verificacionPresidente = false;
-        this.verificacionSecretario = false;
+        System.out.println(administrador); 
+        
+        
     }
-
     
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -142,30 +144,33 @@ public class GestionMueble extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAgregarMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarMuebleActionPerformed
+        cantidad = Integer.parseInt(TFCantidad.getText());
         String opcionMueble = (String)CBMuebles.getSelectedItem();
         Mueble mueble = null;
         System.out.println("AGREGAR MUEBLE");
         switch (opcionMueble) {
             case "Carpa":
-                mueble = new Carpa(Double.parseDouble(TFCantidad.getText()));
+                for (int i = 0; i < cantidad; i++) {
+                inventario.agregarMueble(new Carpa(Double.parseDouble(TFPrecio.getText())));
+                }
                 break;
             case "Mesa":
-                inventario = new EspacioDeParqueadero(Double.parseDouble(TFCantidad.getText()));
+                for (int i = 0; i < cantidad; i++) {
+                inventario.agregarMueble(new Mesa(Double.parseDouble(TFPrecio.getText())));
+                }
                 break;
-            case "":
-                inventario = new Gimnasio(Double.parseDouble(TFCantidad.getText()));
-                break;
-            case "Piscina":
-                inventario = new Piscina(Double.parseDouble(TFCantidad.getText()));
-                break;
-            case "Terraza":
-                inventario = new Terraza(Double.parseDouble(TFCantidad.getText()));
+            case "Silla":
+                
+                for (int i = 0; i < cantidad; i++) {
+                inventario.agregarMueble(new Silla(Double.parseDouble(TFPrecio.getText())));
+                }
                 break;
             default:
                 javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
         }
-        administrador.agregarInmuebleComun(inventario);
-        BaseDeDatos.escribirAdmin(administrador);
+        
+        
+        //BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
     }//GEN-LAST:event_JBAgregarMuebleActionPerformed
 

@@ -3,8 +3,8 @@ import java.time.LocalDate;
 public class Mesa extends Mueble{
 
 
-    public Mesa(boolean estado, double precio) {
-        super(estado, precio);
+    public Mesa(double precio) {
+        super(precio);
     }
 
     public Mesa(float precio) {

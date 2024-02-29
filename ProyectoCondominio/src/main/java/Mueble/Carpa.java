@@ -6,8 +6,8 @@ import java.util.Date;
 public class Carpa extends Mueble {
 
 
-    public Carpa(boolean estado, double precio) {
-        super(estado, precio);
+    public Carpa(double precio) {
+        super(precio);
     }
 
 

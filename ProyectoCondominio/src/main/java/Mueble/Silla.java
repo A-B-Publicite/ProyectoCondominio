@@ -4,8 +4,8 @@ import java.util.Date;
 public class Silla extends Mueble{
 
 
-    public Silla(boolean estado, double precio) {
-        super(estado, precio);
+    public Silla(double precio) {
+        super(precio);
     }
 
 
