@@ -43,4 +43,11 @@ public class Alquiler {
         precioTotal = cantidad * precioMueble;
     }
 
+    @Override
+    public String toString() {
+        return "Alquiler{" + "idAlquiler=" + idAlquiler + ", usuario=" + usuario + ", devolucion=" + devolucion + ", tipoMueble=" + tipoMueble + ", cantidad=" + cantidad + ", precioTotal=" + precioTotal + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", inventario=" + inventario + '}';
+    }
+    
+    
+
 }
