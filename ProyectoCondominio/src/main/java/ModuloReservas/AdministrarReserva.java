@@ -25,7 +25,7 @@ public class AdministrarReserva implements Serializable{
                     System.out.println("Ingrese el dia de la reserva: ");
                     for (InmuebleComun inmueble : usuario.getInmueblesComunes()) {
                         System.out.println(inmueble);
-// Verificar si el inmueble actual es una instancia de Cancha.
+                        // Verificar si el inmueble actual es una instancia de Cancha.
                         if (inmueble instanceof Cancha) {
                             System.out.println(inmueble.toString());
                             Disponibilidad disponibilidad = new Disponibilidad(inmueble);

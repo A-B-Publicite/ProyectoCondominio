@@ -8,7 +8,6 @@ import GUI.FinanzasGUI.FinanzasResidente;
 import Administracion.Administrador;
 import Administracion.Residente;
 import GUI.MensajeGUI.GUIMensaje;
-import GUI.AlquilerGUI.GUIMueble;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;

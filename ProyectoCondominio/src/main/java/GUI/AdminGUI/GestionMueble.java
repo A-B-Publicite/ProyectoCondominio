@@ -33,45 +33,59 @@ public class GestionMueble extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmbInmueblesComunales = new javax.swing.JComboBox<>();
-        txtMetrosCuadrado = new javax.swing.JTextField();
-        btnAgregarInmueble = new javax.swing.JButton();
+        CBMuebles = new javax.swing.JComboBox<>();
+        TFCantidad = new javax.swing.JTextField();
+        JBAgregarMueble = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        TFPrecio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cmbInmueblesComunales.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cmbInmueblesComunales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Cancha", "Espacio de Parqueo", "Gimnasio", "Piscina", "Terraza" }));
-        cmbInmueblesComunales.setToolTipText("");
+        CBMuebles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CBMuebles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carpa", "Silla", "Mesa" }));
+        CBMuebles.setToolTipText("");
 
-        txtMetrosCuadrado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtMetrosCuadrado.setText("Ingrese los metros cuadrados");
-        txtMetrosCuadrado.addFocusListener(new java.awt.event.FocusAdapter() {
+        TFCantidad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TFCantidad.setText("Ingrese cantidad");
+        TFCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMetrosCuadradoFocusGained(evt);
+                TFCantidadFocusGained(evt);
             }
         });
-        txtMetrosCuadrado.addActionListener(new java.awt.event.ActionListener() {
+        TFCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMetrosCuadradoActionPerformed(evt);
+                TFCantidadActionPerformed(evt);
             }
         });
 
-        btnAgregarInmueble.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAgregarInmueble.setText("Agregar inmueble");
-        btnAgregarInmueble.addActionListener(new java.awt.event.ActionListener() {
+        JBAgregarMueble.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBAgregarMueble.setText("Agregar mueble");
+        JBAgregarMueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarInmuebleActionPerformed(evt);
+                JBAgregarMuebleActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Ingreso del muebles:");
+        jLabel1.setText("Ingreso de muebles:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel3.setText("Ingrese el inmueble");
+        jLabel3.setText("Ingrese el mueble");
+
+        TFPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TFPrecio.setText("Ingrese precio");
+        TFPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TFPrecioFocusGained(evt);
+            }
+        });
+        TFPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFPrecioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,14 +102,15 @@ public class GestionMueble extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMetrosCuadrado)
-                                    .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TFCantidad)
+                                    .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TFPrecio, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(62, 62, 62)
-                                .addComponent(btnAgregarInmueble))))
+                                .addComponent(JBAgregarMueble))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,38 +121,40 @@ public class GestionMueble extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBAgregarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMetrosCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInmuebleActionPerformed
-        String opcionInmueble = (String)cmbInmueblesComunales.getSelectedItem();
+    private void JBAgregarMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarMuebleActionPerformed
+        String opcionInmueble = (String)CBMuebles.getSelectedItem();
         InmuebleComun nuevoInmuebleComun = null;
         System.out.println("HOLA ENTRE AL METODO TUYO");
         switch (opcionInmueble) {
             case "Cancha":
-                nuevoInmuebleComun = new Cancha(Double.parseDouble(txtMetrosCuadrado.getText()));
+                nuevoInmuebleComun = new Cancha(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Espacio de Parqueo":
-                nuevoInmuebleComun = new EspacioDeParqueadero(Double.parseDouble(txtMetrosCuadrado.getText()));
+                nuevoInmuebleComun = new EspacioDeParqueadero(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Gimnasio":
-                nuevoInmuebleComun = new Gimnasio(Double.parseDouble(txtMetrosCuadrado.getText()));
+                nuevoInmuebleComun = new Gimnasio(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Piscina":
-                nuevoInmuebleComun = new Piscina(Double.parseDouble(txtMetrosCuadrado.getText()));
+                nuevoInmuebleComun = new Piscina(Double.parseDouble(TFCantidad.getText()));
                 break;
             case "Terraza":
-                nuevoInmuebleComun = new Terraza(Double.parseDouble(txtMetrosCuadrado.getText()));
+                nuevoInmuebleComun = new Terraza(Double.parseDouble(TFCantidad.getText()));
                 break;
             default:
                 javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
@@ -145,22 +162,31 @@ public class GestionMueble extends javax.swing.JFrame {
         administrador.agregarInmuebleComun(nuevoInmuebleComun);
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
-    }//GEN-LAST:event_btnAgregarInmuebleActionPerformed
+    }//GEN-LAST:event_JBAgregarMuebleActionPerformed
 
-    private void txtMetrosCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMetrosCuadradoActionPerformed
+    private void TFCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMetrosCuadradoActionPerformed
+    }//GEN-LAST:event_TFCantidadActionPerformed
 
-    private void txtMetrosCuadradoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMetrosCuadradoFocusGained
-        txtMetrosCuadrado.setText("");
-    }//GEN-LAST:event_txtMetrosCuadradoFocusGained
+    private void TFCantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFCantidadFocusGained
+        TFCantidad.setText("");
+    }//GEN-LAST:event_TFCantidadFocusGained
+
+    private void TFPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFPrecioFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFPrecioFocusGained
+
+    private void TFPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFPrecioActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarInmueble;
-    private javax.swing.JComboBox<String> cmbInmueblesComunales;
+    private javax.swing.JComboBox<String> CBMuebles;
+    private javax.swing.JButton JBAgregarMueble;
+    private javax.swing.JTextField TFCantidad;
+    private javax.swing.JTextField TFPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField txtMetrosCuadrado;
     // End of variables declaration//GEN-END:variables
 }
