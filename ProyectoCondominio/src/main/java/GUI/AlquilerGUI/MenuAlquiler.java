@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 public class MenuAlquiler extends javax.swing.JFrame {
     
     MenuAlquilerMueble listaAlquiler;
+    Administrador administrador;
     
     private int idAlquiler = 0;
     
@@ -69,7 +70,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTFCantidad = new javax.swing.JTextField();
         jTFFechaFin = new javax.swing.JTextField();
         jCBTipoMueble = new javax.swing.JComboBox<>();
-        txtCorreo = new javax.swing.JTextField();
+        jTFCorreo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jTFPrecio = new javax.swing.JTextField();
@@ -159,7 +160,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtCorreo)
+                                .addComponent(jTFCorreo)
                                 .addContainerGap())
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTFIdAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
@@ -177,9 +178,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTFFechaFin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                .addComponent(jTFFechaInicio, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jTFFechaFin)
+                            .addComponent(jTFFechaInicio)
                             .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -196,7 +196,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -453,15 +453,17 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         int id = idAlquiler; 
         establecerFechaActual();
+        String correo = jTFIdAlquiler.get
         boolean alquilerMueble = false;
         Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
         Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        double precio = Double.parseDouble(); 
+        Alquiler alquiler = new Alquiler(idAlquiler, correo, tipoMueble, cantidad, fechaInicio, fechaFin);
+        double precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
         
-        Alquiler alquiler = new Alquiler(idAlquiler, usuario, tipoMueble, cantidad, fechaInicio, fechaFin);
+        
         
         
       
@@ -538,6 +540,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextArea jTAAlquilersFinalizados;
     private javax.swing.JTextArea jTADevolución;
     private javax.swing.JTextField jTFCantidad;
+    private javax.swing.JTextField jTFCorreo;
     private javax.swing.JTextField jTFFechaDevolución;
     private javax.swing.JTextField jTFFechaFin;
     private javax.swing.JTextField jTFFechaInicio;
@@ -548,6 +551,5 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }
