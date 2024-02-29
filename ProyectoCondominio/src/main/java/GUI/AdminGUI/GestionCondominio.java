@@ -7,6 +7,7 @@ package GUI.AdminGUI;
 import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
+import GUI.AlquilerGUI.MenuAlquiler;
 import Inmueble.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,7 @@ public class GestionCondominio extends javax.swing.JFrame {
         btnAgregarDirectiva = new javax.swing.JButton();
         btnBuscarPresidente = new javax.swing.JButton();
         btnBuscarSecretario = new javax.swing.JButton();
+        btnAgregarInmueble1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +172,14 @@ public class GestionCondominio extends javax.swing.JFrame {
             }
         });
 
+        btnAgregarInmueble1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarInmueble1.setText("Agregar mueble");
+        btnAgregarInmueble1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarInmueble1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,34 +217,34 @@ public class GestionCondominio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(txtNumerosDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(84, 84, 84)
-                                        .addComponent(btnAceptarIngresoDepartamentos))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtMetrosCuadrado)
-                                            .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(62, 62, 62)
-                                        .addComponent(btnAgregarInmueble)))))
-                        .addGap(0, 89, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(102, 102, 102)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(141, 141, 141)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addComponent(txtNumerosDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(84, 84, 84)
+                                    .addComponent(btnAceptarIngresoDepartamentos))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(71, 71, 71)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(jLabel3))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtMetrosCuadrado)
+                                        .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(62, 62, 62)
+                                    .addComponent(btnAgregarInmueble)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnAgregarInmueble1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,14 +254,17 @@ public class GestionCondominio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbInmueblesComunales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMetrosCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(txtMetrosCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarInmueble1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -393,11 +406,18 @@ public class GestionCondominio extends javax.swing.JFrame {
     private void cmbInmueblesComunalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInmueblesComunalesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbInmueblesComunalesActionPerformed
+
+    private void btnAgregarInmueble1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInmueble1ActionPerformed
+        
+        GestionMueble gestionMueble = new GestionMueble(administrador);
+        gestionMueble.setVisible(true);
+    }//GEN-LAST:event_btnAgregarInmueble1ActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarIngresoDepartamentos;
     private javax.swing.JButton btnAgregarDirectiva;
     private javax.swing.JButton btnAgregarInmueble;
+    private javax.swing.JButton btnAgregarInmueble1;
     private javax.swing.JButton btnBuscarPresidente;
     private javax.swing.JButton btnBuscarSecretario;
     private javax.swing.JButton btnVolver;
