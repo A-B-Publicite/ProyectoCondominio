@@ -43,6 +43,15 @@ public class Alquiler {
         return precioTotal!=0;
     }
 
+    public double calcularPrecioTotal(String tipo,int cantidad) {
+        double precioMueble = 0.0;
+        if (inventario != null && !inventario.listaMuebles.isEmpty()) {
+            precioMueble = inventario.verificarDisponibilidad(tipo, cantidad);
+        }
+        // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
+        return  cantidad * precioMueble;
+    }
+    
     public int getIdAlquiler() {
         return idAlquiler;
     }

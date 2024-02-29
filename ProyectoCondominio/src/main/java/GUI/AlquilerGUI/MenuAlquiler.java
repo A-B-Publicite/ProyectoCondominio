@@ -446,7 +446,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        try {
+        //try {
         // Incrementar el número entero
         idAlquiler++;
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
