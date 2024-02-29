@@ -1,12 +1,7 @@
 package Mueble;
 
 import Administracion.Perfil;
-import Administracion.Fecha;
 
-/**
- *
- * @author kedos
- */
 public class Alquiler {
 
     private int idAlquiler;

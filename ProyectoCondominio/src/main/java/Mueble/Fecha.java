@@ -1,4 +1,4 @@
-package Negocio;
+package Mueble;
 
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
