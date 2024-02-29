@@ -1,6 +1,7 @@
 package Inmueble;
 
 import Administracion.*;
+import Mueble.*;
 import check_in.Autorizacion;
 import java.io.Serializable;
 
@@ -13,6 +14,7 @@ public class Condominio implements Serializable {
     private ArrayList<Departamento> departamentos;
     private Directiva directiva;
     private Guardia guardia;
+    private Inventario inventario; 
     private ArrayList<Autorizacion> autorizacionesEntrada;
     
     public Condominio(String nombreCondominio) {
@@ -21,6 +23,7 @@ public class Condominio implements Serializable {
         departamentos = new ArrayList<Departamento>();
         autorizacionesEntrada = new ArrayList<Autorizacion>();
         directiva = new Directiva(admin);
+        this.inventario = new Inventario();  
     }
        
     //llenar parqueaderos publicos
@@ -32,7 +35,14 @@ public class Condominio implements Serializable {
     public void agregarDepartamentos(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             departamentos.add(new Departamento());
+            
         }
+    }
+    
+    //para crear la lista de MUEBLES vacia
+    public void agregarMueble(Mueble mueble) {
+        
+            inventario.agregarMueble(mueble);
     }
     
     public Departamento obtenerDepartamentoLibre(){
