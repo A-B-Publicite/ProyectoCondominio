@@ -47,21 +47,75 @@ public class Alquiler {
         return idAlquiler;
     }
 
-    public double getPrecioTotal() {
-        return precioTotal;
+    public Perfil getUsuario() {
+        return usuario;
+    }
+
+    public boolean isDevolucion() {
+        return devolucion;
     }
 
     public String getTipoMueble() {
         return tipoMueble;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public Fecha getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public Fecha getFechaFin() {
+        return fechaFin;
+    }
+
     public Inventario getInventario() {
         return inventario;
+    }
+
+    public void setIdAlquiler(int idAlquiler) {
+        this.idAlquiler = idAlquiler;
+    }
+
+    public void setUsuario(Perfil usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setDevolucion(boolean devolucion) {
+        this.devolucion = devolucion;
+    }
+
+    public void setTipoMueble(String tipoMueble) {
+        this.tipoMueble = tipoMueble;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    public void setFechaInicio(Fecha fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(Fecha fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public void setInventario(Inventario inventario) {
         this.inventario = inventario;
     }
+
+
     
    
 

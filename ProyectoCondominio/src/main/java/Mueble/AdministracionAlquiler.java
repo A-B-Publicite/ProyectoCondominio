@@ -43,12 +43,23 @@ public class AdministracionAlquiler {
     }
 
     public Alquiler devolverAlquiler(int id, Fecha fDevolucion) {
+        Alquiler alquilerDevuelto=null;
+        boolean flag=false;
         for (Alquiler alquiler : listaAlquileres) {
             if (id == alquiler.getIdAlquiler()) {
+                //comparar fechas
+                if(alquiler.getFechaFin().getAnio()<=fDevolucion.getAnio()){
+                    
+                }
+            }else{
+                return null;
+            }
+            if(flag){
                 alquiler.getInventario().actualizarDisponibilidad(alquiler.getTipoMueble(), id, true);
             }
+            
         }
-        return null;
+        return alquilerDevuelto;
     }
 
     @Override
