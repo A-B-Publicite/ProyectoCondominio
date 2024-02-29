@@ -6,7 +6,7 @@ import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
-import Mueble.Mueble;
+import ModuloMuebles.Mueble;
 import check_in.Autorizacion;
 import java.io.*;
 import java.time.LocalDate;

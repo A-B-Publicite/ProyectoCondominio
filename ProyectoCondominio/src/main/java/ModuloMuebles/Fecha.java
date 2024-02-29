@@ -1,4 +1,4 @@
-package Mueble;
+package ModuloMuebles;
 
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;

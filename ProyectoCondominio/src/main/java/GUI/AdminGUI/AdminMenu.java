@@ -321,7 +321,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
 
         
-        MenuAlquiler a = new MenuAlquiler();
+        MenuAlquiler a = new MenuAlquiler(administrador);
         a.setVisible(true);
         
      

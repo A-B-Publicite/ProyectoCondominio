@@ -1,9 +1,13 @@
 package GUI.AdminGUI;
 
+import ModuloMuebles.Inventario;
+import ModuloMuebles.Carpa;
+import ModuloMuebles.Mesa;
+import ModuloMuebles.Mueble;
+import ModuloMuebles.Silla;
 import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
-import Mueble.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

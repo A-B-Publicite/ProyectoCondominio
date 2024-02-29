@@ -1,8 +1,9 @@
-package Mueble;
+package ModuloMuebles;
 
 import Administracion.Perfil;
+import java.io.Serializable;
 
-public class Alquiler {
+public class Alquiler implements Serializable{
 
     private int idAlquiler;
     private Perfil usuario;

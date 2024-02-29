@@ -1,23 +1,16 @@
 
 package GUI.AlquilerGUI;
 
-import Mueble.MenuAlquilerMueble;
 import GUI.AdminGUI.*;
 import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
 import Inmueble.*;
-import Mueble.Alquiler;
-import Mueble.Fecha;
+import ModuloMuebles.Alquiler;
+import ModuloMuebles.Fecha;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,18 +18,17 @@ import javax.swing.JOptionPane;
  */
 public class MenuAlquiler extends javax.swing.JFrame {
     
-    MenuAlquilerMueble listaAlquiler;
     Administrador administrador;
-    
     private int idAlquiler = 0;
-    
-    public MenuAlquiler() {
+    double precioT =0;
+    public MenuAlquiler(Administrador administrador) {
         initComponents();
         this.setLocationRelativeTo(this);
+         this.administrador = administrador;
         this.jTFIdAlquiler.setEditable(false);
         this.jTFFechaInicio.setEditable(false);
+        ArrayList<Residente> listaResidente = administrador.getResidentes();
 
-        listaAlquiler = new MenuAlquilerMueble();
     }
 
     private void establecerFechaActual() {
@@ -74,11 +66,12 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jTFPrecio = new javax.swing.JTextField();
+        jButtonAceptar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAAlquilersFinalizados = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTAAlquilers = new javax.swing.JTextArea();
+        jTAAlquileres = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -143,6 +136,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel27.setText("Precio");
 
+        jButtonAceptar1.setText("Verificar");
+        jButtonAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,7 +163,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addComponent(jTFCorreo)
                                 .addContainerGap())
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTFIdAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                .addComponent(jTFIdAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                                 .addGap(312, 312, 312))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +182,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
                             .addComponent(jTFFechaInicio)
                             .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,8 +218,10 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel27)
-                    .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Alquilar", jPanel1);
@@ -226,9 +230,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTAAlquilersFinalizados.setRows(5);
         jScrollPane1.setViewportView(jTAAlquilersFinalizados);
 
-        jTAAlquilers.setColumns(20);
-        jTAAlquilers.setRows(5);
-        jScrollPane2.setViewportView(jTAAlquilers);
+        jTAAlquileres.setColumns(20);
+        jTAAlquileres.setRows(5);
+        jScrollPane2.setViewportView(jTAAlquileres);
 
         jLabel8.setText("Alquileres");
 
@@ -446,48 +450,23 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        //try {
-        // Incrementar el número entero
         idAlquiler++;
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
         int id = idAlquiler; 
         establecerFechaActual();
-        String correo = jTFIdAlquiler.get
+        String correo = jTFIdAlquiler.getText();
         boolean alquilerMueble = false;
         Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
         Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        Alquiler alquiler = new Alquiler(idAlquiler, correo, tipoMueble, cantidad, fechaInicio, fechaFin);
-        double precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
+        Residente residente= administrador.obtenerResidentePorCorreo(correo);
+        Alquiler alquiler = new Alquiler(idAlquiler, residente, tipoMueble, cantidad, fechaInicio, fechaFin);
+        alquiler.alquilar();   
         
-        
-        
-        
-      
-//        try {
-//            alquilerMueble = alquiler.realizarReserva(numeroEntero, datoTextField2, datoTextField4, datoComboBox1, cantidad);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(MenuAlquiler.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        if (alquilerMueble) {
-//            JOptionPane.showMessageDialog(null, "Alquiler hecha", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Alquiler no hecha", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-//        }
-//        // Resto del código...
-//        } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(null, "Ingrese un valor numérico válido para ID o cantidad", "Error", JOptionPane.ERROR_MESSAGE);
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, "Error inesperado: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//            ex.printStackTrace(); // Imprimir la traza de la excepción para el diagnóstico
-//        }
-
-                
-        
+        jTAAlquileres.setText(alquiler.toString());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jTFFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFFechaInicioActionPerformed
@@ -505,10 +484,32 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private void jTFIdAlquilerDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdAlquilerDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFIdAlquilerDActionPerformed
+
+    private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
+               //try {
+        // Incrementar el número entero
+        idAlquiler++;
+        jTFIdAlquiler.setText(String.valueOf(idAlquiler));
+
+        int id = idAlquiler; 
+        establecerFechaActual();
+        String correo = jTFIdAlquiler.getText();
+        boolean alquilerMueble = false;
+        Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
+        Fecha fechaFin = new Fecha(jTFFechaFin.getText());
+        String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
+        
+        int cantidad = Integer.parseInt(jTFCantidad.getText());
+        Residente residente= administrador.obtenerResidentePorCorreo(correo);
+        Alquiler alquiler = new Alquiler(idAlquiler, residente, tipoMueble, cantidad, fechaInicio, fechaFin);
+        precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
+        jTFPrecio.setText(Double.toString(precioT));
+    }//GEN-LAST:event_jButtonAceptar1ActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonAceptar1;
     private javax.swing.JComboBox<String> jCBTipoMueble;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -536,7 +537,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTAAlquilers;
+    private javax.swing.JTextArea jTAAlquileres;
     private javax.swing.JTextArea jTAAlquilersFinalizados;
     private javax.swing.JTextArea jTADevolución;
     private javax.swing.JTextField jTFCantidad;

@@ -1,8 +1,9 @@
-package Mueble;
+package ModuloMuebles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario {
+public class Inventario implements Serializable{
 
     ArrayList<Mueble> listaMuebles = new ArrayList<>();
 

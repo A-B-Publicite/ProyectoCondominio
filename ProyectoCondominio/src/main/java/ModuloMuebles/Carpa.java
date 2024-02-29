@@ -1,9 +1,10 @@
-package Mueble;
+package ModuloMuebles;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Carpa extends Mueble {
+public class Carpa extends Mueble implements Serializable{
 
 
     public Carpa(double precio) {

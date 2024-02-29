@@ -1,10 +1,11 @@
-package Mueble;
+package ModuloMuebles;
 
 import Administracion.Administrador;
 import Administracion.Residente;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdministracionAlquiler {
+public class AdministracionAlquiler implements Serializable{
 
     ArrayList<Alquiler> listaAlquileres;
    

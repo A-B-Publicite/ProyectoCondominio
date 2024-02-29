@@ -1,7 +1,8 @@
-package Mueble;
+package ModuloMuebles;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
-public class Silla extends Mueble{
+public class Silla extends Mueble implements Serializable{
 
 
     public Silla(double precio) {

@@ -1,6 +1,7 @@
-package Mueble;
+package ModuloMuebles;
+import java.io.Serializable;
 import java.time.LocalDate;
-public class Mesa extends Mueble{
+public class Mesa extends Mueble implements Serializable{
 
 
     public Mesa(double precio) {

@@ -1,7 +1,8 @@
-package Mueble;
+package ModuloMuebles;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Mueble {
+public abstract class Mueble implements Serializable{
     private boolean estado;
     private double precio;
 

@@ -1,7 +1,8 @@
 package Inmueble;
 
+import ModuloMuebles.Inventario;
+import ModuloMuebles.Mueble;
 import Administracion.*;
-import Mueble.*;
 import check_in.Autorizacion;
 import java.io.Serializable;
 
