@@ -17,7 +17,7 @@ public class Inventario {
     public double verificarDisponibilidad(String tipoMueble, int cantidad) {
         double precioMueble = 0;
         switch (tipoMueble) {
-            case "Carpa": {
+            case "Carpa" ->  {
                 int count = 0;
                 for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Carpa) {
@@ -29,9 +29,8 @@ public class Inventario {
                         }
                     }
                 }
-                break;
             }
-            case "Silla": {
+            case "Silla" ->  {
                 int count = 0;
                 for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Silla) {
@@ -43,9 +42,8 @@ public class Inventario {
                         }
                     }
                 }
-                break;
             }
-            case "Mesa": {
+            case "Mesa" ->  {
                 int count = 0;
                 for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Mesa) {
@@ -57,7 +55,6 @@ public class Inventario {
                         }
                     }
                 }
-                break;
             }
 
         }
