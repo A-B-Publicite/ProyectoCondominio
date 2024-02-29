@@ -5,8 +5,25 @@ import java.util.Date;
 
 public class Carpa extends Mueble {
 
-    public Carpa(int cantidad, LocalDate fechaInicio, LocalDate fechaFinal) {
-        super("Carpa", cantidad, fechaInicio, fechaFinal);
+    public Carpa(boolean estado, float precio) {
+        super(estado, precio);
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
 
 }
