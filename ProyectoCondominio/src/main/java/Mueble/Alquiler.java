@@ -18,19 +18,19 @@ public class Alquiler {
     public Alquiler() {
     }
 
-    public Alquiler(int idAlquiler, Perfil usuario, boolean devolucion, String tipoMueble, int cantidad, double precioTotal, Fecha fechaInicio, Fecha fechaFin, Inventario inventario) {
+    public Alquiler(int idAlquiler, Perfil usuario, String tipoMueble, int cantidad, Fecha fechaInicio, Fecha fechaFin) {
         this.idAlquiler = idAlquiler;
         this.usuario = usuario;
-        this.devolucion = devolucion;
+        this.devolucion = false;
         this.tipoMueble = tipoMueble;
         this.cantidad = cantidad;
-        this.precioTotal = precioTotal;
+        this.precioTotal = 0;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.inventario = inventario;
+        this.inventario = null;
     }
 
-    public void alquilar() {
+    public boolean alquilar() {
         double precioMueble = 0.0;
 
         if (inventario != null && !inventario.listaMuebles.isEmpty()) {
@@ -41,6 +41,11 @@ public class Alquiler {
 
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         precioTotal = cantidad * precioMueble;
+        return precioTotal!=0;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
     
    
