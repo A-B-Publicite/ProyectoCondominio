@@ -1,4 +1,3 @@
-
 package GUI.AlquilerGUI;
 
 import GUI.AdminGUI.*;
@@ -6,43 +5,41 @@ import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
 import Inmueble.*;
+import ModuloMuebles.AdministracionAlquiler;
 import ModuloMuebles.Alquiler;
 import ModuloMuebles.Fecha;
+import ModuloMuebles.Inventario;
+import ModuloMuebles.Mueble;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
- * @author usuario
+ * @author Grupo3
  */
 public class MenuAlquiler extends javax.swing.JFrame {
-    
+
     Administrador administrador;
+    Mueble mueble;
+    Alquiler alquiler;
+    Inventario inventario;
+    AdministracionAlquiler administracionAlquiler;
+    
     private int idAlquiler = 0;
-    double precioT =0;
+    double precioT = 0;
+
     public MenuAlquiler(Administrador administrador) {
         initComponents();
         this.setLocationRelativeTo(this);
-         this.administrador = administrador;
+        this.administrador = administrador;
         this.jTFIdAlquiler.setEditable(false);
         this.jTFFechaInicio.setEditable(false);
+        establecerFechaActual();
         ArrayList<Residente> listaResidente = administrador.getResidentes();
 
     }
 
-    private void establecerFechaActual() {
-        // Obtener la fecha actual
-        Date fechaActual = new Date();
-
-        // Formatear la fecha como una cadena
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("YY/MM/DD");
-        String fechaActualStr = formatoFecha.format(fechaActual);
-
-        // Establecer la fecha en el JTextField
-        jTFFechaInicio.setText(fechaActualStr);
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -453,19 +450,19 @@ public class MenuAlquiler extends javax.swing.JFrame {
         idAlquiler++;
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
-        int id = idAlquiler; 
+        int id = idAlquiler;
         establecerFechaActual();
         String correo = jTFIdAlquiler.getText();
         boolean alquilerMueble = false;
         Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
         Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
-        
+
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        Residente residente= administrador.obtenerResidentePorCorreo(correo);
-        Alquiler alquiler = new Alquiler(idAlquiler, residente, tipoMueble, cantidad, fechaInicio, fechaFin);
-        alquiler.alquilar();   
-        
+        Residente residente = administrador.obtenerResidentePorCorreo(correo);
+        Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
+        alquiler.alquilar();
+
         jTAAlquileres.setText(alquiler.toString());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
@@ -486,26 +483,39 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFIdAlquilerDActionPerformed
 
     private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
-               //try {
+        //try {
         // Incrementar el número entero
         idAlquiler++;
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
-        int id = idAlquiler; 
+        int id = idAlquiler;
         establecerFechaActual();
         String correo = jTFIdAlquiler.getText();
         boolean alquilerMueble = false;
         Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
         Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
-        
+
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        Residente residente= administrador.obtenerResidentePorCorreo(correo);
-        Alquiler alquiler = new Alquiler(idAlquiler, residente, tipoMueble, cantidad, fechaInicio, fechaFin);
+        Residente residente = administrador.obtenerResidentePorCorreo(correo);
+        Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
         precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
         jTFPrecio.setText(Double.toString(precioT));
     }//GEN-LAST:event_jButtonAceptar1ActionPerformed
-  
+
+    
+    private void establecerFechaActual() {
+        // Obtener la fecha actual
+        Date fechaActual = new Date();
+
+        // Formatear la fecha como una cadena
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YY/MM/DD");
+        String fechaActualStr = formatoFecha.format(fechaActual);
+
+        // Establecer la fecha en el JTextField
+        jTFFechaInicio.setText(fechaActualStr);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton jButtonAceptar;

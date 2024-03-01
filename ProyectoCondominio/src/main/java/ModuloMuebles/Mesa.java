@@ -1,34 +1,41 @@
 package ModuloMuebles;
-import java.io.Serializable;
-import java.time.LocalDate;
-public class Mesa extends Mueble implements Serializable{
 
+import java.io.Serializable;
+
+public class Mesa extends Mueble implements Serializable {
 
     public Mesa(double precio) {
         super(precio);
     }
 
-   
     @Override
-    public void setPrecio(double precio) {
-        super.setPrecio(precio); 
+    public void setMantenimiento(boolean mantenimiento) {
+        super.setMantenimiento(mantenimiento);
     }
 
     @Override
-    public void setEstado(boolean estado) {
-        super.setEstado(estado); 
+    public boolean isMantenimiento() {
+        return super.isMantenimiento();
+    }
+
+    @Override
+    public void setPrecio(double precio) {
+        super.setPrecio(precio);
     }
 
     @Override
     public double getPrecio() {
-        return super.getPrecio(); 
+        return super.getPrecio();
     }
 
     @Override
-    public boolean getEstado() {
-        return super.getEstado();
+    public void setEstado(boolean estado) {
+        super.setEstado(estado);
     }
-    
 
+    @Override
+    public boolean isEstado() {
+        return super.isEstado();
+    }
 
 }

@@ -5,16 +5,24 @@ import Administracion.Residente;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdministracionAlquiler implements Serializable{
+/**
+ *
+ * @author Grupo3
+ */
+public class AdministracionAlquiler implements Serializable {
 
     ArrayList<Alquiler> listaAlquileres;
-   
+
     public AdministracionAlquiler() {
         listaAlquileres = new <Alquiler>ArrayList();
     }
 
     public AdministracionAlquiler(ArrayList<Alquiler> listaAlquileres) {
         this.listaAlquileres = listaAlquileres;
+    }
+
+    public void agregarAlquiler(Alquiler alquiler) {
+        listaAlquileres.add(alquiler);
     }
 
     public ArrayList<Alquiler> getListaAlquileres() {
@@ -29,14 +37,10 @@ public class AdministracionAlquiler implements Serializable{
         return listaAlquileres.isEmpty();
     }
 
-    public void add(Alquiler alquiler) {
-        listaAlquileres.add(alquiler);
-    }
-
-    public boolean realizarAlquiler(int id, Administrador usuario,String tipoMueble, int cantidad, Fecha fInicio,Fecha fFin, String correo){
+    public boolean realizarAlquiler(Administrador usuario, String tipoMueble, int cantidad, Fecha fInicio, Fecha fFin, String correo) {
         Residente residente = usuario.obtenerResidentePorCorreo(correo);
-        Alquiler alquiler=new Alquiler(id, residente, tipoMueble, cantidad, fInicio,  fFin);
-        if(alquiler.alquilar()){
+        Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fInicio, fFin);
+        if (alquiler.alquilar()) {
             listaAlquileres.add(alquiler);
             return true;
         }
@@ -44,21 +48,21 @@ public class AdministracionAlquiler implements Serializable{
     }
 
     public Alquiler devolverAlquiler(int id, Fecha fDevolucion) {
-        Alquiler alquilerDevuelto=null;
-        boolean flag=false;
+        Alquiler alquilerDevuelto = null;
+        boolean flag = false;
         for (Alquiler alquiler : listaAlquileres) {
             if (id == alquiler.getIdAlquiler()) {
                 //comparar fechas
-                if(alquiler.getFechaFin().getAnio()<=fDevolucion.getAnio()){
-                    flag=true;
+                if (alquiler.getFechaFin().getAnio() <= fDevolucion.getAnio()) {
+                    flag = true;
                 }
-            }else{
+            } else {
                 return null;
             }
-            if(flag){
+            if (flag) {
                 alquiler.getInventario().actualizarDisponibilidad(alquiler.getTipoMueble(), id, true);
             }
-            
+
         }
         return alquilerDevuelto;
     }
