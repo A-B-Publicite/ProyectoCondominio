@@ -40,7 +40,7 @@ public class AdministracionAlquiler implements Serializable {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
         if (!estaVacia()&& inventario.verificarDisponibilidad( tipoMueble, cantidad)) {
-            double precioTotal = calcularPrecioTotal(cantidad,dias);
+            double precioTotal = calcularPrecioTotal(tipoMueble,cantidad,dias);
             alquiler.setPrecioTotal(precioTotal);
             listaAlquileres.add(alquiler);
             inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
@@ -49,10 +49,10 @@ public class AdministracionAlquiler implements Serializable {
         return false;  
     }
 
-    public double calcularPrecioTotal(int cantidad, int dias) {
+    public double calcularPrecioTotal(String tipoMueble, int cantidad, int dias) {
         double precioMueble = 0.0;
-        if (listaAlquileres != null && !estaVacia()) {
-            precioMueble = inventario.getMueble().getPrecio();
+        if (!estaVacia()) {
+                precioMueble = inventario.consultarPrecio(tipoMueble);
         }
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         return cantidad * precioMueble * dias;

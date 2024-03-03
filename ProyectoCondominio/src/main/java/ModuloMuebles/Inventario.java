@@ -19,8 +19,11 @@ public class Inventario implements Serializable {
         this.listaMuebles = listaMuebles;
     }
 
-    public void agregarMueble(Mueble mueble) {
-        listaMuebles.add(mueble);
+    public void agregarMueble(Mueble mueble, int cantidad, double precio) {
+        mueble.setPrecio(precio);
+        for (int i = 0; i <= cantidad; i++) {
+            listaMuebles.add(mueble);
+        }
     }
 
     public ArrayList<Mueble> getListaMuebles() {

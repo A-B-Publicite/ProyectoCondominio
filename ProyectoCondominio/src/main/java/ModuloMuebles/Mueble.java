@@ -15,7 +15,7 @@ public abstract class Mueble implements Serializable {
     public Mueble(double precio) {
         this.estado = true;
         this.precio = precio;
-        this.mantenimiento = true;
+        this.mantenimiento = false;
     }
 
     public boolean isEstado() {
