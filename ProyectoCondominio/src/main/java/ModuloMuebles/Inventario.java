@@ -49,12 +49,6 @@ public class Inventario implements Serializable {
                             }
                         }
                     }
-                }
-                break;
-            }
-            case "Silla" -> {
-                int count = 0;
-                for (Mueble mueble : listaMuebles) {
                     if (mueble instanceof Silla) {
                         if (mueble.isEstado()) {
                             count++;
@@ -63,6 +57,13 @@ public class Inventario implements Serializable {
                             }
                         }
                     }
+                }
+                break;
+            }
+            case "Silla" -> {
+                int count = 0;
+                for (Mueble mueble : listaMuebles) {
+
                 }
                 break;
             }
