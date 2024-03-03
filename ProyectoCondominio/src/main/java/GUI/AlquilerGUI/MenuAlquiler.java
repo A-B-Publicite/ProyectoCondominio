@@ -103,6 +103,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         });
 
         jTabbedPane5.setBackground(new java.awt.Color(0, 204, 204));
+        jTabbedPane5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
