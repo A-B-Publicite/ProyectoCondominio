@@ -37,6 +37,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
         this.jTFFechaInicio.setEditable(false);
         establecerFechaActual();
         ArrayList<Residente> listaResidente = administrador.getResidentes();
+        jTAAlquileresActivos.setText(administracionAlquiler.alquileresFinalizados(true).toString());
+        jTAAlquileresFinalizados.setText(administracionAlquiler.alquileresFinalizados(false).toString());
 
     }
 
@@ -65,9 +67,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jButtonAceptar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTAAlquilersFinalizados = new javax.swing.JTextArea();
+        jTAAlquileresFinalizados = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTAAlquileres = new javax.swing.JTextArea();
+        jTAAlquileresActivos = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         jLabel9 = new javax.swing.JLabel();
@@ -138,7 +140,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel10.setText("Correo");
 
-        jLabel27.setText("Precio");
+        jLabel27.setText("Precio inicial");
+
+        jTFPrecio.setEditable(false);
 
         jButtonAceptar1.setBackground(new java.awt.Color(0, 204, 204));
         jButtonAceptar1.setText("Verificar");
@@ -169,20 +173,25 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel27))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 205, Short.MAX_VALUE))
+                        .addGap(0, 200, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel3)
@@ -244,13 +253,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
 
-        jTAAlquilersFinalizados.setColumns(20);
-        jTAAlquilersFinalizados.setRows(5);
-        jScrollPane1.setViewportView(jTAAlquilersFinalizados);
+        jTAAlquileresFinalizados.setColumns(20);
+        jTAAlquileresFinalizados.setRows(5);
+        jScrollPane1.setViewportView(jTAAlquileresFinalizados);
 
-        jTAAlquileres.setColumns(20);
-        jTAAlquileres.setRows(5);
-        jScrollPane2.setViewportView(jTAAlquileres);
+        jTAAlquileresActivos.setColumns(20);
+        jTAAlquileresActivos.setRows(5);
+        jScrollPane2.setViewportView(jTAAlquileresActivos);
 
         jLabel8.setText("Alquileres en curso");
 
@@ -522,7 +531,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
         alquiler.alquilar();
 
-        jTAAlquileres.setText(alquiler.toString());
+        jTAAlquileresActivos.setText(alquiler.toString());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jTFFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFFechaInicioActionPerformed
@@ -630,8 +639,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTAAlquileres;
-    private javax.swing.JTextArea jTAAlquilersFinalizados;
+    private javax.swing.JTextArea jTAAlquileresActivos;
+    private javax.swing.JTextArea jTAAlquileresFinalizados;
     private javax.swing.JTextArea jTADevolución;
     private javax.swing.JTextField jTFCantidad;
     private javax.swing.JTextField jTFCorreo;
@@ -645,6 +654,5 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private java.awt.Label label1;
-    private javax.swing.JTextField txtNombreCondominio;
     // End of variables declaration//GEN-END:variables
 }

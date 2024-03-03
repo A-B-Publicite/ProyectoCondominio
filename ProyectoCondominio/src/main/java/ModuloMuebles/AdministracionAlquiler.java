@@ -73,6 +73,8 @@ public class AdministracionAlquiler implements Serializable {
         return null;
     }
 
+    //alquileresFinalizados(false)
+    
     @Override
     public String toString() {
         String salida = "Lista de Muebles Alquilados: ";
