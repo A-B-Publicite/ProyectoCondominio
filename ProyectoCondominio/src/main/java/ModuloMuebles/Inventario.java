@@ -35,58 +35,17 @@ public class Inventario implements Serializable {
         return listaMuebles.isEmpty();
     }
 
-    public double verificarDisponibilidad(String tipoMueble, int cantidad) {
-        double precioMueble = 0;
-        switch (tipoMueble) {
-            case "Carpa" -> {
-                int count = 0;
-                for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Carpa) {
-                        if (mueble.isEstado()) {
-                            count++;
-                            if (count == cantidad) {
-                                precioMueble = mueble.getPrecio();
-                            }
-                        }
-                    }
-                    if (mueble instanceof Silla) {
-                        if (mueble.isEstado()) {
-                            count++;
-                            if (count == cantidad) {
-                                precioMueble = mueble.getPrecio();
-                            }
-                        }
-                    }
-                }
-                break;
+    public boolean verificarDisponibilidad(String tipoMueble, int cantidad) {
+        int count = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble.esTipo(tipoMueble)) {
+                count ++;
             }
-            case "Silla" -> {
-                int count = 0;
-                for (Mueble mueble : listaMuebles) {
-
-                }
-                break;
-            }
-            case "Mesa" -> {
-                int count = 0;
-                for (Mueble mueble : listaMuebles) {
-                    if (mueble instanceof Mesa) {
-                        if (mueble.isEstado()) {
-                            count++;
-                            if (count == cantidad) {
-                                precioMueble = mueble.getPrecio();
-                            }
-                        }
-                    }
-                }
-                break;
-            }
-
         }
-        return precioMueble;
+        return count >= cantidad;
     }
 
-    public void actualizarDisponibilidad(String tipoMueble, int cantidad, boolean devolucion) {
+    public void actualizarDisponibilidad(String tipoMueble, int cantidad, boolean finalizacion) {
         switch (tipoMueble) {
             case "Carpa" -> {
                 int count1 = 0;
