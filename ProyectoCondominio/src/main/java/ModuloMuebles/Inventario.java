@@ -59,7 +59,7 @@ public class Inventario implements Serializable {
         }
     }
 
-    public double calcularPrecio(String tipoMueble) {
+    public double consultarPrecio(String tipoMueble) {
 
         for (Mueble mueble : listaMuebles) {
             if (mueble.esTipo(tipoMueble)) {

@@ -28,6 +28,10 @@ public class Alquiler implements Serializable {
         this.dias = dias;
     }
 
+    public static int getContadorIds() {
+        return contadorIds;
+    }
+
     public int getIdAlquiler() {
         return idAlquiler;
     }
@@ -36,7 +40,7 @@ public class Alquiler implements Serializable {
         return usuario;
     }
 
-    public boolean isDevolucion() {
+    public boolean isFinalizado() {
         return finalizado;
     }
 
@@ -52,6 +56,14 @@ public class Alquiler implements Serializable {
         return precioTotal;
     }
 
+    public int getDias() {
+        return dias;
+    }
+
+    public static void setContadorIds(int contadorIds) {
+        Alquiler.contadorIds = contadorIds;
+    }
+
     public void setIdAlquiler(int idAlquiler) {
         this.idAlquiler = idAlquiler;
     }
@@ -60,8 +72,8 @@ public class Alquiler implements Serializable {
         this.usuario = usuario;
     }
 
-    public void setDevolucion(boolean devolucion) {
-        this.finalizado = devolucion;
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public void setTipoMueble(String tipoMueble) {
@@ -75,6 +87,12 @@ public class Alquiler implements Serializable {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+
+ 
 
     @Override
     public String toString() {

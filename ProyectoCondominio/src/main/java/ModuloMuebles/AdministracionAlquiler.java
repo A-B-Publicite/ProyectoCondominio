@@ -57,24 +57,20 @@ public class AdministracionAlquiler implements Serializable {
         return cantidad * precioMueble * dias;
     }
 
-    public Alquiler finalizarAlquiler(int id, int diasAlquilados) {
-        Alquiler alquilerDevuelto = null;
-        boolean flag = false;
+    //FINANZAS: cuando el estado del alquiler sea finalziado: true, puede acceder a cobrar el precioTotal
+    public Alquiler finalizarAlquiler(int id, int diasAlquilados) {        
         for (Alquiler alquiler : listaAlquileres) {
             if (id == alquiler.getIdAlquiler()) {
-                //comparar fechas
-                if (alquiler.getFechaFin().getAnio() <= fDevolucion.getAnio()) {
-                    flag = true;
-                }
-            } else {
-                return null;
-            }
-            if (flag) {
-                alquiler.getInventario().actualizarDisponibilidad(alquiler.getTipoMueble(), id, true);
+                alquiler.setDias(diasAlquilados);//actualizar alquiler
+                double totalAlquilado=calcularPrecioTotal(alquiler.getTipoMueble(), alquiler.getCantidad(), diasAlquilados);
+                alquiler.setPrecioTotal(totalAlquilado);
+                
+                alquiler.setFinalizado(true);
+                inventario.actualizarDisponibilidad(alquiler.getTipoMueble(), alquiler.getCantidad(), true);
+                return alquiler;
             }
         }
-        inventario.actualizarDisponibilidad(tipoMueble, cantidad, true);
-        return alquilerDevuelto;
+        return null;
     }
 
     @Override
