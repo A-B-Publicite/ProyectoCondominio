@@ -25,7 +25,7 @@ public class Alquiler implements Serializable {
         this.tipoMueble = tipoMueble;
         this.cantidad = cantidad;
         this.precioTotal = 0;
-        this.dias=dias;
+        this.dias = dias;
     }
 
     public int getIdAlquiler() {
@@ -51,7 +51,7 @@ public class Alquiler implements Serializable {
     public double getPrecioTotal() {
         return precioTotal;
     }
-    
+
     public void setIdAlquiler(int idAlquiler) {
         this.idAlquiler = idAlquiler;
     }

@@ -22,7 +22,6 @@ public class AdministracionAlquiler implements Serializable {
         this.listaAlquileres = listaAlquileres;
     }
 
-
     public ArrayList<Alquiler> getListaAlquileres() {
         return listaAlquileres;
     }
@@ -34,31 +33,30 @@ public class AdministracionAlquiler implements Serializable {
     public boolean estaVacia() {
         return listaAlquileres.isEmpty();
     }
-    
+
 //metodos de alquiler y devolucion/finalizacion
     public boolean alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
-        if (!estaVacia()&& inventario.verificarDisponibilidad( tipoMueble, cantidad)) {
-            double precioTotal = calcularPrecioTotal(tipoMueble,cantidad,dias);
+        if (!estaVacia() && inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
+            double precioTotal = calcularPrecioTotal(tipoMueble, cantidad, dias);
             alquiler.setPrecioTotal(precioTotal);
             listaAlquileres.add(alquiler);
             inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
             return true;
         }
-        return false;  
+        return false;
     }
 
     public double calcularPrecioTotal(String tipoMueble, int cantidad, int dias) {
         double precioMueble = 0.0;
         if (!estaVacia()) {
-                precioMueble = inventario.consultarPrecio(tipoMueble);
+            precioMueble = inventario.consultarPrecio(tipoMueble);
         }
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         return cantidad * precioMueble * dias;
     }
-    
-    
+
     public Alquiler finalizarAlquiler(int id, int diasAlquilados) {
         Alquiler alquilerDevuelto = null;
         boolean flag = false;
