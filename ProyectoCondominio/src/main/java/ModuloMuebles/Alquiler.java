@@ -81,8 +81,6 @@ public class Alquiler implements Serializable {
         StringBuilder factura = new StringBuilder();
         factura.append("******************* Factura de Alquiler *******************\n");
         factura.append("ID de Alquiler: ").append(idAlquiler).append("\n");
-        factura.append("Fecha de Inicio: ").append(fechaInicio).append("\n");
-        factura.append("Fecha de Fin: ").append(fechaFin).append("\n");
         factura.append("Usuario: ").append(usuario).append("\n");
         factura.append("Tipo de Mueble: ").append(tipoMueble).append("\n");
         factura.append("Cantidad: ").append(cantidad).append("\n");

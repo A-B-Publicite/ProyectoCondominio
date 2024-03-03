@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AdministracionAlquiler implements Serializable {
 
     ArrayList<Alquiler> listaAlquileres;
-            Disponibilidad disponibilidad;
+    Inventario inventario;
 
     public AdministracionAlquiler() {
         listaAlquileres = new <Alquiler>ArrayList();
@@ -36,30 +36,30 @@ public class AdministracionAlquiler implements Serializable {
     }
     
 //metodos de alquiler y devolucion/finalizacion
-    public boolean alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, String dias) {
+    public boolean alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
-        if (listaAlquileres != null && !estaVacia()&& disponibilidad.verificarDisponibilidad(dias,listaAlquileres, tipoMueble, cantidad)) {
-            double precioTotal = calcularPrecioTotal(cantidad);
+        if (!estaVacia()&& inventario.verificarDisponibilidad( tipoMueble, cantidad)) {
+            double precioTotal = calcularPrecioTotal(cantidad,dias);
             alquiler.setPrecioTotal(precioTotal);
             listaAlquileres.add(alquiler);
-            disponibilidad.actualizarDisponibilidad(listaAlquileres,tipoMueble, cantidad, false);
+            inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
             return true;
         }
         return false;  
     }
 
-    public double calcularPrecioTotal(int cantidad) {
+    public double calcularPrecioTotal(int cantidad, int dias) {
         double precioMueble = 0.0;
         if (listaAlquileres != null && !estaVacia()) {
-            precioMueble = disponibilidad.getMueble().getPrecio();
+            precioMueble = inventario.getMueble().getPrecio();
         }
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
-        return cantidad * precioMueble;
+        return cantidad * precioMueble * dias;
     }
     
     
-    public Alquiler finalizarAlquiler(int id, Fecha fDevolucion) {
+    public Alquiler finalizarAlquiler(int id, int diasAlquilados) {
         Alquiler alquilerDevuelto = null;
         boolean flag = false;
         for (Alquiler alquiler : listaAlquileres) {
@@ -75,6 +75,7 @@ public class AdministracionAlquiler implements Serializable {
                 alquiler.getInventario().actualizarDisponibilidad(alquiler.getTipoMueble(), id, true);
             }
         }
+        inventario.actualizarDisponibilidad(tipoMueble, cantidad, true);
         return alquilerDevuelto;
     }
 
