@@ -8,22 +8,22 @@ import java.io.Serializable;
  */
 public abstract class Mueble implements Serializable {
 
-    private boolean estado;
+    private boolean disponible;
     private double precio;
     private boolean mantenimiento;
 
     public Mueble(double precio) {
-        this.estado = true;
+        this.disponible = true;
         this.precio = precio;
         this.mantenimiento = true;
     }
 
     public boolean isEstado() {
-        return estado;
+        return disponible;
     }
 
     public void setEstado(boolean estado) {
-        this.estado = estado;
+        this.disponible = estado;
     }
 
     public double getPrecio() {

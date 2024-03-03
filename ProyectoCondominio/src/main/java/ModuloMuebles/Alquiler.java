@@ -8,26 +8,24 @@ public class Alquiler implements Serializable {
     private static int contadorIds = 0;
 
     private int idAlquiler;
-    private Perfil administrador;
+    private Perfil usuario;
     private boolean finalizado;
     private String tipoMueble;
     private int cantidad;
     private double precioTotal;
-    private Fecha fechaInicio;
-    private Fecha fechaFin;
+    private int dias;
 
     public Alquiler() {
     }
 
-    public Alquiler(Perfil usuario, String tipoMueble, int cantidad, Fecha fechaInicio, Fecha fechaFin) {
+    public Alquiler(Perfil usuario, String tipoMueble, int cantidad, int dias) {
         this.idAlquiler = ++contadorIds;
-        this.administrador = usuario;
+        this.usuario = usuario;
         this.finalizado = false;
         this.tipoMueble = tipoMueble;
         this.cantidad = cantidad;
         this.precioTotal = 0;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.dias=dias;
     }
 
     public int getIdAlquiler() {
@@ -35,7 +33,7 @@ public class Alquiler implements Serializable {
     }
 
     public Perfil getUsuario() {
-        return administrador;
+        return usuario;
     }
 
     public boolean isDevolucion() {
@@ -53,21 +51,13 @@ public class Alquiler implements Serializable {
     public double getPrecioTotal() {
         return precioTotal;
     }
-
-    public Fecha getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public Fecha getFechaFin() {
-        return fechaFin;
-    }
     
     public void setIdAlquiler(int idAlquiler) {
         this.idAlquiler = idAlquiler;
     }
 
     public void setUsuario(Perfil usuario) {
-        this.administrador = usuario;
+        this.usuario = usuario;
     }
 
     public void setDevolucion(boolean devolucion) {
@@ -86,14 +76,6 @@ public class Alquiler implements Serializable {
         this.precioTotal = precioTotal;
     }
 
-    public void setFechaInicio(Fecha fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(Fecha fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Override
     public String toString() {
         StringBuilder factura = new StringBuilder();
@@ -101,7 +83,7 @@ public class Alquiler implements Serializable {
         factura.append("ID de Alquiler: ").append(idAlquiler).append("\n");
         factura.append("Fecha de Inicio: ").append(fechaInicio).append("\n");
         factura.append("Fecha de Fin: ").append(fechaFin).append("\n");
-        factura.append("Usuario: ").append(administrador).append("\n");
+        factura.append("Usuario: ").append(usuario).append("\n");
         factura.append("Tipo de Mueble: ").append(tipoMueble).append("\n");
         factura.append("Cantidad: ").append(cantidad).append("\n");
         factura.append("Precio Unitario: ").append(precioTotal).append("\n");
