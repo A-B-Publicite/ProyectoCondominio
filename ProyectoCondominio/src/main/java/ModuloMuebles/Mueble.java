@@ -8,22 +8,22 @@ import java.io.Serializable;
  */
 public abstract class Mueble implements Serializable {
 
-    private boolean disponible;
+    private boolean estado;
     private double precio;
     private boolean mantenimiento;
 
     public Mueble(double precio) {
-        this.disponible = true;
+        this.estado = true;
         this.precio = precio;
         this.mantenimiento = true;
     }
 
     public boolean isEstado() {
-        return disponible;
+        return estado;
     }
 
     public void setEstado(boolean estado) {
-        this.disponible = estado;
+        this.estado = estado;
     }
 
     public double getPrecio() {
@@ -41,6 +41,6 @@ public abstract class Mueble implements Serializable {
     public void setMantenimiento(boolean mantenimiento) {
         this.mantenimiento = mantenimiento;
     }
-    
-    
+
+    public abstract boolean esTipo(String tipo);
 }

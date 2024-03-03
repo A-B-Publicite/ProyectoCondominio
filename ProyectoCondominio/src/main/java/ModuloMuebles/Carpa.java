@@ -38,4 +38,9 @@ public class Carpa extends Mueble implements Serializable {
         return super.isEstado();
     }
 
+    @Override
+    public boolean esTipo(String tipo) {
+        return "Carpa".equalsIgnoreCase(tipo);
+    }
+
 }

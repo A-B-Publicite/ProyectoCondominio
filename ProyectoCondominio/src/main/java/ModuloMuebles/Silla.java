@@ -38,4 +38,9 @@ public class Silla extends Mueble implements Serializable {
         return super.isEstado();
     }
 
+    @Override
+    public boolean esTipo(String tipo) {
+        return "Silla".equalsIgnoreCase(tipo);
+    }
+
 }
