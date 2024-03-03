@@ -16,10 +16,10 @@ public class Disponibilidad {
         this.mueble = mueble;
     }
 
-    public double verificarDisponibilidad() {
+    public void verificarDisponibilidad() {
     }
 
-    public double actualizarDisponibilidad() {
+    public void actualizarDisponibilidad() {
     }
 
 }

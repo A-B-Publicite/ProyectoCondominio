@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class AdministracionAlquiler implements Serializable {
 
     ArrayList<Alquiler> listaAlquileres;
+    Disponibilidad disponibilidad;
 
     public AdministracionAlquiler() {
         listaAlquileres = new <Alquiler>ArrayList();
@@ -37,6 +38,28 @@ public class AdministracionAlquiler implements Serializable {
         return listaAlquileres.isEmpty();
     }
 
+    public boolean alquilar() {
+        double precioMueble = 0.0;
+
+        if (inventario != null && !inventario.estaVacia()) {
+
+            precioMueble = inventario.verificarDisponibilidad(this.tipoMueble, this.cantidad);
+            inventario.actualizarDisponibilidad(this.tipoMueble, this.cantidad, this.finalizado);
+        }
+        // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
+        precioTotal = cantidad * precioMueble;
+        return precioTotal != 0;
+    }
+
+    public double calcularPrecioTotal(String tipo, int cantidad) {
+        double precioMueble = 0.0;
+        if (inventario != null && !inventario.listaMuebles.isEmpty()) {
+            precioMueble = inventario.verificarDisponibilidad(tipo, cantidad);
+        }
+        // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
+        return cantidad * precioMueble;
+    }
+    
     public boolean realizarAlquiler(Administrador usuario, String tipoMueble, int cantidad, Fecha fInicio, Fecha fFin, String correo) {
         Residente residente = usuario.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fInicio, fFin);
