@@ -3,6 +3,7 @@ package BD;
 import Administracion.Administrador;
 import Administracion.Guardia;
 import Administracion.Residente;
+import ModuloMuebles.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -94,6 +95,10 @@ public class BaseDeDatos implements Serializable{
 
     public static void escribirAdmin(Administrador administrador) {
         escribir(administrador, "src/main/java/Datos/datosAdmin.txt");
+    }
+    
+    public static void escribirMueble(Mueble mueble) {
+        escribir(administrador, "src/main/java/Datos/datosMuebles.txt");
     }
     
     

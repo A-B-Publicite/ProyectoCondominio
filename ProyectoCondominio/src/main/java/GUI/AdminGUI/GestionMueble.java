@@ -6,22 +6,18 @@ import ModuloMuebles.Mesa;
 import ModuloMuebles.Mueble;
 import ModuloMuebles.Silla;
 import Administracion.Administrador;
-import Administracion.Residente;
 import BD.BaseDeDatos;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GestionMueble extends javax.swing.JFrame {
     private Inventario inventario;
     private int cantidad;
     private final Administrador administrador;
-    private boolean verificacionSecretario;
-    private boolean verificacionPresidente;
 
     public GestionMueble(Administrador administrador) {
         initComponents();
         System.out.println(administrador); 
         this.administrador = administrador;
+        this.inventario = new Inventario();
     }
     
 
@@ -36,6 +32,7 @@ public class GestionMueble extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         TFPrecio = new javax.swing.JTextField();
+        btnVolver1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +85,13 @@ public class GestionMueble extends javax.swing.JFrame {
             }
         });
 
+        btnVolver1.setText("Volver");
+        btnVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolver1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +111,9 @@ public class GestionMueble extends javax.swing.JFrame {
                                     .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TFPrecio, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(62, 62, 62)
-                                .addComponent(JBAgregarMueble))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JBAgregarMueble)
+                                    .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1)))
@@ -124,13 +130,16 @@ public class GestionMueble extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JBAgregarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -138,33 +147,47 @@ public class GestionMueble extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAgregarMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarMuebleActionPerformed
-        cantidad = Integer.parseInt(TFCantidad.getText());
-        String opcionMueble = (String)CBMuebles.getSelectedItem();
-        Mueble mueble = null;
-        System.out.println("AGREGAR MUEBLE");
-        switch (opcionMueble) {
-            case "Carpa":
-                for (int i = 0; i < cantidad; i++) {
-                administrador.agregarMueble(new Carpa(Double.parseDouble(TFPrecio.getText())));
-                }
-                break;
-            case "Mesa":
-                for (int i = 0; i < cantidad; i++) {
-                administrador.agregarMueble(new Mesa(Double.parseDouble(TFPrecio.getText())));
-                }
-                break;
-            case "Silla":
-                
-                for (int i = 0; i < cantidad; i++) {
-                administrador.agregarMueble(new Silla(Double.parseDouble(TFPrecio.getText())));
-                }
-                break;
-            default:
-                javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
+        try {
+            // Obtener la cantidad y el precio de los campos de texto
+            cantidad = Integer.parseInt(TFCantidad.getText());
+            double precio = Double.parseDouble(TFPrecio.getText());
+            String opcionMueble = (String) CBMuebles.getSelectedItem();
+
+            // Crear el mueble basado en la selección del JComboBox
+            Mueble mueble = null;
+            switch (opcionMueble) {
+                case "Carpa":
+                    mueble = new Carpa(precio);
+                    break;
+                case "Mesa":
+                    mueble = new Mesa(precio);
+                    break;
+                case "Silla":
+                    mueble = new Silla(precio);
+                    break;
+                default:
+                    javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
+                    return; // Salir del método si la opción no es válida
+            }
+
+            // Agregar el mueble al inventario
+            inventario.agregarMueble(mueble, cantidad, precio);
+
+            // Guardar los cambios en la base de datos
+            BaseDeDatos.escribirMueble(mueble);
+
+            // Mostrar mensaje de confirmación
+            javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado el mueble correctamente al inventario.");
+
+            // Opcional: Limpieza de los campos de texto
+            TFCantidad.setText("");
+            TFPrecio.setText("");
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Por favor, ingrese números válidos en los campos de cantidad y precio.");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Ocurrió un error al agregar el mueble al inventario: " + e.getMessage());
         }
-        
-        BaseDeDatos.escribirAdmin(administrador);
-        javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
     }//GEN-LAST:event_JBAgregarMuebleActionPerformed
 
     private void TFCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFCantidadActionPerformed
@@ -176,7 +199,7 @@ public class GestionMueble extends javax.swing.JFrame {
     }//GEN-LAST:event_TFCantidadFocusGained
 
     private void TFPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFPrecioFocusGained
-        // TODO add your handling code here:
+         TFPrecio.setText("");
     }//GEN-LAST:event_TFPrecioFocusGained
 
     private void TFPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPrecioActionPerformed
@@ -186,12 +209,18 @@ public class GestionMueble extends javax.swing.JFrame {
     private void CBMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBMueblesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBMueblesActionPerformed
+
+    private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolver1ActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBMuebles;
     private javax.swing.JButton JBAgregarMueble;
     private javax.swing.JTextField TFCantidad;
     private javax.swing.JTextField TFPrecio;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnVolver1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator2;

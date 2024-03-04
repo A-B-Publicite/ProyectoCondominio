@@ -34,8 +34,8 @@ public class Administrador extends Perfil implements Serializable {
         condominio.agregarInmuebleComun(inmuebleComun);
     }
     
-    public void agregarMueble(Mueble mueble) {
-        condominio.agregarMueble(mueble);
+    public void agregarMueble(Mueble mueble, int cantidad, double precio) {
+        condominio.agregarMueble(mueble, cantidad, precio);
     }
     
     

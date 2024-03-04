@@ -41,9 +41,9 @@ public class Condominio implements Serializable {
     }
     
     //para crear la lista de MUEBLES vacia
-    public void agregarMueble(Mueble mueble) {
+    public void agregarMueble(Mueble mueble, int cantidad, double precio) {
         
-            inventario.agregarMueble(mueble);
+            inventario.agregarMueble(mueble,cantidad,precio);
     }
     
     public Departamento obtenerDepartamentoLibre(){
