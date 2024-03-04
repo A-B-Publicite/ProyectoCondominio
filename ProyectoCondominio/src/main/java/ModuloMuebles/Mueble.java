@@ -11,7 +11,7 @@ public abstract class Mueble implements Serializable {
     private boolean estado;
     private double precio;
     private boolean mantenimiento;
-
+    
     public Mueble(double precio) {
         this.estado = true;
         this.precio = precio;
@@ -43,4 +43,6 @@ public abstract class Mueble implements Serializable {
     }
 
     public abstract boolean esTipo(String tipo);
+    
+    
 }
