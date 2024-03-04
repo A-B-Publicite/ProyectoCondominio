@@ -36,7 +36,7 @@ public class GestionMueble extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         TFPrecio = new javax.swing.JTextField();
-        btnVolver1 = new javax.swing.JButton();
+        btnVolver2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,10 +89,10 @@ public class GestionMueble extends javax.swing.JFrame {
             }
         });
 
-        btnVolver1.setText("Volver");
-        btnVolver1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver2.setText("Volver");
+        btnVolver2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolver1ActionPerformed(evt);
+                btnVolver2ActionPerformed(evt);
             }
         });
 
@@ -117,7 +117,7 @@ public class GestionMueble extends javax.swing.JFrame {
                                 .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JBAgregarMueble)
-                                    .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1)))
@@ -132,16 +132,16 @@ public class GestionMueble extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JBAgregarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(JBAgregarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CBMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -214,9 +214,9 @@ public class GestionMueble extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBMueblesActionPerformed
 
-    private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
+    private void btnVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver2ActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_btnVolver1ActionPerformed
+    }//GEN-LAST:event_btnVolver2ActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBMuebles;
@@ -224,7 +224,7 @@ public class GestionMueble extends javax.swing.JFrame {
     private javax.swing.JTextField TFCantidad;
     private javax.swing.JTextField TFPrecio;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JButton btnVolver1;
+    private javax.swing.JButton btnVolver2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator2;
