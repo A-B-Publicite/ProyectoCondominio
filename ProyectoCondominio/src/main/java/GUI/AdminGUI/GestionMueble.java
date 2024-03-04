@@ -176,7 +176,7 @@ public class GestionMueble extends javax.swing.JFrame {
     }//GEN-LAST:event_TFCantidadFocusGained
 
     private void TFPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFPrecioFocusGained
-        // TODO add your handling code here:
+         TFPrecio.setText("");
     }//GEN-LAST:event_TFPrecioFocusGained
 
     private void TFPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPrecioActionPerformed
