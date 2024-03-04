@@ -57,29 +57,23 @@ public class Directo extends Mensaje implements Serializable{
     
     @Override
     public void enviar() {
- 
+        Administrador ad =BaseDeDatos.leerAdministrador();
         if (getDestinoAdmin()!= null) {
-            Administrador ad =BaseDeDatos.leerAdministrador();
+            
             ad.getBandejaDeEntrada().recibirMensaje(this);  
             BaseDeDatos.escribirAdmin(ad);
         } else {
                if (getDestino()!=null) {
-                   try {
-                       System.out.println("ENTRO TRY");
-                        ArrayList<Residente> residentes = BaseDeDatos.leerLista();
-                        for (Residente res : residentes) {
-                            if (res.getCorreo().equals(getDestino().getCorreo())) {
-                                res.getBandejaDeEntrada().recibirMensaje(this);
-                                
-                                break;
-                            }
-                        }
-                        BaseDeDatos.escribirLista(residentes);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                   System.out.println("ENTRO TRY");
+                   ArrayList<Residente> residentes = ad.getResidentes();
+                   for (Residente res : residentes) {
+                       if (res.getCorreo().equals(getDestino().getCorreo())) {
+                           res.getBandejaDeEntrada().recibirMensaje(this);
+                           
+                           break;
+                       }
+                   }
+                   BaseDeDatos.escribirAdmin(ad);
 
                }
             }
