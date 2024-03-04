@@ -32,24 +32,12 @@ public class Directo extends Mensaje implements Serializable{
     }
 
     @Override
-    public void crear () {
+    public void crear (String titulo, String contenido) {
         
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Eliga el destinatario");
-        for (int i = 0; i < getDestinos().size(); i++) {
-            System.out.println((i + 1) + ". " + getDestinos().get(i).getNombre());
-        }
-        pos= scanner.nextInt();
-        scanner.nextLine();
         
-        System.out.println("Destino: " + getDestinos().get(pos-1).getNombreApellido());
+        setTitulo(titulo);
 
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
+        setContenido(contenido);
         
         enviar();
 
