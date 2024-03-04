@@ -6,6 +6,7 @@ import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
+import ModuloMuebles.Mueble;
 import check_in.Autorizacion;
 import java.io.*;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(nombre + " " + apellido, fechaActual, fechaFin);
         this.setAutorizacion(autorizacionEntrada);
     }
+    
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
@@ -31,6 +33,12 @@ public class Administrador extends Perfil implements Serializable {
     public void agregarInmuebleComun(InmuebleComun inmuebleComun) {
         condominio.agregarInmuebleComun(inmuebleComun);
     }
+    
+    public void agregarMueble(Mueble mueble) {
+        condominio.agregarMueble(mueble);
+    }
+    
+    
 
     public void agregarDepartamentos(int numeroDepartamento) {
         condominio.agregarDepartamentos(numeroDepartamento);

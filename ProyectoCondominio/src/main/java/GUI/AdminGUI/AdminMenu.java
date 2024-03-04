@@ -9,8 +9,7 @@ import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.ReservasGUI.MenuReservas;
 import GUI.MensajeGUI.ResidenteTabla;
-import GUI.ModuloMueble.Alquiler;
-import GUI.ModuloMueble.GUIMueble;
+import GUI.AlquilerGUI.MenuAlquiler;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -322,7 +321,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
 
         
-        Alquiler a = new Alquiler();
+        MenuAlquiler a = new MenuAlquiler(administrador);
         a.setVisible(true);
         
      
