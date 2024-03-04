@@ -22,6 +22,7 @@ public class GestionMueble extends javax.swing.JFrame {
         initComponents();
         System.out.println(administrador); 
         this.administrador = administrador;
+        this.inventario = new Inventario();
     }
     
 
@@ -178,7 +179,7 @@ public class GestionMueble extends javax.swing.JFrame {
             inventario.agregarMueble(mueble, cantidad, precio);
 
             // Guardar los cambios en la base de datos
-            BaseDeDatos.escribirAdmin(administrador);
+            BaseDeDatos.escribirMueble(mueble);
 
             // Mostrar mensaje de confirmación
             javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado el mueble correctamente al inventario.");
