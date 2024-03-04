@@ -32,24 +32,12 @@ public class Directo extends Mensaje implements Serializable{
     }
 
     @Override
-    public void crear () {
+    public void crear (String titulo, String contenido) {
         
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Eliga el destinatario");
-        for (int i = 0; i < getDestinos().size(); i++) {
-            System.out.println((i + 1) + ". " + getDestinos().get(i).getNombre());
-        }
-        pos= scanner.nextInt();
-        scanner.nextLine();
         
-        System.out.println("Destino: " + getDestinos().get(pos-1).getNombreApellido());
+        setTitulo(titulo);
 
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
+        setContenido(contenido);
         
         enviar();
 
@@ -57,29 +45,23 @@ public class Directo extends Mensaje implements Serializable{
     
     @Override
     public void enviar() {
- 
+        Administrador ad =BaseDeDatos.leerAdministrador();
         if (getDestinoAdmin()!= null) {
-            Administrador ad =BaseDeDatos.leerAdministrador();
+            
             ad.getBandejaDeEntrada().recibirMensaje(this);  
             BaseDeDatos.escribirAdmin(ad);
         } else {
                if (getDestino()!=null) {
-                   try {
-                       System.out.println("ENTRO TRY");
-                        ArrayList<Residente> residentes = BaseDeDatos.leerLista();
-                        for (Residente res : residentes) {
-                            if (res.getCorreo().equals(getDestino().getCorreo())) {
-                                res.getBandejaDeEntrada().recibirMensaje(this);
-                                
-                                break;
-                            }
-                        }
-                        BaseDeDatos.escribirLista(residentes);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                   System.out.println("ENTRO TRY");
+                   ArrayList<Residente> residentes = ad.getResidentes();
+                   for (Residente res : residentes) {
+                       if (res.getCorreo().equals(getDestino().getCorreo())) {
+                           res.getBandejaDeEntrada().recibirMensaje(this);
+                           
+                           break;
+                       }
+                   }
+                   BaseDeDatos.escribirAdmin(ad);
 
                }
             }

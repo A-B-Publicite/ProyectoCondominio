@@ -328,13 +328,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionReservas1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            BaseDeDatos.escribirLista(this.administrador.getResidentes());
-        } catch (IOException ex) {
-            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

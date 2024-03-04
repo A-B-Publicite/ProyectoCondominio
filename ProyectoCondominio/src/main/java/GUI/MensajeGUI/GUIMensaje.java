@@ -32,14 +32,14 @@ public class GUIMensaje extends javax.swing.JFrame {
     Perfil origen;
     Residente residenteSeleccionado;
     int tipo;
-    ArrayList<Residente> residentes;
+    
     
     /**
      * Creates new form GUIMensaje
      */
     public GUIMensaje(Administrador administrador, int tipo) throws IOException, ClassNotFoundException {
         initComponents();
-        this.residentes = BaseDeDatos.leerLista();
+        
         this.origen = administrador;
         this.tipo=tipo;
         if (tipo == 1) {
@@ -261,6 +261,23 @@ public class GUIMensaje extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por Favor Llene todos los campos");
         } else {
             JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
+            
+            if ("Global".equals((String)jComboBox3.getSelectedItem())) {
+                mensaje = new Global(origen, BaseDeDatos.leerAdministrador().getResidentes());
+                mensaje.crear(jTextField1.getText(),jTextArea1.getText());
+            } else {
+                if ("Directo".equals((String)jComboBox3.getSelectedItem())) {
+                    mensaje = new Directo(origen, residenteSeleccionado);
+                    mensaje.crear(jTextField1.getText(),jTextArea1.getText());
+                } else {
+                    if ("Administrador".equals((String)jComboBox3.getSelectedItem())) {
+                        mensaje = new Directo(origen, BaseDeDatos.leerAdministrador());
+                        mensaje.crear(jTextField1.getText(),jTextArea1.getText());
+                    }
+                }
+
+            }
+            /*
             switch (tipo) {
                 case 0:
                     if (jComboBox3.getSelectedIndex() == 0) {
@@ -306,7 +323,7 @@ public class GUIMensaje extends javax.swing.JFrame {
                 default:
                     throw new AssertionError();
 
-            }
+            }*/
             
             this.dispose();
         }
@@ -334,17 +351,16 @@ public class GUIMensaje extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         try {
-            
-            lista = new ResidenteTabla(BaseDeDatos.leerLista());
-            // Hacer visible la nueva ventana
-            lista.setVisible(true);
-            // Hacer invisible la ventana actual
-            this.setVisible(false); 
+            lista = new ResidenteTabla(BaseDeDatos.leerAdministrador().getResidentes());
         } catch (IOException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // Hacer visible la nueva ventana
+        lista.setVisible(true);
+        // Hacer invisible la ventana actual
+        this.setVisible(false);
         // Configurar el comportamiento al cerrar la ventana de ListaResidente
         lista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         lista.addWindowListener(new WindowAdapter() {

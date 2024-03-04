@@ -47,7 +47,7 @@ public abstract class Mensaje implements Serializable{
     }    
     
 
-    public abstract void crear();
+    public abstract void crear(String titulo, String contenido);
     public abstract void enviar();
 
     public abstract void mostrar();

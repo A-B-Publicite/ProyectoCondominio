@@ -25,17 +25,10 @@ public class Global extends Mensaje implements Serializable{
     }
     
     @Override
-    public void crear () {
+    public void crear (String titulo, String contenido) {
         
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Destino: Todos");
-
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
+        setTitulo(titulo);
+        setContenido(contenido);
 
         enviar();
 
@@ -44,25 +37,16 @@ public class Global extends Mensaje implements Serializable{
     @Override
     public void enviar() {
         
-        try {
-            ArrayList<Residente> residentes = BaseDeDatos.leerLista();
-            for (Residente res : residentes) {
-                for (Perfil destinatario : getDestinos()) {
-                    if (res.getCorreo().equals(destinatario.getCorreo())) {
-                        destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
-                        destinatario.getBandejaDeEntrada().recibirMensaje(this);
-                        
-                        break;
-                    }
+        ArrayList<Residente> residentes = BaseDeDatos.leerAdministrador().getResidentes();
+        for (Residente res : residentes) {
+            for (Perfil destinatario : getDestinos()) {
+                if (res.getCorreo().equals(destinatario.getCorreo())) {
+                    destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
+                    destinatario.getBandejaDeEntrada().recibirMensaje(this);
+                    
+                    break;
                 }
-                
             }
-            BaseDeDatos.escribirLista(getDestinos());
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
