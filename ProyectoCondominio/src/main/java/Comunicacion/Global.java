@@ -25,17 +25,10 @@ public class Global extends Mensaje implements Serializable{
     }
     
     @Override
-    public void crear () {
+    public void crear (String titulo, String contenido) {
         
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Destino: Todos");
-
-        System.out.println("Escriba el Titulo del mensaje:");
-        setTitulo(scanner.nextLine());
-
-        System.out.println("Escriba el contenido del mensaje:");
-        setContenido(scanner.nextLine());
+        setTitulo(titulo);
+        setContenido(contenido);
 
         enviar();
 

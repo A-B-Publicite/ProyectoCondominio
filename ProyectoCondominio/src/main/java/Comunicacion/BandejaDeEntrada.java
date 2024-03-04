@@ -5,6 +5,9 @@
 package Comunicacion;
 
 import Administracion.Perfil;
+import Administracion.Residente;
+import BD.BaseDeDatos;
+import Finanzas.ObligacionFinanciera;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -54,6 +57,7 @@ public class BandejaDeEntrada implements Serializable{
     public void limpiarBandeja() {
         listaMensajes.clear();
     }
+    
 
 }
 

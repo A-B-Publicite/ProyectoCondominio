@@ -8,6 +8,7 @@ import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
+import Comunicacion.BandejaDeEntrada;
 import Comunicacion.Mensaje;
 import Finanzas.ObligacionFinanciera;
 import java.awt.event.MouseEvent;
@@ -52,22 +53,25 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         
         residentes = BaseDeDatos.leerAdministrador().getResidentes();
         this.mensajes=listaMensajes;
+        
+        BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(perf);
+        //bandejaDeEntrada.llenar(modeloTabla, modeloTabla2);
+        
         modeloTabla2.setRowCount(0);
-        if (tipo==0) {
-            for (Residente res : residentes) {
-                for (ObligacionFinanciera obligaciones : res.getCuenta().getGestorObligaciones().getObligacionesFinancieras()) {
-                    modeloTabla2.addRow(new Object[]{obligaciones.getEstado(), obligaciones.getMonto(), res.getNombreApellido()});
-                }
+        for (Residente res : BaseDeDatos.leerAdministrador().getResidentes()) {
+            for (ObligacionFinanciera obligaciones : res.getCuenta().getGestorObligaciones().getObligacionesFinancieras()) {
+                modeloTabla2.addRow(new Object[]{obligaciones.getEstado(), obligaciones.getMonto(), res.getNombreApellido()});
             }
         }
-                
         
+
         modeloTabla.setRowCount(0);
 
         // Agrega cada mensaje a la tabla
         for (Mensaje mensaje : listaMensajes) {
             modeloTabla.addRow(new Object[]{mensaje.getFecha(), mensaje.getTitulo(), mensaje.getOrigen().getNombreApellido()});
         }
+        
         this.setResizable(false);
         switch (tipo) {
             case 0:
