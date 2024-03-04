@@ -98,7 +98,7 @@ public class BaseDeDatos implements Serializable{
     }
     
     public static void escribirMueble(Mueble mueble) {
-        escribir(administrador, "src/main/java/Datos/datosMuebles.txt");
+        escribir(mueble, "src/main/java/Datos/datosMuebles.txt");
     }
     
     
