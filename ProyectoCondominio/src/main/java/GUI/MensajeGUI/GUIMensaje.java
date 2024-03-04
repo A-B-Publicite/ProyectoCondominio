@@ -39,7 +39,7 @@ public class GUIMensaje extends javax.swing.JFrame {
      */
     public GUIMensaje(Administrador administrador, int tipo) throws IOException, ClassNotFoundException {
         initComponents();
-        this.residentes = BaseDeDatos.leerLista();
+        this.residentes = BaseDeDatos.leerAdministrador().getResidentes();
         this.origen = administrador;
         this.tipo=tipo;
         if (tipo == 1) {
@@ -334,17 +334,16 @@ public class GUIMensaje extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         try {
-            
-            lista = new ResidenteTabla(BaseDeDatos.leerLista());
-            // Hacer visible la nueva ventana
-            lista.setVisible(true);
-            // Hacer invisible la ventana actual
-            this.setVisible(false); 
+            lista = new ResidenteTabla(BaseDeDatos.leerAdministrador().getResidentes());
         } catch (IOException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIMensaje.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // Hacer visible la nueva ventana
+        lista.setVisible(true);
+        // Hacer invisible la ventana actual
+        this.setVisible(false);
         // Configurar el comportamiento al cerrar la ventana de ListaResidente
         lista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         lista.addWindowListener(new WindowAdapter() {

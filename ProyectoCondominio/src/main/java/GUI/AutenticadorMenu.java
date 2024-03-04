@@ -203,6 +203,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     break;
                 case "Residente":
                     //residentes= BaseDeDatos.leerLista();
+                    BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
                     Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
                     ResidenteMenu residenteMenu = new ResidenteMenu(residente);
                     residenteMenu.setVisible(true);

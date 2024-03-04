@@ -96,26 +96,6 @@ public class BaseDeDatos implements Serializable{
         escribir(administrador, "src/main/java/Datos/datosAdmin.txt");
     }
     
-    public static void escribirLista(ArrayList<Residente> res) throws IOException {
-        
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/Datos/datosResidentesList.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream (fileOutputStream);
-        objectOutputStream.writeObject(res);
-        objectOutputStream.close();
-        fileOutputStream.close();
-        
-    }
-    
-    public static ArrayList<Residente>  leerLista() throws IOException, ClassNotFoundException {
-        
-        FileInputStream fileInputStream = new FileInputStream("src/main/java/Datos/datosResidentesList.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
-        objectInputStream.close();
-        fileInputStream.close();
-        return residentes;
-        
-    }
     
     public static Guardia  leerGuardia() throws IOException, ClassNotFoundException {
         
@@ -131,5 +111,9 @@ public class BaseDeDatos implements Serializable{
     
     public static void escribirGuardia(Guardia guardia) {
         escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
+    }
+    
+    public static void combinarListaResidente(ArrayList<Residente> res) {
+        escribir(res, "src/main/java/Datos/datosResidentes.txt");
     }
 }
