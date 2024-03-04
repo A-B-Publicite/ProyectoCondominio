@@ -4,9 +4,11 @@
  */
 package check_in;
 
-public class Comparacion {
+import java.io.Serializable;
 
-    public Comparacion() {
+public class Comparacion implements Serializable{
+
+    public Comparacion(){
     }
     
     public void compararValidar(String receptor, Autorizacion autorizacion){            

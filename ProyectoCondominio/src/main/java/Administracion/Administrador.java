@@ -4,6 +4,7 @@ import Finanzas.Cuenta;
 import Finanzas.ObligacionFinanciera;
 import Inmueble.Condominio;
 import Inmueble.Departamento;
+import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
 import check_in.Autorizacion;
 import java.io.*;
@@ -46,7 +47,7 @@ public class Administrador extends Perfil implements Serializable {
         departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
         
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
+        residenteNuevo.getCuenta().getGestorObligaciones().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "Esto es una alicuota", "alicuota");
         System.out.println(residenteNuevo);
         
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
@@ -61,7 +62,6 @@ public class Administrador extends Perfil implements Serializable {
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setResidente(residenteNuevo);    
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
-        
         BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
     }
 
@@ -71,6 +71,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(), fechaActual, fechaFin);
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
+        BaseDeDatos.setGuardia(guardiaNuevo);
     }
 
     public void pagarContrato(String descripcionContratoAPagar) {
@@ -99,17 +100,18 @@ public class Administrador extends Perfil implements Serializable {
         System.out.print(condominio.toString());
     }
 
-    public ArrayList<Contrato> mostrarContratos() {
+    public ArrayList<Contrato> getContratos() {
         return condominio.mostrarContratos();
     }
 
-    public void agregarDirectiva(String correoPresidente, String correoSecretario) throws Exception {
+    public void agregarDirectiva(String correoPresidente, String correoSecretario){
         condominio.agregarDirectiva(obtenerResidentePorCorreo(correoPresidente), obtenerResidentePorCorreo(correoSecretario));
+   
     }
   
 
-    void agregarContrato(LocalDate fechaContrato, double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
-        Contrato contratoNuevo = new Contrato(fechaContrato, precio, descripcion, fechaInicio, fechaFinalizacion);
+    public void agregarContrato(Double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
+        Contrato contratoNuevo = new Contrato( precio, descripcion, fechaInicio, fechaFinalizacion);
         Directiva directiva = condominio.getDirectiva();
         directiva.agregarContrato(contratoNuevo);
     }
@@ -117,7 +119,8 @@ public class Administrador extends Perfil implements Serializable {
     public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin) {
         Autorizacion autorizacionEntrada = new Autorizacion();
         autorizacionEntrada.completar(this.getNombreApellido(), nombreResidente, fechaActual, fechaFin);
-        //validarUnaAutorizacion(autorizacionEntrada);
+        validarAutorizacion(autorizacionEntrada);
+        condominio.aniadirAutorizacion(autorizacionEntrada);        
         return autorizacionEntrada;
     }
 
@@ -130,5 +133,34 @@ public class Administrador extends Perfil implements Serializable {
         return "Administrador: " + nombre + " " + apellido;
     }
     
+    public void validarAutorizacion(Autorizacion autorizacion){
+        autorizacion.validar();
+    }
     
+    public void enviarResidentesGuardia(){
+        List<String> residentes = new ArrayList<>();
+
+        for (Residente residente : condominio.obtenerResidentes()) {
+            if(residente != null)
+                residentes.add(residente.getNombreApellido());
+        }       
+
+        condominio.getGuardia().setResidentes(residentes);
+    }
+
+    public void enviarAutorizacionesGuardia(){
+        ArrayList<Autorizacion> autorizaciones = condominio.obtenerAutorizaciones();
+        condominio.getGuardia().setAutorizaciones(autorizaciones);
+    }
+    
+    public void enviarEspaciosParqueaderoGuardia(){
+        ArrayList<InmuebleComun> inmuebles = condominio.obtenerInmuebleComun();
+        ArrayList<EspacioDeParqueadero> espacios = new ArrayList<>();
+        for(InmuebleComun inmueble: inmuebles){
+            if(inmueble instanceof EspacioDeParqueadero){
+                espacios.add((EspacioDeParqueadero) inmueble);
+            }
+        }
+        condominio.getGuardia().setEspaciosParqueadero(espacios);
+    }
 }

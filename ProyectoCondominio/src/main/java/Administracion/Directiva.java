@@ -10,22 +10,16 @@ public class Directiva implements Serializable{
     ArrayList<Contrato> contratosPorAprobar;
     
     public Directiva(Administrador administrador){
+        contratosPorAprobar = new ArrayList<Contrato>();
+        contratosAprobados = new ArrayList<Contrato>();
         this.administrador = administrador;
     }
     
     public void agregarDirectiva(Residente presidente, Residente secretario){
         this.presidente = presidente;
         this.secretario = secretario;
-    }
-    
-    public void aprobarContrato(Contrato contrato){
-        if(!presidente.aprobar(contrato) || !secretario.aprobar(contrato)){
-            System.out.print("No se aprobo el contrato");
-            return;
-        }
-        
-        System.out.print("Se aprobo el contrato");
-        contratosAprobados.add(contrato);
+        presidente.setAprobacion();
+        secretario.setAprobacion();
     }
     
     public ArrayList<Contrato> mostrarContratos(){
@@ -44,7 +38,6 @@ public class Directiva implements Serializable{
 
     public void agregarContrato(Contrato contratoNuevo) {
         contratosPorAprobar.add(contratoNuevo);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Residente getPresidente() {
@@ -53,6 +46,34 @@ public class Directiva implements Serializable{
 
     public Residente getSecretario() {
         return secretario;
+    }
+
+    public void actualizarAprobacion(String descripcionContrato) {
+        Contrato contratoAux = null;
+        for (Contrato  contrato : contratosAprobados) {
+            if (contrato.compararDescripcion(descripcionContrato)) {
+                contratoAux = contrato;
+                contrato.darAprobacion();
+            }
+        }
+        verificarQueElContratoSeaAprobado(contratoAux);
+    }
+
+    private void verificarQueElContratoSeaAprobado(Contrato contrato) {
+        if(contrato.estaAprobado()){
+            contratosPorAprobar.remove(contrato);
+            contrato.iniciar();
+            contratosAprobados.add(contrato);
+        }
+    }
+
+    public boolean esParte(Residente residente) {
+
+        return residente.getNombre().equals(presidente.getNombre()) || residente.getNombre().equals(secretario.getNombre());
+    }
+    
+    public ArrayList<Contrato> getListaContratosPorApobar(){
+        return contratosPorAprobar;
     }
 
     

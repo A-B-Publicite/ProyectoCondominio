@@ -7,17 +7,19 @@ package Comunicacion;
 import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
-import check_in.Autorizacion;
-import java.time.format.DateTimeFormatter;
+import BD.BaseDeDatos;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author usuario
  */
-public class Directo extends Mensaje{
+public class Directo extends Mensaje implements Serializable{
     
     int pos;
 
@@ -55,7 +57,34 @@ public class Directo extends Mensaje{
     
     @Override
     public void enviar() {
-        getDestino().getBandejaDeEntrada().recibirMensaje(this);
+ 
+        if (getDestinoAdmin()!= null) {
+            Administrador ad =BaseDeDatos.leerAdministrador();
+            ad.getBandejaDeEntrada().recibirMensaje(this);  
+            BaseDeDatos.escribirAdmin(ad);
+        } else {
+               if (getDestino()!=null) {
+                   try {
+                       System.out.println("ENTRO TRY");
+                        ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+                        for (Residente res : residentes) {
+                            if (res.getCorreo().equals(getDestino().getCorreo())) {
+                                res.getBandejaDeEntrada().recibirMensaje(this);
+                                
+                                break;
+                            }
+                        }
+                        BaseDeDatos.escribirLista(residentes);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+               }
+            }
+        
+        
     }
 
     @Override

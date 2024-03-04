@@ -7,11 +7,15 @@ package Comunicacion;
 
 import Administracion.Perfil;
 import Administracion.Residente;
+import BD.BaseDeDatos;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Global extends Mensaje {
+public class Global extends Mensaje implements Serializable{
 
 
 
@@ -39,9 +43,29 @@ public class Global extends Mensaje {
 
     @Override
     public void enviar() {
-        for (Perfil destinatario : getDestinos()) {
-            destinatario.getBandejaDeEntrada().recibirMensaje(this);
+        
+        try {
+            ArrayList<Residente> residentes = BaseDeDatos.leerLista();
+            for (Residente res : residentes) {
+                for (Perfil destinatario : getDestinos()) {
+                    if (res.getCorreo().equals(destinatario.getCorreo())) {
+                        destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
+                        destinatario.getBandejaDeEntrada().recibirMensaje(this);
+                        
+                        break;
+                    }
+                }
+                
+            }
+            BaseDeDatos.escribirLista(getDestinos());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Global.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
         
     }
 

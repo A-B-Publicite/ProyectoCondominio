@@ -3,11 +3,11 @@ package Finanzas;
 /**
  * @author alejo
  */
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Pago implements Serializable {
+
     private double precioPagado;
     private LocalDate fechaPago;
     private ObligacionFinanciera obligacionFinanciera;
@@ -20,6 +20,7 @@ public class Pago implements Serializable {
     }
 
     public void pagarObligacionFinanciera(ObligacionFinanciera obligacionFinancieraAPagar, Cuenta cuentaAdministrador) {
+        System.out.println("entró a pagar obligacion financiera");
         double monto = obligacionFinancieraAPagar.getMonto();
         precioPagado = monto;
 
@@ -27,11 +28,11 @@ public class Pago implements Serializable {
 
         cuentaAdministrador.actualizarSaldo(monto);
         cuentaDestino = cuentaAdministrador;
-        obligacionFinancieraAPagar.cambiarEstado("completado");
+        obligacionFinancieraAPagar.getEstado().cambiarACompletado();
+
         cuentaOrigen.getGestorObligaciones().eliminarObligacion(obligacionFinancieraAPagar);
 
         obligacionFinanciera = obligacionFinancieraAPagar;
-
 
     }
 
@@ -39,7 +40,6 @@ public class Pago implements Serializable {
         precioPagado = precioContrato;
         cuentaOrigen.actualizarSaldo(-precioContrato);
     }
-
 
     @Override
     public String toString() {
@@ -49,13 +49,11 @@ public class Pago implements Serializable {
             String id = obligacionFinanciera.getIdObligacion();
             String descripcion = obligacionFinanciera.getDescripcion();
 
-
-            salida += "PAGO REALIZADO: Fecha:" + fechaPago + " Monto: " + precioPagado +
-                    " ID: " + id + ", DESCRIPCION = " + descripcion + "\n------------------------------------------";
+            salida += "PAGO REALIZADO: Fecha:" + fechaPago + " Monto: " + precioPagado
+                    + " ID: " + id + ", DESCRIPCION = " + descripcion + "\n------------------------------------------";
         } else {
             salida += "PAGO REALIZADO: (Contrato) Fecha:" + fechaPago + " Monto: " + precioPagado + "\n------------------------------------------";
         }
-
 
         return salida;
     }

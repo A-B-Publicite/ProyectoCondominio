@@ -1,33 +1,38 @@
 package Administracion;
 
+import java.awt.PopupMenu;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 
 public class Contrato implements Serializable {
-    private LocalDate fechaContrato;
-    private double precioContrato;
+    private String fechaContrato;
+    private Double precioContrato;
     private String descripcion;
     private String fechaInicio;
     private String fechaFin;
+    private boolean aprobacionNumero1;
+    private boolean aprobacionNumero2;
+    private Servicio servicio;
     
 
-    public Contrato(LocalDate fechaContrato, double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
-        this.fechaContrato = fechaContrato;
+    public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
+        this.fechaContrato = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy"));
         this.precioContrato = precioContrato;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        
-        
+        this.aprobacionNumero1 = false;
+        this.aprobacionNumero2 = false;
+
     }
 
     public void iniciar() {
-        System.out.print("Se inicio el contrato");
+        servicio.ejecutar();
     }
 
     public void terminar() {
-        System.out.print("Se termino el contrato");
+        servicio = null;
     }
 
     @Override
@@ -45,6 +50,24 @@ public class Contrato implements Serializable {
     boolean compararDescripcion(String descripcionContratoAPagar) {
         return (descripcion == null ? descripcionContratoAPagar == null : descripcion.equals(descripcionContratoAPagar));
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    void darAprobacion() {
+        if(!aprobacionNumero1){
+            aprobacionNumero1 = true;
+        } else {
+            aprobacionNumero2 = true;
+        }
+    }
+
+    boolean estaAprobado() {
+       return aprobacionNumero1 && aprobacionNumero2;
+    }
+
+
     
     
 }

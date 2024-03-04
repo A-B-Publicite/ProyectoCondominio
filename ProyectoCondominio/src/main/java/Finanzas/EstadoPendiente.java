@@ -2,21 +2,26 @@ package Finanzas;
 
 import java.io.Serializable;
 
-public class EstadoPendiente implements EstadoObligacion, Serializable {
+public class EstadoPendiente extends EstadoObligacion implements Serializable {
 
-    @Override
-    public void cambiarEstado(ObligacionFinanciera obligacionFinanciera, String senial) {
-        if (senial.equals("completado")) {
-            obligacionFinanciera.setEstado(new EstadoCompletado());
-        }
-        if (senial.equals("atrasado")) {
-            obligacionFinanciera.setEstado(new EstadoAtrasado());
-        }
+    public EstadoPendiente(ObligacionFinanciera obligacionFinanciera) {
 
+        super(obligacionFinanciera);
     }
 
     @Override
     public String toString() {
         return "pendiente";
+    }
+
+    @Override
+    public void cambiarACompletado() {
+        obligacionFinanciera.setEstado(new EstadoCompletado(obligacionFinanciera));
+    }
+
+    @Override
+    public void cambiarAAtrasado() {
+        obligacionFinanciera.setEstado(new EstadoAtrasado(obligacionFinanciera));
+
     }
 }

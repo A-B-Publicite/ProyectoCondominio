@@ -41,7 +41,7 @@ public class RegistroEntrada implements Serializable{
     
     public void asignarParqueadero(Perfil reservador, EspacioDeParqueadero espacio){
         AdministrarReserva adminReserva = new AdministrarReserva();        
-        usoParqueadero = adminReserva.realizarReserva(espacio, "uso de parqueadero", reservador);
+        //usoParqueadero = adminReserva.realizarReserva(espacio, "uso de parqueadero", reservador);
     }
     
     public void usarParqueaderoAsignado(String fechaFin,ParqueaderoPrivado parqueadero){

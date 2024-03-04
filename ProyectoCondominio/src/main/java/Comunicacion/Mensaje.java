@@ -64,6 +64,10 @@ public abstract class Mensaje implements Serializable{
         return destino;
     }
 
+    public Administrador getDestinoAdmin() {
+        return destinoAdmin;
+    }
+
     
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -88,7 +92,7 @@ public abstract class Mensaje implements Serializable{
         return fecha.format(formatter);
     }
 
-    public List<Residente> getDestinos() {
+    public ArrayList<Residente> getDestinos() {
         return destinos;
     }
 
