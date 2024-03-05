@@ -38,7 +38,7 @@ public class AdministracionAlquiler implements Serializable {
     public Alquiler alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
-        if (!estaVacia()&&inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
+        if (inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
             double precioTotal = calcularPrecioTotal(tipoMueble, cantidad, dias);
             alquiler.setPrecioTotal(precioTotal);
             listaAlquileres.add(alquiler);
