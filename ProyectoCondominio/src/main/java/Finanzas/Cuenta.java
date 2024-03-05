@@ -31,7 +31,7 @@ public class Cuenta implements Serializable {
     }
     
     public void retirarDinero(double dineroARetirar, MetodoRecarga metodoDeRecarga) {
-        Retiro retiro = new Retiro(dineroARetirar, String.valueOf(contadorRecargas++), metodoDeRecarga);
+        Retiro retiro = new Retiro(-dineroARetirar, String.valueOf(contadorRecargas++), metodoDeRecarga);
         retiro.realizarMovimiento(this);
         movimientosMonetarios.add(retiro);
     }
