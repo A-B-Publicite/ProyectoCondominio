@@ -392,21 +392,29 @@ public class FinanzasResidente extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         String idObligacion = txtIDObligacion.getText();
         if (idObligacion.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingrese el ID de la obligación financiera.");
+            mostrarMensaje("Por favor, ingrese el ID de la obligación financiera.");
             return;
         }
 
         ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(idObligacion);
+
         if (obligacionAPagar != null) {
-            try {
-                residente.pagar(obligacionAPagar);
-                lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
-                JOptionPane.showMessageDialog(null, "Pago realizado correctamente.");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al realizar el pago: " + e.getMessage());
+            double saldoCuenta = residente.getCuenta().getSaldo();
+            double montoObligacion = obligacionAPagar.getMonto();
+
+            if (saldoCuenta >= montoObligacion) {
+                try {
+                    residente.pagar(obligacionAPagar);
+                    actualizarSaldoCuenta();
+                    mostrarMensaje("Pago realizado correctamente.");
+                } catch (Exception e) {
+                    mostrarMensaje("Error al realizar el pago: " + e.getMessage());
+                }
+            } else {
+                mostrarMensaje("Saldo insuficiente para realizar el pago.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontró la obligación financiera.");
+            mostrarMensaje("No se encontró la obligación financiera.");
         }
         limpiarDatosObligaciones();
 
@@ -580,6 +588,14 @@ public class FinanzasResidente extends javax.swing.JFrame {
                 new FinanzasResidente(residente).setVisible(true);
             }
         });
+    }
+
+    private void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+
+    private void actualizarSaldoCuenta() {
+        lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
