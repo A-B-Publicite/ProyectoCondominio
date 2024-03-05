@@ -6,7 +6,9 @@ import Inmueble.Condominio;
 import Inmueble.Departamento;
 import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
+import ModuloMuebles.Mueble;
 import check_in.Autorizacion;
+import check_in.Validacion;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -23,6 +25,7 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(nombre + " " + apellido, fechaActual, fechaFin);
         this.setAutorizacion(autorizacionEntrada);
     }
+    
 
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
@@ -31,6 +34,12 @@ public class Administrador extends Perfil implements Serializable {
     public void agregarInmuebleComun(InmuebleComun inmuebleComun) {
         condominio.agregarInmuebleComun(inmuebleComun);
     }
+    
+    public void agregarMueble(Mueble mueble, int cantidad, double precio) {
+        condominio.agregarMueble(mueble, cantidad, precio);
+    }
+    
+    
 
     public void agregarDepartamentos(int numeroDepartamento) {
         condominio.agregarDepartamentos(numeroDepartamento);
@@ -131,11 +140,7 @@ public class Administrador extends Perfil implements Serializable {
     @Override
     public String toString() {
         return "Administrador: " + nombre + " " + apellido;
-    }
-    
-    public void validarAutorizacion(Autorizacion autorizacion){
-        autorizacion.validar();
-    }
+    }   
     
     public void enviarResidentesGuardia(){
         List<String> residentes = new ArrayList<>();
