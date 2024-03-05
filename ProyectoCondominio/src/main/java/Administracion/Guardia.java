@@ -67,7 +67,7 @@ public class Guardia extends Perfil implements Serializable{
     }
 
     private Autorizacion buscarAutorizacion(String autorizado) {
-        Autorizacion autorizacionEncontrada = new Autorizacion();
+        Autorizacion autorizacionEncontrada = null;
         for (Autorizacion autorizacion : autorizaciones) {
             Comparacion comparar = new Comparacion();
             if (comparar.compararAutorizado(autorizado, autorizacion)) {
