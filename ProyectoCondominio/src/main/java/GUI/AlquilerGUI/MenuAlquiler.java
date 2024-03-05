@@ -29,7 +29,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         administracionAlquiler= new AdministracionAlquiler();
         this.administrador = administrador;
         this.jTFIdAlquiler.setEditable(false);
-        actualizarCantidadMuebles();
+        actualizar();
         
         jTAAlquileresFinalizados.setText(String.valueOf(administrador.getResidentes().get(0).getCorreo()));
 
@@ -60,7 +60,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jTFPrecio = new javax.swing.JTextField();
-        jButtonAceptar1 = new javax.swing.JButton();
         jTFCorreo = new javax.swing.JTextField();
         jBAceptar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -152,14 +151,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jTFPrecio.setEditable(false);
 
-        jButtonAceptar1.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonAceptar1.setText("Verificar");
-        jButtonAceptar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptar1ActionPerformed(evt);
-            }
-        });
-
         jBAceptar.setBackground(new java.awt.Color(0, 204, 204));
         jBAceptar.setText("Aceptar");
         jBAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,9 +194,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
+                        .addGap(41, 571, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -251,10 +240,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
                     .addComponent(jLabel27)
                     .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Alquilar", jPanel1);
@@ -428,17 +415,21 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel16.setText("Sillas");
 
+        jTFNumeroSillas.setEditable(false);
         jTFNumeroSillas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNumeroSillasActionPerformed(evt);
             }
         });
 
+        jTFNumeroMesas.setEditable(false);
         jTFNumeroMesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNumeroMesasActionPerformed(evt);
             }
         });
+
+        jTFNumeroCarpas.setEditable(false);
 
         jButton1.setText("Actualizar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -616,7 +607,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         int diasD = Integer.parseInt(jTFDiasDevolucion.getText());
         Alquiler alquilerD=administracionAlquiler.finalizarAlquiler(idAlquilerD,diasD);
         jTADevolucion.setText(alquilerD.toString());
-        jTAAlquileresFinalizados.setText(administracionAlquiler.imprimirAlquileresFinalizados());
+        actualizar();
     }//GEN-LAST:event_jBDevolverActionPerformed
 
     private void jTFIdAlquilerDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdAlquilerDActionPerformed
@@ -635,15 +626,12 @@ public class MenuAlquiler extends javax.swing.JFrame {
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         int cantidad = Integer.parseInt(jTFCantidad.getText());
         
-       administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
-       jTAAlquileresActivos.setText(administracionAlquiler.imprimirAlquileresActivos());
-        jTFPrecio.setText(String.valueOf(administracionAlquiler.calcularPrecioTotal(tipoMueble, cantidad, dias)));
+        Alquiler alquiler = administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
+        actualizar();
+        jTFPrecio.setText(String.valueOf(alquiler.getPrecioTotal()));
+        jTADevolucion.setText("");
         
     }//GEN-LAST:event_jBAceptarActionPerformed
-
-    private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
-
-    }//GEN-LAST:event_jButtonAceptar1ActionPerformed
 
     private void jCBTipoMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoMuebleActionPerformed
 
@@ -658,7 +646,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNumeroSillasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        actualizarCantidadMuebles();
+        actualizar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TFBuscarPorCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFBuscarPorCorreoFocusGained
@@ -682,7 +670,10 @@ public class MenuAlquiler extends javax.swing.JFrame {
 //        jTFDias.setText(fechaActualStr);
 //    }
   
-    private void actualizarCantidadMuebles() {
+    private void actualizar() {
+       jTAAlquileresActivos.setText(administracionAlquiler.imprimirAlquileresActivos());
+       jTAAlquileresFinalizados.setText(administracionAlquiler.imprimirAlquileresFinalizados());
+       
         jTFNumeroMesas.setText(String.valueOf(inventario.contarMesas()));
         jTFNumeroSillas.setText(String.valueOf(inventario.contarSillas()));
         jTFNumeroCarpas.setText(String.valueOf(inventario.contarCarpas()));
@@ -700,7 +691,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private java.awt.Button jBBuscar;
     private javax.swing.JButton jBDevolver;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonAceptar1;
     private javax.swing.JComboBox<String> jCBTipoMueble;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

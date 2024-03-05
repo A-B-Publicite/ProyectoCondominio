@@ -5,6 +5,7 @@ import Administracion.Residente;
 import static GUI.AdminGUI.GestionMueble.inventario;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,18 +36,20 @@ public class AdministracionAlquiler implements Serializable {
     }
 
 //metodos de alquiler y devolucion/finalizacion
-    public void alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
+    public Alquiler alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
+        Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
         if (residente != null) {
-            //System.out.println(residente.getCorreo());
-            Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
             if (inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
                 double precioTotal = calcularPrecioTotal(tipoMueble, cantidad, dias);
                 alquiler.setPrecioTotal(precioTotal);
                 listaAlquileres.add(alquiler);
                 inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(null, "Cantidad de muebles no dispobles");
             }
         }
+        return alquiler;
     }
 
     public double calcularPrecioTotal(String tipoMueble, int cantidad, int dias) {

@@ -39,7 +39,6 @@ Comunicacion\Global.class
 GUI\AdminGUI\GestionContratoAdmin$3.class
 GUI\FinanzasGUI\FinanzasResidente$3.class
 ModuloReservas\Disponibilidad.class
-GUI\AlquilerGUI\MenuAlquiler$14.class
 Administracion\Guardia.class
 GUI\AlquilerGUI\MenuAlquiler$9.class
 Inmueble\InmuebleComun.class
