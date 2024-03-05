@@ -8,6 +8,7 @@ import Inmueble.EspacioDeParqueadero;
 import Inmueble.InmuebleComun;
 import ModuloMuebles.Mueble;
 import check_in.Autorizacion;
+import check_in.Validacion;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -125,11 +126,7 @@ public class Administrador extends Perfil implements Serializable {
     @Override
     public String toString() {
         return "Administrador: " + nombre + " " + apellido;
-    }
-    
-    public void validarAutorizacion(Autorizacion autorizacion){
-        autorizacion.validar();
-    }
+    }   
     
     public void enviarResidentesGuardia(){
         List<String> residentes = new ArrayList<>();

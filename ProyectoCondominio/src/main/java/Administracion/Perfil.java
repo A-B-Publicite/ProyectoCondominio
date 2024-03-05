@@ -4,6 +4,7 @@ import Comunicacion.BandejaDeEntrada;
 import Finanzas.Cuenta;
 import check_in.Autorizacion;
 import check_in.RegistroEntrada;
+import check_in.Validacion;
 import java.io.Serializable;
 
 public abstract class Perfil implements Serializable {
@@ -61,7 +62,12 @@ public abstract class Perfil implements Serializable {
         registro.setAutorizacion(this.autorizacion);
         registro.registrarEntrada(fechaLlegada, horaLlegada);
     }
-
+    
+    public void validarAutorizacion(Autorizacion autorizacion){
+        Validacion validacion = new Validacion();
+        validacion.validar(this,autorizacion);
+    }
+    
     public void setAutorizacion(Autorizacion autorizacion) {
         this.autorizacion = autorizacion;
     }
