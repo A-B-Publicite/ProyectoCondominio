@@ -94,21 +94,51 @@ public class Inventario implements Serializable {
     public int contarSillas() {
         int cantidadSillas = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Silla) { // Asumiendo que tienes una clase Mesa
+            if (mueble instanceof Silla) { 
                 cantidadSillas++;
             }
         }
         return cantidadSillas;
     }
-    
-        public int contarCarpas() {
+
+    public int contarCarpas() {
         int cantidadCarpas = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Carpa) { // Asumiendo que tienes una clase Mesa
+            if (mueble instanceof Carpa) {
                 cantidadCarpas++;
             }
         }
         return cantidadCarpas;
+    }
+        
+    public int contarMesasReparar() {
+        int cantidadMesasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Mesa && mueble.isMantenimiento()==true) { 
+                cantidadMesasR++;
+            }
+        }
+        return cantidadMesasR;
+    }
+
+    public int contarSillasReparar() {
+        int cantidadSillasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Silla && mueble.isMantenimiento()==true) {
+                cantidadSillasR++;
+            }
+        }
+        return cantidadSillasR;
+    }
+
+    public int contarCarpasReparar() {
+        int cantidadCarpasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Carpa && mueble.isMantenimiento()==true) {
+                cantidadCarpasR++;
+            }
+        }
+        return cantidadCarpasR;
     }
 
 }

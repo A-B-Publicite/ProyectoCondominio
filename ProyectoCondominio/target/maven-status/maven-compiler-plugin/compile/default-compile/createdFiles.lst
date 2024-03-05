@@ -26,7 +26,6 @@ Comunicacion\Directo.class
 GUI\MensajeGUI\GUIBandejaDeEntrada$1.class
 Inmueble\Cancha.class
 Comunicacion\Mensaje.class
-ModuloMuebles\Fecha.class
 GUI\AdminGUI\GestionCondominio$4.class
 Finanzas\Efectivo.class
 GUI\FinanzasGUI\FinanzasResidente$4.class

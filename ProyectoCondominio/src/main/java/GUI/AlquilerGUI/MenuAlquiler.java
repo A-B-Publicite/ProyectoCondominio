@@ -5,7 +5,6 @@ import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
 import static GUI.AdminGUI.GestionMueble.inventario;
-import Inmueble.*;
 import ModuloMuebles.*;
 
 import java.text.SimpleDateFormat;
@@ -62,7 +61,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTFPrecio = new javax.swing.JTextField();
         jButtonAceptar1 = new javax.swing.JButton();
         jTFCorreo = new javax.swing.JTextField();
-        jButtonAceptar = new javax.swing.JButton();
+        jBAceptar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAAlquileresFinalizados = new javax.swing.JTextArea();
@@ -71,8 +70,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         jLabel9 = new javax.swing.JLabel();
-        TFIngresarCorreo = new java.awt.TextField();
         jBBuscar = new java.awt.Button();
+        TFBuscarPorCorreo = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -98,9 +97,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        jTFSillasPorReparar = new javax.swing.JTextField();
+        jTFMesasPorReparar = new javax.swing.JTextField();
+        jTFCarpasPorReparar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -160,11 +159,11 @@ public class MenuAlquiler extends javax.swing.JFrame {
             }
         });
 
-        jButtonAceptar.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+        jBAceptar.setBackground(new java.awt.Color(0, 204, 204));
+        jBAceptar.setText("Aceptar");
+        jBAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
+                jBAceptarActionPerformed(evt);
             }
         });
 
@@ -189,7 +188,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                             .addComponent(jTFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -199,7 +198,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFDias, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 209, Short.MAX_VALUE))
+                        .addGap(0, 278, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel3)
@@ -253,7 +252,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,22 +275,23 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel9.setText("Alquileres Finalizados");
 
-        TFIngresarCorreo.setText("Ingrese correo");
-        TFIngresarCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TFIngresarCorreoMouseClicked(evt);
-            }
-        });
-        TFIngresarCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFIngresarCorreoActionPerformed(evt);
-            }
-        });
-
         jBBuscar.setLabel("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
+            }
+        });
+
+        TFBuscarPorCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TFBuscarPorCorreo.setText("Ingrese correo");
+        TFBuscarPorCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TFBuscarPorCorreoFocusGained(evt);
+            }
+        });
+        TFBuscarPorCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFBuscarPorCorreoActionPerformed(evt);
             }
         });
 
@@ -300,29 +300,24 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(46, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(TFIngresarCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TFBuscarPorCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(22, 22, 22))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,20 +325,18 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFIngresarCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TFBuscarPorCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Lista Alquileres", jPanel2);
@@ -382,7 +375,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addGap(239, 433, Short.MAX_VALUE))
+                        .addGap(239, 500, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
@@ -390,7 +383,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                                .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                 .addGap(276, 276, 276))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,7 +469,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFNumeroMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                                 .addComponent(jButton1)))))
                 .addGap(84, 84, 84))
         );
@@ -521,9 +514,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel21.setText("Sillas");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        jTFMesasPorReparar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                jTFMesasPorRepararActionPerformed(evt);
             }
         });
 
@@ -544,11 +537,11 @@ public class MenuAlquiler extends javax.swing.JFrame {
                             .addComponent(jLabel19))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFCarpasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFSillasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFMesasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,15 +553,15 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFMesasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFSillasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCarpasPorReparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
@@ -585,7 +578,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane5)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -609,9 +602,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void jTFMesasPorRepararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFMesasPorRepararActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_jTFMesasPorRepararActionPerformed
 
     private void jTFNumeroMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroMesasActionPerformed
         // TODO add your handling code here:
@@ -633,15 +626,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    private void TFIngresarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIngresarCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFIngresarCorreoActionPerformed
-
-    private void TFIngresarCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TFIngresarCorreoMouseClicked
-        TFIngresarCorreo.setText("");
-    }//GEN-LAST:event_TFIngresarCorreoMouseClicked
-
-    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+    private void jBAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAceptarActionPerformed
         idAlquiler++;
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
@@ -654,7 +639,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         alquiler=administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
         jTFPrecio.setText(String.valueOf(administracionAlquiler.calcularPrecioTotal(tipoMueble, cantidad, dias)));
         jTAAlquileresActivos.setText(alquiler.toString());
-    }//GEN-LAST:event_jButtonAceptarActionPerformed
+    }//GEN-LAST:event_jBAceptarActionPerformed
 
     private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
 
@@ -673,36 +658,48 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNumeroSillasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        actualizarCantidadMuebles();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    
-    private void establecerFechaActual() {
-        // Obtener la fecha actual
-        Date fechaActual = new Date();
 
-        // Formatear la fecha como una cadena
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("YY/MM/DD");
-        String fechaActualStr = formatoFecha.format(fechaActual);
+    private void TFBuscarPorCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFBuscarPorCorreoFocusGained
+        TFBuscarPorCorreo.setText("");
+    }//GEN-LAST:event_TFBuscarPorCorreoFocusGained
 
-        // Establecer la fecha en el JTextField
-        jTFDias.setText(fechaActualStr);
-    }
+    private void TFBuscarPorCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFBuscarPorCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFBuscarPorCorreoActionPerformed
     
-    private void actualizarCantidadMuebles(){
+//    
+//    private void establecerFechaActual() {
+//        // Obtener la fecha actual
+//        Date fechaActual = new Date();
+//
+//        // Formatear la fecha como una cadena
+//        SimpleDateFormat formatoFecha = new SimpleDateFormat("YY/MM/DD");
+//        String fechaActualStr = formatoFecha.format(fechaActual);
+//
+//        // Establecer la fecha en el JTextField
+//        jTFDias.setText(fechaActualStr);
+//    }
+  
+    private void actualizarCantidadMuebles() {
         jTFNumeroMesas.setText(String.valueOf(inventario.contarMesas()));
+        jTFNumeroSillas.setText(String.valueOf(inventario.contarSillas()));
         jTFNumeroCarpas.setText(String.valueOf(inventario.contarCarpas()));
-          jTFNumeroSillas.setText(String.valueOf(inventario.contarSillas()));
+
+        jTFMesasPorReparar.setText(String.valueOf(inventario.contarMesasReparar()));
+        jTFSillasPorReparar.setText(String.valueOf(inventario.contarSillasReparar()));
+        jTFCarpasPorReparar.setText(String.valueOf(inventario.contarCarpasReparar()));
     }
        
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.TextField TFIngresarCorreo;
+    private javax.swing.JTextField TFBuscarPorCorreo;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JButton jBAceptar;
     private java.awt.Button jBBuscar;
     private javax.swing.JButton jBDevolver;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonAceptar1;
     private javax.swing.JComboBox<String> jCBTipoMueble;
     private javax.swing.JLabel jLabel1;
@@ -740,19 +737,19 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextArea jTAAlquileresFinalizados;
     private javax.swing.JTextArea jTADevolución;
     private javax.swing.JTextField jTFCantidad;
+    private javax.swing.JTextField jTFCarpasPorReparar;
     private javax.swing.JTextField jTFCorreo;
     private javax.swing.JTextField jTFDias;
     private javax.swing.JTextField jTFFechaDevolución;
     private javax.swing.JTextField jTFIdAlquiler;
     private javax.swing.JTextField jTFIdAlquilerD;
+    private javax.swing.JTextField jTFMesasPorReparar;
     private javax.swing.JTextField jTFNumeroCarpas;
     private javax.swing.JTextField jTFNumeroMesas;
     private javax.swing.JTextField jTFNumeroSillas;
     private javax.swing.JTextField jTFPrecio;
+    private javax.swing.JTextField jTFSillasPorReparar;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
