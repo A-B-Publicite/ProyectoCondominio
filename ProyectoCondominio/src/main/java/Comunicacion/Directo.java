@@ -52,7 +52,6 @@ public class Directo extends Mensaje implements Serializable{
             BaseDeDatos.escribirAdmin(ad);
         } else {
                if (getDestino()!=null) {
-                   System.out.println("ENTRO TRY");
                    ArrayList<Residente> residentes = ad.getResidentes();
                    for (Residente res : residentes) {
                        if (res.getCorreo().equals(getDestino().getCorreo())) {
