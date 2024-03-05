@@ -91,6 +91,7 @@ public class CreacionCondominio extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(null, "El conominio ha sido agregado");
         BaseDeDatos.escribirAdmin(administrador);
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnAceptarCrearCondominioActionPerformed
 
     private void txtNombreCondominioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreCondominioFocusGained

@@ -13,24 +13,35 @@ public class Directiva implements Serializable{
         contratosPorAprobar = new ArrayList<Contrato>();
         contratosAprobados = new ArrayList<Contrato>();
         this.administrador = administrador;
+        this.presidente = presidente;
+        this.secretario = secretario;
     }
     
     public void agregarDirectiva(Residente presidente, Residente secretario){
-        this.presidente = presidente;
-        this.secretario = secretario;
+        setPresidente(presidente);
+        setSecretario(secretario);
+        //this.secretario = secretario;
         presidente.setAprobacion();
         secretario.setAprobacion();
     }
+
+    public void setPresidente(Residente presidente) {
+        this.presidente = presidente;
+    }
+
+    public void setSecretario(Residente secretario) {
+        this.secretario = secretario;
+    }
+
     
     public ArrayList<Contrato> mostrarContratos(){
         return contratosAprobados;
     }
 
-    public Contrato getContrato(String descripcionContratoAPagar) {
-        Contrato contratoAPagar = null;
-        for (Contrato centrato : contratosAprobados) {
-            if (centrato.compararDescripcion(descripcionContratoAPagar)) {
-                return contratoAPagar;
+    public Contrato getContratoAprobado(String descripcionContratoAPagar) {
+        for (Contrato contrato : contratosAprobados) {
+            if (contrato.compararDescripcion(descripcionContratoAPagar)) {
+                return contrato;
             }
         }
         return null;
@@ -52,6 +63,7 @@ public class Directiva implements Serializable{
         Contrato contratoAux = null;
         for (Contrato  contrato : contratosAprobados) {
             if (contrato.compararDescripcion(descripcionContrato)) {
+                System.out.println("DENTRO DEL IF" + this.getClass());
                 contratoAux = contrato;
                 contrato.darAprobacion();
             }

@@ -6,6 +6,7 @@ package Administracion;
 
 import java.util.ArrayList;
 import Administracion.Contrato;
+import BD.BaseDeDatos;
 import java.io.Serializable;
 
 /**
@@ -13,10 +14,10 @@ import java.io.Serializable;
  * @author jeanp
  */
 public class Aprobacion implements Serializable{
-    private Directiva directiva;
 
     public void notificarAprobacion(String descripcionContrato) {
-        directiva.actualizarAprobacion(descripcionContrato);
+        Administrador administrador = BaseDeDatos.leerAdministrador();
+        administrador.getCondominio().getDirectiva().actualizarAprobacion(descripcionContrato);  
     }
 
 }

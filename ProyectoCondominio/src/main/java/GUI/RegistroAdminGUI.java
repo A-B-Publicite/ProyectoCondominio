@@ -110,6 +110,7 @@ public class RegistroAdminGUI extends javax.swing.JFrame {
         Administrador nuevoAdministrador = new Administrador(lblNombreAdmin.getText(), lblApellidoAdmin.getText());
         BaseDeDatos.escribir(nuevoAdministrador, "src/main/java/Datos/datosAdmin.txt");
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnAgregarAdminActionPerformed
 
     private void lblNombreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNombreAdminActionPerformed

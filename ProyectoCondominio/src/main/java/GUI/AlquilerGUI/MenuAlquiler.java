@@ -636,7 +636,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
 
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        Residente residente = administrador.obtenerResidentePorCorreo(correo);
+        Residente residente = administrador.getResidentePorCorreo(correo);
         //Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
         //alquiler.alquilar();
 
@@ -658,7 +658,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
 
             int cantidad = Integer.parseInt(jTFCantidad.getText());
-            Residente residente = administrador.obtenerResidentePorCorreo(correo);
+            Residente residente = administrador.getResidentePorCorreo(correo);
             //Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
             //precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
             jTFPrecio.setText(Double.toString(precioT));

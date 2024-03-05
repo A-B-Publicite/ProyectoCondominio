@@ -240,7 +240,7 @@ public class GestionPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarResidenteActionPerformed
 
     private void btnAgregarGuardiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarGuardiaActionPerformed
-        administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(),txtFInicioGuardia.getText() , txtFFinGuardia.getText());
+        administrador.registrarGuardia(txtNombreGuardia.getText(), txtApellidoGuardia.getText(), txtFInicioGuardia.getText(), txtFFinGuardia.getText());
         administrador.enviarAutorizacionesGuardia();
         administrador.enviarEspaciosParqueaderoGuardia();
         administrador.enviarResidentesGuardia();
@@ -250,7 +250,8 @@ public class GestionPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarGuardiaActionPerformed
 
     private void btnVolverGestionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverGestionPerfilActionPerformed
-        BaseDeDatos.escribirAdmin(administrador);        
+        BaseDeDatos.escribirAdmin(administrador);
+        this.dispose();
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverGestionPerfilActionPerformed
 

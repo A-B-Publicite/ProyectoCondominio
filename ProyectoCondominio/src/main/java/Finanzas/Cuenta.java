@@ -43,7 +43,6 @@ public class Cuenta implements Serializable{
     }
 
     public void pagarContrato(double precioContrato) {
-
         if (esSaldoMayorOIgualMonto(precioContrato)) {
             Pago nuevoPago = new Pago(this);
             nuevoPago.pagarContrato(precioContrato);

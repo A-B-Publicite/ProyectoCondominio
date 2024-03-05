@@ -38,10 +38,12 @@ public class BaseDeDatos implements Serializable{
     public static Residente getResidente(String correo, String contrasenia) {
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         try {
+            System.out.println("Si encontre el residente solicitado pa");
             return buscarResidente(residentes, correo, contrasenia);
         } catch (Exception ex) {
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("No encontre el residente solicitado pa");
         return null;
     }
 
@@ -83,11 +85,12 @@ public class BaseDeDatos implements Serializable{
     private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) throws Exception {
         for(Residente residente : residentes){
             if(residente.getCorreo().equals(correo)&& residente.getContrasenia().equals(contrasenia)){
+                System.out.println("Encontre el residente");
                 return residente;
             }
         }
         throw new Exception("No existe ese residente");
-        //return null;
+
     }
     
     public static ArrayList<Residente> obtenerListaResidente () throws IOException, ClassNotFoundException {

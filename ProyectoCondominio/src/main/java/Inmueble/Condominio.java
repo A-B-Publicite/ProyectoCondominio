@@ -104,7 +104,7 @@ public class Condominio implements Serializable {
 
 //<<<<<<< HEAD
     public Contrato getContrato(String descripcionContratoAPagar) {
-        return directiva.getContrato(descripcionContratoAPagar);
+        return directiva.getContratoAprobado(descripcionContratoAPagar);
     }
 //=======   
     

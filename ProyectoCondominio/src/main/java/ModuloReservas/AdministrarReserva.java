@@ -19,7 +19,7 @@ public class AdministrarReserva implements Serializable{
 
     // Método para realizar una reserva
     public boolean realizarReserva(String detalleReserva, Administrador usuario, int opcionReserva, String diaReserva, String correo) {
-        Residente residente = usuario.obtenerResidentePorCorreo(correo);
+        Residente residente = usuario.getResidentePorCorreo(correo);
         System.out.println(opcionReserva);
         if (residente != null) {
 

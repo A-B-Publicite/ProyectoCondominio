@@ -76,10 +76,7 @@ public class Residente extends Perfil implements Serializable {
     
     public void aprobar(String descripcionContrato){
         aprobacionDeContrato.notificarAprobacion(descripcionContrato);
-        
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -88,9 +85,5 @@ public class Residente extends Perfil implements Serializable {
             return true;
         }
         return this.apellido == other.apellido;
-
     }
-    
-
-
 }

@@ -47,15 +47,18 @@ public class Contrato implements Serializable {
         return precioContrato;
     }
 
-    boolean compararDescripcion(String descripcionContratoAPagar) {
-        return (descripcion == null ? descripcionContratoAPagar == null : descripcion.equals(descripcionContratoAPagar));
+    public boolean compararDescripcion(String descripcionContratoAPagar) {
+        if (descripcionContratoAPagar == descripcionContratoAPagar) {
+            return true;
+        }
+        return false;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    void darAprobacion() {
+    public void darAprobacion() {
         if(!aprobacionNumero1){
             aprobacionNumero1 = true;
         } else {
@@ -63,11 +66,8 @@ public class Contrato implements Serializable {
         }
     }
 
-    boolean estaAprobado() {
+    public boolean estaAprobado() {
        return aprobacionNumero1 && aprobacionNumero2;
     }
-
-
-    
-    
+ 
 }
