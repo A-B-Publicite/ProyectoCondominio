@@ -30,10 +30,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         this.administrador = administrador;
+        this.inventario = new Inventario();
         this.jTFIdAlquiler.setEditable(false);
         this.jTFFechaInicio.setEditable(false);
         establecerFechaActual();
-        ArrayList<Residente> listaResidente = administrador.getResidentes();
+        actualizarCantidadMuebles();
+        //ArrayList<Residente> listaResidente = administrador.getResidentes();
+        //actualizarCantidadMuebles();
         //jTAAlquileresActivos.setText(administracionAlquiler.alquileresFinalizados(true).toString());
         //jTAAlquileresFinalizados.setText(administracionAlquiler.alquileresFinalizados(false).toString());
 
@@ -90,6 +93,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -197,7 +201,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 200, Short.MAX_VALUE))
+                        .addGap(0, 209, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel3)
@@ -302,7 +306,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(18, Short.MAX_VALUE)
+                                .addContainerGap(46, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -380,7 +384,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addGap(239, 422, Short.MAX_VALUE))
+                        .addGap(239, 433, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
@@ -388,7 +392,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                                 .addGap(276, 276, 276))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,6 +448,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -463,21 +474,30 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))))
-                .addContainerGap(333, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                                .addComponent(jButton1)))))
+                .addGap(84, 84, 84))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -530,7 +550,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))))
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -567,7 +587,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane5)
+                    .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -676,6 +696,10 @@ public class MenuAlquiler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     
     private void establecerFechaActual() {
         // Obtener la fecha actual
@@ -689,37 +713,18 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTFFechaInicio.setText(fechaActualStr);
     }
     
-    public void actualizarListaReparaciones() {
-        int mesasEnReparacion = 0;
-        int sillasEnReparacion = 0;
-        int carpasEnReparacion = 0;
-        
-        // Suponiendo que tienes una colección de muebles llamada 'inventario'
-        for (Mueble mueble : inventario.getListaMuebles()) {
-            if (mueble.isMantenimiento()) { // Este método comprueba si el mueble está en mantenimiento
-                if (mueble instanceof Mesa) {
-                    mesasEnReparacion++;
-                }
-                if (mueble instanceof Silla) {
-                    sillasEnReparacion++;
-                } 
-                if (mueble instanceof Carpa) {
-                    carpasEnReparacion++;
-                }
-            }
-        }
-
-        // Actualizar los campos de texto de la GUI con los totales
-        jTextField11.setText(String.valueOf(mesasEnReparacion));
-        jTextField10.setText(String.valueOf(sillasEnReparacion));
-        jTextField12.setText(String.valueOf(carpasEnReparacion));
+    private void actualizarCantidadMuebles(){
+        int cantidadMesas = inventario.contarMesas();
+        jTextField8.setText(String.valueOf(cantidadMesas));
     }
+       
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.TextField TFIngresarCorreo;
     private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnVolver;
     private java.awt.Button jBBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonAceptar1;
     private javax.swing.JComboBox<String> jCBTipoMueble;

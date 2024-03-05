@@ -68,5 +68,39 @@ public class Inventario implements Serializable {
         }
         return 0.0;
     }
+    
+//    public int contarMesas() {
+//        int cantidadMesas = 0;
+//        for (Mueble mueble : listaMuebles) {
+//            if (mueble instanceof Mesa) { // Asumiendo que tienes una clase Mesa
+//                cantidadMesas++;
+//            }
+//        }
+//        return cantidadMesas;
+//    }
+    public int contarMesas() {
+        int cantidadMesas = 0;
+        System.out.println("Lista de Muebles tiene: " + listaMuebles.size() + " elementos.");
+        for (Mueble mueble : listaMuebles) {
+            System.out.println("Revisando mueble: " + mueble.getClass().getSimpleName());
+            if (mueble instanceof Mesa) {
+                cantidadMesas++;
+            }
+        }
+        System.out.println("Cantidad de Mesas encontradas: " + cantidadMesas);
+        return cantidadMesas;
+    }
+    
+    public int contarSillas() {
+        int cantidadSillas = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Silla) { // Asumiendo que tienes una clase Mesa
+                cantidadSillas++;
+            }
+        }
+        return cantidadSillas;
+    }
+    
+    
 
 }
