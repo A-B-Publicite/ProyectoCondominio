@@ -381,6 +381,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
     private void btnVisualizarObligacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarObligacionesActionPerformed
         lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
         jTAObligaciones.setText(residente.getCuenta().getGestorObligaciones().mostrarObligaciones());
+
         if (residente.getNombre() != null) {
             jTAObligaciones.setText(residente.getCuenta().getGestorObligaciones().mostrarObligaciones());
         } else {
@@ -389,18 +390,47 @@ public class FinanzasResidente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVisualizarObligacionesActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(txtIDObligacion.getText());
+        String idObligacion = txtIDObligacion.getText();
+        if (idObligacion.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese el ID de la obligación financiera.");
+            return;
+        }
+
+        ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(idObligacion);
+        if (obligacionAPagar != null) {
+            try {
+                residente.pagar(obligacionAPagar);
+                lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
+                JOptionPane.showMessageDialog(null, "Pago realizado correctamente.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al realizar el pago: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró la obligación financiera.");
+        }
+        limpiarDatosObligaciones();
+
+        /*ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(txtIDObligacion.getText());
         if (obligacionAPagar != null) {
             residente.pagar(obligacionAPagar);
             lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
-            limpiarDatosObligaciones();
+
         } else {
             JOptionPane.showMessageDialog(null, "No se encontro a la obligacion financiera");
-            limpiarDatosObligaciones();
         }
+        limpiarDatosObligaciones();*/
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void jCBMetodoRecargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMetodoRecargaActionPerformed
+        int selectedIndex = jCBMetodoRecarga.getSelectedIndex();
+
+        lblNumCuenta.setVisible(selectedIndex == 2);
+        lblNumTarjeta.setVisible(selectedIndex == 1);
+        lblCodSeg.setVisible(selectedIndex == 1);
+        txtNumTarjeta.setVisible(selectedIndex == 1);
+        txtCodSeg.setVisible(selectedIndex == 1);
+        txtNumCuenta.setVisible(selectedIndex == 2);
+        /*
         switch (jCBMetodoRecarga.getSelectedIndex()) {
             case 0:
                 lblNumCuenta.setVisible(false);
@@ -426,11 +456,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
                 txtCodSeg.setVisible(false);
                 txtNumCuenta.setVisible(true);
                 break;
-        }
+        }*/
     }//GEN-LAST:event_jCBMetodoRecargaActionPerformed
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
-        if (txtMontoAbonar.getText() != null) {
+        /*if (txtMontoAbonar.getText() != null) {
             switch (jCBMetodoRecarga.getSelectedIndex()) {
                 case 0:
                     MetodoRecarga efectivo = new Efectivo();
@@ -458,8 +488,32 @@ public class FinanzasResidente extends javax.swing.JFrame {
             }
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese un valor valido");
-        }
+        }*/
+        if (txtMontoAbonar.getText() != null) {
+            MetodoRecarga metodoRecarga = null;
+            switch (jCBMetodoRecarga.getSelectedIndex()) {
+                case 0:
+                    metodoRecarga = new Efectivo();
+                    break;
+                case 1:
+                    metodoRecarga = new Tarjeta(txtNumTarjeta.getText(), txtCodSeg.getText());
+                    break;
+                case 2:
+                    metodoRecarga = new Transferencia(txtNumCuenta.getText(), "123");
+                    break;
+                default:
+                    throw new AssertionError();
+            }
 
+            if (metodoRecarga != null) {
+                residente.getCuenta().recargarSaldo(Double.parseDouble(txtMontoAbonar.getText()), metodoRecarga);
+                JOptionPane.showMessageDialog(null, "Recarga realizada con éxito");
+                lblSaldoCuentaRecarga.setText(String.valueOf(residente.getCuenta().getSaldo()));
+                limpiarDatosRecarga();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor válido");
+        }
     }//GEN-LAST:event_btnRecargarActionPerformed
 
     private void btnMostrarRecargasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarRecargasActionPerformed
