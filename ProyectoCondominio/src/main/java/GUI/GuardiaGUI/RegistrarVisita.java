@@ -151,7 +151,7 @@ public class RegistrarVisita extends javax.swing.JFrame {
         if(txtQuiereEstacionamiento.getText().equals("SI"))
             estacionamiento = true;
         Visitante visitante = new Visitante(txtMotivoVisita.getText(),txtNombreVisita.getText(),txtPersonaAVisitar.getText());
-        guardia.registrarEntrada(visitante, fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento);
+        //guardia.crearAutorizacion(visitante, fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento);
         System.out.println(guardia.getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRealizarRegistroActionPerformed
 
