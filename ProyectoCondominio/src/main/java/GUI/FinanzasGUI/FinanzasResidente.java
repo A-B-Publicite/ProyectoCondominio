@@ -514,7 +514,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
             }
 
             if (metodoRecarga != null) {
-                residente.getCuenta().recargarSaldo(Double.parseDouble(txtMontoAbonar.getText()), metodoRecarga);
+                residente.getCuenta().recargarDinero(Double.parseDouble(txtMontoAbonar.getText()), metodoRecarga);
                 JOptionPane.showMessageDialog(null, "Recarga realizada con éxito");
                 lblSaldoCuentaRecarga.setText(String.valueOf(residente.getCuenta().getSaldo()));
                 limpiarDatosRecarga();

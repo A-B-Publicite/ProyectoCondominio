@@ -3,31 +3,25 @@ package Finanzas;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Recarga implements Serializable {
+public class Recarga extends MovimientoMonetario implements Serializable {
 
-    private final String id;
-    private MetodoRecarga metodoRecarga;
-    private LocalDate fechaRealizacion; 
-    private Cuenta cuenta;
-    private double abono;
+    public Recarga(double dineroARecargar, String id, MetodoRecarga metodoDeRecarga) {
+        super(dineroARecargar, id, metodoDeRecarga);
 
-    public Recarga(double abono, String id, MetodoRecarga metodoDeRecarga) {
-        this.abono = abono;
-        this.metodoRecarga = metodoDeRecarga;
-        this.id = id;
         metodoRecarga.realizarTransaccion();
         fechaRealizacion = LocalDate.now();
-    }
-
-    public void recargar(Cuenta cuentaARecargar) {
-        cuentaARecargar.actualizarSaldo(abono);
     }
 
     @Override
     public String toString() {
         return "[Recarga N. " + id
-                + "] | (" + metodoRecarga + 
-                ", fecha de realización= " + fechaRealizacion + ")";
+                + "] | (" + metodoRecarga
+                + ", fecha de realización= " + fechaRealizacion + ")";
+    }
+
+    @Override
+    public void realizarMovimiento(Cuenta cuentaARecargar) {
+        cuentaARecargar.actualizarSaldo(cantidadDinero);
     }
 
 }
