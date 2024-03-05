@@ -9,13 +9,13 @@ public class Silla extends Mueble implements Serializable {
     }
 
     @Override
-    public void setMantenimiento(boolean mantenimiento) {
-        super.setMantenimiento(mantenimiento);
+    public void setNecesitaMantenimiento(boolean mantenimiento) {
+        super.setNecesitaMantenimiento(mantenimiento);
     }
 
     @Override
-    public boolean isMantenimiento() {
-        return super.isMantenimiento();
+    public boolean isNecesitaMantenimiento() {
+        return super.isNecesitaMantenimiento();
     }
 
     @Override
