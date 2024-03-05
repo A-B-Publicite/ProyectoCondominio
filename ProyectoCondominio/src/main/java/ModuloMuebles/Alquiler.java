@@ -1,6 +1,7 @@
 package ModuloMuebles;
 
 import Administracion.Perfil;
+import Administracion.Residente;
 import java.io.Serializable;
 
 public class Alquiler implements Serializable {
@@ -97,16 +98,16 @@ public class Alquiler implements Serializable {
     @Override
     public String toString() {
         StringBuilder factura = new StringBuilder();
-        factura.append("******************* Factura de Alquiler *******************\n");
+        factura.append("*** Factura de Alquiler ***\n");
         factura.append("ID de Alquiler: ").append(idAlquiler).append("\n");
-        factura.append("Usuario: ").append(usuario).append("\n");
+        factura.append("Usuario: ").append(usuario.getNombresCompletos()).append("\n");
         factura.append("Tipo de Mueble: ").append(tipoMueble).append("\n");
         factura.append("Cantidad: ").append(cantidad).append("\n");
-        factura.append("Precio Unitario: ").append(precioTotal).append("\n");
+        //factura.append("Precio Unitario: ").append(precioTotal).append("\n");
         factura.append("Precio Total: ").append(precioTotal).append("\n");
         factura.append("Devolución: ").append(finalizado).append("\n");
 
-        factura.append("*******************************************************");
+        factura.append("***************************\n");
 
         return factura.toString();
     }

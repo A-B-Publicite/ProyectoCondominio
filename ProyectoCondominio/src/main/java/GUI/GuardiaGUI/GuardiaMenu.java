@@ -4,6 +4,7 @@
  */
 package GUI.GuardiaGUI;
 
+import Administracion.Administrador;
 import Administracion.Guardia;
 import Administracion.Residente;
 import BD.BaseDeDatos;
@@ -23,13 +24,13 @@ import javax.swing.JFrame;
  * @author MARQUEZ
  */
 public class GuardiaMenu extends javax.swing.JFrame {
-    private final Guardia guardia;
+    private final Administrador admin;
     /**
      * Creates new form GuardiaMenu
      */
-    public GuardiaMenu(Guardia guardia) {
+    public GuardiaMenu(Administrador admin) {
         initComponents();
-        this.guardia = guardia;
+        this.admin = admin;
     }
 
     /**
@@ -155,9 +156,9 @@ public class GuardiaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBandejaEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBandejaEntradaActionPerformed
-        GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(guardia, 1);
+        GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(admin.getCondominio().getGuardia(), 1);
         try {
-            bandeja.setListaMensajes(guardia.getBandejaDeEntrada().getListaMensajes());
+            bandeja.setListaMensajes(admin.getCondominio().getGuardia().getBandejaDeEntrada().getListaMensajes());
         } catch (IOException ex) {
             Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -187,26 +188,26 @@ public class GuardiaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btRedactarMensajeActionPerformed
 
     private void btRegistrarEntradaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaVActionPerformed
-        RegistrarVisita registroVisita = new RegistrarVisita(guardia);
+        RegistrarVisita registroVisita = new RegistrarVisita(admin.getCondominio().getGuardia());
         registroVisita.setVisible(true);
-        System.out.println(guardia.getEntradasVisitantes().toString());
+        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaVActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
-        BaseDeDatos.escribirGuardia(guardia);
+        BaseDeDatos.escribirAdmin(admin);
         System.exit(0);
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btRegistrarEntradaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaPActionPerformed
-        RegistroPropio registroPropio = new RegistroPropio(guardia);
+        RegistroPropio registroPropio = new RegistroPropio(admin.getCondominio().getGuardia());
         registroPropio.setVisible(true);
-        System.out.println(guardia.getEntradasVisitantes().toString());
+        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaPActionPerformed
 
     private void btRegistrarEntradaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaSActionPerformed
-        RegistrarServicio registroServicio = new RegistrarServicio(guardia);
+        RegistrarServicio registroServicio = new RegistrarServicio(admin.getCondominio().getGuardia());
         registroServicio.setVisible(true);
-        System.out.println(guardia.getEntradasVisitantes().toString());
+        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaSActionPerformed
     
     

@@ -5,6 +5,7 @@
 package GUI.GuardiaGUI;
 
 import Administracion.Administrador;
+import BD.BaseDeDatos;
 
 /**
  *
@@ -20,6 +21,8 @@ public class CrearAutoriza extends javax.swing.JFrame {
     public CrearAutoriza(Administrador administrador) {
         initComponents();
         this.administrador = administrador;
+        txtAutorizador.setText(administrador.getNombreApellido());
+        txtAutorizador.setEditable(false);
     }
 
     /**
@@ -40,6 +43,7 @@ public class CrearAutoriza extends javax.swing.JFrame {
         lblFechaFin = new javax.swing.JLabel();
         txtDateOut = new javax.swing.JTextField();
         btCrearAutorizacion = new javax.swing.JButton();
+        btVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +59,13 @@ public class CrearAutoriza extends javax.swing.JFrame {
         btCrearAutorizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCrearAutorizacionActionPerformed(evt);
+            }
+        });
+
+        btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVolverActionPerformed(evt);
             }
         });
 
@@ -78,13 +89,20 @@ public class CrearAutoriza extends javax.swing.JFrame {
                 .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCrearAutorizacion)
-                .addGap(135, 135, 135))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btCrearAutorizacion)
+                        .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btVolver)
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btVolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutorizador)
                     .addComponent(txtAutorizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -109,15 +127,20 @@ public class CrearAutoriza extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCrearAutorizacionActionPerformed
-        txtAutorizador.setText(administrador.getNombreApellido());
         administrador.crearAutorizacion(txtAutorizado.getText(), txtDateIn.getText(), txtDateOut.getText());
         administrador.enviarAutorizacionesGuardia();
         this.dispose();
+        BaseDeDatos.escribirAdmin(administrador);
     }//GEN-LAST:event_btCrearAutorizacionActionPerformed
+
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCrearAutorizacion;
+    private javax.swing.JButton btVolver;
     private javax.swing.JLabel lblAutorizado;
     private javax.swing.JLabel lblAutorizador;
     private javax.swing.JLabel lblFechaFin;

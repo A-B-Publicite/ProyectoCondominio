@@ -40,7 +40,7 @@ public class Carpa extends Mueble implements Serializable {
 
     @Override
     public boolean esTipo(String tipo) {
-        return "Carpa".equalsIgnoreCase(tipo);
+        return "Carpa".equals(tipo);
     }
 
 }

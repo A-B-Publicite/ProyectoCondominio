@@ -6,12 +6,16 @@ import ModuloMuebles.Mesa;
 import ModuloMuebles.Mueble;
 import ModuloMuebles.Silla;
 import Administracion.Administrador;
+import Administracion.Residente;
 import BD.BaseDeDatos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GestionMueble extends javax.swing.JFrame {
-    private Inventario inventario;
-    private int cantidad;
+    public static Inventario inventario;
     private final Administrador administrador;
+    private boolean verificacionSecretario;
+    private boolean verificacionPresidente;
 
     public GestionMueble(Administrador administrador) {
         initComponents();
@@ -149,7 +153,7 @@ public class GestionMueble extends javax.swing.JFrame {
     private void JBAgregarMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarMuebleActionPerformed
         try {
             // Obtener la cantidad y el precio de los campos de texto
-            cantidad = Integer.parseInt(TFCantidad.getText());
+            int cantidad = Integer.parseInt(TFCantidad.getText());
             double precio = Double.parseDouble(TFPrecio.getText());
             String opcionMueble = (String) CBMuebles.getSelectedItem();
 
