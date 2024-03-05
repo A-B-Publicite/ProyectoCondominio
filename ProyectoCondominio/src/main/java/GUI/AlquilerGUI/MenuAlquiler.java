@@ -18,12 +18,10 @@ import java.util.Date;
 public class MenuAlquiler extends javax.swing.JFrame {
 
     Administrador administrador;
-    Mueble mueble;
-    Alquiler alquiler;
+
     AdministracionAlquiler administracionAlquiler;
     
     private int idAlquiler = 0;
-    double precioT = 0;
 
     public MenuAlquiler(Administrador administrador) {
         initComponents();
@@ -639,9 +637,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         int cantidad = Integer.parseInt(jTFCantidad.getText());
         
-        alquiler=administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
+       jTAAlquileresActivos.setText( administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias).toString());
         jTFPrecio.setText(String.valueOf(administracionAlquiler.calcularPrecioTotal(tipoMueble, cantidad, dias)));
-        jTAAlquileresActivos.setText(alquiler.toString());
+        
     }//GEN-LAST:event_jBAceptarActionPerformed
 
     private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
