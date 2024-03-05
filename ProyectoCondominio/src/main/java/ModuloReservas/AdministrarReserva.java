@@ -2,6 +2,7 @@ package ModuloReservas;
 
 import Inmueble.*;
 import Administracion.*;
+import BD.*;
 import java.io.Serializable;
 import java.util.*;
 import java.util.Random;
@@ -12,7 +13,9 @@ import java.util.Random;
  */
 public class AdministrarReserva implements Serializable{
 
-    ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
+    //ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
+    ArrayList<Reserva> listaReservas = BaseDeDatos.leerReservas();
+    
 
     // Método para realizar una reserva
     public boolean realizarReserva(String detalleReserva, Administrador usuario, int opcionReserva, String diaReserva, String correo) {
@@ -33,6 +36,10 @@ public class AdministrarReserva implements Serializable{
                                 System.out.println("Ingrese el detalle de la reserva: ");
                                 Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Cancha");
                                 this.listaReservas.add(nuevaReserva);
+                                
+                                //BaseDeDatos.escribirReserva(nuevaReserva);
+                                BaseDeDatos.actualizarListaDeReservas(nuevaReserva);
+                                
                                 return true;
                             }
                         }
@@ -49,6 +56,7 @@ public class AdministrarReserva implements Serializable{
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Gimnasio")) {
                                 Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Gimnasio");
                                 this.listaReservas.add(nuevaReserva);
+                                 BaseDeDatos.actualizarListaDeReservas(nuevaReserva);
                                 return true;
                             }
                         }
@@ -65,6 +73,7 @@ public class AdministrarReserva implements Serializable{
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Piscina")) {
                                 Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Piscina");
                                 this.listaReservas.add(nuevaReserva);
+                                BaseDeDatos.actualizarListaDeReservas(nuevaReserva);
                                 return true;
                             }
                         }
@@ -81,6 +90,7 @@ public class AdministrarReserva implements Serializable{
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "Terraza")) {
                                 Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "Terraza");
                                 this.listaReservas.add(nuevaReserva);
+                                BaseDeDatos.actualizarListaDeReservas(nuevaReserva);
                                 return true;
                             }
                         }
@@ -97,6 +107,7 @@ public class AdministrarReserva implements Serializable{
                             if (disponibilidad.verificarDisponibilidad(diaReserva, this.listaReservas, "ParqueaderoComun")) {
                                 Reserva nuevaReserva = new Reserva(generarNumeroAleatorio(), diaReserva, detalleReserva, residente, "ParqueaderoComun");
                                 this.listaReservas.add(nuevaReserva);
+                                BaseDeDatos.actualizarListaDeReservas(nuevaReserva);
                                 return true;
                             }
                         }
@@ -128,6 +139,7 @@ public class AdministrarReserva implements Serializable{
                             for (Reserva reserva : listaReservas) {
                                 if (reserva.getId() == id) {
                                     reserva.reprogramar(dia);
+                                    BaseDeDatos.reprogramarReserva(id, dia);
                                 }
                             }
                         }
