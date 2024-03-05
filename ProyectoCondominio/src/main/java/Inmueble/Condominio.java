@@ -3,7 +3,6 @@ package Inmueble;
 import ModuloMuebles.Inventario;
 import ModuloMuebles.Mueble;
 import Administracion.*;
-import static BD.BaseDeDatos.obtenerListaResidente;
 import check_in.Autorizacion;
 import java.io.Serializable;
 
@@ -11,32 +10,32 @@ import java.util.ArrayList;
 public class Condominio implements Serializable {
 
     private Administrador admin;
-    private String nombre;
-    private ArrayList<InmuebleComun> inmueblesComunes;
-    private ArrayList<Departamento> departamentos;
+    private String nombreCondominio;
+    private ArrayList<InmuebleComun> listaDeInmuebleComunes;
+    private ArrayList<Departamento> listaDeDepartamentos;
     private Directiva directiva;
     private Guardia guardia;
     private Inventario inventario; 
     private ArrayList<Autorizacion> autorizacionesEntrada;
     
     public Condominio(String nombreCondominio) {
-        this.nombre = nombreCondominio;
-        inmueblesComunes = new ArrayList<InmuebleComun>();
-        departamentos = new ArrayList<Departamento>();
+        this.nombreCondominio = nombreCondominio;
+        this.inventario = new Inventario(); 
+        listaDeInmuebleComunes = new ArrayList<InmuebleComun>();
+        listaDeDepartamentos = new ArrayList<Departamento>();
         autorizacionesEntrada = new ArrayList<Autorizacion>();
         directiva = new Directiva(admin);
-        this.inventario = new Inventario();  
     }
        
     //llenar parqueaderos publicos
     public void agregarInmuebleComun(InmuebleComun inmueble) {
-        inmueblesComunes.add(inmueble);
+        listaDeInmuebleComunes.add(inmueble);
     }
     
     //para crear la lista de departamentos vacia
     public void agregarDepartamentos(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
-            departamentos.add(new Departamento());
+            listaDeDepartamentos.add(new Departamento());
             
         }
     }
@@ -49,7 +48,7 @@ public class Condominio implements Serializable {
     
     public Departamento obtenerDepartamentoLibre(){
         
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : listaDeDepartamentos) {
             if (departamento.getPropietario() == null) {
                 
                 return departamento;
@@ -59,18 +58,17 @@ public class Condominio implements Serializable {
     }
     
     public ArrayList<InmuebleComun> obtenerInmuebleComun(){
-        return inmueblesComunes;
+        return listaDeInmuebleComunes;
     }
     
     //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setResidente(residenteNuevo);
-        //departamentos.add(departamentoLibre);
     }
     
     public Residente obtenerResidentePorNombre(String nombreResidente){
         Residente residente = null;
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : listaDeDepartamentos) {
             if (departamento.getPropietario().getNombre() == nombreResidente) {
                 return (Residente) departamento.getPropietario();
             }
@@ -90,13 +88,14 @@ public class Condominio implements Serializable {
     
     public Residente obtenerResidentePorCorreo(String correo) {
         Residente resAux;
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : this.listaDeDepartamentos) {
             resAux = (Residente) departamento.getPropietario(); 
             if (resAux != null && resAux.compararCorreoNombre(correo)) {
+                                            
                 return resAux;
             }
         }
-       return null;
+        return null;
     }
 
     public void agregarDirectiva(Residente presidente, Residente secretario) {
@@ -112,7 +111,7 @@ public class Condominio implements Serializable {
   
     public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
         Residente resAux;
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : listaDeDepartamentos) {
             resAux = (Residente) departamento.getPropietario(); 
             if (resAux != null && resAux.compararNombre(nombreResidente)) {
                 return resAux;
@@ -131,7 +130,7 @@ public class Condominio implements Serializable {
 
     public ArrayList<Residente> obtenerResidentes() {
         ArrayList<Residente> residentes = new ArrayList<>();
-        for (Departamento departamento : departamentos) {
+        for (Departamento departamento : listaDeDepartamentos) {
             residentes.add((Residente) departamento.getPropietario());
         }
         return residentes;

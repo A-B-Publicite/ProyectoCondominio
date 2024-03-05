@@ -11,18 +11,11 @@ public class Comparacion implements Serializable{
     public Comparacion(){
     }
     
-    public void compararValidar(String receptor, Autorizacion autorizacion){            
-        if(!compararAutorizador(receptor,autorizacion.getAutorizador())){
-            System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
-            return;}
-        autorizacion.validar();
-    }
-    
     public boolean compararAutorizado(String autorizado, Autorizacion autorizacion){      
         return autorizacion.getAutorizado().equals(autorizado);
     }
     
-    public boolean compararAutorizador(String receptor, String autorizador){      
-        return receptor.equals(autorizador);
+    public boolean compararAutorizador(String receptor, Autorizacion autorizacion){      
+        return receptor.equals(autorizacion.getAutorizador());
     }
 }

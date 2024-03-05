@@ -1,15 +1,11 @@
 package GUI.AlquilerGUI;
 
-import GUI.AdminGUI.*;
 import Administracion.Administrador;
-import Administracion.Residente;
-import BD.BaseDeDatos;
+
 import static GUI.AdminGUI.GestionMueble.inventario;
 import ModuloMuebles.*;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  *

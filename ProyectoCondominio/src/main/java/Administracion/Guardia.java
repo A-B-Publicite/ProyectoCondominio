@@ -38,30 +38,22 @@ public class Guardia extends Perfil implements Serializable{
         entradasVisitantes.aniadirRegistro(registro);
     }
     
-    public void registrarEntrada(Visitante visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento) {
-        RegistroEntrada registro = new RegistroEntrada();
-        Autorizacion autorizacionInmediata = new Autorizacion();
-        Comparacion comparador = new Comparacion();
+    public Autorizacion crearAutorizacion(Visitante visitante, String fechaLlegada, String horaLlegada) {
+        Autorizacion autorizacionInmediata = new Autorizacion();        
+        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
+        autorizaciones.add(autorizacionInmediata);
+        return autorizacionInmediata;
+    }
+    
+    public void notificarResidente(Visitante visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento){
         String residente = buscarResidente(visitante.getPersonaAVisitar());
         if(residente == null){
             System.out.println("No tengo el registro de ningun residente llamado asi");
             return;}
-        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
-        comparador.compararValidar(residente, autorizacionInmediata);
-        registro.setAutorizacion(autorizacionInmediata);
-        if (quiereEstacionamiento){
-            EspacioDeParqueadero espacio = obtenerEspacioDisponible();
-            if( espacio == null){
-                System.out.println("No tengo ningun espacio disponible");
-                return;}
-            registro.asignarParqueadero(this,espacio);
-        }   
-        registro.registrarEntrada(fechaLlegada, horaLlegada);
-        entradasVisitantes.aniadirRegistro(registro);
-    }
-    
-    public void registrarEntrada(Visitante visitante, String fechaLlegada, String horaLlegada){
-        this.registrarEntrada(visitante, fechaLlegada,horaLlegada, false);
+        Autorizacion autorizacion = crearAutorizacion(visitante,fechaLlegada,horaLlegada);
+        //AQUI VA EL MÉTODO PARA ENVIAR LA AUTORIZACION POR MENSAJE
+        //enviarPorAprobacion(residente, autorizacion) //Dentro Directo mensaje = new Directo(this, residente);
+                                                       //       mensaje.crear("Visita-aprobacion pendiente", autorizacion);
     }
 
     private String buscarResidente(String personaAVisitar) {
@@ -75,7 +67,7 @@ public class Guardia extends Perfil implements Serializable{
     }
 
     private Autorizacion buscarAutorizacion(String autorizado) {
-        Autorizacion autorizacionEncontrada = new Autorizacion();
+        Autorizacion autorizacionEncontrada = null;
         for (Autorizacion autorizacion : autorizaciones) {
             Comparacion comparar = new Comparacion();
             if (comparar.compararAutorizado(autorizado, autorizacion)) {

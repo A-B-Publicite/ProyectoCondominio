@@ -1,6 +1,7 @@
 package GUI.ReservasGUI;
 
 import Administracion.*;
+import BD.BaseDeDatos;
 import GUI.AdminGUI.AdminMenu;
 import Inmueble.*;
 import ModuloReservas.*;
@@ -529,7 +530,8 @@ public class MenuReservas extends javax.swing.JFrame {
 
     public void imprimirReservas(int tab) {
         ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
-        listaReservas = administrarReserva.getListaReservas();
+        //listaReservas = administrarReserva.getListaReservas();
+        listaReservas = BaseDeDatos.leerReservas();
 
         switch (tab) {
             case 0: {
