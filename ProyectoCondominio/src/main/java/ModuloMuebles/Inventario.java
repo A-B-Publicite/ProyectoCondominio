@@ -41,10 +41,15 @@ public class Inventario implements Serializable {
     public boolean verificarDisponibilidad(String tipoMueble, int cantidad) {
         int count = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble.esTipo(tipoMueble) && mueble.isEstado()) {
+            if (mueble.esTipo(tipoMueble) && mueble.isEstado() == true) {
+                System.out.println("disponibles los muebles");
                 count++;
+                System.out.println(count);
+
             }
-            return count == cantidad;
+        }
+        if (count == cantidad) {
+            return true;
         }
         return false;
     }
@@ -82,19 +87,19 @@ public class Inventario implements Serializable {
         int cantidadMesas = 0;
         System.out.println("Lista de Muebles tiene: " + listaMuebles.size() + " elementos.");
         for (Mueble mueble : listaMuebles) {
-            System.out.println("Revisando mueble: " + mueble.getClass().getSimpleName());
-            if (mueble instanceof Mesa) {
+            //System.out.println("Revisando mueble: " + mueble.getClass().getSimpleName());
+            if (mueble instanceof Mesa&& mueble.isEstado()==true) {
                 cantidadMesas++;
             }
         }
-        System.out.println("Cantidad de Mesas encontradas: " + cantidadMesas);
+        //System.out.println("Cantidad de Mesas encontradas: " + cantidadMesas);
         return cantidadMesas;
     }
     
     public int contarSillas() {
         int cantidadSillas = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Silla) { 
+            if (mueble instanceof Silla&& mueble.isEstado()==true) { 
                 cantidadSillas++;
             }
         }
@@ -104,7 +109,7 @@ public class Inventario implements Serializable {
     public int contarCarpas() {
         int cantidadCarpas = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Carpa) {
+            if (mueble instanceof Carpa && mueble.isEstado()==true) {
                 cantidadCarpas++;
             }
         }

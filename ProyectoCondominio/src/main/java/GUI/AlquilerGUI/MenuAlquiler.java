@@ -637,7 +637,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         int cantidad = Integer.parseInt(jTFCantidad.getText());
         
-       jTAAlquileresActivos.setText( administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias).toString());
+       administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
+       jTAAlquileresActivos.setText(administracionAlquiler.toString());
         jTFPrecio.setText(String.valueOf(administracionAlquiler.calcularPrecioTotal(tipoMueble, cantidad, dias)));
         
     }//GEN-LAST:event_jBAceptarActionPerformed
