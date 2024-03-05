@@ -245,7 +245,6 @@ public class GestionPerfil extends javax.swing.JFrame {
         administrador.enviarEspaciosParqueaderoGuardia();
         administrador.enviarResidentesGuardia();
         BaseDeDatos.escribirAdmin(administrador);
-        BaseDeDatos.escribirGuardia(administrador.getCondominio().getGuardia());
         javax.swing.JOptionPane.showMessageDialog(null, "Guardia registrado con exito");
     }//GEN-LAST:event_btnAgregarGuardiaActionPerformed
 

@@ -14,15 +14,10 @@ public class BaseDeDatos implements Serializable{
     public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
     public static Administrador administrador;
-    public static Guardia guardia;
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
         residentes.add(nuevoResidente);
         escribir(residentes, "src/main/java/Datos/datosResidentes.txt");
-    }
-    public static void setGuardia(Guardia guardia){
-        BaseDeDatos.guardia = guardia;
-        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
     
     public static Administrador leerAdministrador() {
@@ -104,23 +99,6 @@ public class BaseDeDatos implements Serializable{
     
     public static void escribirMueble(Mueble mueble) {
         escribir(administrador, "src/main/java/Datos/datosMuebles.txt");
-    }
-    
-    
-    public static Guardia  leerGuardia() throws IOException, ClassNotFoundException {
-        
-        Object objetoLeido = leer("src/main/java/Datos/datosGuardia.txt");
-        if (objetoLeido instanceof Guardia) {
-            return (Guardia) objetoLeido;
-        } else {
-            System.out.println("El objeto leído no es una instancia de guardia.");
-            return null;
-        }
-        
-    }
-    
-    public static void escribirGuardia(Guardia guardia) {
-        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
     
     public static void combinarListaResidente(ArrayList<Residente> res) {
