@@ -184,7 +184,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 case "Administrador":
                     Administrador administrador = BaseDeDatos.leerAdministrador();
                     if (!estaAutenticado(administrador, correo.getText(), txtContrasena.getText())) {
-                        return;
+                        javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
                     }
                     AdminMenu adminMenu = new AdminMenu(administrador);
                     adminMenu.setVisible(true);
@@ -202,34 +202,11 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     });
                     break;
                 case "Residente":
-                    //residentes= BaseDeDatos.leerLista();
                     BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
                     Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
                     ResidenteMenu residenteMenu = new ResidenteMenu(residente);
                     residenteMenu.setVisible(true);
-                    
-                    /*for (Residente res : residentes){
-                        System.out.println("HHH" + res.getCorreo() + "CON "+res.getContrasenia());
-                        System.out.println("COOOO" + correo.getText());
-                        if(correo.getText().equals(res.getCorreo()) && txtContrasena.getText().equals(res.getContrasenia())) {
-                            System.out.println("ENTROO");
-                            ResidenteMenu residenteMenu = new ResidenteMenu(res);
-                            residenteMenu.setVisible(true);
-                            
-                            residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                            this.setVisible(false);
-                            
-                            residenteMenu.addWindowListener(new WindowAdapter() {
-                                @Override
-                                public void windowClosed(WindowEvent e) {
-                                    // Se ejecuta cuando el frame se cierra
-
-                                    // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
-                                    setVisible(true);
-                                }
-                            });
-                        }
-                    }*/
+                    this.setVisible(false);
                     break;
                 case "Guardia":
                     

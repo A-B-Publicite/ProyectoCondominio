@@ -25,23 +25,12 @@ public class Administrador extends Perfil implements Serializable {
         this.setAutorizacion(autorizacionEntrada);
     }
     
-
     public void agregarCondominio(String nombre) {
         condominio = new Condominio(nombre);
-    }
-
-    public void agregarInmuebleComun(InmuebleComun inmuebleComun) {
-        condominio.agregarInmuebleComun(inmuebleComun);
     }
     
     public void agregarMueble(Mueble mueble, int cantidad, double precio) {
         condominio.agregarMueble(mueble, cantidad, precio);
-    }
-    
-    
-
-    public void agregarDepartamentos(int numeroDepartamento) {
-        condominio.agregarDepartamentos(numeroDepartamento);
     }
 
     public ArrayList<InmuebleComun> getInmueblesComunes() {
@@ -53,13 +42,10 @@ public class Administrador extends Perfil implements Serializable {
         Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
         residenteNuevo.setDepartamento(departamentoLibre);
         departamentoLibre.setResidente(residenteNuevo);     //Bidireccional
-        
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         residenteNuevo.getCuenta().getGestorObligaciones().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "Esto es una alicuota", "alicuota");
         System.out.println(residenteNuevo);
-        
-        BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);
-                
+        BaseDeDatos.actualizarListaDeResidentes(residenteNuevo);          
     }
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
