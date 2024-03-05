@@ -37,7 +37,7 @@ public class AdministracionAlquiler implements Serializable {
 
 //metodos de alquiler y devolucion/finalizacion
     public Alquiler alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
-        Residente residente = administrador.obtenerResidentePorCorreo(correo);
+        Residente residente = administrador.getResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
         if (residente != null) {
             if (inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
