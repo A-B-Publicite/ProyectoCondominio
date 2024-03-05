@@ -3,10 +3,10 @@ package Finanzas;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Recarga extends MovimientoMonetario implements Serializable {
+public class Retiro extends MovimientoMonetario implements Serializable {
 
-    public Recarga(double dineroARecargar, String id, MetodoRecarga metodoDeRecarga) {
-        super(dineroARecargar, id, metodoDeRecarga);
+    public Retiro(double dineroARetirar, String id, MetodoRecarga metodoDeRecarga) {
+        super(dineroARetirar, id, metodoDeRecarga);
 
         metodoRecarga.realizarTransaccion();
         fechaRealizacion = LocalDate.now();
