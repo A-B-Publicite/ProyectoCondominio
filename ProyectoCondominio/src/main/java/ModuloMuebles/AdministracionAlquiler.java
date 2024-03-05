@@ -71,19 +71,42 @@ public class AdministracionAlquiler implements Serializable {
         return null;
     }
 
-    //alquileresFinalizados(false)
-    
-    @Override
-    public String toString() {
-        String salida = "Lista de Muebles Alquilados: ";
-        int i = 1;
+    public String imprimirAlquileresActivos() {
+        String salida = "";
         if (estaVacia()) {
             return "Lista vacía";
         } else {
             for (Alquiler aux : listaAlquileres) {
-                salida += "\nAlquiler " + i;
+                if (aux.isFinalizado() == false) {
+                    salida += aux.toString();
+                }
+            }
+            return salida;
+        }
+    }
+
+    public String imprimirAlquileresFinalizados() {
+        String salida = "";
+        if (estaVacia()) {
+            return "Lista vacía";
+        } else {
+            for (Alquiler aux : listaAlquileres) {
+                if (aux.isFinalizado() == true) {
+                    salida += aux.toString();
+                }
+            }
+            return salida;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String salida = "Lista de Muebles Alquilados: ";
+        if (estaVacia()) {
+            return "Lista vacía";
+        } else {
+            for (Alquiler aux : listaAlquileres) {
                 salida += aux.toString();
-                i++;
             }
             return salida;
         }
