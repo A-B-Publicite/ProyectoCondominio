@@ -81,7 +81,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTADevolución = new javax.swing.JTextArea();
-        btnDevolver = new javax.swing.JButton();
+        jBDevolver = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -366,10 +366,10 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTADevolución.setRows(5);
         jScrollPane3.setViewportView(jTADevolución);
 
-        btnDevolver.setText("Devolver");
-        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
+        jBDevolver.setText("Devolver");
+        jBDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverActionPerformed(evt);
+                jBDevolverActionPerformed(evt);
             }
         });
 
@@ -397,7 +397,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jTFFechaDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDevolver))
+                                        .addComponent(jBDevolver))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
@@ -414,7 +414,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jTFFechaDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDevolver))
+                    .addComponent(jBDevolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -617,13 +617,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNumeroMesasActionPerformed
 
-    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+    private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
         // TODO add your handling code here:
 
         int idAquiler = Integer.parseInt(jTFIdAlquilerD.getText());
-        Fecha fecha = new Fecha( jTFFechaDevolución.getText());
+        
         //alquiler = administracionAlquiler.finalizarAlquiler(idAlquiler,fecha);
-    }//GEN-LAST:event_btnDevolverActionPerformed
+    }//GEN-LAST:event_jBDevolverActionPerformed
 
     private void jTFIdAlquilerDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdAlquilerDActionPerformed
         // TODO add your handling code here:
@@ -657,24 +657,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar1ActionPerformed
-        //try {
-            // Incrementar el número entero
-            idAlquiler++;
-            jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
-            int id = idAlquiler;
-            //establecerFechaActual();
-            String correo = jTFIdAlquiler.getText();
-            boolean alquilerMueble = false;
-            Fecha fechaInicio = new Fecha(jTFDias.getText());
-            //Fecha fechaFin = new Fecha(jTFFechaFin.getText());
-            String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
-
-            int cantidad = Integer.parseInt(jTFCantidad.getText());
-            Residente residente = administrador.obtenerResidentePorCorreo(correo);
-            //Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
-            //precioT = alquiler.calcularPrecioTotal(tipoMueble, cantidad);
-            jTFPrecio.setText(Double.toString(precioT));
     }//GEN-LAST:event_jButtonAceptar1ActionPerformed
 
     private void jCBTipoMuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoMuebleActionPerformed
@@ -715,9 +698,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.TextField TFIngresarCorreo;
-    private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnVolver;
     private java.awt.Button jBBuscar;
+    private javax.swing.JButton jBDevolver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonAceptar1;

@@ -507,7 +507,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jTFFechaDevolución" min="-2" pref="229" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnDevolver" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jBDevolver" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane3" min="-2" pref="318" max="-2" attributes="0"/>
                                       </Group>
@@ -533,7 +533,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTFFechaDevolución" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnDevolver" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBDevolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="184" max="-2" attributes="0"/>
@@ -580,12 +580,12 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnDevolver">
+            <Component class="javax.swing.JButton" name="jBDevolver">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Devolver"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDevolverActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
