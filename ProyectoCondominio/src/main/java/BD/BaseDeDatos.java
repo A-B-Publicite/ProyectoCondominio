@@ -88,7 +88,7 @@ public class BaseDeDatos implements Serializable{
         //return null;
     }
     
-    public static ArrayList<Residente> obtenerListaResidente (){
+    public static ArrayList<Residente> obtenerListaResidente () throws IOException, ClassNotFoundException{
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         return residentes;
     }

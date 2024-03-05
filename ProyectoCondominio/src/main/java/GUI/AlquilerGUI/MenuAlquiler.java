@@ -32,6 +32,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         this.administrador = administrador;
         this.jTFIdAlquiler.setEditable(false);
         actualizarCantidadMuebles();
+        
+        jTAAlquileresFinalizados.setText(String.valueOf(administrador.getCondominio().obtenerResidentes().get(0).getCorreo()));
+
         //ArrayList<Residente> listaResidente = administrador.getResidentes();
         //actualizarCantidadMuebles();
         //jTAAlquileresActivos.setText(administracionAlquiler.alquileresFinalizados(true).toString());
