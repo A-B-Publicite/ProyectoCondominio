@@ -2,6 +2,7 @@ package ModuloMuebles;
 
 import Administracion.Administrador;
 import Administracion.Residente;
+import static GUI.AdminGUI.GestionMueble.inventario;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 public class AdministracionAlquiler implements Serializable {
 
     ArrayList<Alquiler> listaAlquileres;
-    Inventario inventario;
 
     public AdministracionAlquiler() {
         listaAlquileres = new <Alquiler>ArrayList();

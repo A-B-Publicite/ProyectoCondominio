@@ -21,7 +21,7 @@ public class Inventario implements Serializable {
 
     public void agregarMueble(Mueble mueble, int cantidad, double precio) {
         mueble.setPrecio(precio);
-        for (int i = 0; i <= cantidad; i++) {
+        for (int i = 0; i < cantidad; i++) {
             listaMuebles.add(mueble);
         }
     }
@@ -101,6 +101,14 @@ public class Inventario implements Serializable {
         return cantidadSillas;
     }
     
-    
+        public int contarCarpas() {
+        int cantidadCarpas = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Carpa) { // Asumiendo que tienes una clase Mesa
+                cantidadCarpas++;
+            }
+        }
+        return cantidadCarpas;
+    }
 
 }

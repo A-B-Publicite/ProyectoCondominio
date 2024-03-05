@@ -4,6 +4,7 @@ import GUI.AdminGUI.*;
 import Administracion.Administrador;
 import Administracion.Residente;
 import BD.BaseDeDatos;
+import static GUI.AdminGUI.GestionMueble.inventario;
 import Inmueble.*;
 import ModuloMuebles.*;
 
@@ -20,7 +21,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
     Administrador administrador;
     Mueble mueble;
     Alquiler alquiler;
-    Inventario inventario;
     AdministracionAlquiler administracionAlquiler;
     
     private int idAlquiler = 0;
@@ -29,11 +29,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
     public MenuAlquiler(Administrador administrador) {
         initComponents();
         this.setLocationRelativeTo(this);
+        administracionAlquiler= new AdministracionAlquiler();
         this.administrador = administrador;
-        this.inventario = new Inventario();
         this.jTFIdAlquiler.setEditable(false);
-        this.jTFDias.setEditable(false);
-        establecerFechaActual();
         actualizarCantidadMuebles();
         //ArrayList<Residente> listaResidente = administrador.getResidentes();
         //actualizarCantidadMuebles();
@@ -90,9 +88,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        jTFNumeroSillas = new javax.swing.JTextField();
+        jTFNumeroMesas = new javax.swing.JTextField();
+        jTFNumeroCarpas = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -436,15 +434,15 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jLabel16.setText("Sillas");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jTFNumeroSillas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jTFNumeroSillasActionPerformed(evt);
             }
         });
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        jTFNumeroMesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                jTFNumeroMesasActionPerformed(evt);
             }
         });
 
@@ -472,11 +470,11 @@ public class MenuAlquiler extends javax.swing.JFrame {
                             .addComponent(jLabel15))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFNumeroCarpas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFNumeroSillas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFNumeroMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                                 .addComponent(jButton1)))))
@@ -494,18 +492,18 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTFNumeroMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFNumeroSillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFNumeroCarpas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
@@ -615,9 +613,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void jTFNumeroMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroMesasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jTFNumeroMesasActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         // TODO add your handling code here:
@@ -648,17 +646,13 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
         int id = idAlquiler;
-        establecerFechaActual();
         String correo = jTFIdAlquiler.getText();
         int dias = Integer.parseInt(jTFDias.getText());
-        //Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-
+        
         alquiler=administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
-
-        jTAAlquileresActivos.setText(alquiler.toString());
-
+        jTFPrecio.setText(String.valueOf(administracionAlquiler.calcularPrecioTotal(tipoMueble, cantidad, dias)));
         jTAAlquileresActivos.setText(alquiler.toString());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
@@ -669,7 +663,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
             int id = idAlquiler;
-            establecerFechaActual();
+            //establecerFechaActual();
             String correo = jTFIdAlquiler.getText();
             boolean alquilerMueble = false;
             Fecha fechaInicio = new Fecha(jTFDias.getText());
@@ -691,9 +685,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDiasActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jTFNumeroSillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroSillasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jTFNumeroSillasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
@@ -713,8 +707,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
     }
     
     private void actualizarCantidadMuebles(){
-        int cantidadMesas = inventario.contarMesas();
-        jTextField8.setText(String.valueOf(cantidadMesas));
+        jTFNumeroMesas.setText(String.valueOf(inventario.contarMesas()));
+        jTFNumeroCarpas.setText(String.valueOf(inventario.contarCarpas()));
+          jTFNumeroSillas.setText(String.valueOf(inventario.contarSillas()));
     }
        
     
@@ -767,14 +762,14 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextField jTFFechaDevolución;
     private javax.swing.JTextField jTFIdAlquiler;
     private javax.swing.JTextField jTFIdAlquilerD;
+    private javax.swing.JTextField jTFNumeroCarpas;
+    private javax.swing.JTextField jTFNumeroMesas;
+    private javax.swing.JTextField jTFNumeroSillas;
     private javax.swing.JTextField jTFPrecio;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
