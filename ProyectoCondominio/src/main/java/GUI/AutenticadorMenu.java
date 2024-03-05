@@ -210,10 +210,10 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     break;
                 case "Guardia":
                     
-                    Guardia guardia = BaseDeDatos.leerGuardia();
-                    if(correo.getText().equals(guardia.getCorreo()) && txtContrasena.getText().equals(guardia.getContrasenia())) {
-                            System.out.println("ENTROO");
-                            GuardiaMenu guardiaMenu = new GuardiaMenu(guardia);
+                    Administrador admin = BaseDeDatos.leerAdministrador();
+                    if(correo.getText().equals(admin.getCondominio().getGuardia().getCorreo()) && txtContrasena.getText().equals(admin.getCondominio().getGuardia().getContrasenia())) {
+                            System.out.println("Bienvenido ");
+                            GuardiaMenu guardiaMenu = new GuardiaMenu(admin);
                             guardiaMenu.setVisible(true);
                             //guardiaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                             this.setVisible(false);

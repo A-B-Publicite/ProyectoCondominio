@@ -303,6 +303,7 @@ public class GestionCondominio extends javax.swing.JFrame {
     private void btnAgregarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInmuebleActionPerformed
         InmuebleComun nuevoInmuebleComun = new InmuebleComun();
         administrador.getCondominio().agregarInmuebleComun(nuevoInmuebleComun.crearInmueble((String)cmbInmueblesComunales.getSelectedItem(), txtMetrosCuadrado.getText()));
+        administrador.enviarEspaciosParqueaderoGuardia();
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo inmueble comunal");  
         cmbInmueblesComunales.setSelectedIndex(-1);
