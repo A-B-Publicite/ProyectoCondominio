@@ -6,10 +6,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class InmuebleComun implements Serializable  {
+public class InmuebleComun implements Serializable  {
 
     private ArrayList<String> diasDisponibles;
-    private double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota 
+    private double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota
 
     public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
@@ -19,9 +19,12 @@ public abstract class InmuebleComun implements Serializable  {
         diasDisponibles.add("Miercoles");
         diasDisponibles.add("Jueves");
         diasDisponibles.add("Viernes");
-        
+
     }
-    
+
+    public InmuebleComun() {
+    }
+
     public double getMetrosCuadrados() {
         return metrosCuadrados;
     }
@@ -29,5 +32,22 @@ public abstract class InmuebleComun implements Serializable  {
     public ArrayList<String> consultarDiasDisponibles() {
         return diasDisponibles;
     }
-    
+
+    public InmuebleComun crearInmueble(String inmuebleComun, String metrosCuadrados){
+        switch (inmuebleComun) {
+            case "Cancha":
+                return new Cancha(Double.parseDouble(metrosCuadrados));
+            case "Espacio de Parqueo":
+                return new EspacioDeParqueadero(Double.parseDouble(metrosCuadrados));
+            case "Gimnasio":
+                return new Gimnasio(Double.parseDouble(metrosCuadrados));
+            case "Piscina":
+                return new Piscina(Double.parseDouble(metrosCuadrados));
+            case "Terraza":
+                return new Terraza(Double.parseDouble(metrosCuadrados));
+            default:
+                javax.swing.JOptionPane.showMessageDialog(null, "Inserte una opcion correcta");
+        }
+        return null;
+    }
 }
