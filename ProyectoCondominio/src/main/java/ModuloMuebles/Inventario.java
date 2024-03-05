@@ -116,7 +116,7 @@ public class Inventario implements Serializable {
     public int contarMesasReparar() {
         int cantidadMesasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Mesa && mueble.isMantenimiento()==true) { 
+            if (mueble instanceof Mesa && mueble.isNecesitaMantenimiento()==true) { 
                 cantidadMesasR++;
             }
         }
@@ -126,7 +126,7 @@ public class Inventario implements Serializable {
     public int contarSillasReparar() {
         int cantidadSillasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Silla && mueble.isMantenimiento()==true) {
+            if (mueble instanceof Silla && mueble.isNecesitaMantenimiento()==true) {
                 cantidadSillasR++;
             }
         }
@@ -136,7 +136,7 @@ public class Inventario implements Serializable {
     public int contarCarpasReparar() {
         int cantidadCarpasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Carpa && mueble.isMantenimiento()==true) {
+            if (mueble instanceof Carpa && mueble.isNecesitaMantenimiento()==true) {
                 cantidadCarpasR++;
             }
         }

@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 /**
  *
- * @author Grupo3
+ * @author Grupo3 hola
  */
 public abstract class Mueble implements Serializable {
 
     private boolean estado;
     private double precio;
-    private boolean mantenimiento;
+    private boolean necesitaMantenimiento;
     
     public Mueble(double precio) {
         this.estado = true;
         this.precio = precio;
-        this.mantenimiento = false;
+        this.necesitaMantenimiento = false;
     }
 
     public boolean isEstado() {
@@ -34,13 +34,15 @@ public abstract class Mueble implements Serializable {
         this.precio = precio;
     }
 
-    public boolean isMantenimiento() {
-        return mantenimiento;
+    public boolean isNecesitaMantenimiento() {
+        return necesitaMantenimiento;
     }
 
-    public void setMantenimiento(boolean mantenimiento) {
-        this.mantenimiento = mantenimiento;
+    public void setNecesitaMantenimiento(boolean necesitaMantenimiento) {
+        this.necesitaMantenimiento = necesitaMantenimiento;
     }
+
+
 
     public abstract boolean esTipo(String tipo);
     
