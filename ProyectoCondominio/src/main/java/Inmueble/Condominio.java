@@ -3,6 +3,7 @@ package Inmueble;
 import ModuloMuebles.Inventario;
 import ModuloMuebles.Mueble;
 import Administracion.*;
+import static BD.BaseDeDatos.obtenerListaResidente;
 import check_in.Autorizacion;
 import java.io.Serializable;
 
@@ -87,12 +88,11 @@ public class Condominio implements Serializable {
     
     
     public Residente obtenerResidentePorCorreo(String correo) {
-        Residente resAux;
-        for (Departamento departamento : this.departamentos) {
-            resAux = (Residente) departamento.getPropietario(); 
-            if (resAux != null && resAux.compararCorreoNombre(correo)) {
+        for (Residente residente: obtenerResidentes()) {
+            
+            if (residente != null && residente.compararCorreoNombre(correo)) {
                                             
-                return resAux;
+                return residente;
             }
         }
         return null;

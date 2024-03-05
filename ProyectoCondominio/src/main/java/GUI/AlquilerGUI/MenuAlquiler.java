@@ -32,7 +32,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         this.administrador = administrador;
         this.inventario = new Inventario();
         this.jTFIdAlquiler.setEditable(false);
-        this.jTFFechaInicio.setEditable(false);
+        this.jTFDias.setEditable(false);
         establecerFechaActual();
         actualizarCantidadMuebles();
         //ArrayList<Residente> listaResidente = administrador.getResidentes();
@@ -56,7 +56,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTFIdAlquiler = new javax.swing.JTextField();
-        jTFFechaInicio = new javax.swing.JTextField();
+        jTFDias = new javax.swing.JTextField();
         jTFCantidad = new javax.swing.JTextField();
         jCBTipoMueble = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -135,9 +135,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jTFIdAlquiler.setEditable(false);
 
-        jTFFechaInicio.addActionListener(new java.awt.event.ActionListener() {
+        jTFDias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFFechaInicioActionPerformed(evt);
+                jTFDiasActionPerformed(evt);
             }
         });
 
@@ -199,7 +199,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFDias, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 209, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -239,7 +239,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTFFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -650,15 +650,14 @@ public class MenuAlquiler extends javax.swing.JFrame {
         int id = idAlquiler;
         establecerFechaActual();
         String correo = jTFIdAlquiler.getText();
-        boolean alquilerMueble = false;
-        Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
+        int dias = Integer.parseInt(jTFDias.getText());
         //Fecha fechaFin = new Fecha(jTFFechaFin.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
-
         int cantidad = Integer.parseInt(jTFCantidad.getText());
-        Residente residente = administrador.obtenerResidentePorCorreo(correo);
-        //Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, fechaInicio, fechaFin);
-        //alquiler.alquilar();
+
+        alquiler=administracionAlquiler.alquilar(administrador, tipoMueble, cantidad, correo, dias);
+
+        jTAAlquileresActivos.setText(alquiler.toString());
 
         jTAAlquileresActivos.setText(alquiler.toString());
     }//GEN-LAST:event_jButtonAceptarActionPerformed
@@ -673,7 +672,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
             establecerFechaActual();
             String correo = jTFIdAlquiler.getText();
             boolean alquilerMueble = false;
-            Fecha fechaInicio = new Fecha(jTFFechaInicio.getText());
+            Fecha fechaInicio = new Fecha(jTFDias.getText());
             //Fecha fechaFin = new Fecha(jTFFechaFin.getText());
             String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
 
@@ -688,9 +687,9 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCBTipoMuebleActionPerformed
 
-    private void jTFFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFFechaInicioActionPerformed
+    private void jTFDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDiasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFFechaInicioActionPerformed
+    }//GEN-LAST:event_jTFDiasActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
@@ -710,7 +709,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         String fechaActualStr = formatoFecha.format(fechaActual);
 
         // Establecer la fecha en el JTextField
-        jTFFechaInicio.setText(fechaActualStr);
+        jTFDias.setText(fechaActualStr);
     }
     
     private void actualizarCantidadMuebles(){
@@ -764,8 +763,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextArea jTADevolución;
     private javax.swing.JTextField jTFCantidad;
     private javax.swing.JTextField jTFCorreo;
+    private javax.swing.JTextField jTFDias;
     private javax.swing.JTextField jTFFechaDevolución;
-    private javax.swing.JTextField jTFFechaInicio;
     private javax.swing.JTextField jTFIdAlquiler;
     private javax.swing.JTextField jTFIdAlquilerD;
     private javax.swing.JTextField jTFPrecio;

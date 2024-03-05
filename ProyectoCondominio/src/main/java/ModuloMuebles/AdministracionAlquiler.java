@@ -35,7 +35,7 @@ public class AdministracionAlquiler implements Serializable {
     }
 
 //metodos de alquiler y devolucion/finalizacion
-    public boolean alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
+    public Alquiler alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
         if (!estaVacia() && inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
@@ -43,9 +43,8 @@ public class AdministracionAlquiler implements Serializable {
             alquiler.setPrecioTotal(precioTotal);
             listaAlquileres.add(alquiler);
             inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
-            return true;
         }
-        return false;
+        return alquiler;
     }
 
     public double calcularPrecioTotal(String tipoMueble, int cantidad, int dias) {
