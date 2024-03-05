@@ -44,12 +44,10 @@ public class Inventario implements Serializable {
             if (mueble.esTipo(tipoMueble) && mueble.isEstado() == true) {
                 System.out.println("disponibles los muebles");
                 count++;
-                System.out.println(count);
-
+                if (count == cantidad) {
+                    return true;
+                }
             }
-        }
-        if (count == cantidad) {
-            return true;
         }
         return false;
     }

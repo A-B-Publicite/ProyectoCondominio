@@ -31,7 +31,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         this.jTFIdAlquiler.setEditable(false);
         actualizarCantidadMuebles();
         
-        jTAAlquileresFinalizados.setText(String.valueOf(administrador.getCondominio().obtenerResidentes().get(0).getCorreo()));
+        jTAAlquileresFinalizados.setText(String.valueOf(administrador.getResidentes().get(0).getCorreo()));
 
         //ArrayList<Residente> listaResidente = administrador.getResidentes();
         //actualizarCantidadMuebles();
@@ -77,7 +77,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTFIdAlquilerD = new javax.swing.JTextField();
-        jTFFechaDevolución = new javax.swing.JTextField();
+        jTFDiasDevolución = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTADevolución = new javax.swing.JTextArea();
@@ -389,7 +389,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTFFechaDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTFDiasDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jBDevolver))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -407,7 +407,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTFFechaDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFDiasDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBDevolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,7 +632,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jTFIdAlquiler.setText(String.valueOf(idAlquiler));
 
         int id = idAlquiler;
-        String correo = jTFIdAlquiler.getText();
+        String correo = jTFCorreo.getText();
         int dias = Integer.parseInt(jTFDias.getText());
         String tipoMueble = jCBTipoMueble.getSelectedItem().toString();
         int cantidad = Integer.parseInt(jTFCantidad.getText());
@@ -742,7 +742,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCarpasPorReparar;
     private javax.swing.JTextField jTFCorreo;
     private javax.swing.JTextField jTFDias;
-    private javax.swing.JTextField jTFFechaDevolución;
+    private javax.swing.JTextField jTFDiasDevolución;
     private javax.swing.JTextField jTFIdAlquiler;
     private javax.swing.JTextField jTFIdAlquilerD;
     private javax.swing.JTextField jTFMesasPorReparar;

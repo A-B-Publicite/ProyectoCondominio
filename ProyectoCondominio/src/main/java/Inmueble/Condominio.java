@@ -65,6 +65,7 @@ public class Condominio implements Serializable {
     //
     public void setPropietarioADepartamento(Departamento departamentoLibre, Residente residenteNuevo){
         departamentoLibre.setResidente(residenteNuevo);
+        //departamentos.add(departamentoLibre);
     }
     
     public Residente obtenerResidentePorNombre(String nombreResidente){

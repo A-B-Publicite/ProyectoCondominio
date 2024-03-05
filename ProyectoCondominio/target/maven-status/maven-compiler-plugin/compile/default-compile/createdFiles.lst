@@ -61,6 +61,7 @@ GUI\AdminGUI\GestionCondominio$2.class
 GUI\AlquilerGUI\MenuAlquiler.class
 GUI\AdminGUI\AdminMenu$10.class
 GUI\RegistroAdminGUI$1.class
+GUI\MensajeGUI\GUIMensaje.class
 Finanzas\Cuenta.class
 GUI\ReservasGUI\MenuReservas$2.class
 GUI\FinanzasGUI\FinanzasResidente$8.class
@@ -72,6 +73,7 @@ GUI\FinanzasGUI\FinanzasResidente$5.class
 GUI\AdminGUI\GestionCondominio$13.class
 GUI\ReservasGUI\MenuReservas.class
 GUI\AdminGUI\GestionContratoAdmin$1.class
+GUI\MensajeGUI\GUIMensaje$6.class
 GUI\FinanzasGUI\FinanzasResidente$7.class
 GUI\ReservasGUI\MenuReservas$3.class
 GUI\AdminGUI\GestionCondominio$1.class
@@ -159,6 +161,7 @@ GUI\GuardiaGUI\RegistrarServicio.class
 Finanzas\Observable.class
 Finanzas\Multa.class
 Finanzas\Tarjeta.class
+GUI\MensajeGUI\ResidenteTabla$1.class
 GUI\AutenticadorMenu$7.class
 GUI\GuardiaGUI\CrearAutoriza.class
 GUI\AdminGUI\GestionMueble$7.class

@@ -497,7 +497,7 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTFFechaDevolución" min="-2" pref="229" max="-2" attributes="0"/>
+                                              <Component id="jTFDiasDevolución" min="-2" pref="229" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="jBDevolver" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -524,7 +524,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFFechaDevolución" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFDiasDevolución" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBDevolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -550,7 +550,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFIdAlquilerDActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFFechaDevoluci&#xf3;n">
+            <Component class="javax.swing.JTextField" name="jTFDiasDevoluci&#xf3;n">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel24">
               <Properties>
