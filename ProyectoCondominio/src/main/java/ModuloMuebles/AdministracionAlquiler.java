@@ -2,8 +2,10 @@ package ModuloMuebles;
 
 import Administracion.Administrador;
 import Administracion.Residente;
+import static GUI.AdminGUI.GestionMueble.inventario;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 public class AdministracionAlquiler implements Serializable {
 
     ArrayList<Alquiler> listaAlquileres;
-    Inventario inventario;
 
     public AdministracionAlquiler() {
         listaAlquileres = new <Alquiler>ArrayList();
@@ -35,24 +36,24 @@ public class AdministracionAlquiler implements Serializable {
     }
 
 //metodos de alquiler y devolucion/finalizacion
-    public boolean alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
+    public Alquiler alquilar(Administrador administrador, String tipoMueble, int cantidad, String correo, int dias) {
         Residente residente = administrador.obtenerResidentePorCorreo(correo);
         Alquiler alquiler = new Alquiler(residente, tipoMueble, cantidad, dias);
-        if (!estaVacia() && inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
-            double precioTotal = calcularPrecioTotal(tipoMueble, cantidad, dias);
-            alquiler.setPrecioTotal(precioTotal);
-            listaAlquileres.add(alquiler);
-            inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
-            return true;
+        if (residente != null) {
+            if (inventario.verificarDisponibilidad(tipoMueble, cantidad)) {
+                double precioTotal = calcularPrecioTotal(tipoMueble, cantidad, dias);
+                alquiler.setPrecioTotal(precioTotal);
+                listaAlquileres.add(alquiler);
+                inventario.actualizarDisponibilidad(tipoMueble, cantidad, false);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(null, "Cantidad de muebles no dispobles");
+            }
         }
-        return false;
+        return alquiler;
     }
 
     public double calcularPrecioTotal(String tipoMueble, int cantidad, int dias) {
-        double precioMueble = 0.0;
-        if (!estaVacia()) {
-            precioMueble = inventario.consultarPrecio(tipoMueble);
-        }
+        double precioMueble = inventario.consultarPrecio(tipoMueble);
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         return cantidad * precioMueble * dias;
     }
@@ -73,19 +74,42 @@ public class AdministracionAlquiler implements Serializable {
         return null;
     }
 
-    //alquileresFinalizados(false)
-    
-    @Override
-    public String toString() {
-        String salida = "Lista de Muebles Alquilados: ";
-        int i = 1;
+    public String imprimirAlquileresActivos() {
+        String salida = "";
         if (estaVacia()) {
             return "Lista vacía";
         } else {
             for (Alquiler aux : listaAlquileres) {
-                salida += "\nAlquiler " + i;
+                if (aux.isFinalizado() == false) {
+                    salida += aux.toString();
+                }
+            }
+            return salida;
+        }
+    }
+
+    public String imprimirAlquileresFinalizados() {
+        String salida = "";
+        if (estaVacia()) {
+            return "Lista vacía";
+        } else {
+            for (Alquiler aux : listaAlquileres) {
+                if (aux.isFinalizado() == true) {
+                    salida += aux.toString();
+                }
+            }
+            return salida;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String salida = "Lista de Muebles Alquilados: ";
+        if (estaVacia()) {
+            return "Lista vacía";
+        } else {
+            for (Alquiler aux : listaAlquileres) {
                 salida += aux.toString();
-                i++;
             }
             return salida;
         }

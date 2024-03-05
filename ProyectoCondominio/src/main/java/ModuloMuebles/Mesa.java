@@ -40,7 +40,7 @@ public class Mesa extends Mueble implements Serializable {
 
     @Override
     public boolean esTipo(String tipo) {
-        return "Mesa".equalsIgnoreCase(tipo);
+        return "Mesa".equals(tipo);
     }
 
 }

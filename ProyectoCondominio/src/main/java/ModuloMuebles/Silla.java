@@ -40,7 +40,7 @@ public class Silla extends Mueble implements Serializable {
 
     @Override
     public boolean esTipo(String tipo) {
-        return "Silla".equalsIgnoreCase(tipo);
+        return "Silla".equals(tipo);
     }
 
 }

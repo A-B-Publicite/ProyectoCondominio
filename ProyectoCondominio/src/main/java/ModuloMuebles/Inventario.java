@@ -21,7 +21,7 @@ public class Inventario implements Serializable {
 
     public void agregarMueble(Mueble mueble, int cantidad, double precio) {
         mueble.setPrecio(precio);
-        for (int i = 0; i <= cantidad; i++) {
+        for (int i = 0; i < cantidad; i++) {
             listaMuebles.add(mueble);
         }
     }
@@ -41,10 +41,12 @@ public class Inventario implements Serializable {
     public boolean verificarDisponibilidad(String tipoMueble, int cantidad) {
         int count = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble.esTipo(tipoMueble) && mueble.isEstado()) {
+            if (mueble.esTipo(tipoMueble) && mueble.isEstado() == true) {
                 count++;
+                if (count == cantidad) {
+                    return true;
+                }
             }
-            return count == cantidad;
         }
         return false;
     }
@@ -67,6 +69,78 @@ public class Inventario implements Serializable {
             }
         }
         return 0.0;
+    }
+    
+//    public int contarMesas() {
+//        int cantidadMesas = 0;
+//        for (Mueble mueble : listaMuebles) {
+//            if (mueble instanceof Mesa) { // Asumiendo que tienes una clase Mesa
+//                cantidadMesas++;
+//            }
+//        }
+//        return cantidadMesas;
+//    }
+    public int contarMesas() {
+        int cantidadMesas = 0;
+        System.out.println("Lista de Muebles tiene: " + listaMuebles.size() + " elementos.");
+        for (Mueble mueble : listaMuebles) {
+            //System.out.println("Revisando mueble: " + mueble.getClass().getSimpleName());
+            if (mueble instanceof Mesa&& mueble.isEstado()==true) {
+                cantidadMesas++;
+            }
+        }
+        //System.out.println("Cantidad de Mesas encontradas: " + cantidadMesas);
+        return cantidadMesas;
+    }
+    
+    public int contarSillas() {
+        int cantidadSillas = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Silla&& mueble.isEstado()==true) { 
+                cantidadSillas++;
+            }
+        }
+        return cantidadSillas;
+    }
+
+    public int contarCarpas() {
+        int cantidadCarpas = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Carpa && mueble.isEstado()==true) {
+                cantidadCarpas++;
+            }
+        }
+        return cantidadCarpas;
+    }
+        
+    public int contarMesasReparar() {
+        int cantidadMesasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Mesa && mueble.isMantenimiento()==true) { 
+                cantidadMesasR++;
+            }
+        }
+        return cantidadMesasR;
+    }
+
+    public int contarSillasReparar() {
+        int cantidadSillasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Silla && mueble.isMantenimiento()==true) {
+                cantidadSillasR++;
+            }
+        }
+        return cantidadSillasR;
+    }
+
+    public int contarCarpasReparar() {
+        int cantidadCarpasR = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble instanceof Carpa && mueble.isMantenimiento()==true) {
+                cantidadCarpasR++;
+            }
+        }
+        return cantidadCarpasR;
     }
 
 }
