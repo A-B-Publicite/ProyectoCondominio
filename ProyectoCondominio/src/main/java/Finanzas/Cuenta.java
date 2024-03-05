@@ -3,15 +3,14 @@ package Finanzas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cuenta implements Serializable{
+public class Cuenta implements Serializable {
 
     private ArrayList<Pago> pagos = new ArrayList<>();
-    private ArrayList<Recarga> recargas = new ArrayList<>();
+    private ArrayList<MovimientoMonetario> movimientosMonetarios = new ArrayList<>();
     private double saldo = 0;
     private int contadorRecargas = 1;
     private Cuenta cuentaAdministrador;
     private GestorObligaciones gestorObligaciones;
-    
 
     public Cuenta() {
         gestorObligaciones = new GestorObligaciones(this);
@@ -25,10 +24,16 @@ public class Cuenta implements Serializable{
         return gestorObligaciones;
     }
 
-    public void recargarSaldo(double abono, MetodoRecarga metodoDeRecarga) {
-        Recarga recarga = new Recarga(abono, String.valueOf(contadorRecargas++), metodoDeRecarga);
-        recarga.recargar(this);
-        recargas.add(recarga);
+    public void recargarDinero(double dineroARecargar, MetodoRecarga metodoDeRecarga) {
+        Recarga recarga = new Recarga(dineroARecargar, String.valueOf(contadorRecargas++), metodoDeRecarga);
+        recarga.realizarMovimiento(this);
+        movimientosMonetarios.add(recarga);
+    }
+    
+    public void retirarDinero(double dineroARetirar, MetodoRecarga metodoDeRecarga) {
+        Retiro retiro = new Retiro(-dineroARetirar, String.valueOf(contadorRecargas++), metodoDeRecarga);
+        retiro.realizarMovimiento(this);
+        movimientosMonetarios.add(retiro);
     }
 
     public void pagarObligacionFinanciera(ObligacionFinanciera obligacionFinanciera) {
@@ -64,8 +69,8 @@ public class Cuenta implements Serializable{
         String salida = "";
         salida = "================  RECARGAS RESIDENTE ==================\n";
 
-        for (Recarga recarga : recargas) {
-            salida += recarga + "\n";
+        for (MovimientoMonetario movimiento : movimientosMonetarios) {
+            salida += movimiento + "\n";
         }
         return salida;
     }
@@ -73,7 +78,8 @@ public class Cuenta implements Serializable{
     public Cuenta getCuentaAdministrador() {
         return cuentaAdministrador;
     }
-/*
+
+    /*
     @Override
     public String toString() {
         String salida = "";
@@ -81,7 +87,7 @@ public class Cuenta implements Serializable{
 
         return salida += "Saldo Actual= " + saldo;
     }
-*/
+     */
     public void setCuentaDePago(Cuenta cuentaAdministrador) {
         this.cuentaAdministrador = cuentaAdministrador;
     }
@@ -99,8 +105,7 @@ public class Cuenta implements Serializable{
         }
 
         // Información de saldo después de listar todos los pagos
-        salida += "=================  CUENTA ==================\n"
-                + "Saldo Actual= " + saldo;
+        salida += "=================  CUENTA ==================\n";
 
         return salida;
     }
@@ -114,4 +119,3 @@ public class Cuenta implements Serializable{
     }
 
 }
-//1
