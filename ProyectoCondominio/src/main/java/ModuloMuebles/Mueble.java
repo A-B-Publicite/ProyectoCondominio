@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Grupo3
+ * @author Grupo3 hola
  */
 public abstract class Mueble implements Serializable {
 
