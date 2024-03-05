@@ -5,6 +5,7 @@
 package Comunicacion;
 
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Administracion.Residente;
 import BD.BaseDeDatos;
@@ -37,17 +38,18 @@ public class Global extends Mensaje implements Serializable{
     @Override
     public void enviar() {
         
-        ArrayList<Residente> residentes = BaseDeDatos.leerAdministrador().getResidentes();
-        for (Residente res : residentes) {
+        Administrador ad =BaseDeDatos.leerAdministrador();
+        
+        for (Residente res : ad.getResidentes()) {
             for (Perfil destinatario : getDestinos()) {
                 if (res.getCorreo().equals(destinatario.getCorreo())) {
                     destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
                     destinatario.getBandejaDeEntrada().recibirMensaje(this);
-                    
                     break;
                 }
             }
         }
+        BaseDeDatos.escribirAdmin(ad);
         
         
         

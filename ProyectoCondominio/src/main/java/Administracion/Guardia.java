@@ -82,6 +82,7 @@ public class Guardia extends Perfil implements Serializable{
         for (EspacioDeParqueadero espacio : espaciosParqueadero) {            
             if (espacio.estaLibre()) {
                 espacioDisponible = espacio;
+                return espacioDisponible;
             }
         }    
         return espacioDisponible;
