@@ -15,8 +15,8 @@ public class Reparacion {
         this.descripcion = descripcion;
     }
 
-    public void realizarMantenimiento(){
-        servicio.ejecutar(); 
+    public void realizarReparacion(){
+        //servicio.ejecutar(); 
         actualizarMantenimiento("Carpa", 1);//ejemplo
     }
     
