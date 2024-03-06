@@ -52,6 +52,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         cmbSelectorDeContrato = new javax.swing.JComboBox<>();
         btnPagarContrato = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        cmbInmueblesYMuebles = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +75,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         tfdescripcionContrato.setRows(5);
         jScrollPane1.setViewportView(tfdescripcionContrato);
 
-        btnProponerContrato.setText("Proponer contrato");
+        btnProponerContrato.setText("Generar contrato");
         btnProponerContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProponerContratoActionPerformed(evt);
@@ -84,7 +85,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         jLabel7.setText("Seleccione el contrato que desea pagar:");
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el contrato a pagar:", " " }));
+        cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbSelectorDeContrato.setSelectedIndex(-1);
         cmbSelectorDeContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSelectorDeContratoActionPerformed(evt);
@@ -105,6 +107,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
             }
         });
 
+        cmbInmueblesYMuebles.setSelectedIndex(-1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,23 +119,19 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel1)
-                        .addContainerGap(76, Short.MAX_VALUE))
+                        .addContainerGap(84, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(17, 17, 17))))))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -157,6 +157,15 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addComponent(dpfechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dpfechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbInmueblesYMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +194,11 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
+                .addComponent(cmbInmueblesYMuebles)
+                .addGap(18, 18, 18)
                 .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
@@ -200,7 +211,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPagarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -236,6 +247,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPagarContrato;
     private javax.swing.JButton btnProponerContrato;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cmbInmueblesYMuebles;
     private javax.swing.JComboBox<String> cmbSelectorDeContrato;
     private com.github.lgooddatepicker.components.DatePicker dpfechaFin;
     private com.github.lgooddatepicker.components.DatePicker dpfechaInicio;
