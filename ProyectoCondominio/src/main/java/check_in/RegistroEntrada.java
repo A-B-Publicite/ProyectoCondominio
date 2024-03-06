@@ -40,9 +40,9 @@ public class RegistroEntrada implements Serializable{
         this.horaLlegada = horaLlegada;
     }
     
-    public void asignarParqueadero(Administrador admin,Perfil reservador){
+    public void asignarParqueadero(Administrador admin,Perfil reservador, String diaReserva){
         AdministrarReserva adminReserva = new AdministrarReserva();        
-        usoParqueadero = adminReserva.realizarReserva("uso de parqueadero", admin,4,"",reservador.getCorreo());
+        usoParqueadero = adminReserva.realizarReserva("uso de parqueadero", admin,4,diaReserva, reservador.getCorreo());
     }
     
     public void usarParqueaderoAsignado(String fechaFin,ParqueaderoPrivado parqueadero){
