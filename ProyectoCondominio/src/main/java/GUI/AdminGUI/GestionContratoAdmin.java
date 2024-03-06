@@ -25,7 +25,6 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         initComponents();
         this.administrador = administrador; // Otra copia
         rellenarcmbSelectorDeContrato();
-        
         llenarComboMueblesInmuebles();
     }
 

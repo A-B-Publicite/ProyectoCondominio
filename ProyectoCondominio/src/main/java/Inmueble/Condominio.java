@@ -41,7 +41,7 @@ public class Condominio implements Serializable {
 
         }
     }
-    
+
     //para crear la lista de MUEBLES vacia
     public void agregarMueble(Mueble mueble, int cantidad, double precio) {
 
@@ -104,7 +104,7 @@ public class Condominio implements Serializable {
     public Contrato getContrato(String descripcionContratoAPagar) {
         return directiva.getContratoAprobado(descripcionContratoAPagar);
     }
- 
+
     public Residente obtenerResidenteNombre(String nombreResidente) throws Exception {
         Residente resAux;
         for (Departamento departamento : listaDeDepartamentos) {
@@ -148,21 +148,17 @@ public class Condominio implements Serializable {
 
     public ArrayList<Object> getMueblesEInmuebles() {
         ArrayList<Object> mueblesEInmuebles = null;
-        ArrayList<Mueble> muebles = inventario.getListaMuebles();
-
-        for (InmuebleComun inmuebleComun : listaDeInmuebleComunes) {
-            mueblesEInmuebles.add(inmuebleComun);
-        }
-        mueblesEInmuebles.add(muebles);
+        mueblesEInmuebles.add(inventario.getListaMuebles());
+        mueblesEInmuebles.add(listaDeInmuebleComunes);
         return mueblesEInmuebles;
     }
 
     public Object getObjetoPorSuToString(String string) {
-        for (Object  objeto : getMueblesEInmuebles()) {
-            if(string.equals(objeto.toString())) {
+        for (Object objeto : getMueblesEInmuebles()) {
+            if (string.equals(objeto.toString())) {
                 return objeto;
             }
-            
+
         }
         return null;
     }
