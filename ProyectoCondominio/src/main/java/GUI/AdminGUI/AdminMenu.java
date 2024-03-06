@@ -11,6 +11,7 @@ import GUI.MensajeGUI.ResidenteTabla;
 import GUI.AlquilerGUI.MenuAlquiler;
 import GUI.AutenticadorMenu;
 import GUI.MantenimietoGUI.MenuMantenimiento;
+import GUI.ReservasGUI.GestionReservas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;

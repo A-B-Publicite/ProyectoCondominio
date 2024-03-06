@@ -10,6 +10,7 @@ import Administracion.Residente;
 import BD.BaseDeDatos;
 import Comunicacion.BandejaDeEntrada;
 import Comunicacion.Mensaje;
+import Comunicacion.Reporte;
 import Finanzas.ObligacionFinanciera;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -231,10 +232,10 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
 
             obligacionSeleccionada = jTable2.getSelectedRow();
 
-            for (Residente res : residentes) {
+            for (Residente res : BaseDeDatos.leerAdministrador().getResidentes()) {
 
                 if (res.getNombreApellido().equals(jTable2.getValueAt(obligacionSeleccionada, 2))) {
-                    GUIMensaje guiMen = null;
+                    /*GUIMensaje guiMen = null;
                     try {
                         guiMen = new GUIMensaje((Administrador) perf,tipo);
 
@@ -250,7 +251,15 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                         Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }*/
+                    
+                    Mensaje mensaje = new Reporte(BaseDeDatos.leerAdministrador(), res);
+                    mensaje.crear("REPORTE DE PAGO", 
+                            "Estimado " + res.getNombreApellido() + " se le solicita de la manera mas cordial\n"
+                                    + "cancelar el monto de $" + Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()) + 
+                                    " de su alicuota\n"
+                                            + "Con estado " + jTable2.getValueAt(obligacionSeleccionada, 2).toString());
+                    
                     break;
                 }
             }
