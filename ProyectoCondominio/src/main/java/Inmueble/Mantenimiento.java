@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Inmueble;
 
 import Administracion.Servicio;
+import ModuloMuebles.Mueble;
 
 /**
  *
@@ -43,17 +41,22 @@ public class Mantenimiento {
         //servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
         
     }
-    /*public void Actualizar(Objeto objeto) {
-        //muebleseinmuebles
-        
-        //objeto.toString().equals(objetomueblesinmueblse)
-        
-        
-        //objeto.setNecestia(false)l;
-        
-    }*/
     
-        
+    public void Actualizar(Object objeto) {
+        for(Object objetoMueblesInmuebles : condominio.getMueblesEInmuebles()) {
+            if(objetoMueblesInmuebles.equals(objeto)) {
+                if(objetoMueblesInmuebles instanceof Mueble) {
+                    Mueble mueble = (Mueble) objetoMueblesInmuebles;
+                    mueble.setNecesitaMantenimiento(false);
+                } else if(objetoMueblesInmuebles instanceof InmuebleComun) {
+                    InmuebleComun inmueble = (InmuebleComun) objetoMueblesInmuebles;
+                    inmueble.setNecesitaMantenimiento(false);
+                }
+            }
+        }
+    }
+
+    
     public static int getContadorIds() {
         return contadorIds;
     }
