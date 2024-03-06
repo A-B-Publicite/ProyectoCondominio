@@ -42,24 +42,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         
         this.origen = administrador;
         this.tipo=tipo;
-        if ( tipo == 1) {
-            jLabel4.setText("Administrador");
-            // Obtén el modelo de datos actual del JComboBox
-            DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBox3.getModel();
-
-            // Limpia el modelo actual
-            model.removeAllElements();
-
-            // Agrega las nuevas opciones
-            model.addElement("Administrador");
-            model.addElement("Directo");
-
-            // Repinta el JComboBox para reflejar los cambios
-            jComboBox3.repaint();
-            jComboBox3.setSelectedIndex(-1);
-        } else {
-            jLabel4.setText("TODOS");
-        }
+        
         jLabel4.setVisible(false);
         jButton3.setVisible(false);
         jButton1.setVisible(false);
@@ -278,53 +261,6 @@ public class GUIMensaje extends javax.swing.JFrame {
                 }
 
             }
-            /*
-            switch (tipo) {
-                case 0:
-                    if (jComboBox3.getSelectedIndex() == 0) {
-                        mensaje = new Global(origen, residentes);
-                        mensaje.setTitulo(jTextField1.getText());
-                        mensaje.setContenido(jTextArea1.getText());
-                        jTextArea1.setText("");
-                        jTextField1.setText("");
-                        mensaje.enviar();
-                    } else {
-                        if (jComboBox3.getSelectedIndex() == 1) {
-                            System.out.println("INDICE 1");
-                            mensaje = new Directo(origen, this.residenteSeleccionado);
-                            System.out.println("SE CREO EL DIRECTO");
-                            mensaje.setTitulo(jTextField1.getText());
-                            mensaje.setContenido(jTextArea1.getText());
-                            jTextArea1.setText("");
-                            jTextField1.setText("");
-                            mensaje.enviar();
-                        }
-                    }
-                    
-                break;
-                case 1:
-                    if (jComboBox3.getSelectedIndex() == 0) {
-                        mensaje = new Directo(origen, BaseDeDatos.leerAdministrador());
-                        mensaje.setTitulo(jTextField1.getText());
-                        mensaje.setContenido(jTextArea1.getText());
-                        jTextArea1.setText("");
-                        jTextField1.setText("");
-                        mensaje.enviar();
-                    } else {
-                        if (jComboBox3.getSelectedIndex() == 1) {
-                            mensaje = new Directo(origen, residenteSeleccionado);
-                            mensaje.setTitulo(jTextField1.getText());
-                            mensaje.setContenido(jTextArea1.getText());
-                            jTextArea1.setText("");
-                            jTextField1.setText("");
-                            mensaje.enviar();
-                        }
-                    }
-                break;
-                default:
-                    throw new AssertionError();
-
-            }*/
             
             this.dispose();
         }
@@ -338,7 +274,7 @@ public class GUIMensaje extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
         jButton1.setVisible(true);
-        if (jComboBox3.getSelectedIndex() == 0) {
+        if (jComboBox3.getSelectedIndex() == 0 ||jComboBox3.getSelectedIndex() == 2) {
             jLabel4.setVisible(true);
             jButton3.setVisible(false);
         } else {

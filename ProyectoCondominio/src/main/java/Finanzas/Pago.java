@@ -50,9 +50,9 @@ public class Pago implements Serializable {
             String descripcion = obligacionFinanciera.getDescripcion();
 
             salida += "PAGO REALIZADO: Fecha:" + fechaPago + " Monto: " + precioPagado
-                    + " ID: " + id + ", DESCRIPCION = " + descripcion + "\n------------------------------------------";
+                    + " ID: " + id + ", DESCRIPCION = " + descripcion;
         } else {
-            salida += "PAGO REALIZADO: (Contrato) Fecha:" + fechaPago + " Monto: " + precioPagado + "\n------------------------------------------";
+            salida += "PAGO REALIZADO: (Contrato) Fecha:" + fechaPago + " Monto: " + precioPagado ;
         }
 
         return salida;
