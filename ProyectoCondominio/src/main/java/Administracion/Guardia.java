@@ -41,19 +41,16 @@ public class Guardia extends Perfil implements Serializable{
     public Autorizacion crearAutorizacion(Visitante visitante, String fechaLlegada, String horaLlegada) {
         Autorizacion autorizacionInmediata = new Autorizacion();        
         autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
+        validarEnNombreDe(visitante.getPersonaAVisitar(),autorizacionInmediata);
         autorizaciones.add(autorizacionInmediata);
         return autorizacionInmediata;
     }
     
-    public void notificarResidente(Visitante visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento){
-        String residente = buscarResidente(visitante.getPersonaAVisitar());
+    public void notificarResidente(String personaAVisitar){
+        String residente = buscarResidente(personaAVisitar);
         if(residente == null){
             System.out.println("No tengo el registro de ningun residente llamado asi");
             return;}
-        Autorizacion autorizacion = crearAutorizacion(visitante,fechaLlegada,horaLlegada);
-        //AQUI VA EL MÉTODO PARA ENVIAR LA AUTORIZACION POR MENSAJE
-        //enviarPorAprobacion(residente, autorizacion) //Dentro Directo mensaje = new Directo(this, residente);
-                                                       //       mensaje.crear("Visita-aprobacion pendiente", autorizacion);
     }
 
     private String buscarResidente(String personaAVisitar) {
@@ -102,5 +99,10 @@ public class Guardia extends Perfil implements Serializable{
 
     public HistorialEntrada getEntradasVisitantes() {
         return entradasVisitantes;
+    }
+
+    private void validarEnNombreDe(String personaAVisitar, Autorizacion autorizacionInmediata) {
+        Validacion validacion = new Validacion();
+        validacion.validar(personaAVisitar,autorizacionInmediata);
     }
 }
