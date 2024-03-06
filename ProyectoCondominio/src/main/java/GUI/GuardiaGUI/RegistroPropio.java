@@ -108,8 +108,7 @@ public class RegistroPropio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRealizarRegistroPropioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarRegistroPropioActionPerformed
-        guardia.realizarCheckIn(txtFechaIn.getText(), txtHoraIn.getText());
-        
+        guardia.realizarCheckIn(txtFechaIn.getText(), txtHoraIn.getText());      
     }//GEN-LAST:event_btRealizarRegistroPropioActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed

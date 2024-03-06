@@ -9,6 +9,7 @@ import GUI.MensajeGUI.GUIMensaje;
 import GUI.ReservasGUI.MenuReservas;
 import GUI.MensajeGUI.ResidenteTabla;
 import GUI.AlquilerGUI.MenuAlquiler;
+import GUI.AutenticadorMenu;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -20,8 +21,8 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private final Administrador administrador;
 
-    public AdminMenu(Administrador administrador) {
-        this.administrador = administrador;
+    public AdminMenu(Administrador administrador, AutenticadorMenu aThis) {
+        this.administrador = administrador; // Copia casi igual 
         initComponents();
         lblBienvenida.setText(lblBienvenida.getText() + " " + administrador.getNombresCompletos());
         verificarExistenciaDeCondominio(administrador);
@@ -269,8 +270,10 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionCondominioButtomActionPerformed
 
     private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
-        GestionContratoAdmin gestionContrato = new GestionContratoAdmin(administrador);
-        guardarAdminAlCerrar(gestionContrato);
+        GestionContratoAdmin gestionContrato = new GestionContratoAdmin(administrador, this);
+        gestionContrato.setVisible(true);
+        this.setVisible(false);
+        //guardarAdminAlCerrar(gestionContrato);
     }//GEN-LAST:event_gestionContratosButtonActionPerformed
 
     private void gestionPerfilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPerfilesButtonActionPerformed

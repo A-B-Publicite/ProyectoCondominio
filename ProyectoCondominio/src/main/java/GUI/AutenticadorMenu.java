@@ -187,18 +187,18 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
                         return;
                     }
-                    AdminMenu adminMenu = new AdminMenu(administrador);
+                    AdminMenu adminMenu = new AdminMenu(administrador, this);
                     adminMenu.setVisible(true);
                     this.setVisible(false);
                     // Configurar el comportamiento al cerrar la ventana de ListaResidente
-                    adminMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    /*adminMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     adminMenu.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             BaseDeDatos.escribirAdmin(administrador);
                             setVisible(true);
                         }
-                    });
+                    });*/
                     break;
                 case "Residente":
                     //BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
@@ -207,9 +207,14 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
                         return;
                     }
+<<<<<<< HEAD
                     ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()), administrador);
+=======
+                    ResidenteMenu residenteMenu = new ResidenteMenu(administrador, BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
+>>>>>>> Fix_G6_contratos
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
+                    /*
                     residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     residenteMenu.addWindowListener(new WindowAdapter() {
                         @Override
@@ -218,6 +223,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                             setVisible(true);
                         }
                     });
+*/
                     break;
                 case "Guardia":
                     
