@@ -39,7 +39,7 @@ public class RegistroAdminGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("¡BIENVENIDO AL SISTEMA, AMINISTRADOR!");
+        jLabel1.setText("¡BIENVENIDO AL SISTEMA, ADMINISTRADOR!");
 
         btnAgregarAdmin.setText("Agregar Administrador");
         btnAgregarAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class RegistroAdminGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(btnAgregarAdmin)

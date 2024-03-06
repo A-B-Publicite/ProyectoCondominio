@@ -25,6 +25,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         initComponents();
         this.administrador = administrador; // Otra copia
         rellenarcmbSelectorDeContrato();
+        
+        llenarComboMueblesInmuebles();
     }
 
     /**
@@ -222,7 +224,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        //administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion, o);
+        Object objeto = administrador.getCondominio().getObjetoPorSuToString((String) cmbInmueblesYMuebles.getSelectedItem());
+        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion, objeto);
         BaseDeDatos.escribirAdmin(administrador); // Aqui se escribe el admin
         this.setVisible(false);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
@@ -268,6 +271,13 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         System.out.println("Rellenar contratos aprobados combo"+contratos.size());
         for (Contrato contrato : contratos) {
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
+        }
+    }
+
+    private void llenarComboMueblesInmuebles() {
+        ArrayList<Object> objetos = administrador.getCondominio().getMueblesEInmuebles();
+        for (Object  objeto : objetos) {
+            cmbSelectorDeContrato.addItem(objeto.toString());
         }
     }
 }
