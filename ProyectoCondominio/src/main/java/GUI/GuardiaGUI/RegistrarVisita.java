@@ -84,6 +84,11 @@ public class RegistrarVisita extends javax.swing.JFrame {
         jLabel4.setText("Datos del registro");
 
         btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVolverActionPerformed(evt);
+            }
+        });
 
         btNotificarResidente.setText("Notificar");
         btNotificarResidente.addActionListener(new java.awt.event.ActionListener() {
@@ -103,26 +108,6 @@ public class RegistrarVisita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(btNotificarResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVehiculo)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btRealizarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,6 +142,23 @@ public class RegistrarVisita extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(horaIngresoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(btNotificarResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblVehiculo)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtQuiereEstacionamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +216,6 @@ public class RegistrarVisita extends javax.swing.JFrame {
         if(txtQuiereEstacionamiento.getText().equals("SI"))
             estacionamiento = true;       
         admin.getCondominio().getGuardia().registrarEntrada(txtNombreVisita.getText(),fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento,admin);
-        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRealizarRegistroActionPerformed
 
     private void btNotificarResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificarResidenteActionPerformed
@@ -227,6 +228,10 @@ public class RegistrarVisita extends javax.swing.JFrame {
         admin.getCondominio().getGuardia().crearAutorizacion(visitante, fechaIngresoVisita.getText(), fechaIngresoVisita.getText());
         activarCamposRegistro();
     }//GEN-LAST:event_btValidarAutorizacionActionPerformed
+
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
