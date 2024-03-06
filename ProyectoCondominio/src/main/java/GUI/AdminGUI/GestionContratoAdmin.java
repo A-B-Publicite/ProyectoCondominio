@@ -108,6 +108,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
             }
         });
 
+        cmbInmueblesYMuebles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cmbInmueblesYMuebles.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,8 +227,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         Object objeto = administrador.getCondominio().getObjetoPorSuToString((String) cmbInmueblesYMuebles.getSelectedItem());
         administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion, objeto);
         BaseDeDatos.escribirAdmin(administrador); // Aqui se escribe el admin
-        this.setVisible(false);
-        javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
+        //this.setVisible(false);
+        javax.swing.JOptionPane.showMessageDialog(null, "Contrato generado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
@@ -238,7 +239,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void cmbSelectorDeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectorDeContratoActionPerformed
@@ -276,7 +277,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     private void llenarComboMueblesInmuebles() {
         ArrayList<Object> objetos = BaseDeDatos.leerAdministrador().getCondominio().getMueblesEInmuebles();
         for (Object  objeto : objetos) {
-            cmbSelectorDeContrato.addItem(objeto.toString());
+            cmbInmueblesYMuebles.addItem(objeto.toString());
         }
     }
 }

@@ -264,7 +264,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
         GestionContratoAdmin gestionContrato = new GestionContratoAdmin(administrador, this);
         gestionContrato.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
         //guardarAdminAlCerrar(gestionContrato);
     }//GEN-LAST:event_gestionContratosButtonActionPerformed
 

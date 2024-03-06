@@ -181,9 +181,9 @@ public class ResidenteMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnGestionarContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarContratosActionPerformed
-        GestionContratosDirectiva gcd = new GestionContratosDirectiva(residente, administrador);
+        GestionContratosDirectiva gcd = new GestionContratosDirectiva(residente, BaseDeDatos.leerAdministrador());
         gcd.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_btnGestionarContratosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

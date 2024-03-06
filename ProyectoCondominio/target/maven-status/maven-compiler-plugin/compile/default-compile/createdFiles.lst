@@ -115,6 +115,7 @@ GUI\ReservasGUI\MenuReservas$1.class
 ModuloMuebles\Inventario.class
 GUI\ReservasGUI\MenuReservas$12.class
 GUI\AdminGUI\GestionMueble$6.class
+GUI\AutenticadorMenu$8.class
 ModuloReservas\Reserva.class
 AreasAparte\EscalerasEmergencia.class
 GUI\MensajeGUI\GUIBandejaDeEntrada$3.class
@@ -148,6 +149,7 @@ GUI\AdminGUI\GestionCondominio$11.class
 GUI\AutenticadorMenu$2.class
 AreasAparte\Ascensor.class
 GUI\MensajeGUI\GUIMensaje$5.class
+GUI\AutenticadorMenu$9.class
 GUI\AdminGUI\AdminMenu$4.class
 GUI\GuardiaGUI\GuardiaMenu$1.class
 Inmueble\InmueblePrivado.class
