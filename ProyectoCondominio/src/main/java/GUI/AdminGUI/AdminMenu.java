@@ -6,10 +6,10 @@ import BD.BaseDeDatos;
 import GUI.GuardiaGUI.CrearAutoriza;
 import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
-import GUI.ReservasGUI.MenuReservas;
 import GUI.MensajeGUI.ResidenteTabla;
 import GUI.AlquilerGUI.MenuAlquiler;
 import GUI.AutenticadorMenu;
+import GUI.ReservasGUI.GestionReservas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -320,7 +320,8 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCondominioActionPerformed
 
     private void btnGestionReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservasActionPerformed
-        MenuReservas menRes = new MenuReservas(administrador);
+        //MenuReservas menRes = new MenuReservas(administrador);
+        GestionReservas menRes = new GestionReservas(administrador);
         menRes.setVisible(true);
     }//GEN-LAST:event_btnGestionReservasActionPerformed
 
