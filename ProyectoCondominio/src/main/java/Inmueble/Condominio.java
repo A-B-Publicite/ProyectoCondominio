@@ -157,4 +157,14 @@ public class Condominio implements Serializable {
         return mueblesEInmuebles;
     }
 
+    public Object getObjetoPorSuToString(String string) {
+        for (Object  objeto : getMueblesEInmuebles()) {
+            if(string.equals(objeto.toString())) {
+                return objeto;
+            }
+            
+        }
+        return null;
+    }
+
 }
