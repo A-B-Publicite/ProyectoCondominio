@@ -3,6 +3,7 @@ package Administracion;
 import Comunicacion.BandejaDeEntrada;
 import Finanzas.Cuenta;
 import check_in.Autorizacion;
+import check_in.HistorialEntrada;
 import check_in.RegistroEntrada;
 import check_in.Validacion;
 import java.io.Serializable;
@@ -17,6 +18,7 @@ public abstract class Perfil implements Serializable {
     protected BandejaDeEntrada bandejaDeEntrada = new BandejaDeEntrada(this);
     protected Cuenta cuentaBancaria;
     Autorizacion autorizacion;
+    protected HistorialEntrada historialDeEntradas = new HistorialEntrada();
 
     public Perfil(String nombre, String apellido) {
         this.correo = nombre.toLowerCase() + "." + apellido.toLowerCase() + "@policon.com";
@@ -61,6 +63,7 @@ public abstract class Perfil implements Serializable {
         RegistroEntrada registro = new RegistroEntrada();
         registro.setAutorizacion(this.autorizacion);
         registro.registrarEntrada(fechaLlegada, horaLlegada);
+        historialDeEntradas.aniadirRegistro(registro);
     }
     
     public void validarAutorizacion(Autorizacion autorizacion){
@@ -82,6 +85,10 @@ public abstract class Perfil implements Serializable {
 
     public String getNombresCompletos() {
         return nombre + " " + apellido;
+    }
+
+    public HistorialEntrada getHistorialDeEntradas() {
+        return historialDeEntradas;
     }
 
 }
