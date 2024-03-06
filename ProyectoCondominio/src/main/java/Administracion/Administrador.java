@@ -132,17 +132,6 @@ public class Administrador extends Perfil implements Serializable {
         ArrayList<Autorizacion> autorizaciones = condominio.obtenerAutorizaciones();
         condominio.getGuardia().setAutorizaciones(autorizaciones);
     }
-    
-    public void enviarEspaciosParqueaderoGuardia(){
-        ArrayList<InmuebleComun> inmuebles = condominio.obtenerInmuebleComun();
-        ArrayList<EspacioDeParqueadero> espacios = new ArrayList<>();
-        for(InmuebleComun inmueble: inmuebles){
-            if(inmueble instanceof EspacioDeParqueadero){
-                espacios.add((EspacioDeParqueadero) inmueble);
-            }
-        }
-        condominio.getGuardia().setEspaciosParqueadero(espacios);
-    }
 
     public void pagarContrato(double precioContrato) {
         cuentaBancaria.pagarServicio(precioContrato, "Contrato");

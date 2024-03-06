@@ -18,7 +18,6 @@ import java.util.Locale;
 
 public class Guardia extends Perfil implements Serializable{
     private List<String> residentes = new ArrayList<>();
-    private List<EspacioDeParqueadero> espaciosParqueadero = new ArrayList<>();
     private List<Autorizacion> autorizaciones = new ArrayList<>();  
     private HistorialEntrada entradasVisitantes = new HistorialEntrada();
     
@@ -76,17 +75,6 @@ public class Guardia extends Perfil implements Serializable{
         }        
         return autorizacionEncontrada;
     }
-    
-    private EspacioDeParqueadero obtenerEspacioDisponible(){
-        EspacioDeParqueadero espacioDisponible = null;
-        for (EspacioDeParqueadero espacio : espaciosParqueadero) {            
-            if (espacio.estaLibre()) {
-                espacioDisponible = espacio;
-                return espacioDisponible;
-            }
-        }    
-        return espacioDisponible;
-    }
 
     public void setResidentes(List<String> residentes) {
         this.residentes = residentes;
@@ -95,11 +83,7 @@ public class Guardia extends Perfil implements Serializable{
     public void setAutorizaciones(List<Autorizacion> autorizaciones) {
         this.autorizaciones = autorizaciones;
     }    
-
-    public void setEspaciosParqueadero(ArrayList<EspacioDeParqueadero> espaciosParqueadero) {
-        this.espaciosParqueadero = espaciosParqueadero;
-    }
-
+    
     public HistorialEntrada getEntradasVisitantes() {
         return entradasVisitantes;
     }
