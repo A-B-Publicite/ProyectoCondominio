@@ -24,16 +24,21 @@ public class Global extends Mensaje implements Serializable{
         this.destinatarios = destino;
         
     }
+
+    public ArrayList<Perfil> getDestinatarios() {
+        return destinatarios;
+    }
+    
     
 
     @Override
     public void enviar() {
         ////deberia enviar a los residentes
-        /*
+        
         Administrador ad =BaseDeDatos.leerAdministrador();
         
         for (Residente res : ad.getResidentes()) {
-            for (Perfil destinatario : getDestinos()) {
+            for (Perfil destinatario : getDestinatarios()) {
                 if (res.getCorreo().equals(destinatario.getCorreo())) {
                     destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
                     destinatario.getBandejaDeEntrada().recibirMensaje(this);
@@ -43,20 +48,9 @@ public class Global extends Mensaje implements Serializable{
         }
         BaseDeDatos.escribirAdmin(ad);
         
-        */
+        
         
     }
-/*
-    @Override
-    public void mostrar() {
-        System.out.println("\n=============================================\n"
-                + "Origen: " + this.getOrigen().getNombreApellido()+"\n"+
-                "Destino: Todos \n"+
-                "Fecha: " + getFecha() +
-                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() +
-                "\n=============================================\n");
-    }
-*/
-    
+
     
 }

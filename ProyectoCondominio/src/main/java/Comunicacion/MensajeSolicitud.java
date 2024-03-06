@@ -6,8 +6,10 @@ package Comunicacion;
 
 import Administracion.Administrador;
 import Administracion.Perfil;
+import Administracion.Residente;
 import BD.BaseDeDatos;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,7 +27,11 @@ public class MensajeSolicitud extends Mensaje implements Serializable{
     
     @Override
     public void enviar() {
-        this.destino.getBandejaDeEntrada();
+        
+        this.destino.getBandejaDeEntrada().recibirMensaje(this);
+        
+        BaseDeDatos.escribirAdmin(this.destino);
+        
     }
     
 }
