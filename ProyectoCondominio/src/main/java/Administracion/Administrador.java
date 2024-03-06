@@ -67,6 +67,8 @@ public class Administrador extends Perfil implements Serializable {
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
     }
+    
+    
 
     public ArrayList<Residente> getResidentes() {
         return condominio.obtenerResidentes();
@@ -140,5 +142,9 @@ public class Administrador extends Perfil implements Serializable {
             }
         }
         condominio.getGuardia().setEspaciosParqueadero(espacios);
+    }
+
+    public void pagarContrato(double precioContrato) {
+        cuentaBancaria.pagarServicio(precioContrato, "Contrato");
     }
 }
