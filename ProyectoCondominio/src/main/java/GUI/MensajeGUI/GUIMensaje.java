@@ -11,6 +11,7 @@ import BD.BaseDeDatos;
 import Comunicacion.Directo;
 import Comunicacion.Global;
 import Comunicacion.Mensaje;
+import Comunicacion.Reporte;
 import Comunicacion.Solicitud;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -246,20 +247,28 @@ public class GUIMensaje extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
             
-            if ("Global".equals((String)jComboBox3.getSelectedItem())) {
-                mensaje = new Global(origen,BaseDeDatos.leerAdministrador().getResidentes());
-                mensaje.crear(jTextField1.getText(),jTextArea1.getText());
-            } else {
-                if ("Directo".equals((String)jComboBox3.getSelectedItem())) {
-                    mensaje = new Directo(origen, residenteSeleccionado);
-                    mensaje.crear(jTextField1.getText(),jTextArea1.getText());
-                } else {
-                    if ("Solicitud".equals((String)jComboBox3.getSelectedItem())) {
-                        mensaje = new Solicitud(origen);
-                        mensaje.crear(jTextField1.getText(),jTextArea1.getText());
-                    }
-                }
+            String selectedItem = (String) jComboBox3.getSelectedItem();
 
+            switch (selectedItem) {
+                case "Global":
+                    mensaje = new Global(origen, BaseDeDatos.leerAdministrador().getResidentes());
+                    mensaje.crear(jTextField1.getText(), jTextArea1.getText());
+                    break;
+                case "Directo":
+                    mensaje = new Directo(origen, residenteSeleccionado);
+                    mensaje.crear(jTextField1.getText(), jTextArea1.getText());
+                    break;
+                case "Solicitud":
+                    mensaje = new Solicitud(origen);
+                    mensaje.crear(jTextField1.getText(), jTextArea1.getText());
+                    break;
+                case "Reporte":
+                    System.out.println("Caso reporte " + residenteSeleccionado.getNombreApellido());
+                    mensaje = new Reporte((Administrador) origen, residenteSeleccionado);
+                    mensaje.crear(jTextField1.getText(), jTextArea1.getText());
+
+                default:
+                    break;
             }
             
             this.dispose();
