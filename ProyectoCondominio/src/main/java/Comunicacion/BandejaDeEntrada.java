@@ -41,7 +41,7 @@ public class BandejaDeEntrada implements Serializable{
         }
        
     }
-
+/*
     public void getMensajePorIndice() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Elija el mensaje que desea ver: ");
@@ -53,7 +53,7 @@ public class BandejaDeEntrada implements Serializable{
             
         }
     }
-
+*/
     public void limpiarBandeja() {
         listaMensajes.clear();
     }
