@@ -1,13 +1,13 @@
 package Administracion;
 
+import Inmueble.Mantenimiento;
 import java.io.Serializable;
 
 public class Servicio implements Serializable {
 
-    private String nombreDelServicio;
+    private Mantenimiento mantenimiento;
 
-    public Servicio(String nombreDelServicio) {
-        this.nombreDelServicio = nombreDelServicio;
+    public Servicio() {
     }
 
     public void ejecutar(Object objeto) {
@@ -15,7 +15,7 @@ public class Servicio implements Serializable {
     }
 
     private void notificar(Object objeto) {
-        //mantenimiento.actualizar(objeto);
+        mantenimiento.actualizar(objeto);
     }
 
 }
