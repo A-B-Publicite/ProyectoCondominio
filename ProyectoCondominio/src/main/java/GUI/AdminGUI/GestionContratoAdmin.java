@@ -266,7 +266,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarcmbSelectorDeContrato() {
-        ArrayList<Contrato> contratos = administrador.getCondominio().getDirectiva().getContratosAprobados();
+        ArrayList<Contrato> contratos = BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getContratosAprobados();
         System.out.println("Rellenar contratos aprobados combo"+contratos.size());
         for (Contrato contrato : contratos) {
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
@@ -274,7 +274,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     }
 
     private void llenarComboMueblesInmuebles() {
-        ArrayList<Object> objetos = administrador.getCondominio().getMueblesEInmuebles();
+        ArrayList<Object> objetos = BaseDeDatos.leerAdministrador().getCondominio().getMueblesEInmuebles();
         for (Object  objeto : objetos) {
             cmbSelectorDeContrato.addItem(objeto.toString());
         }
