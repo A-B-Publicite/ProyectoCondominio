@@ -418,15 +418,6 @@ public class FinanzasResidente extends javax.swing.JFrame {
         }
         limpiarDatosObligaciones();
 
-        /*ObligacionFinanciera obligacionAPagar = residente.getCuenta().getGestorObligaciones().getObligacion(txtIDObligacion.getText());
-        if (obligacionAPagar != null) {
-            residente.pagar(obligacionAPagar);
-            lblSaldoCuentaObligaciones.setText(String.valueOf(residente.getCuenta().getSaldo()));
-
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontro a la obligacion financiera");
-        }
-        limpiarDatosObligaciones();*/
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void jCBMetodoRecargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMetodoRecargaActionPerformed
@@ -438,65 +429,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
         txtNumTarjeta.setVisible(selectedIndex == 1);
         txtCodSeg.setVisible(selectedIndex == 1);
         txtNumCuenta.setVisible(selectedIndex == 2);
-        /*
-        switch (jCBMetodoRecarga.getSelectedIndex()) {
-            case 0:
-                lblNumCuenta.setVisible(false);
-                lblNumTarjeta.setVisible(false);
-                lblCodSeg.setVisible(false);
-                txtNumTarjeta.setVisible(false);
-                txtCodSeg.setVisible(false);
-                txtNumCuenta.setVisible(false);
-                break;
-            case 1:
-                lblNumCuenta.setVisible(false);
-                lblNumTarjeta.setVisible(true);
-                lblCodSeg.setVisible(true);
-                txtNumTarjeta.setVisible(true);
-                txtCodSeg.setVisible(true);
-                txtNumCuenta.setVisible(false);
-                break;
-            case 2:
-                lblNumCuenta.setVisible(true);
-                lblNumTarjeta.setVisible(false);
-                lblCodSeg.setVisible(false);
-                txtNumTarjeta.setVisible(false);
-                txtCodSeg.setVisible(false);
-                txtNumCuenta.setVisible(true);
-                break;
-        }*/
+
     }//GEN-LAST:event_jCBMetodoRecargaActionPerformed
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
-        /*if (txtMontoAbonar.getText() != null) {
-            switch (jCBMetodoRecarga.getSelectedIndex()) {
-                case 0:
-                    MetodoRecarga efectivo = new Efectivo();
-                    residente.getCuenta().recargarSaldo(Double.parseDouble(txtMontoAbonar.getText()), efectivo);
-                    JOptionPane.showMessageDialog(null, "Recarga realizada con exito");
-                    lblSaldoCuentaRecarga.setText(String.valueOf(residente.getCuenta().getSaldo()));
-                    limpiarDatosRecarga();
-                    break;
-                case 1:
-                    MetodoRecarga tarjeta = new Tarjeta(txtNumTarjeta.getText(), txtCodSeg.getText());
-                    residente.getCuenta().recargarSaldo(Double.parseDouble(txtMontoAbonar.getText()), tarjeta);
-                    JOptionPane.showMessageDialog(null, "Recarga realizada con exito");
-                    lblSaldoCuentaRecarga.setText(String.valueOf(residente.getCuenta().getSaldo()));
-                    limpiarDatosRecarga();
-                    break;
-                case 2:
-                    MetodoRecarga transferecia = new Transferencia(txtNumCuenta.getText(), "123");
-                    residente.getCuenta().recargarSaldo(Double.parseDouble(txtMontoAbonar.getText()), transferecia);
-                    JOptionPane.showMessageDialog(null, "Recarga realizada con exito");
-                    lblSaldoCuentaRecarga.setText(String.valueOf(residente.getCuenta().getSaldo()));
-                    limpiarDatosRecarga();
-                    break;
-                default:
-                    throw new AssertionError();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Ingrese un valor valido");
-        }*/
+        
         if (txtMontoAbonar.getText() != null) {
             MetodoRecarga metodoRecarga = null;
             switch (jCBMetodoRecarga.getSelectedIndex()) {

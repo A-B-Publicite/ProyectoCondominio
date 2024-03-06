@@ -43,17 +43,7 @@ public class Pago implements Serializable {
         cuentaAdministrador.actualizarSaldo(precio);
         cuentaDestino = cuentaAdministrador;
     }
-    /*
 
-    public void pagarContrato(double precioContrato, String descripcion) {
-        precioPagado = precioContrato;
-        cuentaOrigen.actualizarSaldo(-precioContrato);
-    }
-    *//*
-    public void pagarAlquiler(double precioAlquiler) {
-        precioPagado = precioAlquiler;
-        cuentaOrigen.actualizarSaldo(-precioAlquiler);
-    }*/
 
     @Override
     public String toString() {
