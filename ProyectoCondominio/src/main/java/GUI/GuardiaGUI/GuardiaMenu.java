@@ -42,29 +42,14 @@ public class GuardiaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btBandejaEntrada = new javax.swing.JButton();
-        btRedactarMensaje = new javax.swing.JButton();
         btRegistrarEntradaV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btSalir = new javax.swing.JButton();
         btRegistrarEntradaP = new javax.swing.JButton();
         btRegistrarEntradaS = new javax.swing.JButton();
+        btVerHistorial = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btBandejaEntrada.setText("Bandeja de entrada");
-        btBandejaEntrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBandejaEntradaActionPerformed(evt);
-            }
-        });
-
-        btRedactarMensaje.setText("Redactar Mensaje");
-        btRedactarMensaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRedactarMensajeActionPerformed(evt);
-            }
-        });
 
         btRegistrarEntradaV.setText("Registrar entrada visita");
         btRegistrarEntradaV.addActionListener(new java.awt.event.ActionListener() {
@@ -96,20 +81,17 @@ public class GuardiaMenu extends javax.swing.JFrame {
             }
         });
 
+        btVerHistorial.setText("Ver historial");
+        btVerHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerHistorialActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btRegistrarEntradaV)
-                    .addComponent(btRegistrarEntradaS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btRedactarMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btBandejaEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -118,79 +100,45 @@ public class GuardiaMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btSalir)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(btRegistrarEntradaP)
-                    .addContainerGap(219, Short.MAX_VALUE)))
+                .addGap(59, 160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btVerHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btRegistrarEntradaS)
+                            .addGap(116, 116, 116))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btRegistrarEntradaV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btRegistrarEntradaP, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                            .addContainerGap()))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(btBandejaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btRegistrarEntradaV, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRedactarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btRegistrarEntradaS, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btRegistrarEntradaP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btRegistrarEntradaV, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btRegistrarEntradaS, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btVerHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(btSalir)
                 .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(63, 63, 63)
-                    .addComponent(btRegistrarEntradaP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(192, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btBandejaEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBandejaEntradaActionPerformed
-        GUIBandejaDeEntrada bandeja = new GUIBandejaDeEntrada(admin.getCondominio().getGuardia(), 1);
-        try {
-            bandeja.setListaMensajes(admin.getCondominio().getGuardia().getBandejaDeEntrada().getListaMensajes());
-        } catch (IOException ex) {
-            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        bandeja.setVisible(true);
-    }//GEN-LAST:event_btBandejaEntradaActionPerformed
-
-    private void btRedactarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRedactarMensajeActionPerformed
-        /*
-        GUIMensaje gUIMensaje = new GUIMensaje(guardia,1);
-        // Hacer visible la nueva ventana
-        gUIMensaje.setVisible(true);
-        // Hacer invisible la ventana actual
-        this.setVisible(false);
-        // Configurar el comportamiento al cerrar la ventana de ListaResidente
-        gUIMensaje.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        gUIMensaje.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-   
-                // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
-                setVisible(true);
-            }
-        });
-        */
-    }//GEN-LAST:event_btRedactarMensajeActionPerformed
-
     private void btRegistrarEntradaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaVActionPerformed
         RegistrarVisita registroVisita = new RegistrarVisita(admin);
         registroVisita.setVisible(true);
-        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaVActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
@@ -201,23 +149,24 @@ public class GuardiaMenu extends javax.swing.JFrame {
     private void btRegistrarEntradaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaPActionPerformed
         RegistroPropio registroPropio = new RegistroPropio(admin.getCondominio().getGuardia());
         registroPropio.setVisible(true);
-        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaPActionPerformed
 
     private void btRegistrarEntradaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaSActionPerformed
         RegistrarServicio registroServicio = new RegistrarServicio(admin);
         registroServicio.setVisible(true);
-        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaSActionPerformed
+
+    private void btVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerHistorialActionPerformed
+        
+    }//GEN-LAST:event_btVerHistorialActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBandejaEntrada;
-    private javax.swing.JButton btRedactarMensaje;
     private javax.swing.JButton btRegistrarEntradaP;
     private javax.swing.JButton btRegistrarEntradaS;
     private javax.swing.JButton btRegistrarEntradaV;
     private javax.swing.JButton btSalir;
+    private javax.swing.JButton btVerHistorial;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
