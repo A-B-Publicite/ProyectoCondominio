@@ -17,11 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Global extends Mensaje implements Serializable{
-    public ArrayList<Residente> destinatarios;
+    public ArrayList<Perfil> destinatarios;
     
-    public Global(Perfil origen, ArrayList<Residente> destinos) {
+    public Global(Perfil origen, ArrayList<Perfil> destino) {
         super(origen);
-        this.destinatarios = destinos;
+        this.destinatarios = destino;
         
     }
     
