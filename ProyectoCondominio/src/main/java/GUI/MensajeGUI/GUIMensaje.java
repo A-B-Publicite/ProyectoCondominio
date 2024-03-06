@@ -52,7 +52,7 @@ public class GUIMensaje extends javax.swing.JFrame {
     }
     
     
-    public GUIMensaje(Residente residente, int tipo) {
+    public GUIMensaje(Perfil residente, int tipo) {
         initComponents();
         
         this.origen = residente;

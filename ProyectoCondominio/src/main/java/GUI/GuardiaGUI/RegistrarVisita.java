@@ -6,7 +6,11 @@ package GUI.GuardiaGUI;
 
 import Administracion.Administrador;
 import Administracion.Guardia;
+import GUI.MensajeGUI.GUIMensaje;
 import check_in.Visitante;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 
 /**
  *
@@ -220,6 +224,21 @@ public class RegistrarVisita extends javax.swing.JFrame {
 
     private void btNotificarResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificarResidenteActionPerformed
         admin.getCondominio().getGuardia().verificarExistenciaResidente(txtPersonaAVisitar.getText());
+        GUIMensaje gUIMensaje = new GUIMensaje(admin.getCondominio().getGuardia(),1);
+        // Hacer visible la nueva ventana
+        gUIMensaje.setVisible(true);
+        // Hacer invisible la ventana actual
+        this.setVisible(false);
+        // Configurar el comportamiento al cerrar la ventana de ListaResidente
+        gUIMensaje.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        gUIMensaje.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+   
+                // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                setVisible(true);
+            }
+        });
         activarBotonesValidacion();
     }//GEN-LAST:event_btNotificarResidenteActionPerformed
 
