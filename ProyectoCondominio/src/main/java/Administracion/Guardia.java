@@ -20,19 +20,15 @@ public class Guardia extends Perfil implements Serializable{
         super(nombre, apellido);
     }
    
-    public void registrarEntrada(String visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento){
+    public void registrarEntrada(String visitante, String fechaLlegada, String horaLlegada, boolean quiereEstacionamiento, Administrador admin){
         RegistroEntrada registro = new RegistroEntrada();
         Autorizacion autorizacion = buscarAutorizacion(visitante);
         if( autorizacion == null){
             System.out.println("No tengo el registro de una autorizacion para usted");
             return;}
         registro.setAutorizacion(autorizacion);
-        if (quiereEstacionamiento){
-            EspacioDeParqueadero espacio = obtenerEspacioDisponible();
-            if( espacio == null){
-                System.out.println("No tengo ningun espacio disponible");
-                return;}
-            registro.asignarParqueadero(this,espacio);
+        if (quiereEstacionamiento){            
+            registro.asignarParqueadero(admin,this);
         }
         registro.registrarEntrada(fechaLlegada, horaLlegada);
         entradasVisitantes.aniadirRegistro(registro);
