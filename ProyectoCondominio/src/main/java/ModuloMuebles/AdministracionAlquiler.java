@@ -57,17 +57,12 @@ public class AdministracionAlquiler implements Serializable {
         // Calcula el precio total multiplicando la cantidad por el precio de cada mueble
         return cantidad * precioMueble * dias;
     }
-
-    //FINANZAS: cuando el estado del alquiler sea finalziado: true, puede acceder a cobrar el precioTotal
-    public Alquiler finalizarAlquiler(int id, int diasAlquilados) {        
+    
+    public Alquiler finalizarAlquiler(int id) {        
         for (Alquiler alquiler : listaAlquileres) {
             if (id == alquiler.getIdAlquiler()) {
-                alquiler.setDias(diasAlquilados);//actualizar alquiler
-                double totalAlquilado=calcularPrecioTotal(alquiler.getTipoMueble(), alquiler.getCantidad(), diasAlquilados);
-                alquiler.setPrecioTotal(totalAlquilado);
-                
                 alquiler.setFinalizado(true);
-                inventario.actualizarDisponibilidad(alquiler.getTipoMueble(), alquiler.getCantidad(), true);
+                inventario.actualizarDevolucion(alquiler.getTipoMueble(), alquiler.getCantidad(), true);
                 return alquiler;
             }
         }

@@ -69,10 +69,8 @@ public class MenuAlquiler extends javax.swing.JFrame {
         jBBuscar = new java.awt.Button();
         TFBuscarPorCorreo = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTFIdAlquilerD = new javax.swing.JTextField();
-        jTFDiasDevolucion = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTADevolucion = new javax.swing.JTextArea();
@@ -188,11 +186,10 @@ public class MenuAlquiler extends javax.swing.JFrame {
                                     .addComponent(jCBTipoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 278, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3)
-                        .addGap(41, 571, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel3))
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,8 +324,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 204));
 
-        jLabel20.setText("Días ");
-
         jLabel23.setText("ID Alquiler");
 
         jTFIdAlquilerD.addActionListener(new java.awt.event.ActionListener() {
@@ -361,22 +356,17 @@ public class MenuAlquiler extends javax.swing.JFrame {
                         .addComponent(jLabel24)
                         .addGap(239, 500, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel23))
+                        .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                .addGap(276, 276, 276))
+                                .addGap(18, 18, 18)
+                                .addComponent(jBDevolver)
+                                .addGap(178, 178, 178))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTFDiasDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBDevolver))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 210, Short.MAX_VALUE))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,15 +376,11 @@ public class MenuAlquiler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jTFDiasDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFIdAlquilerD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBDevolver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Devolución", jPanel3);
@@ -600,8 +586,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
 
     private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
         int idAlquilerD = Integer.parseInt(jTFIdAlquilerD.getText());
-        int diasD = Integer.parseInt(jTFDiasDevolucion.getText());
-        Alquiler alquilerD=administracionAlquiler.finalizarAlquiler(idAlquilerD,diasD);
+        Alquiler alquilerD=administracionAlquiler.finalizarAlquiler(idAlquilerD);
         jTADevolucion.setText(alquilerD.toString());
         actualizar();
     }//GEN-LAST:event_jBDevolverActionPerformed
@@ -700,7 +685,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -726,7 +710,6 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCarpasPorReparar;
     private javax.swing.JTextField jTFCorreo;
     private javax.swing.JTextField jTFDias;
-    private javax.swing.JTextField jTFDiasDevolucion;
     private javax.swing.JTextField jTFIdAlquiler;
     private javax.swing.JTextField jTFIdAlquilerD;
     private javax.swing.JTextField jTFMesasPorReparar;

@@ -40,7 +40,7 @@ public class Mantenimiento {
         this.ObjetoMantenimiento = ObjetoMantenimiento;
         this.tipoMantenimiento = tipoMantenimiento;
         this.precioTotal = precioTotal;
-        servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
+        //servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
         
     }
         
