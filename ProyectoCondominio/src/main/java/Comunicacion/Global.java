@@ -43,6 +43,7 @@ public class Global extends Mensaje implements Serializable{
                     //destinatario.setBandejaDeEntrada(res.getBandejaDeEntrada());
                     //destinatario.getBandejaDeEntrada().recibirMensaje(this);
                     res.getBandejaDeEntrada().recibirMensaje(this);
+                    //res.setBandejaDeEntrada(destinatario.getBandejaDeEntrada());
                     break;
                 }
             }
