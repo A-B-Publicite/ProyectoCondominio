@@ -147,7 +147,7 @@ public class Condominio implements Serializable {
     }
 
     public ArrayList<Object> getMueblesEInmuebles() {
-        ArrayList<Object> mueblesEInmuebles = null;
+        ArrayList<Object> mueblesEInmuebles = new ArrayList<>();
         mueblesEInmuebles.add(inventario.getListaMuebles());
         mueblesEInmuebles.add(listaDeInmuebleComunes);
         return mueblesEInmuebles;
