@@ -69,9 +69,9 @@ public class Directiva implements Serializable {
                 contrato.darAprobacion();
                 if (contrato.estaAprobado()) {
                     System.out.println("INGRESE A ESTA PROBADO");
-                    System.out.println("Contratos por aprobar"+contratosPorAprobar.size());
+                    System.out.println("Contratos por aprobar "+contratosPorAprobar.size());
                     contratosAprobados.add(contrato);
-                    System.out.println("ENTRE AL IF DE CONTRATOS APORBADOS"+contratosAprobados.size());
+                    System.out.println("ENTRE AL IF DE CONTRATOS APORBADOS "+contratosAprobados.size());
                     //contrato.iniciar(); //TODO: IMPLEMENTAR
                     contratosPorAprobar.remove(contrato);
                     System.out.println(contratosPorAprobar.size());

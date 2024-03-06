@@ -25,7 +25,13 @@ public class Aprobacion implements Serializable{
     
     
     public void notificarAprobacion(String descripcionContrato) {
+<<<<<<< HEAD
         directiva[0].actualizarAprobacion(descripcionContrato);  
+=======
+        Administrador administrador = BaseDeDatos.leerAdministrador(); // copia
+        administrador.getCondominio().getDirectiva().actualizarAprobacion(descripcionContrato);  
+        BaseDeDatos.escribirAdmin(administrador);
+>>>>>>> Fix_G6_contratos
     }
 
 }

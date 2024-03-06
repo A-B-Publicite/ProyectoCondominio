@@ -21,9 +21,9 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     /**
      * Creates new form GestionContrato
      */
-    public GestionContratoAdmin(Administrador administrador) {
+    public GestionContratoAdmin(Administrador administrador, AdminMenu aThis) {
         initComponents();
-        this.administrador = administrador;
+        this.administrador = administrador; // Otra copia
         rellenarcmbSelectorDeContrato();
     }
 
@@ -212,7 +212,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
         administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion);
-        BaseDeDatos.escribirAdmin(administrador);
+        BaseDeDatos.escribirAdmin(administrador); // Aqui se escribe el admin
+        this.setVisible(false);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 

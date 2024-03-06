@@ -31,7 +31,11 @@ public class ResidenteMenu extends javax.swing.JFrame {
     /**
      * Creates new form ResidenteMenu
      */
+<<<<<<< HEAD
     public ResidenteMenu(Residente residente, Administrador administrador) {
+=======
+    public ResidenteMenu(Administrador administrador, Residente residente) {
+>>>>>>> Fix_G6_contratos
         initComponents();
         btnGestionarContratos.setVisible(false);
         this.residente = residente;
@@ -182,6 +186,7 @@ public class ResidenteMenu extends javax.swing.JFrame {
     private void btnGestionarContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarContratosActionPerformed
         GestionContratosDirectiva gcd = new GestionContratosDirectiva(residente, administrador);
         gcd.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnGestionarContratosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
