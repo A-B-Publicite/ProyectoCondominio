@@ -4,6 +4,7 @@
  */
 package check_in;
 
+import Administracion.Administrador;
 import Administracion.Perfil;
 import Inmueble.EspacioDeParqueadero;
 import Inmueble.ParqueaderoPrivado;
@@ -39,9 +40,9 @@ public class RegistroEntrada implements Serializable{
         this.horaLlegada = horaLlegada;
     }
     
-    public void asignarParqueadero(Perfil reservador, EspacioDeParqueadero espacio){
+    public void asignarParqueadero(Administrador admin,Perfil reservador){
         AdministrarReserva adminReserva = new AdministrarReserva();        
-        //usoParqueadero = adminReserva.realizarReserva(espacio, "uso de parqueadero", reservador);
+        usoParqueadero = adminReserva.realizarReserva("uso de parqueadero", admin,4,"",reservador.getCorreo());
     }
     
     public void usarParqueaderoAsignado(String fechaFin,ParqueaderoPrivado parqueadero){
