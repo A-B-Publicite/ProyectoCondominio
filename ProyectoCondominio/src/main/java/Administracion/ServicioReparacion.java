@@ -9,5 +9,9 @@ package Administracion;
  * @author jeanp
  */
 public class ServicioReparacion {
-    
+    /*@Override
+    public void ejecutar(Object objeto) {
+        notificar(objeto);
+    }
+    */
 }

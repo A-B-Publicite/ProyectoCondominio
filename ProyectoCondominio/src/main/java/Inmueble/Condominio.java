@@ -32,6 +32,7 @@ public class Condominio implements Serializable {
     //llenar parqueaderos publicos
     public void agregarInmuebleComun(InmuebleComun inmueble) {
         listaDeInmuebleComunes.add(inmueble);
+        System.out.println(listaDeInmuebleComunes);
     }
 
     //para crear la lista de departamentos vacia
@@ -44,7 +45,6 @@ public class Condominio implements Serializable {
 
     //para crear la lista de MUEBLES vacia
     public void agregarMueble(Mueble mueble, int cantidad, double precio) {
-
         inventario.agregarMueble(mueble, cantidad, precio);
     }
 
@@ -148,8 +148,14 @@ public class Condominio implements Serializable {
 
     public ArrayList<Object> getMueblesEInmuebles() {
         ArrayList<Object> mueblesEInmuebles = new ArrayList<>();
-        mueblesEInmuebles.add(inventario.getListaMuebles());
-        mueblesEInmuebles.add(listaDeInmuebleComunes);
+        for (InmuebleComun inmueble : listaDeInmuebleComunes) {
+            mueblesEInmuebles.add(inmueble);
+        }
+        for (Mueble mueble : inventario.getListaMuebles()) {
+            mueblesEInmuebles.add(mueble);
+        }
+
+        System.out.println(mueblesEInmuebles);
         return mueblesEInmuebles;
     }
 
