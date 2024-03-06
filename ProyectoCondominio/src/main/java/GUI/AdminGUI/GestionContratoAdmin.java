@@ -232,7 +232,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
-        administrador.pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
+        administrador.pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato(), "Contrato");
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed

@@ -133,7 +133,7 @@ public class Administrador extends Perfil implements Serializable {
         condominio.getGuardia().setAutorizaciones(autorizaciones);
     }
 
-    public void pagarContrato(double precioContrato) {
-        cuentaBancaria.pagarServicio(precioContrato, "Contrato");
+    public void pagarContrato(double precioContrato, String descripcion) {
+        cuentaBancaria.pagarServicio(precioContrato, descripcion);
     }
 }

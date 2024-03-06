@@ -40,18 +40,12 @@ public class Cuenta implements Serializable {
         }
 
     }
-    
-    /*
-    public void pagarContrato(){
-        cuenta.pagar(123, "Contrato");
-    };*/
-
- 
+     
 
     public void pagarServicio(double monto, String tipo) {
         if (esSaldoMayorOIgualMonto(monto)) {
             Pago nuevoPago = new Pago(this);
-            nuevoPago.pagar(monto, tipo);
+            nuevoPago.pagar(monto, tipo, cuentaAdministrador);
             pagos.add(nuevoPago);
         } else {
             System.out.println("Saldo insuficiente");

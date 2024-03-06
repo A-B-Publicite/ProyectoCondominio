@@ -13,7 +13,7 @@ public class Pago implements Serializable {
     private ObligacionFinanciera obligacionFinanciera;
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
-    private String descripción;
+    private String descripcion;
 
     public Pago(Cuenta cuenta) {
         this.cuentaOrigen = cuenta;
@@ -37,9 +37,11 @@ public class Pago implements Serializable {
 
     }
     
-    public void pagar(double precio, String descripcion) {
+    public void pagar(double precio, String descripcion, Cuenta cuentaAdministrador) {
         precioPagado = precio;
         cuentaOrigen.actualizarSaldo(-precio);
+        cuentaAdministrador.actualizarSaldo(precio);
+        cuentaDestino = cuentaAdministrador;
     }
     /*
 
@@ -47,11 +49,11 @@ public class Pago implements Serializable {
         precioPagado = precioContrato;
         cuentaOrigen.actualizarSaldo(-precioContrato);
     }
-    */
+    *//*
     public void pagarAlquiler(double precioAlquiler) {
         precioPagado = precioAlquiler;
         cuentaOrigen.actualizarSaldo(-precioAlquiler);
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -64,7 +66,7 @@ public class Pago implements Serializable {
             salida += "PAGO REALIZADO: Fecha:" + fechaPago + " Monto: " + precioPagado
                     + " ID: " + id + ", DESCRIPCION = " + descripcion;
         } else {
-            salida += "PAGO REALIZADO: (Contrato) Fecha:" + fechaPago + " Monto: " + precioPagado ;
+            salida += "PAGO REALIZADO: (Contrato) Fecha:" + fechaPago + ", DESCRIPCION = " + descripcion + " Monto: " + precioPagado ;
         }
 
         return salida;
