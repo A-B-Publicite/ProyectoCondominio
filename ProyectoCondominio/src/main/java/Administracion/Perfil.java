@@ -24,7 +24,7 @@ public abstract class Perfil implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuentaBancaria = new Cuenta();
-        this.aprobacionDeContrato = new Aprobacion();
+        this.aprobacionDeContrato = null;
 
     }
 

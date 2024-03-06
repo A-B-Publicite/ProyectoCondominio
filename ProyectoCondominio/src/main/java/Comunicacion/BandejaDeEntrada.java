@@ -30,31 +30,8 @@ public class BandejaDeEntrada implements Serializable{
         return listaMensajes;
     }
 
-    
-    public void mostrar() {
-        System.out.println("Bandeja de entrada de " + perfil.getNombreApellido()+ ":");
-        int index = 1;
-        System.out.println("LISTA DE MENSAJES: ");
-        for (Mensaje mensaje : listaMensajes) {
-            System.out.println(index + ". " + mensaje.getTitulo());
-            index++;
-        }
-       
-    }
-/*
-    public void getMensajePorIndice() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Elija el mensaje que desea ver: ");
-        int indice = sc.nextInt();
-        if (indice >= 1 && indice <= listaMensajes.size()) {
-           listaMensajes.get(indice - 1).mostrar();
-        } else {
-            System.out.println("Índice de mensaje no válido.");
-            
-        }
-    }
-*/
-    public void limpiarBandeja() {
+
+    public void limpiar() {
         listaMensajes.clear();
     }
     

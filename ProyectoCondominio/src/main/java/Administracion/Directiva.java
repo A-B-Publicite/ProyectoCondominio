@@ -23,8 +23,9 @@ public class Directiva implements Serializable {
     public void agregarDirectiva(Residente presidente, Residente secretario) {
         setPresidente(presidente);
         setSecretario(secretario);
-        presidente.setAprobacion();
-        secretario.setAprobacion();
+        Directiva[] directiva = {this};
+        presidente.setAprobacion(directiva);
+        secretario.setAprobacion(directiva);
     }
 
     public void setPresidente(Residente presidente) {

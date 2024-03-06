@@ -27,12 +27,37 @@ public class Directo extends Mensaje implements Serializable{
         this.destino = destino;
         }
 
+    public Perfil getDestino() {
+        return destino;
+    }
 
+
+    
     
     @Override
     public void enviar() {
         //usar destinatarios para enviar
-        
+        Administrador ad =BaseDeDatos.leerAdministrador();
+        if (getDestino() instanceof Administrador) {
+            
+            ad.getBandejaDeEntrada().recibirMensaje(this);  
+            BaseDeDatos.escribirAdmin(ad);
+        } else {
+               if (getDestino()!=null) {
+                   System.out.println("ENTRO TRY");
+                   ArrayList<Residente> residentes = ad.getResidentes();
+                   for (Residente res : residentes) {
+                       if (res.getCorreo().equals(getDestino().getCorreo())) {
+                           res.getBandejaDeEntrada().recibirMensaje(this);
+                           
+                           break;
+                       }
+                   }
+                   BaseDeDatos.escribirAdmin(ad);
+
+               }
+            }
+              
     }
 
 

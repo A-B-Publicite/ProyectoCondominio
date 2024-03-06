@@ -45,7 +45,7 @@ public class Alicuota extends ObligacionFinanciera implements Serializable{
     @Override
     public String toString() {
         return "[N. " + idObligacion
-                + "] | Alicuota = ("
+                + "] | [Alicuota] ("
                 + "Fecha limite= " + fechaLimite.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
                 + ", Estado= " + estado
                 + ", Monto= " + monto

@@ -29,7 +29,8 @@ public abstract class Mensaje implements Serializable{
         this.fecha = LocalDateTime.now();
     }
 
-        public void crear (String titulo, String contenido) {
+    
+    public void crear (String titulo, String contenido) {
         setTitulo(titulo);
         setContenido(contenido);
         enviar();

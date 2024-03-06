@@ -12,7 +12,7 @@ public class Recarga implements Serializable {
     private double cantidadDinero;
 
     public Recarga(double dineroARecargar, String id, MetodoRecarga metodoDeRecarga) {
-        this.cantidadDinero = cantidadDinero;
+        this.cantidadDinero = dineroARecargar;
         this.metodoRecarga = metodoDeRecarga;
         this.id = id;
 
@@ -22,9 +22,9 @@ public class Recarga implements Serializable {
 
     @Override
     public String toString() {
-        return "[Recarga N. " + id
+        return "[N. " + id
                 + "] | (" + metodoRecarga
-                + ", fecha de realización= " + fechaRealizacion + ")";
+                + ", Fecha de realización= " + fechaRealizacion + ")";
     }
 
     
