@@ -190,15 +190,15 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     AdminMenu adminMenu = new AdminMenu(administrador, this);
                     adminMenu.setVisible(true);
                     this.setVisible(false);
-                    // Configurar el comportamiento al cerrar la ventana de ListaResidente
-                    /*adminMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                    adminMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     adminMenu.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            BaseDeDatos.escribirAdmin(administrador);
+
                             setVisible(true);
                         }
-                    });*/
+                    });
                     break;
                 case "Residente":
                     //BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
@@ -210,16 +210,16 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     ResidenteMenu residenteMenu = new ResidenteMenu(administrador, BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
-                    /*
+                    
                     residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     residenteMenu.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            BaseDeDatos.escribirAdmin(administrador);
+
                             setVisible(true);
                         }
                     });
-*/
+
                     break;
                 case "Guardia":
                     
