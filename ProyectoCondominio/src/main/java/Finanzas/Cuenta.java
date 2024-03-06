@@ -61,7 +61,6 @@ public class Cuenta implements Serializable {
 
     public String mostrarRecargas() {
         String salida = "";
-        salida = "================  RECARGAS RESIDENTE ==================\n";
 
         for (Recarga recarga : recargas) {
             salida += recarga + "\n";
@@ -73,33 +72,17 @@ public class Cuenta implements Serializable {
         return cuentaAdministrador;
     }
 
-    /*
-    @Override
-    public String toString() {
-        String salida = "";
-        salida = "================  CUENTA ==================\n";
-
-        return salida += "Saldo Actual= " + saldo;
-    }
-     */
     public void setCuentaDePago(Cuenta cuentaAdministrador) {
         this.cuentaAdministrador = cuentaAdministrador;
     }
 
     public String mostrarPagos() {
         String salida = "";
-        /*if (cuentaAdministrador != null) {
-            salida += "================  REGISTRO RESIDENTE ==================\n";
-        } else {
-            salida += "================  REGISTRO ADMINISTRADOR ==================\n";
-        }*/
+        
 
         for (Pago pago : pagos) {
             salida += pago + "\n";
         }
-
-        // Información de saldo después de listar todos los pagos
-        salida += "=================  CUENTA ==================\n";
 
         return salida;
     }
