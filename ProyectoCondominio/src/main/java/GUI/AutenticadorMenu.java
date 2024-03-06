@@ -207,7 +207,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
                         return;
                     }
-                    ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
+                    ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()), administrador);
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
                     residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

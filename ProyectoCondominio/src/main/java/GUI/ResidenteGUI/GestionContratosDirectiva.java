@@ -18,14 +18,16 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
 
     private final Residente residente;
     ResidenteMenu residenteMenu;
+    private final Administrador administrador;
 
     /**
      * Creates new form GestionContratosDirectiva
      */
-    public GestionContratosDirectiva(Residente residente) {
+    public GestionContratosDirectiva(Residente residente, Administrador administrador) {
         initComponents();
         llenarCombo();
         this.residente = residente;
+        this.administrador = administrador;
 
     }
 
@@ -112,6 +114,7 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         residente.aprobar((String) cmbSelectorDeContrato.getSelectedItem());
         this.setVisible(false);
+        BaseDeDatos.escribirAdmin(administrador);
         this.dispose();
     }//GEN-LAST:event_btnAprobarActionPerformed
 
