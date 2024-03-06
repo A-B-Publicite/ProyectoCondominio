@@ -219,7 +219,7 @@ public class RegistrarVisita extends javax.swing.JFrame {
     }//GEN-LAST:event_btRealizarRegistroActionPerformed
 
     private void btNotificarResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificarResidenteActionPerformed
-        admin.getCondominio().getGuardia().notificarResidente(txtPersonaAVisitar.getText());
+        admin.getCondominio().getGuardia().verificarExistenciaResidente(txtPersonaAVisitar.getText());
         activarBotonesValidacion();
     }//GEN-LAST:event_btNotificarResidenteActionPerformed
 

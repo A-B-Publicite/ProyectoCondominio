@@ -36,13 +36,13 @@ public class Guardia extends Perfil implements Serializable{
     
     public Autorizacion crearAutorizacion(Visitante visitante, String fechaLlegada, String horaLlegada) {
         Autorizacion autorizacionInmediata = new Autorizacion();        
-        autorizacionInmediata.completar(visitante.getPersonaAVisitar(), visitante.getNombre(), fechaLlegada, fechaLlegada);
-        validarEnNombreDe(visitante.getPersonaAVisitar(),autorizacionInmediata);
+        autorizacionInmediata.completar(this.getNombreApellido(), visitante.getNombre(), fechaLlegada, fechaLlegada);
+        validarAutorizacion(autorizacionInmediata);
         autorizaciones.add(autorizacionInmediata);
         return autorizacionInmediata;
     }
     
-    public void notificarResidente(String personaAVisitar){
+    public void verificarExistenciaResidente(String personaAVisitar){
         String residente = buscarResidente(personaAVisitar);
         if(residente == null){
             System.out.println("No tengo el registro de ningun residente llamado asi");
@@ -95,10 +95,5 @@ public class Guardia extends Perfil implements Serializable{
 
     public HistorialEntrada getEntradasVisitantes() {
         return entradasVisitantes;
-    }
-
-    private void validarEnNombreDe(String personaAVisitar, Autorizacion autorizacionInmediata) {
-        Validacion validacion = new Validacion();
-        validacion.validar(personaAVisitar,autorizacionInmediata);
     }
 }
