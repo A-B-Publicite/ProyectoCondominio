@@ -42,7 +42,7 @@ public class Mantenimiento {
         
     }
     
-    public void Actualizar(Object objeto) {
+    public void actualizar(Object objeto) {
         for(Object objetoMueblesInmuebles : condominio.getMueblesEInmuebles()) {
             if(objetoMueblesInmuebles.equals(objeto)) {
                 if(objetoMueblesInmuebles instanceof Mueble) {
