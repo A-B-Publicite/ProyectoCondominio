@@ -44,9 +44,6 @@ public class Contrato implements Serializable {
         return "Contrato{" + "fechaContrato=" + fechaContrato + ", precioContrato=" + precioContrato + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + '}';
     }
     
-    public void pagar(){
-        System.out.print("Se pago el contrato");
-    }
     public double getPrecioContrato() {
         return precioContrato;
     }

@@ -23,14 +23,7 @@ public class Residente extends Perfil implements Serializable {
     public void darCuentaDePago(Cuenta cuentaAdministrador) {
         cuentaBancaria.setCuentaDePago(cuentaAdministrador);
     }
-
-    public void reservarAreaComun() {
-        // Hagan los de Reserva
-    }
-
-    public void pagarAlicuota() {
-        // Hagan los de financieros
-    }
+    
 
     public Cuenta getCuenta() {
         return cuentaBancaria;
