@@ -276,7 +276,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     private void llenarComboMueblesInmuebles() {
         ArrayList<Object> objetos = BaseDeDatos.leerAdministrador().getCondominio().getMueblesEInmuebles();
         for (Object  objeto : objetos) {
-            cmbSelectorDeContrato.addItem(objeto.toString());
+            cmbInmueblesYMuebles.addItem(objeto.toString());
         }
     }
 }
