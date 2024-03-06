@@ -31,11 +31,8 @@ public class ResidenteMenu extends javax.swing.JFrame {
     /**
      * Creates new form ResidenteMenu
      */
-<<<<<<< HEAD
-    public ResidenteMenu(Residente residente, Administrador administrador) {
-=======
+
     public ResidenteMenu(Administrador administrador, Residente residente) {
->>>>>>> Fix_G6_contratos
         initComponents();
         btnGestionarContratos.setVisible(false);
         this.residente = residente;

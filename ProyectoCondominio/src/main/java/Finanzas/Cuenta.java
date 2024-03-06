@@ -58,7 +58,7 @@ public class Cuenta implements Serializable {
             System.out.println("Saldo insuficiente");
         }
     }
-/*
+
     public void pagarContrato(double precioContrato) {
         if (esSaldoMayorOIgualMonto(precioContrato)) {
             Pago nuevoPago = new Pago(this);
@@ -77,7 +77,7 @@ public class Cuenta implements Serializable {
         } else {
             System.out.println("Saldo insuficiente");
         }
-    }*/
+    }
 
     public boolean esSaldoMayorOIgualMonto(double monto) {
         return saldo >= monto;

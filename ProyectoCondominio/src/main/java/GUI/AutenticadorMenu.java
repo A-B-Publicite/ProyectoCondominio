@@ -10,7 +10,7 @@ import GUI.AdminGUI.AdminMenu;
 import GUI.GuardiaGUI.GuardiaMenu;
 import GUI.MensajeGUI.GUIMensaje;
 import GUI.MensajeGUI.ResidenteTabla;
-import GUI.ResidenteGUI.ResidenteMenu;
+import GUI.ResidenteGUI.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -207,11 +207,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
                         return;
                     }
-<<<<<<< HEAD
-                    ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()), administrador);
-=======
                     ResidenteMenu residenteMenu = new ResidenteMenu(administrador, BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
->>>>>>> Fix_G6_contratos
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
                     /*

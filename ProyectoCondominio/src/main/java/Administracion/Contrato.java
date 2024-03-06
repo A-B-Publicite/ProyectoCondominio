@@ -14,6 +14,7 @@ public class Contrato implements Serializable {
     private boolean aprobacionNumero1;
     private boolean aprobacionNumero2;
     private Servicio servicio;
+    private Object objeto;
     
 
     public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
@@ -28,7 +29,7 @@ public class Contrato implements Serializable {
     }
 
     public void iniciar() {
-        servicio.ejecutar();
+        servicio.ejecutar(objeto);
     }
 
     public void terminar() {
