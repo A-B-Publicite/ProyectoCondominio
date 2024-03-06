@@ -107,7 +107,6 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,11 +139,6 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                 "Estado", "Monto", "Nombre"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(jTable2);
 
         jButton1.setText("Cerrar");
@@ -157,8 +151,6 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         jLabel1.setText("OBLIGACIONES RESIDENTES");
 
         jLabel2.setText("MENSAJES");
-
-        jLabel3.setText("Haga doble clic en una obligación para redactar recordatorio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,9 +166,7 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(244, 244, 244)
-                        .addComponent(jLabel3)
-                        .addGap(103, 103, 103))))
+                        .addGap(673, 673, 673))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(jLabel2)
@@ -195,15 +185,9 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 29, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(26, 26, 26))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 29, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -226,53 +210,11 @@ public class GUIBandejaDeEntrada extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
-        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
-
-            obligacionSeleccionada = jTable2.getSelectedRow();
-
-            for (Residente res : BaseDeDatos.leerAdministrador().getResidentes()) {
-
-                if (res.getNombreApellido().equals(jTable2.getValueAt(obligacionSeleccionada, 2))) {
-                    /*GUIMensaje guiMen = null;
-                    try {
-                        guiMen = new GUIMensaje((Administrador) perf,tipo);
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    guiMen.setVisible(true);
-                    try {
-                        guiMen.llenarObligacion("REPORTE DE PAGO", Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()), jTable2.getValueAt(obligacionSeleccionada, 2).toString(), jTable2.getValueAt(obligacionSeleccionada, 0).toString(),res);
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUIBandejaDeEntrada.class.getName()).log(Level.SEVERE, null, ex);
-                    }*/
-                    
-                    Mensaje mensaje = new Reporte(BaseDeDatos.leerAdministrador(), res);
-                    mensaje.crear("REPORTE DE PAGO", 
-                            "Estimado " + res.getNombreApellido() + " se le solicita de la manera mas cordial\n"
-                                    + "cancelar el monto de $" + Double.parseDouble(jTable2.getValueAt(obligacionSeleccionada, 1).toString()) + 
-                                    " de su alicuota\n"
-                                            + "Con estado " + jTable2.getValueAt(obligacionSeleccionada, 2).toString());
-                    
-                    break;
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_jTable2MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
