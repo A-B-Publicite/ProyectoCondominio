@@ -8,6 +8,7 @@ GUI\ReservasGUI\MenuReservas$15.class
 GUI\ReservasGUI\MenuReservas$9.class
 Finanzas\MetodoRecarga.class
 GUI\GuardiaGUI\RegistroPropio.class
+GUI\GuardiaGUI\RegistrarVisita$2.class
 GUI\GuardiaGUI\GuardiaMenu.class
 check_in\Validacion.class
 GUI\RegistroAdminGUI$2.class
@@ -190,6 +191,7 @@ Administracion\Directiva.class
 GUI\ReservasGUI\MenuReservas$14.class
 GUI\AdminGUI\AdminMenu$2.class
 GUI\GuardiaGUI\CrearAutoriza$1.class
+GUI\GuardiaGUI\RegistrarVisita$3.class
 ModuloMuebles\Mueble.class
 GUI\AlquilerGUI\MenuAlquiler$12.class
 GUI\AdminGUI\GestionCondominio$8.class

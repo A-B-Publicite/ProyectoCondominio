@@ -142,7 +142,6 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void llenarCombo() {
-        Administrador administrador = BaseDeDatos.leerAdministrador();
         ArrayList<Contrato> contratosPorAprobar = administrador.getCondominio().getDirectiva().getListaContratosPorApobar();
         for(Contrato contrato : contratosPorAprobar){
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());

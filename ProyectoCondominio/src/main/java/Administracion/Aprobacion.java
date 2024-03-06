@@ -15,9 +15,9 @@ import java.io.Serializable;
  */
 public class Aprobacion implements Serializable{
 
-    private final Directiva directiva;
+    private Directiva[] directiva;
 
-    public Aprobacion(Directiva directiva) {
+    public Aprobacion(Directiva[] directiva) {
         this.directiva = directiva;
         
     }
@@ -25,7 +25,7 @@ public class Aprobacion implements Serializable{
     
     
     public void notificarAprobacion(String descripcionContrato) {
-        directiva.actualizarAprobacion(descripcionContrato);  
+        directiva[0].actualizarAprobacion(descripcionContrato);  
     }
 
 }
