@@ -269,6 +269,11 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     private void rellenarcmbSelectorDeContrato() {
         ArrayList<Contrato> contratos = BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getContratosAprobados();
         System.out.println("Rellenar contratos aprobados combo"+contratos.size());
+        System.out.println(BaseDeDatos.leerAdministrador());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio().getDirectiva());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getContratosAprobados());
+        
         for (Contrato contrato : contratos) {
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
         }

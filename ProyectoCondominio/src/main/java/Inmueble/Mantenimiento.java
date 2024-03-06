@@ -43,6 +43,7 @@ public class Mantenimiento {
         //servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
         
     }
+    
     public void actualizar(Object objeto) {
         
         //muebleseinmuebles

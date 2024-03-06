@@ -25,12 +25,13 @@ public class Contrato implements Serializable {
         this.fechaFin = fechaFin;
         this.aprobacionNumero1 = false;
         this.aprobacionNumero2 = false;
-        this.servicio = new Servicio();
+        this.servicio = null;
         this.objeto = objeto;
 
     }
 
     public void iniciar() {
+        this.servicio = new Servicio();
         servicio.ejecutar(objeto);
     }
 

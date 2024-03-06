@@ -114,6 +114,7 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         residente.aprobar((String) cmbSelectorDeContrato.getSelectedItem());
         this.setVisible(false);
+        javax.swing.JOptionPane.showMessageDialog(null, "APROBADO");
         BaseDeDatos.escribirAdmin(administrador);
         this.dispose();
     }//GEN-LAST:event_btnAprobarActionPerformed
