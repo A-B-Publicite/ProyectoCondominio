@@ -52,6 +52,10 @@ public class Mantenimiento {
         }
     }
 
+    public Object getObjetoM() {
+        return objetoM;
+    }
+
     
     public static int getContadorIds() {
         return contadorIds;
