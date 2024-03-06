@@ -188,7 +188,7 @@ public class GuardiaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btRedactarMensajeActionPerformed
 
     private void btRegistrarEntradaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaVActionPerformed
-        RegistrarVisita registroVisita = new RegistrarVisita(admin.getCondominio().getGuardia());
+        RegistrarVisita registroVisita = new RegistrarVisita(admin);
         registroVisita.setVisible(true);
         System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaVActionPerformed
@@ -205,7 +205,7 @@ public class GuardiaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btRegistrarEntradaPActionPerformed
 
     private void btRegistrarEntradaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarEntradaSActionPerformed
-        RegistrarServicio registroServicio = new RegistrarServicio(admin.getCondominio().getGuardia());
+        RegistrarServicio registroServicio = new RegistrarServicio(admin);
         registroServicio.setVisible(true);
         System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRegistrarEntradaSActionPerformed

@@ -4,6 +4,7 @@
  */
 package GUI.GuardiaGUI;
 
+import Administracion.Administrador;
 import Administracion.Guardia;
 
 /**
@@ -12,15 +13,11 @@ import Administracion.Guardia;
  */
 public class RegistrarServicio extends javax.swing.JFrame {
 
-    private final Guardia guardia;
+    private final Administrador admin;
 
-    /**
-     * Creates new form RegistrarServicio
-     * @param guardia
-     */
-    public RegistrarServicio(Guardia guardia) {
+    public RegistrarServicio(Administrador admin) {
         initComponents();
-        this.guardia = guardia;
+        this.admin = admin;
     }
 
     /**
@@ -142,7 +139,7 @@ public class RegistrarServicio extends javax.swing.JFrame {
         boolean estacionamiento = false;
         if(txtQuiereEstacionamiento.getText().equals("SI"))
             estacionamiento = true;
-        guardia.registrarEntrada(txPersonaServicio.getText(), txtFIngresoServicio.getText(), txtHIngresoServicio.getText(), estacionamiento);
+        admin.getCondominio().getGuardia().registrarEntrada(txPersonaServicio.getText(), txtFIngresoServicio.getText(), txtHIngresoServicio.getText(), estacionamiento, admin);
     }//GEN-LAST:event_btRealizarRegistroServicioActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed

@@ -4,6 +4,7 @@
  */
 package GUI.GuardiaGUI;
 
+import Administracion.Administrador;
 import Administracion.Guardia;
 import check_in.Visitante;
 
@@ -13,14 +14,14 @@ import check_in.Visitante;
  */
 public class RegistrarVisita extends javax.swing.JFrame {
 
-    private final Guardia guardia;
+    private final Administrador admin;
 
     /**
      * Creates new form RegistrarVisita
      */
-    public RegistrarVisita(Guardia guardia) {
+    public RegistrarVisita(Administrador admin) {
         initComponents();
-        this.guardia = guardia;
+        this.admin = admin;
         desactivarBotonesCampos();
     }
 
@@ -212,18 +213,18 @@ public class RegistrarVisita extends javax.swing.JFrame {
         boolean estacionamiento = false;
         if(txtQuiereEstacionamiento.getText().equals("SI"))
             estacionamiento = true;       
-        guardia.registrarEntrada(txtNombreVisita.getText(),fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento);
-        System.out.println(guardia.getEntradasVisitantes().toString());
+        admin.getCondominio().getGuardia().registrarEntrada(txtNombreVisita.getText(),fechaIngresoVisita.getText(), horaIngresoVisita.getText(), estacionamiento,admin);
+        System.out.println(admin.getCondominio().getGuardia().getEntradasVisitantes().toString());
     }//GEN-LAST:event_btRealizarRegistroActionPerformed
 
     private void btNotificarResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificarResidenteActionPerformed
-        guardia.notificarResidente(txtPersonaAVisitar.getText());
+        admin.getCondominio().getGuardia().notificarResidente(txtPersonaAVisitar.getText());
         activarBotonesValidacion();
     }//GEN-LAST:event_btNotificarResidenteActionPerformed
 
     private void btValidarAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValidarAutorizacionActionPerformed
         Visitante visitante = new Visitante(txtMotivoVisita.getText(),txtNombreVisita.getText(),txtPersonaAVisitar.getText());
-        guardia.crearAutorizacion(visitante, fechaIngresoVisita.getText(), fechaIngresoVisita.getText());
+        admin.getCondominio().getGuardia().crearAutorizacion(visitante, fechaIngresoVisita.getText(), fechaIngresoVisita.getText());
         activarCamposRegistro();
     }//GEN-LAST:event_btValidarAutorizacionActionPerformed
 
