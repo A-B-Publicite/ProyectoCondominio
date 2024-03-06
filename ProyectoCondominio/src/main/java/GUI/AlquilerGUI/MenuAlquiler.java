@@ -546,7 +546,7 @@ public class MenuAlquiler extends javax.swing.JFrame {
     private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
         int idAlquilerD = Integer.parseInt(jTFIdAlquilerD.getText());
         Alquiler alquilerD=administracionAlquiler.finalizarAlquiler(idAlquilerD);
-        alquilerD.getUsuario().getCuenta().pagarAlquiler(1321, "Alquiler");
+        alquilerD.getUsuario().pagarAlquiler(1321, "Alquiler");
         jTADevolucion.setText(alquilerD.toString());
         actualizar();
     }//GEN-LAST:event_jBDevolverActionPerformed

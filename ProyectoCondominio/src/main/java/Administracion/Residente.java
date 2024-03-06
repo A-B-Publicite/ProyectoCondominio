@@ -2,6 +2,7 @@ package Administracion;
 
 import Finanzas.Cuenta;
 import Finanzas.ObligacionFinanciera;
+import Finanzas.Pago;
 import Inmueble.Departamento;
 import check_in.RegistroEntrada;
 import java.io.Serializable;
@@ -47,6 +48,10 @@ public class Residente extends Perfil implements Serializable {
         cuentaBancaria.pagarObligacionFinanciera(obligacionAPagar);
     }
 
+    public void pagarAlquiler(double precioAlquiler, String descripcion) {
+        cuentaBancaria.pagarServicio(precioAlquiler, descripcion);
+    }
+
     public Boolean compararCorreoNombre(String correo) {
         return correo.equals(this.correo);
     }
@@ -73,8 +78,7 @@ public class Residente extends Perfil implements Serializable {
         aprobacionDeContrato = new Aprobacion(directiva);
     }
 
-    
-    public void aprobar(String descripcionContrato){
+    public void aprobar(String descripcionContrato) {
         aprobacionDeContrato.notificarAprobacion(descripcionContrato);
     }
 
