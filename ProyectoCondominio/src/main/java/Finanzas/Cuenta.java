@@ -44,10 +44,13 @@ public class Cuenta implements Serializable {
     /*
     public void pagarContrato(){
         cuenta.pagar(123, "Contrato");
-    };
-    public void pagarAlquiler(double precio, String descripcion){
-        cuenta.pagar(123, "Alquiler");
     };*/
+
+    public void pagarAlquiler(double precio, String descripcion){
+          Pago nuevoPago = new Pago(this);
+          nuevoPago.pagarAlquiler(precio);
+          pagos.add(nuevoPago);
+    };
 
     public void pagarServicio(double monto, String tipo) {
         if (esSaldoMayorOIgualMonto(monto)) {
