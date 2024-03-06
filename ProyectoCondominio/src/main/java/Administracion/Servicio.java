@@ -10,8 +10,7 @@ public class Servicio implements Serializable{
         this.nombreDelServicio = nombreDelServicio;
     }
     
-    public void ejecutar(){
-        javax.swing.JOptionPane.showMessageDialog(null, "Ejecutando...");
-
+    public void ejecutar(Object objeto){
+        javax.swing.JOptionPane.showMessageDialog(null, "El papa nunca debería controlar, si sale este mensaje esta mal");
     }
 }

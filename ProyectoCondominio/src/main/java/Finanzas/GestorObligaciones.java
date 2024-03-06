@@ -34,7 +34,7 @@ public class GestorObligaciones implements Serializable {
             obligacionesFinancieras.add(nuevaObligacion);
             nuevaObligacion.agregarObservador(this);
             if (nuevaObligacion instanceof Alicuota) {
-                programarSiguienteAlicuota((Alicuota) nuevaObligacion, cuenta);
+                programarSiguienteAlicuota((Alicuota) nuevaObligacion/*, cuenta*/);
             }
         }
         return nuevaObligacion;
@@ -100,7 +100,7 @@ public class GestorObligaciones implements Serializable {
         return salida;
     }
 
-    public void programarSiguienteAlicuota(Alicuota alicuota, Cuenta cuenta) {
+    public void programarSiguienteAlicuota(Alicuota alicuota/*, Cuenta cuenta*/) {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
