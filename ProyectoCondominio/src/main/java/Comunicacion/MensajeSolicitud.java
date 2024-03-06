@@ -7,12 +7,13 @@ package Comunicacion;
 import Administracion.Administrador;
 import Administracion.Perfil;
 import BD.BaseDeDatos;
+import java.io.Serializable;
 
 /**
  *
  * @author intel
  */
-public class MensajeSolicitud extends Mensaje {
+public class MensajeSolicitud extends Mensaje implements Serializable{
     public Administrador destino;
 
     public MensajeSolicitud(Perfil origen) {
