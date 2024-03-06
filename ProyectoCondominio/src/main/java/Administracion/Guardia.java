@@ -111,6 +111,13 @@ public class Guardia extends Perfil implements Serializable{
         LocalDate fechaLocal = LocalDate.parse(fecha, formatter); 
         // Obtiene el nombre del día de la semana en español
         String nombreDia = fechaLocal.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es", "ES")); 
+        if(nombreDia.equals("lunes") )nombreDia="Lunes";
+        if(nombreDia.equals("martes") )nombreDia="Martes";
+        if(nombreDia.equals("miércoles") )nombreDia="Miercoles";
+        if(nombreDia.equals("jueves") )nombreDia="Jueves";
+        if(nombreDia.equals("viernes") )nombreDia="Viernes";
+        if(nombreDia.equals("sabado") )nombreDia="Sabado";
+        if(nombreDia.equals("domingo") )nombreDia="Domingo";
         return nombreDia;
     }
 }
