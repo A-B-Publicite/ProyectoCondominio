@@ -69,8 +69,8 @@ public class Residente extends Perfil implements Serializable {
         return "Residente{" + "esPropietario=" + esPropietario + ", departamento=" + departamento + '}';
     }
 
-    public void setAprobacion(Directiva directiva) {
-        aprobacionDeContrato = new Aprobacion(directiva);
+    public void setAprobacion() {
+        aprobacionDeContrato = new Aprobacion();
     }
 
     

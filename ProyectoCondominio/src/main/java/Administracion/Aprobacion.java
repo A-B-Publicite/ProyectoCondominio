@@ -14,15 +14,10 @@ import java.io.Serializable;
  * @author jeanp
  */
 public class Aprobacion implements Serializable{
-    private final Directiva directiva;
 
-    public Aprobacion(Directiva directiva) {
-        this.directiva = directiva;
-    }
-    
-    
     public void notificarAprobacion(String descripcionContrato) {
-        directiva.actualizarAprobacion(descripcionContrato);  
+        Administrador administrador = BaseDeDatos.leerAdministrador();
+        administrador.getCondominio().getDirectiva().actualizarAprobacion(descripcionContrato);  
     }
 
 }
