@@ -49,7 +49,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnProponerContrato = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        cmbSelectorDeCOntrato = new javax.swing.JComboBox<>();
+        cmbSelectorDeContrato = new javax.swing.JComboBox<>();
         btnPagarContrato = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
@@ -84,7 +84,12 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         jLabel7.setText("Seleccione el contrato que desea pagar:");
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        cmbSelectorDeCOntrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el contrato a pagar:", " " }));
+        cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el contrato a pagar:", " " }));
+        cmbSelectorDeContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectorDeContratoActionPerformed(evt);
+            }
+        });
 
         btnPagarContrato.setText("Pagar contrato");
         btnPagarContrato.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +140,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(cmbSelectorDeCOntrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmbSelectorDeContrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(btnPagarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,7 +192,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbSelectorDeCOntrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbSelectorDeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -202,31 +207,35 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProponerContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProponerContratoActionPerformed
-        double precio = Double.parseDouble(tfvalorContrato.getText()) ;
+        double precio = Double.parseDouble(tfvalorContrato.getText());
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        administrador.agregarContrato(precio, descripcion,  fechaInicio,  fechaFinalizacion);
+        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion);
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
-        //public void pagarContrato(String descripcionContratoAPagar) {
-        administrador.pagarContrato(cmbSelectorDeCOntrato.getSelectedItem() + "");
+        administrador.getCuenta().pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void cmbSelectorDeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectorDeContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSelectorDeContratoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPagarContrato;
     private javax.swing.JButton btnProponerContrato;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JComboBox<String> cmbSelectorDeCOntrato;
+    private javax.swing.JComboBox<String> cmbSelectorDeContrato;
     private com.github.lgooddatepicker.components.DatePicker dpfechaFin;
     private com.github.lgooddatepicker.components.DatePicker dpfechaInicio;
     private javax.swing.JLabel jLabel1;
@@ -242,13 +251,10 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarcmbSelectorDeContrato() {
-    ArrayList<Contrato> contratos = administrador.getContratos();
-    if (contratos != null) {
-        for(Contrato contrato : contratos){
-            cmbSelectorDeCOntrato.addItem(contrato.getDescripcion());
+        ArrayList<Contrato> contratos = administrador.getCondominio().getDirectiva().getContratosAprobados();
+        System.out.println("Rellenar contratos aprobados combo"+contratos.size());
+        for (Contrato contrato : contratos) {
+            cmbSelectorDeContrato.addItem(contrato.getDescripcion());
         }
-    } else {
-        System.out.println("La lista de contratos es nula.");
     }
-}
 }

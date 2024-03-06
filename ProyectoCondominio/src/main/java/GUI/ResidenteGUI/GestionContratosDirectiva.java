@@ -47,6 +47,12 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        cmbSelectorDeContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectorDeContratoActionPerformed(evt);
+            }
+        });
+
         btnAprobar.setText("Aprobar");
         btnAprobar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,12 +112,17 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         residente.aprobar((String) cmbSelectorDeContrato.getSelectedItem());
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnAprobarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.setVisible(false);
-        residenteMenu.setVisible(true);
+        residenteMenu.setVisible(true);      
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void cmbSelectorDeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectorDeContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSelectorDeContratoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,12 +139,10 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void llenarCombo() {
-        Administrador admin = BaseDeDatos.leerAdministrador();
-        ArrayList<Contrato> contratosPorAprobar = admin.getCondominio().getDirectiva().getListaContratosPorApobar();
-        
-        for(Contrato contrato:contratosPorAprobar){
+        Administrador administrador = BaseDeDatos.leerAdministrador();
+        ArrayList<Contrato> contratosPorAprobar = administrador.getCondominio().getDirectiva().getListaContratosPorApobar();
+        for(Contrato contrato : contratosPorAprobar){
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
         }
-
     }
 }

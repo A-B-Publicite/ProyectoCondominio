@@ -129,6 +129,7 @@ public class CrearAutoriza extends javax.swing.JFrame {
     private void btCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCrearAutorizacionActionPerformed
         administrador.crearAutorizacion(txtAutorizado.getText(), txtDateIn.getText(), txtDateOut.getText());
         administrador.enviarAutorizacionesGuardia();
+        this.dispose();
         BaseDeDatos.escribirAdmin(administrador);
     }//GEN-LAST:event_btCrearAutorizacionActionPerformed
 

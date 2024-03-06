@@ -14,15 +14,10 @@ public class BaseDeDatos implements Serializable{
     public static ArrayList<Residente> residentes = new ArrayList<Residente>();
     public static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
     public static Administrador administrador;
-    public static Guardia guardia;
     
     public static void actualizarListaDeResidentes(Residente nuevoResidente) {
         residentes.add(nuevoResidente);
         escribir(residentes, "src/main/java/Datos/datosResidentes.txt");
-    }
-    public static void setGuardia(Guardia guardia){
-        BaseDeDatos.guardia = guardia;
-        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
     
     public static Administrador leerAdministrador() {
@@ -36,13 +31,18 @@ public class BaseDeDatos implements Serializable{
     }
 
     public static Residente getResidente(String correo, String contrasenia) {
+        //Administrador administrador = BaseDeDatos.leerAdministrador();
+        return BaseDeDatos.leerAdministrador().getResidentePorCorreo(correo);
+        /*
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         try {
+            System.out.println("Si encontre el residente solicitado pa");
             return buscarResidente(residentes, correo, contrasenia);
         } catch (Exception ex) {
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        System.out.println("No encontre el residente solicitado pa");
+        return null;*/
     }
 
     public static void escribir(Object objetoALeer, String dir) {
@@ -83,11 +83,12 @@ public class BaseDeDatos implements Serializable{
     private static Residente buscarResidente(ArrayList<Residente> residentes, String correo, String contrasenia) throws Exception {
         for(Residente residente : residentes){
             if(residente.getCorreo().equals(correo)&& residente.getContrasenia().equals(contrasenia)){
+                System.out.println("Encontre el residente");
                 return residente;
             }
         }
         throw new Exception("No existe ese residente");
-        //return null;
+
     }
     
     public static ArrayList<Residente> obtenerListaResidente () throws IOException, ClassNotFoundException {
@@ -101,23 +102,6 @@ public class BaseDeDatos implements Serializable{
     
     public static void escribirMueble(Mueble mueble) {
         escribir(administrador, "src/main/java/Datos/datosMuebles.txt");
-    }
-    
-    
-    public static Guardia  leerGuardia() throws IOException, ClassNotFoundException {
-        
-        Object objetoLeido = leer("src/main/java/Datos/datosGuardia.txt");
-        if (objetoLeido instanceof Guardia) {
-            return (Guardia) objetoLeido;
-        } else {
-            System.out.println("El objeto leído no es una instancia de guardia.");
-            return null;
-        }
-        
-    }
-    
-    public static void escribirGuardia(Guardia guardia) {
-        escribir(guardia, "src/main/java/Datos/datosGuardia.txt");
     }
     
     public static void combinarListaResidente(ArrayList<Residente> res) {

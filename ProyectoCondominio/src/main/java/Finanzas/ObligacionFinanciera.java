@@ -54,7 +54,7 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
     public String getDescripcion() {
         return descripcion;
     }
-
+/*
     @Override
     public String toString() {
         return "ObligacionFinanciera{"
@@ -64,5 +64,5 @@ public abstract class ObligacionFinanciera implements Observable, Serializable {
                 + ", descripcion='" + descripcion + '\''
                 + ", idObligacion='" + idObligacion + '\''
                 + '}';
-    }
+    }*/
 }

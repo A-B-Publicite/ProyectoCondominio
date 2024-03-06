@@ -20,62 +20,25 @@ import java.util.logging.Logger;
  * @author usuario
  */
 public class Directo extends Mensaje implements Serializable{
+    public Perfil destino;
     
-    int pos;
+    public Directo(Perfil origen, Perfil destino) {
+        super(origen);
+        this.destino = destino;
+        }
 
-    public Directo(Perfil origen, Residente destino) {
-        super(origen, destino);
-    }
-    
-    public Directo(Perfil origen, Administrador destino) {
-        super(origen, destino);
-    }
 
-    @Override
-    public void crear (String titulo, String contenido) {
-        
-        
-        setTitulo(titulo);
-
-        setContenido(contenido);
-        
-        enviar();
-
-    }
     
     @Override
     public void enviar() {
-        Administrador ad =BaseDeDatos.leerAdministrador();
-        if (getDestinoAdmin()!= null) {
-            
-            ad.getBandejaDeEntrada().recibirMensaje(this);  
-            BaseDeDatos.escribirAdmin(ad);
-        } else {
-               if (getDestino()!=null) {
-                   ArrayList<Residente> residentes = ad.getResidentes();
-                   for (Residente res : residentes) {
-                       if (res.getCorreo().equals(getDestino().getCorreo())) {
-                           res.getBandejaDeEntrada().recibirMensaje(this);
-                           
-                           break;
-                       }
-                   }
-                   BaseDeDatos.escribirAdmin(ad);
-
-               }
-            }
-        
+        //usar destinatarios para enviar
         
     }
 
-    @Override
-    public void mostrar() {
-        System.out.println("\n=============================================\n"
-                + "Origen: " + this.getOrigen()+"\n"+
-                "Destino: " + this.getDestinos()+"\n"+
-                "Fecha: " + getFecha() +
-                "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() + 
-                "\n=============================================\n");
-    }
+
+ 
+    
+    
+    
     
 }

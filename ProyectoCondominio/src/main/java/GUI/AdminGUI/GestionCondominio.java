@@ -319,6 +319,7 @@ public class GestionCondominio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMetrosCuadradoFocusGained
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -344,7 +345,7 @@ public class GestionCondominio extends javax.swing.JFrame {
 
     private void btnBuscarPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPresidenteActionPerformed
         try {
-            Residente presidenteAux = administrador.obtenerResidentePorCorreo(txtCorreoPresidente.getText());
+            Residente presidenteAux = administrador.getResidentePorCorreo(txtCorreoPresidente.getText());
             if(presidenteAux.esPropietario()){
                 javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente con correo: " + txtCorreoPresidente.getText());
                 this.verificacionPresidente = true;
@@ -361,7 +362,7 @@ public class GestionCondominio extends javax.swing.JFrame {
 
     private void btnBuscarSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSecretarioActionPerformed
         try {
-            Residente secretarioAux = administrador.obtenerResidentePorCorreo(txtCorreoSecretario.getText());
+            Residente secretarioAux = administrador.getResidentePorCorreo(txtCorreoSecretario.getText());
             if(secretarioAux.esPropietario()){
                 javax.swing.JOptionPane.showMessageDialog(null, "Si existe el residente con correo: " + txtCorreoSecretario.getText());
                 this.verificacionSecretario = true;
@@ -378,7 +379,7 @@ public class GestionCondominio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarSecretarioActionPerformed
 
     private void btnAgregarDirectivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDirectivaActionPerformed
-        administrador.agregarDirectiva(txtCorreoPresidente.getText(), txtCorreoSecretario.getText());
+        administrador.getCondominio().agregarDirectiva(administrador.getResidentePorCorreo(txtCorreoPresidente.getText()), administrador.getResidentePorCorreo(txtCorreoSecretario.getText()));
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Se ha agregado a la directiva");
 

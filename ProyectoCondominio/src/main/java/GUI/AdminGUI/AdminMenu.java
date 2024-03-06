@@ -1,4 +1,3 @@
-
 package GUI.AdminGUI;
 
 import GUI.FinanzasGUI.FinanzasAdministrador;
@@ -17,20 +16,34 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-
 public class AdminMenu extends javax.swing.JFrame {
 
     private final Administrador administrador;
 
-  
     public AdminMenu(Administrador administrador) {
         this.administrador = administrador;
         initComponents();
         lblBienvenida.setText(lblBienvenida.getText() + " " + administrador.getNombresCompletos());
         verificarExistenciaDeCondominio(administrador);
     }
-
     
+    private void guardarAdminAlCerrar(javax.swing.JFrame menuJFrame) {
+        mostrarVisibleLosMenus(menuJFrame);
+        menuJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        menuJFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                BaseDeDatos.escribirAdmin(administrador);
+                AdminMenu.this.setVisible(true);
+            }
+        });
+    }
+    
+    private void mostrarVisibleLosMenus(javax.swing.JFrame menuJFrame){
+        menuJFrame.setVisible(true);
+        this.setVisible(false);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -246,31 +259,31 @@ public class AdminMenu extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        bandeja.setVisible(true);
+        guardarAdminAlCerrar(bandeja);
     }//GEN-LAST:event_bandejaEntradaButtonActionPerformed
 
     private void gestionCondominioButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionCondominioButtomActionPerformed
         // TODO add your handling code here:
         GestionCondominio gestionCondominio = new GestionCondominio(administrador);
-        gestionCondominio.setVisible(true);
+        guardarAdminAlCerrar(gestionCondominio);
     }//GEN-LAST:event_gestionCondominioButtomActionPerformed
 
     private void gestionContratosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionContratosButtonActionPerformed
         GestionContratoAdmin gestionContrato = new GestionContratoAdmin(administrador);
-        gestionContrato.setVisible(true);
+        guardarAdminAlCerrar(gestionContrato);
     }//GEN-LAST:event_gestionContratosButtonActionPerformed
 
     private void gestionPerfilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPerfilesButtonActionPerformed
         // TODO add your handling code here:
         GestionPerfil gestionPerfil = new GestionPerfil(administrador);
-        gestionPerfil.setVisible(true);
+        guardarAdminAlCerrar(gestionPerfil);
     }//GEN-LAST:event_gestionPerfilesButtonActionPerformed
 
     private void btnRedactarMensajebandejaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedactarMensajebandejaEntradaButtonActionPerformed
         // TODO add your handling code here:
         GUIMensaje gUIMensaje = null;
         try {
-            gUIMensaje = new GUIMensaje(administrador,0);
+            gUIMensaje = new GUIMensaje(administrador, 0);
         } catch (IOException ex) {
             Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -285,7 +298,7 @@ public class AdminMenu extends javax.swing.JFrame {
         gUIMensaje.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-   
+
                 // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
                 setVisible(true);
             }
@@ -294,12 +307,12 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnVerPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPagosActionPerformed
         FinanzasAdministrador menuFinanzasAdministrador = new FinanzasAdministrador(administrador);
-        menuFinanzasAdministrador.setVisible(true);
+        guardarAdminAlCerrar(menuFinanzasAdministrador);
     }//GEN-LAST:event_btnVerPagosActionPerformed
 
     private void btnCrearCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCondominioActionPerformed
         CreacionCondominio nuevaCreacionCondominio = new CreacionCondominio(administrador);
-        nuevaCreacionCondominio.setVisible(true);
+        guardarAdminAlCerrar(nuevaCreacionCondominio);
         btnCrearCondominio.setVisible(false);
     }//GEN-LAST:event_btnCrearCondominioActionPerformed
 
@@ -310,32 +323,30 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         BaseDeDatos.escribirAdmin(administrador);
+        this.dispose();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCrearAutorizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAutorizacionActionPerformed
         CrearAutoriza crearAutorizacion = new CrearAutoriza(administrador);
-        crearAutorizacion.setVisible(true);
+        guardarAdminAlCerrar(crearAutorizacion);
     }//GEN-LAST:event_btnCrearAutorizacionActionPerformed
 
     private void btnGestionReservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservas1ActionPerformed
 
-        
-        MenuAlquiler a = new MenuAlquiler(administrador);
-        a.setVisible(true);
-        
-     
+        MenuAlquiler alquilerMenuAlquiler = new MenuAlquiler(administrador);
+        guardarAdminAlCerrar(alquilerMenuAlquiler);
+
     }//GEN-LAST:event_btnGestionReservas1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBandejaDeEntrada;
@@ -355,7 +366,7 @@ public class AdminMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void verificarExistenciaDeCondominio(Administrador administrador) {
-        if(administrador.getCondominio() != null){
+        if (administrador.getCondominio() != null) {
             btnCrearCondominio.setVisible(false);
         }
     }

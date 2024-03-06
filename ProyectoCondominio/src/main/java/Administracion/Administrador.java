@@ -66,12 +66,6 @@ public class Administrador extends Perfil implements Serializable {
         Autorizacion autorizacionEntrada = crearAutorizacion(guardiaNuevo.getNombreApellido(), fechaActual, fechaFin);
         guardiaNuevo.setAutorizacion(autorizacionEntrada);
         condominio.agregarGuardia(guardiaNuevo);
-        BaseDeDatos.setGuardia(guardiaNuevo);
-    }
-
-    public void pagarContrato(String descripcionContratoAPagar) {
-        Contrato contrato = condominio.getContrato(descripcionContratoAPagar);
-        cuentaBancaria.pagarContrato(contrato.getPrecioContrato());
     }
 
     public ArrayList<Residente> getResidentes() {
@@ -82,7 +76,7 @@ public class Administrador extends Perfil implements Serializable {
         return condominio.obtenerResidenteNombre(nombreResidente);
     }
     
-    public Residente obtenerResidentePorCorreo(String correo)  {
+    public Residente getResidentePorCorreo(String correo)  {
         return condominio.obtenerResidentePorCorreo(correo);
     }
   
@@ -99,16 +93,9 @@ public class Administrador extends Perfil implements Serializable {
         return condominio.mostrarContratos();
     }
 
-    public void agregarDirectiva(String correoPresidente, String correoSecretario){
-        condominio.agregarDirectiva(obtenerResidentePorCorreo(correoPresidente), obtenerResidentePorCorreo(correoSecretario));
-   
-    }
-  
-
     public void agregarContrato(Double precio, String descripcion, String fechaInicio, String fechaFinalizacion) {
-        Contrato contratoNuevo = new Contrato( precio, descripcion, fechaInicio, fechaFinalizacion);
-        Directiva directiva = condominio.getDirectiva();
-        directiva.agregarContrato(contratoNuevo);
+        Contrato contratoNuevo = new Contrato(precio, descripcion, fechaInicio, fechaFinalizacion);
+        condominio.getDirectiva().agregarContrato(contratoNuevo);
     }
 
     public Autorizacion crearAutorizacion(String nombreResidente, String fechaActual, String fechaFin) {

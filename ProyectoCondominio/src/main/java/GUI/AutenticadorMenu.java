@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 public class AutenticadorMenu extends javax.swing.JFrame {
     //Administrador administrador;
     ArrayList<Residente> residentes;
+    
     /**
      * Creates new form login
      */
@@ -34,7 +35,6 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         registrarAdminBoton.setVisible(true);
         verificarAdminCreado();
         this.setVisible(true);
-
     }
 
     /**
@@ -179,12 +179,13 @@ public class AutenticadorMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_selectorPerfilComboActionPerformed
 
     private void ingresarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBotonActionPerformed
+        Administrador administrador = BaseDeDatos.leerAdministrador();
         try {
             switch ((String) selectorPerfilCombo.getSelectedItem()) {
                 case "Administrador":
-                    Administrador administrador = BaseDeDatos.leerAdministrador();
                     if (!estaAutenticado(administrador, correo.getText(), txtContrasena.getText())) {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
+                        return;
                     }
                     AdminMenu adminMenu = new AdminMenu(administrador);
                     adminMenu.setVisible(true);
@@ -194,19 +195,29 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     adminMenu.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            // Se ejecuta cuando el frame se cierra
-                            
-                            // Hacer visible la ventana actual al cerrar la ventana de ListaResidente
+                            BaseDeDatos.escribirAdmin(administrador);
                             setVisible(true);
                         }
                     });
                     break;
                 case "Residente":
-                    BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
+                    //BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
                     Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
-                    ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                    if (!estaAutenticado(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()), correo.getText(), txtContrasena.getText())) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
+                        return;
+                    }
+                    ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
+                    residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    residenteMenu.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            BaseDeDatos.escribirAdmin(administrador);
+                            setVisible(true);
+                        }
+                    });
                     break;
                 case "Guardia":
                     
@@ -221,6 +232,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                             guardiaMenu.addWindowListener(new WindowAdapter() {
                                 @Override
                                 public void windowClosed(WindowEvent e) {
+                                    BaseDeDatos.escribirAdmin(administrador);
                                     setVisible(true);
                                 }
                             });
@@ -234,12 +246,6 @@ public class AutenticadorMenu extends javax.swing.JFrame {
         } catch (Exception e) {
             e.getCause();
         }
-        
-       
-        // Default secuencia de sentencias.
-    
-
-
     }//GEN-LAST:event_ingresarBotonActionPerformed
 
     private void registrarAdminBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdminBotonActionPerformed
