@@ -42,7 +42,7 @@ public class GUIMensaje extends javax.swing.JFrame {
         
         this.origen = administrador;
         this.tipo=tipo;
-        if (tipo == 1) {
+        if ( tipo == 1) {
             jLabel4.setText("Administrador");
             // Obtén el modelo de datos actual del JComboBox
             DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBox3.getModel();

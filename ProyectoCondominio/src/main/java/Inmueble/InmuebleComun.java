@@ -10,10 +10,11 @@ public class InmuebleComun implements Serializable  {
 
     private ArrayList<String> diasDisponibles;
     private double metrosCuadrados;//es necesario calcular la alícuota de un inmueble comun? o tener un valor adicional por las areas comunes que se suma al pago fianl de la alicuota
-
+    private boolean necesitaMantenimiento;
     public InmuebleComun(double metrosCuadrados) {
         this.metrosCuadrados = metrosCuadrados;
         this.diasDisponibles = new ArrayList<String>();
+        this.necesitaMantenimiento=false;
         diasDisponibles.add("Lunes");
         diasDisponibles.add("Martes");
         diasDisponibles.add("Miercoles");
@@ -32,6 +33,15 @@ public class InmuebleComun implements Serializable  {
     public ArrayList<String> consultarDiasDisponibles() {
         return diasDisponibles;
     }
+
+    public boolean isNecesitaMantenimiento() {
+        return necesitaMantenimiento;
+    }
+
+    public void setNecesitaMantenimiento(boolean necesitaMantenimiento) {
+        this.necesitaMantenimiento = necesitaMantenimiento;
+    }
+    
 
     public InmuebleComun crearInmueble(String inmuebleComun, String metrosCuadrados){
         switch (inmuebleComun) {

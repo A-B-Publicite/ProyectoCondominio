@@ -19,38 +19,25 @@ import java.util.List;
  */
 public abstract class Mensaje implements Serializable{
     private Perfil origen;
-    private ArrayList<Residente> destinos= new ArrayList<>();
-    private Residente destino;
-    private Administrador destinoAdmin;
     private String contenido;
     private LocalDateTime fecha;
     private String titulo;
 
     //Crea el mensaje
-    public Mensaje(Perfil origen, ArrayList<Residente> destino) {
+    public Mensaje(Perfil origen) {
         this.origen = origen;
-        this.destinos = destino;
         this.fecha = LocalDateTime.now();
     }
-    
-    //Crea el mensaje
-    public Mensaje(Perfil origen, Residente destino) {
-        this.origen = origen;
-        this.destino = destino;
-        this.fecha = LocalDateTime.now();
-    }
-    
-    public Mensaje (Perfil origen, Administrador destino) {
-        this.origen = origen;
-        this.destinoAdmin = destino;
-        this.fecha = LocalDateTime.now();
-    }    
-    
 
-    public abstract void crear(String titulo, String contenido);
+        public void crear (String titulo, String contenido) {
+        setTitulo(titulo);
+        setContenido(contenido);
+        enviar();
+
+    }
+
     public abstract void enviar();
 
-    public abstract void mostrar();
 
     public String getContenido() {
         return contenido;
@@ -60,15 +47,6 @@ public abstract class Mensaje implements Serializable{
         this.contenido = contenido;
     }
 
-    public Residente getDestino() {
-        return destino;
-    }
-
-    public Administrador getDestinoAdmin() {
-        return destinoAdmin;
-    }
-
-    
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -92,8 +70,5 @@ public abstract class Mensaje implements Serializable{
         return fecha.format(formatter);
     }
 
-    public ArrayList<Residente> getDestinos() {
-        return destinos;
-    }
 
 }

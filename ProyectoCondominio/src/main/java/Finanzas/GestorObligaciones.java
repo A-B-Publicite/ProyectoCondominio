@@ -16,7 +16,30 @@ public class GestorObligaciones implements Serializable {
     }
 
     public ObligacionFinanciera aniadirObligacion(double valor, String descripcion, String tipo) {
+        ObligacionFinanciera nuevaObligacion = null;
+        switch (tipo.toLowerCase(Locale.ROOT)) {
+            case "alicuota":
+                if (contadorObligaciones == 1) {
+                    valorInicialAlicuota = valor;
+                }
+                nuevaObligacion = new Alicuota(valor, descripcion, String.valueOf(contadorObligaciones++));
+                break;
+            case "multa":
+                nuevaObligacion = new Multa(valor, descripcion, String.valueOf(contadorObligaciones++));
+                break;
+            default:
+                nuevaObligacion = null;
+        }
+        if (nuevaObligacion != null) {
+            obligacionesFinancieras.add(nuevaObligacion);
+            nuevaObligacion.agregarObservador(this);
+            if (nuevaObligacion instanceof Alicuota) {
+                programarSiguienteAlicuota((Alicuota) nuevaObligacion, cuenta);
+            }
+        }
+        return nuevaObligacion;
 
+        /*
         switch (tipo.toLowerCase(Locale.ROOT)) {
             case "alicuota":
                 if (contadorObligaciones == 1) { // Asumiendo que es la primera obligación añadida
@@ -34,10 +57,23 @@ public class GestorObligaciones implements Serializable {
 
             default:
                 return null;
-        }
+        }*/
     }
 
     public void eliminarObligacion(ObligacionFinanciera obligacion) {
+
+        Iterator<ObligacionFinanciera> iterator = obligacionesFinancieras.iterator();
+
+        while (iterator.hasNext()) {
+            ObligacionFinanciera obligacionFinanciera = iterator.next();
+            if (Objects.equals(obligacionFinanciera.getIdObligacion(), obligacion.getIdObligacion())) {
+                iterator.remove();
+                break;
+            }
+        }
+
+
+        /*
         ObligacionFinanciera encontrada = null;
 
         for (ObligacionFinanciera obligacionFinanciera : obligacionesFinancieras) {
@@ -48,7 +84,7 @@ public class GestorObligaciones implements Serializable {
             }
         }
 
-        obligacionesFinancieras.remove(encontrada);
+        obligacionesFinancieras.remove(encontrada);*/
     }
 
     public String mostrarObligaciones() {

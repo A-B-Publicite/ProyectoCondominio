@@ -17,27 +17,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Global extends Mensaje implements Serializable{
-
-
-
-    public Global(Perfil origen, ArrayList<Residente> destino) {
-        super(origen, destino);
-
+    public ArrayList<Perfil> destinatarios;
+    
+    public Global(Perfil origen, ArrayList<Perfil> destino) {
+        super(origen);
+        this.destinatarios = destino;
+        
     }
     
-    @Override
-    public void crear (String titulo, String contenido) {
-        
-        setTitulo(titulo);
-        setContenido(contenido);
-
-        enviar();
-
-    }
 
     @Override
     public void enviar() {
-        
+        ////deberia enviar a los residentes
+        /*
         Administrador ad =BaseDeDatos.leerAdministrador();
         
         for (Residente res : ad.getResidentes()) {
@@ -51,10 +43,10 @@ public class Global extends Mensaje implements Serializable{
         }
         BaseDeDatos.escribirAdmin(ad);
         
-        
+        */
         
     }
-
+/*
     @Override
     public void mostrar() {
         System.out.println("\n=============================================\n"
@@ -64,7 +56,7 @@ public class Global extends Mensaje implements Serializable{
                 "\nTitutlo:" + this.getTitulo()+"\n" +this.getContenido() +
                 "\n=============================================\n");
     }
-
+*/
     
     
 }

@@ -71,15 +71,32 @@ public class Inventario implements Serializable {
         return 0.0;
     }
     
-//    public int contarMesas() {
-//        int cantidadMesas = 0;
-//        for (Mueble mueble : listaMuebles) {
-//            if (mueble instanceof Mesa) { // Asumiendo que tienes una clase Mesa
-//                cantidadMesas++;
-//            }
-//        }
-//        return cantidadMesas;
-//    }
+    public void repararMuebles(String tipoMueble, int cantidad){
+        int count = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble.esTipo(tipoMueble) && mueble.isNecesitaMantenimiento()== true) {
+                count++;
+                mueble.setNecesitaMantenimiento(false);
+                if (count == cantidad) {
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void necesitanReparacion(String tipoMueble, int cantidad){//Esto coloca quien envia el mensaje: inventario.necesitanreparacion(tipoMueble,cantidad)
+        int count = 0;
+        for (Mueble mueble : listaMuebles) {
+            if (mueble.esTipo(tipoMueble) && mueble.isNecesitaMantenimiento()== false) {
+                count++;
+                mueble.setNecesitaMantenimiento(true);
+                if (count == cantidad) {
+                    return;
+                }
+            }
+        }
+    }
+    
     public int contarMesas() {
         int cantidadMesas = 0;
         System.out.println("Lista de Muebles tiene: " + listaMuebles.size() + " elementos.");
@@ -116,7 +133,7 @@ public class Inventario implements Serializable {
     public int contarMesasReparar() {
         int cantidadMesasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Mesa && mueble.isMantenimiento()==true) { 
+            if (mueble instanceof Mesa && mueble.isNecesitaMantenimiento()==true) { 
                 cantidadMesasR++;
             }
         }
@@ -126,7 +143,7 @@ public class Inventario implements Serializable {
     public int contarSillasReparar() {
         int cantidadSillasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Silla && mueble.isMantenimiento()==true) {
+            if (mueble instanceof Silla && mueble.isNecesitaMantenimiento()==true) {
                 cantidadSillasR++;
             }
         }
@@ -136,7 +153,7 @@ public class Inventario implements Serializable {
     public int contarCarpasReparar() {
         int cantidadCarpasR = 0;
         for (Mueble mueble : listaMuebles) {
-            if (mueble instanceof Carpa && mueble.isMantenimiento()==true) {
+            if (mueble instanceof Carpa && mueble.isNecesitaMantenimiento()==true) {
                 cantidadCarpasR++;
             }
         }

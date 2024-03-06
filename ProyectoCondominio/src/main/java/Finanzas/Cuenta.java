@@ -3,7 +3,7 @@ package Finanzas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cuenta implements Serializable{
+public class Cuenta implements Serializable {
 
     private ArrayList<Pago> pagos = new ArrayList<>();
     private ArrayList<Recarga> recargas = new ArrayList<>();
@@ -11,7 +11,6 @@ public class Cuenta implements Serializable{
     private int contadorRecargas = 1;
     private Cuenta cuentaAdministrador;
     private GestorObligaciones gestorObligaciones;
-    
 
     public Cuenta() {
         gestorObligaciones = new GestorObligaciones(this);
@@ -25,9 +24,9 @@ public class Cuenta implements Serializable{
         return gestorObligaciones;
     }
 
-    public void recargarSaldo(double abono, MetodoRecarga metodoDeRecarga) {
-        Recarga recarga = new Recarga(abono, String.valueOf(contadorRecargas++), metodoDeRecarga);
-        recarga.recargar(this);
+    public void recargarDinero(double dineroARecargar, MetodoRecarga metodoDeRecarga) {
+        Recarga recarga = new Recarga(dineroARecargar, String.valueOf(contadorRecargas++), metodoDeRecarga);
+        recarga.realizarMovimiento(this);
         recargas.add(recarga);
     }
 
@@ -73,7 +72,8 @@ public class Cuenta implements Serializable{
     public Cuenta getCuentaAdministrador() {
         return cuentaAdministrador;
     }
-/*
+
+    /*
     @Override
     public String toString() {
         String salida = "";
@@ -81,7 +81,7 @@ public class Cuenta implements Serializable{
 
         return salida += "Saldo Actual= " + saldo;
     }
-*/
+     */
     public void setCuentaDePago(Cuenta cuentaAdministrador) {
         this.cuentaAdministrador = cuentaAdministrador;
     }
@@ -99,8 +99,7 @@ public class Cuenta implements Serializable{
         }
 
         // Información de saldo después de listar todos los pagos
-        salida += "=================  CUENTA ==================\n"
-                + "Saldo Actual= " + saldo;
+        salida += "=================  CUENTA ==================\n";
 
         return salida;
     }
@@ -114,4 +113,3 @@ public class Cuenta implements Serializable{
     }
 
 }
-//1

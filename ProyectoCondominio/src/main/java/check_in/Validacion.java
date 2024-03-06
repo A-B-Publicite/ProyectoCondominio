@@ -20,5 +20,13 @@ public class Validacion implements Serializable{
             return;}        
         autorizacion.validar();
     }  
+
+    public void validar(String residente, Autorizacion autorizacionInmediata) {
+        Comparacion comparacion = new Comparacion();
+        if(!comparacion.compararAutorizador(residente,autorizacionInmediata)){
+            System.out.println("Este perfil no esta autorizado para aprobar esta autorizacion");
+            return;}        
+        autorizacionInmediata.validar();
+    }
     
 }
