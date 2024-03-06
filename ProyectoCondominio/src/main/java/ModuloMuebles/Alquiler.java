@@ -9,7 +9,7 @@ public class Alquiler implements Serializable {
     private static int contadorIds = 0;
 
     private int idAlquiler;
-    private Perfil usuario;
+    private Residente usuario;
     private boolean finalizado;
     private String tipoMueble;
     private int cantidad;
@@ -19,7 +19,7 @@ public class Alquiler implements Serializable {
     public Alquiler() {
     }
 
-    public Alquiler(Perfil usuario, String tipoMueble, int cantidad, int dias) {
+    public Alquiler(Residente usuario, String tipoMueble, int cantidad, int dias) {
         this.idAlquiler = ++contadorIds;
         this.usuario = usuario;
         this.finalizado = false;
@@ -37,7 +37,7 @@ public class Alquiler implements Serializable {
         return idAlquiler;
     }
 
-    public Perfil getUsuario() {
+    public Residente getUsuario() {
         return usuario;
     }
 
@@ -69,7 +69,7 @@ public class Alquiler implements Serializable {
         this.idAlquiler = idAlquiler;
     }
 
-    public void setUsuario(Perfil usuario) {
+    public void setUsuario(Residente usuario) {
         this.usuario = usuario;
     }
 
