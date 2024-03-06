@@ -17,7 +17,7 @@ public class Contrato implements Serializable {
     private Object objeto;
     
 
-    public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin) {
+    public Contrato(Double precioContrato, String descripcion, String fechaInicio, String fechaFin, Object objeto) {
         this.fechaContrato = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy"));
         this.precioContrato = precioContrato;
         this.descripcion = descripcion;
@@ -25,10 +25,13 @@ public class Contrato implements Serializable {
         this.fechaFin = fechaFin;
         this.aprobacionNumero1 = false;
         this.aprobacionNumero2 = false;
+        this.servicio = null;
+        this.objeto = objeto;
 
     }
 
     public void iniciar() {
+        this.servicio = new Servicio();
         servicio.ejecutar(objeto);
     }
 
@@ -67,6 +70,7 @@ public class Contrato implements Serializable {
         }*/
         aprobacionNumero1 = true;
         aprobacionNumero2 = true;
+
     }
 
     public boolean estaAprobado() {

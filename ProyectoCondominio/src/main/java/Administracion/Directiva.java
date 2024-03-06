@@ -63,32 +63,20 @@ public class Directiva implements Serializable {
 
     public void actualizarAprobacion(String descripcionContrato) {
         for (Contrato contrato : contratosPorAprobar) {
-            System.out.println(descripcionContrato + '\t' + contrato.getDescripcion());
             if (contrato.compararDescripcion(descripcionContrato)) {
-                System.out.println("DENTRO DEL IF" + this.getClass());
                 contrato.darAprobacion();
                 if (contrato.estaAprobado()) {
-                    System.out.println("INGRESE A ESTA PROBADO");
-                    System.out.println("Contratos por aprobar "+contratosPorAprobar.size());
                     contratosAprobados.add(contrato);
-                    System.out.println("ENTRE AL IF DE CONTRATOS APORBADOS "+contratosAprobados.size());
-                    //contrato.iniciar(); //TODO: IMPLEMENTAR
+                    System.out.println(contratosAprobados);
+                    contrato.iniciar(); 
                     contratosPorAprobar.remove(contrato);
                     System.out.println(contratosPorAprobar.size());
                     break;
                 }
             }
         }
-        //verificarQueElContratoSeaAprobado(descripcionContrato);
     }
 
-    private void verificarQueElContratoSeaAprobado(Contrato contrato) {
-        if (contrato.estaAprobado()) {
-            contratosPorAprobar.remove(contrato);
-            contrato.iniciar();
-            contratosAprobados.add(contrato);
-        }
-    }
 
     public boolean esParte(Residente residente) {
 

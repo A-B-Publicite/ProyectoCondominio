@@ -46,11 +46,7 @@ public class Cuenta implements Serializable {
         cuenta.pagar(123, "Contrato");
     };*/
 
-    public void pagarAlquiler(double precio, String descripcion){
-          Pago nuevoPago = new Pago(this);
-          nuevoPago.pagarAlquiler(precio);
-          pagos.add(nuevoPago);
-    };
+ 
 
     public void pagarServicio(double monto, String tipo) {
         if (esSaldoMayorOIgualMonto(monto)) {
@@ -61,7 +57,7 @@ public class Cuenta implements Serializable {
             System.out.println("Saldo insuficiente");
         }
     }
-
+/*
     public void pagarContrato(double precioContrato) {
         if (esSaldoMayorOIgualMonto(precioContrato)) {
             Pago nuevoPago = new Pago(this);
@@ -71,17 +67,7 @@ public class Cuenta implements Serializable {
             System.out.println("Saldo insuficiente");
         }
     }
-
-    public void pagarAlquilerInmuebles(double precioAlquiler) {
-        if (esSaldoMayorOIgualMonto(precioAlquiler)) {
-            Pago nuevoPago = new Pago(this);
-            nuevoPago.pagar(precioAlquiler, "Alquiler inmueble");
-            pagos.add(nuevoPago);
-        } else {
-            System.out.println("Saldo insuficiente");
-        }
-    }
-
+*/
     public boolean esSaldoMayorOIgualMonto(double monto) {
         return saldo >= monto;
     }

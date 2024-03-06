@@ -45,6 +45,11 @@ public abstract class Mueble implements Serializable {
 
 
     public abstract boolean esTipo(String tipo);
+
+    @Override
+    public String toString() {
+        return "Mueble{" + "estado=" + estado + ", precio=" + precio + ", necesitaMantenimiento=" + necesitaMantenimiento + '}';
+    }
     
     
 }

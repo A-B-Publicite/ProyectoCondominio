@@ -1,5 +1,6 @@
 Finanzas\GestorObligaciones$1.class
 GUI\AdminGUI\GestionContratoAdmin$2.class
+ModuloReservas\GestionarReserva.class
 GUI\AdminGUI\GestionCondominio$14.class
 GUI\AutenticadorMenu$5.class
 GUI\AdminGUI\AdminMenu$1.class
@@ -29,9 +30,11 @@ GUI\MensajeGUI\GUIBandejaDeEntrada$1.class
 Inmueble\Cancha.class
 Comunicacion\Mensaje.class
 GUI\AdminGUI\GestionCondominio$4.class
+GUI\MantenimietoGUI\MenuMantenimiento$1.class
 Finanzas\Efectivo.class
 GUI\FinanzasGUI\FinanzasResidente$4.class
 Inmueble\EspacioDeParqueadero.class
+AreasAparte\AreaDeTransito.class
 GUI\AdminGUI\GestionMueble$4.class
 GUI\ReservasGUI\MenuReservas$10.class
 Administracion\Aprobacion.class
@@ -67,9 +70,11 @@ GUI\RegistroAdminGUI$1.class
 GUI\MensajeGUI\GUIMensaje.class
 Finanzas\Cuenta.class
 GUI\AdminGUI\GestionCondominio$16.class
+GUI\MantenimietoGUI\MenuMantenimiento$4.class
 GUI\ReservasGUI\MenuReservas$2.class
 GUI\FinanzasGUI\FinanzasResidente$8.class
 Finanzas\Recarga.class
+GUI\MantenimietoGUI\MenuMantenimiento$2.class
 GUI\MensajeGUI\GUIBandejaDeEntrada$2.class
 GUI\GuardiaGUI\GuardiaMenu$2.class
 GUI\AutenticadorMenu$1.class
@@ -104,6 +109,7 @@ GUI\MantenimietoGUI\MenuMantenimiento.class
 Finanzas\ObligacionFinanciera.class
 ProyectoCondominio.class
 check_in\RegistroEntrada.class
+GUI\MantenimietoGUI\MenuMantenimiento$3.class
 GUI\MensajeGUI\GUIMensaje$4.class
 GUI\ReservasGUI\MenuReservas$1.class
 ModuloMuebles\Inventario.class
@@ -111,6 +117,7 @@ GUI\ReservasGUI\MenuReservas$12.class
 GUI\AdminGUI\GestionMueble$6.class
 GUI\AutenticadorMenu$8.class
 ModuloReservas\Reserva.class
+AreasAparte\EscalerasEmergencia.class
 GUI\MensajeGUI\GUIBandejaDeEntrada$3.class
 ModuloMuebles\Alquiler.class
 Finanzas\EstadoPendiente.class
@@ -140,6 +147,7 @@ GUI\ResidenteGUI\GestionContratosDirectiva.class
 GUI\AdminGUI\GestionMueble$5.class
 GUI\AdminGUI\GestionCondominio$11.class
 GUI\AutenticadorMenu$2.class
+AreasAparte\Ascensor.class
 GUI\MensajeGUI\GUIMensaje$5.class
 GUI\AutenticadorMenu$9.class
 GUI\AdminGUI\AdminMenu$4.class
@@ -178,7 +186,6 @@ ModuloMuebles\Reparacion.class
 GUI\AdminGUI\GestionMueble$7.class
 GUI\AutenticadorMenu$4.class
 Inmueble\Condominio.class
-GUI\AlquilerGUI\MenuAlquiler$13.class
 GUI\AdminGUI\GestionContratoAdmin$4.class
 GUI\MensajeGUI\GUIMensaje$3.class
 Inmueble\Departamento.class
@@ -193,7 +200,6 @@ GUI\AdminGUI\AdminMenu$2.class
 GUI\GuardiaGUI\CrearAutoriza$1.class
 GUI\GuardiaGUI\RegistrarVisita$3.class
 ModuloMuebles\Mueble.class
-GUI\AlquilerGUI\MenuAlquiler$12.class
 GUI\AdminGUI\GestionCondominio$8.class
 check_in\Autorizacion.class
 GUI\FinanzasGUI\FinanzasAdministrador.class
@@ -211,4 +217,3 @@ GUI\MensajeGUI\GUIMensaje$1.class
 Finanzas\GestorObligaciones.class
 GUI\GuardiaGUI\CrearAutoriza$2.class
 GUI\AutenticadorMenu$6.class
-GUI\AlquilerGUI\MenuAlquiler$11.class

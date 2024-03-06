@@ -114,6 +114,7 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         residente.aprobar((String) cmbSelectorDeContrato.getSelectedItem());
         this.setVisible(false);
+        javax.swing.JOptionPane.showMessageDialog(null, "APROBADO");
         BaseDeDatos.escribirAdmin(administrador);
         this.dispose();
     }//GEN-LAST:event_btnAprobarActionPerformed
@@ -142,7 +143,7 @@ public class GestionContratosDirectiva extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void llenarCombo() {
-        ArrayList<Contrato> contratosPorAprobar = administrador.getCondominio().getDirectiva().getListaContratosPorApobar();
+        ArrayList<Contrato> contratosPorAprobar = BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getListaContratosPorApobar();
         for(Contrato contrato : contratosPorAprobar){
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
         }

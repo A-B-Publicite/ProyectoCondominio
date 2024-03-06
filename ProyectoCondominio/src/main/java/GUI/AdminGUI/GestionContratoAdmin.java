@@ -25,6 +25,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         initComponents();
         this.administrador = administrador; // Otra copia
         rellenarcmbSelectorDeContrato();
+        llenarComboMueblesInmuebles();
     }
 
     /**
@@ -52,6 +53,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         cmbSelectorDeContrato = new javax.swing.JComboBox<>();
         btnPagarContrato = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        cmbInmueblesYMuebles = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +76,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         tfdescripcionContrato.setRows(5);
         jScrollPane1.setViewportView(tfdescripcionContrato);
 
-        btnProponerContrato.setText("Proponer contrato");
+        btnProponerContrato.setText("Generar contrato");
         btnProponerContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProponerContratoActionPerformed(evt);
@@ -84,7 +86,8 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         jLabel7.setText("Seleccione el contrato que desea pagar:");
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el contrato a pagar:", " " }));
+        cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbSelectorDeContrato.setSelectedIndex(-1);
         cmbSelectorDeContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSelectorDeContratoActionPerformed(evt);
@@ -105,6 +108,9 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
             }
         });
 
+        cmbInmueblesYMuebles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbInmueblesYMuebles.setSelectedIndex(-1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,23 +121,19 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel1)
-                        .addContainerGap(76, Short.MAX_VALUE))
+                        .addContainerGap(84, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(17, 17, 17))))))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -157,6 +159,15 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addComponent(dpfechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dpfechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbInmueblesYMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +196,11 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfvalorContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
+                .addComponent(cmbInmueblesYMuebles)
+                .addGap(18, 18, 18)
                 .addComponent(btnProponerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
@@ -200,7 +213,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPagarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -211,21 +224,22 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion);
+        Object objeto = administrador.getCondominio().getObjetoPorSuToString((String) cmbInmueblesYMuebles.getSelectedItem());
+        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion, objeto);
         BaseDeDatos.escribirAdmin(administrador); // Aqui se escribe el admin
-        this.setVisible(false);
-        javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
+        //this.setVisible(false);
+        javax.swing.JOptionPane.showMessageDialog(null, "Contrato generado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
-        administrador.getCuenta().pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
+        administrador.pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void cmbSelectorDeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectorDeContratoActionPerformed
@@ -236,6 +250,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPagarContrato;
     private javax.swing.JButton btnProponerContrato;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cmbInmueblesYMuebles;
     private javax.swing.JComboBox<String> cmbSelectorDeContrato;
     private com.github.lgooddatepicker.components.DatePicker dpfechaFin;
     private com.github.lgooddatepicker.components.DatePicker dpfechaInicio;
@@ -252,10 +267,22 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarcmbSelectorDeContrato() {
-        ArrayList<Contrato> contratos = administrador.getCondominio().getDirectiva().getContratosAprobados();
+        ArrayList<Contrato> contratos = BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getContratosAprobados();
         System.out.println("Rellenar contratos aprobados combo"+contratos.size());
+        System.out.println(BaseDeDatos.leerAdministrador());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio().getDirectiva());
+        System.out.println(BaseDeDatos.leerAdministrador().getCondominio().getDirectiva().getContratosAprobados());
+        
         for (Contrato contrato : contratos) {
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
+        }
+    }
+
+    private void llenarComboMueblesInmuebles() {
+        ArrayList<Object> objetos = BaseDeDatos.leerAdministrador().getCondominio().getMueblesEInmuebles();
+        for (Object  objeto : objetos) {
+            cmbInmueblesYMuebles.addItem(objeto.toString());
         }
     }
 }
