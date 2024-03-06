@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package GUI.MantenimietoGUI;
 
-/**
- *
- * @author issac
- */
-public class MenuMantenimiento extends javax.swing.JPanel {
+import Administracion.Administrador;
+import Inmueble.GestorMantenimiento;
 
-    /**
-     * Creates new form MenuMantenimiento
-     */
-    public MenuMantenimiento() {
+
+public class MenuMantenimiento extends javax.swing.JFrame {
+    Administrador administrador;
+    GestorMantenimiento gestorMantenimiento;
+    
+    public MenuMantenimiento(Administrador administrador) {
         initComponents();
+        this.setLocationRelativeTo(this);
+        gestorMantenimiento = new GestorMantenimiento();
+        this.administrador = administrador;
+        
     }
 
     /**

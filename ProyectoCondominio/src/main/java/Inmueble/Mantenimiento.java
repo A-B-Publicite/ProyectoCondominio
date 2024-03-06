@@ -10,7 +10,7 @@ import ModuloMuebles.Mueble;
  */
 public class Mantenimiento {
     private static int contadorIds = 0;
-    
+    private Object objetoM;
     private int idAlquiler;
     private boolean finalizado = false;
     private int cantidad;
@@ -20,16 +20,11 @@ public class Mantenimiento {
     Condominio condominio;
     Servicio servicio;
     
-    public Mantenimiento(){
+    public Mantenimiento(Condominio condominio){
+        this.condominio=condominio;
     }
 
-    public Mantenimiento(int idAlquiler, boolean finalizado, int cantidad, String ObjetoMantenimiento, String tipoMantenimiento, double precioTotal) {
-        this.idAlquiler = ++idAlquiler;
-        this.finalizado = finalizado;
-        this.cantidad = cantidad;
-        this.ObjetoMantenimiento = ObjetoMantenimiento;
-        this.tipoMantenimiento = tipoMantenimiento;
-        this.precioTotal = precioTotal;
+    public Mantenimiento() {
     }
     
     public void ActualizarMantenimiento(int idAlquiler, int cantidad, String ObjetoMantenimiento, String tipoMantenimiento, double precioTotal) {
@@ -52,6 +47,7 @@ public class Mantenimiento {
                     InmuebleComun inmueble = (InmuebleComun) objetoMueblesInmuebles;
                     inmueble.setNecesitaMantenimiento(false);
                 }
+                objetoM=objeto;
             }
         }
     }

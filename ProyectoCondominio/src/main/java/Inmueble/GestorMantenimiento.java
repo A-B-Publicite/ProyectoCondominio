@@ -17,6 +17,10 @@ public class GestorMantenimiento {
         return listaMantenimientosEsperados;
     }
 
+    public void actualizar(Mantenimiento mantenimiento){
+        if(mantenimiento)
+        listaMantenimientos.add(mantenimiento);
+    }
     @Override
     public String toString() {
         String salida = "Historial de mantenimiento de ascensores: ";

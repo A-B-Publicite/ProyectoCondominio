@@ -15,7 +15,7 @@ public class Servicio implements Serializable {
     }
 
     private void notificar(Object objeto) {
-        Mantenimiento mantenimiento = new Mantenimiento();
+        mantenimiento = new Mantenimiento();
         mantenimiento.actualizar(objeto);
     }
 
