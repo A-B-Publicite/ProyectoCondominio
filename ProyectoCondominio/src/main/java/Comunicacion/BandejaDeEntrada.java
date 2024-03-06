@@ -31,7 +31,7 @@ public class BandejaDeEntrada implements Serializable{
     }
 
 
-    public void limpiarBandeja() {
+    public void limpiar() {
         listaMensajes.clear();
     }
     
