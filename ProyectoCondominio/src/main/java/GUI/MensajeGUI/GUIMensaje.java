@@ -11,6 +11,7 @@ import BD.BaseDeDatos;
 import Comunicacion.Directo;
 import Comunicacion.Global;
 import Comunicacion.Mensaje;
+import Comunicacion.Solicitud;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class GUIMensaje extends javax.swing.JFrame {
             model.removeAllElements();
 
             // Agrega las nuevas opciones
-            model.addElement("Administrador");
+            model.addElement("Solicitud");
             model.addElement("Directo");
 
             // Repinta el JComboBox para reflejar los cambios
@@ -253,8 +254,8 @@ public class GUIMensaje extends javax.swing.JFrame {
                     mensaje = new Directo(origen, residenteSeleccionado);
                     mensaje.crear(jTextField1.getText(),jTextArea1.getText());
                 } else {
-                    if ("Administrador".equals((String)jComboBox3.getSelectedItem())) {
-                        mensaje = new Directo(origen, BaseDeDatos.leerAdministrador());
+                    if ("Solicitud".equals((String)jComboBox3.getSelectedItem())) {
+                        mensaje = new Solicitud(origen);
                         mensaje.crear(jTextField1.getText(),jTextArea1.getText());
                     }
                 }

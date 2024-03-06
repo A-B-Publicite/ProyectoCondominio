@@ -15,10 +15,10 @@ import java.util.ArrayList;
  *
  * @author intel
  */
-public class MensajeSolicitud extends Mensaje implements Serializable{
+public class Solicitud extends Mensaje implements Serializable{
     public Administrador destino;
 
-    public MensajeSolicitud(Perfil origen) {
+    public Solicitud(Perfil origen) {
         super(origen);
         this.destino = BaseDeDatos.leerAdministrador();
                 
