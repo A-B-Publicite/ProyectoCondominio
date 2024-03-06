@@ -383,6 +383,7 @@ public class GestionReservas extends javax.swing.JFrame {
         if (reserva) {
             JOptionPane.showMessageDialog(null, "Reserva cancelada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             this.jResCan.setText(administrar.imprimirReservasCanceladas());
+            this.jTAlista.setText(administrar.toString());
         } else {
             JOptionPane.showMessageDialog(null, "Reserva no calcelada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }

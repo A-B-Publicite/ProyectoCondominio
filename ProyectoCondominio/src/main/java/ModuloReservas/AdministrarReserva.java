@@ -118,12 +118,14 @@ public class AdministrarReserva implements Serializable {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Reserva reserva : listaReservas) {
-            stringBuilder.append("Id reserva: ").append(reserva.getId()).append("\n")
-                    .append("Espacio de reserva: ").append(reserva.getAreaComun()).append("\n")
-                    .append("Usuario: ").append(reserva.getUsuario().getNombresCompletos()).append("\n")
-                    .append("Detalle: ").append(reserva.getDetalle()).append("\n")
-                    .append("Día de reserva: ").append(reserva.getDia()).append("\n")
-                    .append("--------------------------------------------\n");
+            if (!reserva.estaCancelada()) {
+                stringBuilder.append("Id reserva: ").append(reserva.getId()).append("\n")
+                        .append("Espacio de reserva: ").append(reserva.getAreaComun()).append("\n")
+                        .append("Usuario: ").append(reserva.getUsuario().getNombresCompletos()).append("\n")
+                        .append("Detalle: ").append(reserva.getDetalle()).append("\n")
+                        .append("Día de reserva: ").append(reserva.getDia()).append("\n")
+                        .append("--------------------------------------------\n");
+            }
         }
         return stringBuilder.toString();
     }
@@ -148,7 +150,5 @@ public class AdministrarReserva implements Serializable {
     public ArrayList<Reserva> getListaReservas() {
         return listaReservas;
     }
-    
-    
 
 }
