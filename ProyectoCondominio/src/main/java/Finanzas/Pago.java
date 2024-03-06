@@ -47,12 +47,12 @@ public class Pago implements Serializable {
         precioPagado = precioContrato;
         cuentaOrigen.actualizarSaldo(-precioContrato);
     }
-    
+    */
     public void pagarAlquiler(double precioAlquiler) {
         precioPagado = precioAlquiler;
         cuentaOrigen.actualizarSaldo(-precioAlquiler);
     }
-*/
+
     @Override
     public String toString() {
         String salida = "";
