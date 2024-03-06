@@ -43,6 +43,16 @@ public class Mantenimiento {
         //servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
         
     }
+    /*public void Actualizar(Objeto objeto) {
+        //muebleseinmuebles
+        
+        //objeto.toString().equals(objetomueblesinmueblse)
+        
+        
+        //objeto.setNecestia(false)l;
+        
+    }*/
+    
         
     public static int getContadorIds() {
         return contadorIds;
