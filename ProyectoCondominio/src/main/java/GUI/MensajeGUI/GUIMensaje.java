@@ -83,7 +83,7 @@ public class GUIMensaje extends javax.swing.JFrame {
     
    
     public void llenarObligacion(String titulo, double monto, String nombre, String estado, Residente resi) throws IOException, ClassNotFoundException {
-        jComboBox3.setSelectedIndex(1);
+        jComboBox3.setSelectedIndex(2);
         jButton3.setText(nombre);
         this.residenteSeleccionado=resi;
         jTextField1.setText(titulo);
@@ -263,7 +263,6 @@ public class GUIMensaje extends javax.swing.JFrame {
                     mensaje.crear(jTextField1.getText(), jTextArea1.getText());
                     break;
                 case "Reporte":
-                    System.out.println("Caso reporte " + residenteSeleccionado.getNombreApellido());
                     mensaje = new Reporte((Administrador) origen, residenteSeleccionado);
                     mensaje.crear(jTextField1.getText(), jTextArea1.getText());
 
@@ -283,11 +282,11 @@ public class GUIMensaje extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
         jButton1.setVisible(true);
-        if (jComboBox3.getSelectedIndex() == 0 ||jComboBox3.getSelectedIndex() == 2) {
+        if (jComboBox3.getSelectedIndex() == 0 ) {
             jLabel4.setVisible(true);
             jButton3.setVisible(false);
         } else {
-            if (jComboBox3.getSelectedIndex() == 1) {
+            if (jComboBox3.getSelectedIndex() == 1 ||jComboBox3.getSelectedIndex() == 2) {
                 jLabel4.setVisible(false);
                 jButton3.setVisible(true);
             }
