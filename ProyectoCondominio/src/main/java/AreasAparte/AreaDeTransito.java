@@ -7,8 +7,8 @@ public class AreaDeTransito {
 
 private boolean necesitaMantenimiento;
 
-    public AreaDeTransito(boolean necesitaMantenimiento) {
-        this.necesitaMantenimiento = necesitaMantenimiento;
+    public AreaDeTransito() {
+        this.necesitaMantenimiento = false;
     }
 
     public boolean isNecesitaMantenimiento() {

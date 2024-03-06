@@ -7,8 +7,10 @@ public class GestorMantenimiento {
     private ArrayList<Mantenimiento> listaMantenimientosEsperados;
 
     public GestorMantenimiento() {
+        this.listaMantenimientos = new ArrayList<Mantenimiento>();
+        this.listaMantenimientosEsperados = new ArrayList<Mantenimiento>();
     }
-
+    
     public ArrayList<Mantenimiento> getListaMantenimientos() {
         return listaMantenimientos;
     }
@@ -22,7 +24,7 @@ public class GestorMantenimiento {
     }
     
     public String imprimirMantenimientos(){
-         String salida = "Historial de mantenimiento de ascensores: ";
+         String salida = "Historial de mantenimiento de ascensores: \n";
         if (listaMantenimientos==null) {
             return "Lista vacía";
         } else {
@@ -33,7 +35,7 @@ public class GestorMantenimiento {
         }  
     }
     public String imprimirMantenimientosEsperados(){
-         String salida = "Historial de mantenimiento de ascensores: ";
+         String salida = "Historial de mantenimiento de ascensores: \n";
         if (listaMantenimientosEsperados==null) {
             return "Lista vacía";
         } else {
@@ -45,7 +47,7 @@ public class GestorMantenimiento {
     }
     @Override
     public String toString() {
-        String salida = "Historial de mantenimiento de ascensores: ";
+        String salida = "Historial de mantenimiento de ascensores: \n";
         if (listaMantenimientosEsperados==null) {
             return "Lista vacía";
         } else {

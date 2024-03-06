@@ -3,6 +3,7 @@ package Inmueble;
 import ModuloMuebles.Inventario;
 import ModuloMuebles.Mueble;
 import Administracion.*;
+import AreasAparte.Ascensor;
 import check_in.Autorizacion;
 import java.io.Serializable;
 
@@ -19,7 +20,8 @@ public class Condominio implements Serializable {
     private Guardia guardia;
     private Inventario inventario;
     private ArrayList<Autorizacion> autorizacionesEntrada;
-
+    private Ascensor ascensor; 
+    
     public Condominio(String nombreCondominio) {
         this.nombreCondominio = nombreCondominio;
         this.inventario = new Inventario();
@@ -27,6 +29,7 @@ public class Condominio implements Serializable {
         listaDeDepartamentos = new ArrayList<Departamento>();
         autorizacionesEntrada = new ArrayList<Autorizacion>();
         directiva = new Directiva(admin);
+        ascensor=new Ascensor();
     }
 
     //llenar parqueaderos publicos
