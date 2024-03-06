@@ -5,11 +5,9 @@ import java.io.Serializable;
 
 public class Servicio implements Serializable {
 
-    private String nombreDelServicio;
     private Mantenimiento mantenimiento;
 
-    public Servicio(String nombreDelServicio) {
-        this.nombreDelServicio = nombreDelServicio;
+    public Servicio() {
     }
 
     public void ejecutar(Object objeto) {
