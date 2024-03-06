@@ -5,13 +5,13 @@ import Administracion.Servicio;
 import static GUI.AdminGUI.GestionMueble.inventario;
 import Inmueble.Condominio;
 
-public class Mantenimiento {
+public class Reparacion {
     
     Condominio condominio;
     String descripcion;
     Servicio servicio;
     
-    public Mantenimiento(String descripcion) {
+    public Reparacion(String descripcion) {
         this.descripcion = descripcion;
     }
 

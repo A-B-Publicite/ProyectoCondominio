@@ -185,6 +185,7 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 case "Administrador":
                     if (!estaAutenticado(administrador, correo.getText(), txtContrasena.getText())) {
                         javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
+                        return;
                     }
                     AdminMenu adminMenu = new AdminMenu(administrador);
                     adminMenu.setVisible(true);
@@ -200,9 +201,13 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                     });
                     break;
                 case "Residente":
-                    BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
+                    //BaseDeDatos.combinarListaResidente(BaseDeDatos.leerAdministrador().getResidentes());
                     Residente residente = BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText());
-                    ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                    if (!estaAutenticado(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()), correo.getText(), txtContrasena.getText())) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema");
+                        return;
+                    }
+                    ResidenteMenu residenteMenu = new ResidenteMenu(BaseDeDatos.getResidente(correo.getText(), txtContrasena.getText()));
                     residenteMenu.setVisible(true);
                     this.setVisible(false);
                     residenteMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

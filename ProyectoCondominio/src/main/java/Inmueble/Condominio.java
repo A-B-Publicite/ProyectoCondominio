@@ -82,7 +82,7 @@ public class Condominio implements Serializable {
     
     
     public ArrayList<Contrato> mostrarContratos(){
-        return directiva.mostrarContratos();
+        return directiva.getContratosAprobados();
     }
     
     

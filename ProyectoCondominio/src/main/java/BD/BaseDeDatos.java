@@ -31,6 +31,9 @@ public class BaseDeDatos implements Serializable{
     }
 
     public static Residente getResidente(String correo, String contrasenia) {
+        //Administrador administrador = BaseDeDatos.leerAdministrador();
+        return BaseDeDatos.leerAdministrador().getResidentePorCorreo(correo);
+        /*
         ArrayList<Residente> residentes = (ArrayList<Residente>) leer("src/main/java/Datos/datosResidentes.txt");
         try {
             System.out.println("Si encontre el residente solicitado pa");
@@ -39,7 +42,7 @@ public class BaseDeDatos implements Serializable{
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("No encontre el residente solicitado pa");
-        return null;
+        return null;*/
     }
 
     public static void escribir(Object objetoALeer, String dir) {
