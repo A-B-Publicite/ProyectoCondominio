@@ -28,7 +28,9 @@ public abstract class InmueblePrivado implements Serializable{
         
     public void setNecesitaMantenimiento(boolean necesitaMantenimiento) {
         this.necesitaMantenimiento = necesitaMantenimiento;
-    }   
+    }
+    
+    
 
 }
 
