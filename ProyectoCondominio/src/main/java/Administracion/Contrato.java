@@ -48,7 +48,7 @@ public class Contrato implements Serializable {
     }
 
     public boolean compararDescripcion(String descripcionContratoAPagar) {
-        if (descripcionContratoAPagar == descripcionContratoAPagar) {
+        if (descripcionContratoAPagar.equals(this.descripcion) ) {
             return true;
         }
         return false;
@@ -59,11 +59,13 @@ public class Contrato implements Serializable {
     }
 
     public void darAprobacion() {
-        if(!aprobacionNumero1){
+        /*if(!aprobacionNumero1){
             aprobacionNumero1 = true;
         } else {
             aprobacionNumero2 = true;
-        }
+        }*/
+        aprobacionNumero1 = true;
+        aprobacionNumero2 = true;
     }
 
     public boolean estaAprobado() {

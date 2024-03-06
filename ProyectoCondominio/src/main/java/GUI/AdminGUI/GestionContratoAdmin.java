@@ -85,6 +85,11 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         cmbSelectorDeContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el contrato a pagar:", " " }));
+        cmbSelectorDeContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectorDeContratoActionPerformed(evt);
+            }
+        });
 
         btnPagarContrato.setText("Pagar contrato");
         btnPagarContrato.addActionListener(new java.awt.event.ActionListener() {
@@ -202,17 +207,17 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProponerContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProponerContratoActionPerformed
-        double precio = Double.parseDouble(tfvalorContrato.getText()) ;
+        double precio = Double.parseDouble(tfvalorContrato.getText());
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        administrador.agregarContrato(precio, descripcion,  fechaInicio,  fechaFinalizacion);
+        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion);
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
     }//GEN-LAST:event_btnProponerContratoActionPerformed
 
     private void btnPagarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarContratoActionPerformed
-        administrador.getCuenta().pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String)cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
+        administrador.getCuenta().pagarContrato(administrador.getCondominio().getDirectiva().getContratoAprobado((String) cmbSelectorDeContrato.getSelectedItem()).getPrecioContrato());
         BaseDeDatos.escribirAdmin(administrador);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Pagado");
     }//GEN-LAST:event_btnPagarContratoActionPerformed
@@ -221,6 +226,10 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void cmbSelectorDeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectorDeContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSelectorDeContratoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPagarContrato;
@@ -242,13 +251,10 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarcmbSelectorDeContrato() {
-    ArrayList<Contrato> contratos = administrador.getContratos();
-    if (contratos != null) {
-        for(Contrato contrato : contratos){
+        ArrayList<Contrato> contratos = administrador.getCondominio().getDirectiva().getContratosAprobados();
+        System.out.println("Rellenar contratos aprobados combo"+contratos.size());
+        for (Contrato contrato : contratos) {
             cmbSelectorDeContrato.addItem(contrato.getDescripcion());
         }
-    } else {
-        System.out.println("La lista de contratos es nula.");
     }
-}
 }
