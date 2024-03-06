@@ -13,8 +13,6 @@ public class Pago implements Serializable {
     private ObligacionFinanciera obligacionFinanciera;
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
-    
-    
 
     public Pago(Cuenta cuenta) {
         this.cuentaOrigen = cuenta;
