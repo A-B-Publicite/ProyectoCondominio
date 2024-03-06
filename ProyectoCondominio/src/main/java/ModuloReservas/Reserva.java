@@ -1,4 +1,5 @@
 package ModuloReservas;
+
 import Administracion.Perfil;
 import java.io.Serializable;
 
@@ -6,14 +7,15 @@ import java.io.Serializable;
  *
  * @author Grupo 4
  */
-public class Reserva implements Serializable{
+public class Reserva implements Serializable {
+
     private int id;
     private String dia;
     private String detalle;
     private Perfil usuario;
     private boolean cancelada;
     private String areaComun;
-    
+
     // Constructor con parámetros
     public Reserva(int id, String dia, String detalle, Perfil usuario, String areaComun) {
         this.id = id;
@@ -31,11 +33,10 @@ public class Reserva implements Serializable{
     }
 
     // Método para reprogramar la reserva
-    public void reprogramar(String dia) {
-        this.dia = dia;
-        System.out.println("Reserva reprogramada para el dia: " + dia);
+    public void reprogramar(String nuevoDia) {
+        this.dia = nuevoDia;
     }
-    
+
     // Método para verificar si está cancelada la reserva
     public boolean estaCancelada() {
         return this.cancelada;
