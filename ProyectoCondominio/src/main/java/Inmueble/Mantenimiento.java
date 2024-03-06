@@ -43,7 +43,8 @@ public class Mantenimiento {
         //servicio.ejecutarMantenimiento(cantidad, ObjetoMantenimiento); 
         
     }
-    /*public void Actualizar(Objeto objeto) {
+    public void actualizar(Object objeto) {
+        
         //muebleseinmuebles
         
         //objeto.toString().equals(objetomueblesinmueblse)
@@ -51,7 +52,7 @@ public class Mantenimiento {
         
         //objeto.setNecestia(false)l;
         
-    }*/
+    }
     
         
     public static int getContadorIds() {
@@ -106,6 +107,8 @@ public class Mantenimiento {
         
         return EstadoMantenimiento.toString();
     }
+
+    
     
     
     
