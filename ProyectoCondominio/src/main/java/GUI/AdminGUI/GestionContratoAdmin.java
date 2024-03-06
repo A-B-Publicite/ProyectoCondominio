@@ -211,7 +211,7 @@ public class GestionContratoAdmin extends javax.swing.JFrame {
         String descripcion = tfdescripcionContrato.getText();
         String fechaInicio = dpfechaInicio.getDate() + "";
         String fechaFinalizacion = dpfechaFin.getDate() + "";
-        administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion);
+        //administrador.agregarContrato(precio, descripcion, fechaInicio, fechaFinalizacion, o);
         BaseDeDatos.escribirAdmin(administrador); // Aqui se escribe el admin
         this.setVisible(false);
         javax.swing.JOptionPane.showMessageDialog(null, "Contrato Agregado con Exito");
