@@ -246,8 +246,7 @@ public class GUIMensaje extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
             
             if ("Global".equals((String)jComboBox3.getSelectedItem())) {
-                //mensaje = new Global(origen, BaseDeDatos.leerAdministrador().getResidentes());
-                mensaje=null;
+                mensaje = new Global(origen,BaseDeDatos.leerAdministrador().getResidentes());
                 mensaje.crear(jTextField1.getText(),jTextArea1.getText());
             } else {
                 if ("Directo".equals((String)jComboBox3.getSelectedItem())) {
