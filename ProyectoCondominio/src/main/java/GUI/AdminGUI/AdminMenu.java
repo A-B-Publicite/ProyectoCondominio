@@ -6,11 +6,11 @@ import BD.BaseDeDatos;
 import GUI.GuardiaGUI.CrearAutoriza;
 import GUI.MensajeGUI.GUIBandejaDeEntrada;
 import GUI.MensajeGUI.GUIMensaje;
-import GUI.ReservasGUI.MenuReservas;
 import GUI.MensajeGUI.ResidenteTabla;
 import GUI.AlquilerGUI.MenuAlquiler;
 import GUI.AutenticadorMenu;
 import GUI.MantenimietoGUI.MenuMantenimiento;
+import GUI.ReservasGUI.GestionReservas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -244,9 +244,8 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addComponent(btnGestionReservas1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -324,7 +323,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCondominioActionPerformed
 
     private void btnGestionReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionReservasActionPerformed
-        MenuReservas menRes = new MenuReservas(administrador);
+        GestionReservas menRes = new GestionReservas(administrador);
         menRes.setVisible(true);
     }//GEN-LAST:event_btnGestionReservasActionPerformed
 
