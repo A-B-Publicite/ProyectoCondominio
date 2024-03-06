@@ -16,8 +16,9 @@ import java.io.Serializable;
 public class Aprobacion implements Serializable{
 
     public void notificarAprobacion(String descripcionContrato) {
-        Administrador administrador = BaseDeDatos.leerAdministrador();
+        Administrador administrador = BaseDeDatos.leerAdministrador(); // copia
         administrador.getCondominio().getDirectiva().actualizarAprobacion(descripcionContrato);  
+        BaseDeDatos.escribirAdmin(administrador);
     }
 
 }
